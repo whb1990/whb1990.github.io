@@ -1911,7 +1911,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #704617;
+  background: #870073;
 }
 .feed-link,
 .chat {
@@ -2166,6 +2166,9 @@ pre .javascript .function {
     transform: scale(1.1);
   }
 }
+i.fa {
+  font-family: FontAwesome !important;
+}
 .local-search-pop-overlay {
   position: fixed;
   width: 100%;
@@ -2271,6 +2274,10 @@ pre .javascript .function {
   top: 50%;
   transform: translate(-50%, -50%);
   color: #ccc;
+}
+.has-jax {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .page-archive .archive-page-counter {
   position: relative;
