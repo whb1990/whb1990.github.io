@@ -110,14 +110,14 @@
 
 
   <meta name="description" content="多线程的优缺点优点：  多线程技术使程序的响应速度更快。 当前没有进行处理的任务可以将处理器时间让给其它任务。 占用大量处理时间的任务可以定期将处理器时间让给其它任务。 可以随时停止任务。 可以分别设置各个任务的优先级以及优化性能。   缺点  等候使用共享资源时造成程序的运行速度变慢。 对线程进行管理要求额外的cpu开销。 可能出现线程死锁情况。即较长时间的等待或资源竞争以及死锁等症状。   s">
-<meta name="keywords" content="Java,多线程">
+<meta name="keywords" content="面试题,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程面试题总结">
 <meta property="og:url" content="http://whb1990.github.io/2019/05/21/多线程面试题总结.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="多线程的优缺点优点：  多线程技术使程序的响应速度更快。 当前没有进行处理的任务可以将处理器时间让给其它任务。 占用大量处理时间的任务可以定期将处理器时间让给其它任务。 可以随时停止任务。 可以分别设置各个任务的优先级以及优化性能。   缺点  等候使用共享资源时造成程序的运行速度变慢。 对线程进行管理要求额外的cpu开销。 可能出现线程死锁情况。即较长时间的等待或资源竞争以及死锁等症状。   s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-20T13:51:44.386Z">
+<meta property="og:updated_time" content="2019-05-20T14:17:46.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程面试题总结">
 <meta name="twitter:description" content="多线程的优缺点优点：  多线程技术使程序的响应速度更快。 当前没有进行处理的任务可以将处理器时间让给其它任务。 占用大量处理时间的任务可以定期将处理器时间让给其它任务。 可以随时停止任务。 可以分别设置各个任务的优先级以及优化性能。   缺点  等候使用共享资源时造成程序的运行速度变慢。 对线程进行管理要求额外的cpu开销。 可能出现线程死锁情况。即较长时间的等待或资源竞争以及死锁等症状。   s">
@@ -474,7 +474,7 @@
                 
               
 
-              <time title="创建时间：2019-05-20 20:41:46 / 修改时间：13:51:44" itemprop="dateCreated datePublished" datetime="2019-05-20T20:41:46Z">2019-05-20</time>
+              <time title="创建时间：2019-05-20 20:41:46 / 修改时间：14:17:46" itemprop="dateCreated datePublished" datetime="2019-05-20T20:41:46Z">2019-05-20</time>
             
 
             
@@ -497,14 +497,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
 
                 
                 
@@ -553,7 +553,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.8k字</span>
+            <span class="post-count">3.1k字</span>
           </span>
 
           <span class="post-time">
@@ -562,7 +562,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长:</span>
-            <span class="post-count">10分钟</span>
+            <span class="post-count">11分钟</span>
           </span>
           <!--以上部分为：字数统计、阅读时长插入代码-->
 
@@ -702,6 +702,10 @@
 <li>解耦，这是生产者消费者模型附带的作用，解耦意味着生产者和消费者之间的联系少，联系越少越可以独自发展而不需要收到相互的制约。</li>
 </ol>
 </blockquote>
+<h3 id="Executor-submit-和Executor-execute-的区别"><a href="#Executor-submit-和Executor-execute-的区别" class="headerlink" title="Executor.submit()和Executor.execute()的区别"></a>Executor.submit()和Executor.execute()的区别</h3><blockquote>
+<p>前者返回一个 Future对象，可以用于找到工作线程的运行结果。</p>
+</blockquote>
+<p>在异常处理上也不一样，在任务抛出异常时，如果是通过 execute()提交的，会抛出无需捕获的异常（如果你没有特殊处理，会打印错误栈道System.err）。如果是通过 submit()提交的，任何异常，无论是不是checked exception，都是返回的一部分，Future.get将把异常包在 ExecutionExeption中，向上层抛出。</p>
 <h3 id="ThreadLocal的作用"><a href="#ThreadLocal的作用" class="headerlink" title="ThreadLocal的作用"></a>ThreadLocal的作用</h3><blockquote>
 <ol>
 <li>ThreadLocal用来解决多线程程序的并发问题。</li>
@@ -747,6 +751,16 @@
 </ul>
 </blockquote>
 <h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">public class DeadLock &#123;</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        TestDeadLock tl = new TestDeadLock();</span><br><span class="line">        new Thread(tl, &quot;线程A&quot;).start();</span><br><span class="line">        new Thread(tl, &quot;线程B&quot;).start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class TestDeadLock implements Runnable &#123;</span><br><span class="line">        private Object objA = new Object();</span><br><span class="line">        private Object objB = new Object();</span><br><span class="line">        private boolean flag = true;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            if (flag) &#123;</span><br><span class="line">                flag = false;</span><br><span class="line">                synchronized (objA) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + &quot;锁住资源A，等待资源B&quot;);</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(100);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    synchronized (objB) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + &quot;获得资源B&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                flag = true;</span><br><span class="line">                synchronized (objB) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + &quot;锁住资源B，等待资源A&quot;);</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(100);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    synchronized (objA) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + &quot;获得资源A&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new DeadLock().run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果是：</span><br><span class="line">线程A锁住资源A，等待资源B</span><br><span class="line">线程B锁住资源B，等待资源A</span><br></pre></td></tr></table></figure>
+<h3 id="Java中如何避免死锁"><a href="#Java中如何避免死锁" class="headerlink" title="Java中如何避免死锁"></a>Java中如何避免死锁</h3><blockquote>
+<p>死锁发生是因为两个线程试图获取被对方持有的资源。但是要想发生这种情况，必须满足以下四个条件：</p>
+</blockquote>
+<ol>
+<li>相互排斥 —— 至少一个进程必须处于非共享模式；</li>
+<li>保持并等待 —— 必须有一个进程持有一个资源并等待另一个资源；</li>
+<li>没有抢占 —— 资源不能被抢占；</li>
+<li>循环等待 —— 存在进程集合。<br>通过中断循环等待可以避免死锁。可以通过在代码中指定获取和释放锁的顺序来达到这一目的。</li>
+</ol>
+<p>如果多个锁通过一致的顺序被获取和释放，不会有互相等待对方释放锁的情况。</p>
 
       
     </div>
@@ -769,7 +783,7 @@
   <p><span>本文标题:</span><a href="/2019/05/21/多线程面试题总结.html">多线程面试题总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年05月20日 - 20:05</p>
-  <p><span>最后更新:</span>2019年05月20日 - 13:05</p>
+  <p><span>最后更新:</span>2019年05月20日 - 14:05</p>
   <p><span>原始链接:</span><a href="/2019/05/21/多线程面试题总结.html" title="多线程面试题总结">http://whb1990.github.io/2019/05/21/多线程面试题总结.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/05/21/多线程面试题总结.html" aria-label="复制成功！"></i></span>
   </p>
@@ -841,7 +855,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+            <a href="/tags/面试题/" rel="tag"><i class="fa fa-tag"></i> 面试题</a>
           
             <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
           
@@ -865,6 +879,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/21/Java面试题总结.html" rel="prev" title="Java面试题总结">
+                Java面试题总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -937,7 +955,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -966,7 +984,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -995,7 +1015,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1150,7 +1172,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程的优缺点"><span class="nav-number">1.</span> <span class="nav-text">多线程的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-方法和run-方法的区别"><span class="nav-number">2.</span> <span class="nav-text">start()方法和run()方法的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-方法："><span class="nav-number">2.1.</span> <span class="nav-text">start()方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-方法："><span class="nav-number">2.2.</span> <span class="nav-text">run()方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">2.3.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runnable接口和Callable接口的相同点和不同点"><span class="nav-number">3.</span> <span class="nav-text">Runnable接口和Callable接口的相同点和不同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点："><span class="nav-number">3.1.</span> <span class="nav-text">相同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点："><span class="nav-number">3.2.</span> <span class="nav-text">不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#voliate关键字的作用"><span class="nav-number">4.</span> <span class="nav-text">voliate关键字的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier和CountDownLatch的区别"><span class="nav-number">5.</span> <span class="nav-text">CyclicBarrier和CountDownLatch的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#voliate和synchronized对比"><span class="nav-number">6.</span> <span class="nav-text">voliate和synchronized对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么唤醒一个阻塞的线程"><span class="nav-number">7.</span> <span class="nav-text">怎么唤醒一个阻塞的线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep方法和wait方法的相同点和不同点"><span class="nav-number">8.</span> <span class="nav-text">sleep方法和wait方法的相同点和不同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点：-1"><span class="nav-number">8.1.</span> <span class="nav-text">相同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点：-1"><span class="nav-number">8.2.</span> <span class="nav-text">不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产者和消费者模型的作用"><span class="nav-number">9.</span> <span class="nav-text">生产者和消费者模型的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal的作用"><span class="nav-number">10.</span> <span class="nav-text">ThreadLocal的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait方法和notify-notifyAll方法在放弃对象监视器时的区别"><span class="nav-number">11.</span> <span class="nav-text">wait方法和notify/notifyAll方法在放弃对象监视器时的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock和synchronized对比"><span class="nav-number">12.</span> <span class="nav-text">Lock和synchronized对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReadWriteLock是什么"><span class="nav-number">13.</span> <span class="nav-text">ReadWriteLock是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask是什么"><span class="nav-number">14.</span> <span class="nav-text">FutureTask是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中用到的线程调度算法"><span class="nav-number">15.</span> <span class="nav-text">Java中用到的线程调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁和悲观锁"><span class="nav-number">16.</span> <span class="nav-text">乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写一个死锁程序"><span class="nav-number">17.</span> <span class="nav-text">编写一个死锁程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁现象描述："><span class="nav-number">17.1.</span> <span class="nav-text">死锁现象描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的实现步骤："><span class="nav-number">17.2.</span> <span class="nav-text">死锁的实现步骤：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现："><span class="nav-number">17.3.</span> <span class="nav-text">代码实现：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程的优缺点"><span class="nav-number">1.</span> <span class="nav-text">多线程的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">1.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-方法和run-方法的区别"><span class="nav-number">2.</span> <span class="nav-text">start()方法和run()方法的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-方法："><span class="nav-number">2.1.</span> <span class="nav-text">start()方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-方法："><span class="nav-number">2.2.</span> <span class="nav-text">run()方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">2.3.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runnable接口和Callable接口的相同点和不同点"><span class="nav-number">3.</span> <span class="nav-text">Runnable接口和Callable接口的相同点和不同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点："><span class="nav-number">3.1.</span> <span class="nav-text">相同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点："><span class="nav-number">3.2.</span> <span class="nav-text">不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#voliate关键字的作用"><span class="nav-number">4.</span> <span class="nav-text">voliate关键字的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier和CountDownLatch的区别"><span class="nav-number">5.</span> <span class="nav-text">CyclicBarrier和CountDownLatch的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#voliate和synchronized对比"><span class="nav-number">6.</span> <span class="nav-text">voliate和synchronized对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么唤醒一个阻塞的线程"><span class="nav-number">7.</span> <span class="nav-text">怎么唤醒一个阻塞的线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep方法和wait方法的相同点和不同点"><span class="nav-number">8.</span> <span class="nav-text">sleep方法和wait方法的相同点和不同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点：-1"><span class="nav-number">8.1.</span> <span class="nav-text">相同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点：-1"><span class="nav-number">8.2.</span> <span class="nav-text">不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产者和消费者模型的作用"><span class="nav-number">9.</span> <span class="nav-text">生产者和消费者模型的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor-submit-和Executor-execute-的区别"><span class="nav-number">10.</span> <span class="nav-text">Executor.submit()和Executor.execute()的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal的作用"><span class="nav-number">11.</span> <span class="nav-text">ThreadLocal的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait方法和notify-notifyAll方法在放弃对象监视器时的区别"><span class="nav-number">12.</span> <span class="nav-text">wait方法和notify/notifyAll方法在放弃对象监视器时的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock和synchronized对比"><span class="nav-number">13.</span> <span class="nav-text">Lock和synchronized对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReadWriteLock是什么"><span class="nav-number">14.</span> <span class="nav-text">ReadWriteLock是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask是什么"><span class="nav-number">15.</span> <span class="nav-text">FutureTask是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中用到的线程调度算法"><span class="nav-number">16.</span> <span class="nav-text">Java中用到的线程调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁和悲观锁"><span class="nav-number">17.</span> <span class="nav-text">乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写一个死锁程序"><span class="nav-number">18.</span> <span class="nav-text">编写一个死锁程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁现象描述："><span class="nav-number">18.1.</span> <span class="nav-text">死锁现象描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的实现步骤："><span class="nav-number">18.2.</span> <span class="nav-text">死锁的实现步骤：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现："><span class="nav-number">18.3.</span> <span class="nav-text">代码实现：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中如何避免死锁"><span class="nav-number">19.</span> <span class="nav-text">Java中如何避免死锁</span></a></li></ol></div>
             
 
           </div>
