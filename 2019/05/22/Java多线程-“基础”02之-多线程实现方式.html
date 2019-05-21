@@ -109,16 +109,18 @@
 
 
 
-  <meta name="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王洪博&#39;s blog">
-<meta property="og:url" content="http://whb1990.github.io/archives/2019/index.html">
+  <meta name="description" content="实现多线程的几种方式  继承Thread类 实现Runnable接口 通过Callable和Future 通过线程池   Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：123public interface Runnable &amp;#123;    public abstract void run();&amp;#125; Runn">
+<meta name="keywords" content="Java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程-“基础”02之 多线程实现方式">
+<meta property="og:url" content="http://whb1990.github.io/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta property="og:description" content="实现多线程的几种方式  继承Thread类 实现Runnable接口 通过Callable和Future 通过线程池   Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：123public interface Runnable &amp;#123;    public abstract void run();&amp;#125; Runn">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-21T13:47:32.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王洪博&#39;s blog">
-<meta name="twitter:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta name="twitter:title" content="Java多线程-“基础”02之 多线程实现方式">
+<meta name="twitter:description" content="实现多线程的几种方式  继承Thread类 实现Runnable接口 通过Callable和Future 通过线程池   Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：123public interface Runnable &amp;#123;    public abstract void run();&amp;#125; Runn">
 
 
 
@@ -128,7 +130,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/archives/2019/">
+  <link rel="canonical" href="http://whb1990.github.io/2019/05/22/Java多线程-“基础”02之-多线程实现方式">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>归档 | 王洪博's blog</title>
+  <title>Java多线程-“基础”02之 多线程实现方式 | 王洪博's blog</title>
   
 
 
@@ -185,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<!--Fork me on github-->
 	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -297,7 +299,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -361,34 +363,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -441,397 +415,367 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Java多线程-“基础”02之 多线程实现方式
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 21:27:41" itemprop="dateCreated datePublished" datetime="2019-05-21T21:27:41Z">2019-05-21</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
           
-        
-        嗯..! 目前共计 12 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" itemprop="url">
+          
+          
+            <span id="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" class="leancloud_visitors" data-flag-title="Java多线程-“基础”02之 多线程实现方式">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
             
-              <span itemprop="name">Java多线程-“基础”02之 多线程实现方式</span>
-            
-          </a>
-        
-      </h2>
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">802字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  3分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T21:27:41Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
+          
+            <div class="post-symbolscount">
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.1k</span>
+              
 
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/Java多线程-“基础”01之 基本概念.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-“基础”01之 基本概念</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T20:30:12Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/MySQL性能优化.html" itemprop="url">
-            
-              <span itemprop="name">MySQL性能优化</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T18:10:38Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="实现多线程的几种方式"><a href="#实现多线程的几种方式" class="headerlink" title="实现多线程的几种方式"></a>实现多线程的几种方式</h4><blockquote>
+<ol>
+<li>继承Thread类</li>
+<li>实现Runnable接口</li>
+<li>通过Callable和Future</li>
+<li>通过线程池</li>
+</ol>
+</blockquote>
+<h4 id="Thread和Runnable简介"><a href="#Thread和Runnable简介" class="headerlink" title="Thread和Runnable简介"></a>Thread和Runnable简介</h4><h5 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h5><p>Runnable是一个接口库，该接口只包含了一个run()方法，定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Runnable &#123;</span><br><span class="line">    public abstract void run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Runnable的作用，实现多线程。我们可以定义一个类A实现Runnable接口；然后，通过new Thread(new A())等方式新建线程。</p>
+<h5 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h5><p>Thread 是一个类。Thread本身就实现了Runnable接口。它的声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class Thread implements Runnable &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Thread和Runnable的异同点"><a href="#Thread和Runnable的异同点" class="headerlink" title="Thread和Runnable的异同点"></a>Thread和Runnable的异同点</h4><p>Thread 和 Runnable 的相同点：都是“多线程的实现方式”。<br>Thread 和 Runnable 的不同点：<br>Thread 是类，而Runnable是接口；Thread本身是实现了Runnable接口的类。我们知道“一个类只能有一个父类，但是却能实现多个接口”，因此Runnable具有更好的扩展性。<br>此外，Runnable还可以用于“资源的共享”。即，多个线程都是基于某一个Runnable对象建立的，它们会共享Runnable对象上的资源。<br>通常，建议通过“Runnable”实现多线程！</p>
+<h4 id="Thread和Runnable的多线程示例"><a href="#Thread和Runnable的多线程示例" class="headerlink" title="Thread和Runnable的多线程示例"></a>Thread和Runnable的多线程示例</h4><h5 id="Thread的多线程示例"><a href="#Thread的多线程示例" class="headerlink" title="Thread的多线程示例"></a>Thread的多线程示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 启动3个线程t1,t2,t3；每个线程各卖10张票！</span><br><span class="line">        MyThread t1 = new MyThread();</span><br><span class="line">        MyThread t2 = new MyThread();</span><br><span class="line">        MyThread t3 = new MyThread();</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyThread extends Thread &#123;</span><br><span class="line">    private int ticket = 10;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            if (this.ticket &gt; 0) &#123;</span><br><span class="line">                System.out.println(this.getName() + &quot; 卖票：ticket&quot; + this.ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Thread-2 卖票：ticket10</span><br><span class="line">Thread-1 卖票：ticket10</span><br><span class="line">Thread-0 卖票：ticket10</span><br><span class="line">Thread-1 卖票：ticket9</span><br><span class="line">Thread-2 卖票：ticket9</span><br><span class="line">Thread-1 卖票：ticket8</span><br><span class="line">Thread-0 卖票：ticket9</span><br><span class="line">Thread-1 卖票：ticket7</span><br><span class="line">Thread-2 卖票：ticket8</span><br><span class="line">Thread-1 卖票：ticket6</span><br><span class="line">Thread-0 卖票：ticket8</span><br><span class="line">Thread-1 卖票：ticket5</span><br><span class="line">Thread-2 卖票：ticket7</span><br><span class="line">Thread-1 卖票：ticket4</span><br><span class="line">Thread-0 卖票：ticket7</span><br><span class="line">Thread-1 卖票：ticket3</span><br><span class="line">Thread-2 卖票：ticket6</span><br><span class="line">Thread-1 卖票：ticket2</span><br><span class="line">Thread-0 卖票：ticket6</span><br><span class="line">Thread-1 卖票：ticket1</span><br><span class="line">Thread-2 卖票：ticket5</span><br><span class="line">Thread-0 卖票：ticket5</span><br><span class="line">Thread-2 卖票：ticket4</span><br><span class="line">Thread-0 卖票：ticket4</span><br><span class="line">Thread-2 卖票：ticket3</span><br><span class="line">Thread-0 卖票：ticket3</span><br><span class="line">Thread-2 卖票：ticket2</span><br><span class="line">Thread-0 卖票：ticket2</span><br><span class="line">Thread-2 卖票：ticket1</span><br><span class="line">Thread-0 卖票：ticket1</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果说明：</strong><br>(01) MyThread继承于Thread，它是自定义个线程。每个MyThread都会卖出10张票。<br>(02) 主线程main创建并启动3个MyThread子线程。每个子线程都各自卖出了10张票。</p>
+<h5 id="Runnable的多线程示例"><a href="#Runnable的多线程示例" class="headerlink" title="Runnable的多线程示例"></a>Runnable的多线程示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class MyThread2 implements Runnable &#123;</span><br><span class="line">    private int ticket = 10;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            if (this.ticket &gt; 0) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + &quot; 卖票：ticket&quot; + this.ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">public class RunnableTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyThread2 mt = new MyThread2();</span><br><span class="line"></span><br><span class="line">        // 启动3个线程t1,t2,t3(它们共用一个Runnable对象)，这3个线程一共卖10张票！</span><br><span class="line">        Thread t1 = new Thread(mt);</span><br><span class="line">        Thread t2 = new Thread(mt);</span><br><span class="line">        Thread t3 = new Thread(mt);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Thread-0 卖票：ticket10</span><br><span class="line">Thread-0 卖票：ticket7</span><br><span class="line">Thread-0 卖票：ticket6</span><br><span class="line">Thread-0 卖票：ticket5</span><br><span class="line">Thread-2 卖票：ticket8</span><br><span class="line">Thread-1 卖票：ticket9</span><br><span class="line">Thread-1 卖票：ticket2</span><br><span class="line">Thread-1 卖票：ticket1</span><br><span class="line">Thread-2 卖票：ticket3</span><br><span class="line">Thread-0 卖票：ticket4</span><br></pre></td></tr></table></figure></p>
+<p><strong>结果说明：</strong><br>(01) 和上面“MyThread继承于Thread”不同；这里的MyThread实现了Thread接口。<br>(02) 主线程main创建并启动3个子线程，而且这3个子线程都是基于“mt这个Runnable对象”而创建的。运行结果是这3个子线程一共卖出了10张票。这说明它们是共享了MyThread接口的。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/21/Java面试题总结.html" itemprop="url">
-            
-              <span itemprop="name">Java面试题总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T22:00:56Z" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/21/多线程面试题总结.html" itemprop="url">
-            
-              <span itemprop="name">多线程面试题总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T20:41:46Z" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/19/Markdown-语法画流程图.html" itemprop="url">
-            
-              <span itemprop="name">Markdown 语法画流程图</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-18T21:19:37Z" content="2019-05-18">
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/19/Markdown语法糖.html" itemprop="url">
-            
-              <span itemprop="name">Markdown语法糖</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-18T16:26:21Z" content="2019-05-18">
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/18/修改GitHub项目语言显示问题.html" itemprop="url">
-            
-              <span itemprop="name">修改GitHub项目语言显示问题</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-18T15:32:57Z" content="2019-05-18">
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/18/有趣的SpringBoot启动banner（持续更新）.html" itemprop="url">
-            
-              <span itemprop="name">有趣的SpringBoot启动banner（持续更新）</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-18T14:23:44Z" content="2019-05-18">
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/18/MarkdownPad发生HTML渲染组件出错.html" itemprop="url">
-            
-              <span itemprop="name">MarkdownPad发生HTML渲染组件出错</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-18T11:00:17Z" content="2019-05-18">
-          05-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html">Java多线程-“基础”02之 多线程实现方式</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年05月21日 - 21:05</p>
+  <p><span>最后更新:</span>2019年05月21日 - 13:05</p>
+  <p><span>原始链接:</span><a href="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" title="Java多线程-“基础”02之 多线程实现方式">http://whb1990.github.io/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>捐赠作者请点击下方的“打赏”按钮</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/22/Java多线程-“基础”01之 基本概念.html" rel="next" title="Java多线程-“基础”01之 基本概念">
+                <i class="fa fa-chevron-left"></i> Java多线程-“基础”01之 基本概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -851,8 +795,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1082,6 +1035,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现多线程的几种方式"><span class="nav-number">1.</span> <span class="nav-text">实现多线程的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thread和Runnable简介"><span class="nav-number">2.</span> <span class="nav-text">Thread和Runnable简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Runnable"><span class="nav-number">2.1.</span> <span class="nav-text">Runnable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thread"><span class="nav-number">2.2.</span> <span class="nav-text">Thread</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thread和Runnable的异同点"><span class="nav-number">3.</span> <span class="nav-text">Thread和Runnable的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Thread和Runnable的多线程示例"><span class="nav-number">4.</span> <span class="nav-text">Thread和Runnable的多线程示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Thread的多线程示例"><span class="nav-number">4.1.</span> <span class="nav-text">Thread的多线程示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Runnable的多线程示例"><span class="nav-number">4.2.</span> <span class="nav-text">Runnable的多线程示例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1254,6 +1224,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1299,6 +1273,8 @@
 
 
 
+
+  
 
 
   
