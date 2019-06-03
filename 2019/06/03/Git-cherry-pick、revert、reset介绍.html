@@ -109,16 +109,18 @@
 
 
 
-  <meta name="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王洪博&#39;s blog">
-<meta property="og:url" content="http://whb1990.github.io/archives/2019/index.html">
+  <meta name="description" content="gti checkout – filename git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；  git reset head filename git reset HEAD filena">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git:cherry-pick、revert、reset介绍">
+<meta property="og:url" content="http://whb1990.github.io/2019/06/03/Git-cherry-pick、revert、reset介绍.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta property="og:description" content="gti checkout – filename git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；  git reset head filename git reset HEAD filena">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-03T04:04:05.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王洪博&#39;s blog">
-<meta name="twitter:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta name="twitter:title" content="Git:cherry-pick、revert、reset介绍">
+<meta name="twitter:description" content="gti checkout – filename git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；  git reset head filename git reset HEAD filena">
 
 
 
@@ -128,7 +130,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/archives/2019/">
+  <link rel="canonical" href="http://whb1990.github.io/2019/06/03/Git-cherry-pick、revert、reset介绍">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>归档 | 王洪博's blog</title>
+  <title>Git:cherry-pick、revert、reset介绍 | 王洪博's blog</title>
   
 
 
@@ -185,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<!--Fork me on github-->
 	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -297,7 +299,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -361,34 +363,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -441,397 +415,351 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/06/03/Git-cherry-pick、revert、reset介绍.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Git:cherry-pick、revert、reset介绍
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-03 11:50:29" itemprop="dateCreated datePublished" datetime="2019-06-03T11:50:29Z">2019-06-03</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
           
-        
-        嗯..! 目前共计 17 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/03/Git-cherry-pick、revert、reset介绍.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/03/Git-cherry-pick、revert、reset介绍.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/06/03/Git-cherry-pick、revert、reset介绍.html" itemprop="url">
+          
+          
+            <span id="/2019/06/03/Git-cherry-pick、revert、reset介绍.html" class="leancloud_visitors" data-flag-title="Git:cherry-pick、revert、reset介绍">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
             
-              <span itemprop="name">Git:cherry-pick、revert、reset介绍</span>
-            
-          </a>
-        
-      </h2>
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.1k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  4分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-03T11:50:29Z" content="2019-06-03">
-          06-03
-        </time>
-      </div>
+          
+            <div class="post-symbolscount">
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
 
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/06/03/Git安装.html" itemprop="url">
-            
-              <span itemprop="name">Git安装</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-03T11:31:35Z" content="2019-06-03">
-          06-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/31/Git合并指定文件或Commits到另一分支.html" itemprop="url">
-            
-              <span itemprop="name">Git合并指定文件或Commits到另一分支</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-30T21:06:04Z" content="2019-05-30">
-          05-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><strong> gti checkout – filename </strong><br>git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.<br>可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；</p>
+<p><strong> git reset head filename </strong><br>git reset HEAD filename 可以把add到缓存区的文件回退到工作区，也就是把add filename这个过程给回退了，这并不会修改文件的内容，<br>只是把缓存区的某个文件变成和HEAD这个当前版本相同，也就是说如果你多次add，这会回退到第一次add的过程，和上面的操作一样，也可以不带上文件名来查看哪些文件被添加到了缓存区；</p>
+<p><strong> git reset –hard head^ </strong><br>git reset –hard HEAD~【1，2，3，4，5…】这个是大家熟悉的本地版本的回退</p>
+<p><strong> 某分支上的修改迁移到另一分支 </strong><br>比如我们在分支a上开发新功能，此时有个紧急bug需要修改，然后切换到了分支b。bug修复完之后忘了切回之前的分支a，而是在分支b上面继续编写本应该是分支a的内容，<br>这样b分支存在了一部分a分支的代码，这个时候需要把这段代码迁移到a分支上，两个思路：</p>
+<p>1）如果还没有在b分支上commit的话(add的话没影响，在迁移后，就不会再当前分支的缓存中)。<br>直接切到a分支，此时会提示有没有被commit的代码，切到a分支后，就可以commit这段没有被commit的代码，也就是在b分支上编写的代码正确的被迁移到了a分支。</p>
+<p>2）如果已经commit了，可以这么来：git log找到你commit的分支号，然后直接切换到a分支，执行<code>git cherry-pick commit-id</code>，这个commit-id就是那个b分支错误commit的id，<br>这个命令就是把这个commit的修改拿到当前分支来，很简单粗暴而有效。再切换到b分支，使用<code>git revert commit-id</code>把这个错误的分支号移除。</p>
+<p><strong> revert reset cherry-pick </strong><br>git revert<br>当我们的某个分支中有了很多版本之后，形成了一条版本链，如果想去除这个线路中的某一版本，但是保留版本链中的其他所有修改，生成一个新的版本链，版本链中的HEAD就是revert最新生成的版本。所以revert是会生成新版本的指令。<br>可以这么想，链就像一个链条，是一环扣一环的，其中的一环就是一个版本，现在想去这个链条中的某一环（某个版本），<br>执行<code>git revert HEAD~2</code>，这个HEAD~2就是这个要删除的版本（链条中的一环），就会把这个环解开剔除，<br>把和这个剔除的环（版本）相邻的环连在一起，形成了一个新的链条（少了一环），<br>然后在链条的最后面添加一个新的没有任何修改的环（revert HEAD~2 这个新的commit版本）<br>整个过程就像剔除了中间某一个版本，最后加上了一个没有任何修改的新的版本。<br>需要注意的是，不要随意删除中间的版本，因为可能会存在依赖，最好是revert最新的版本，风险会小很多。</p>
+<p>git reset<br><code>git reset [--hard|soft|mixed|merge|keep] [&lt;commit&gt;或HEAD]</code>是比较常用的指令，其中比较重要的是mode，也就是 –hard、–soft、–mixed。。。比较常见的是–hard和–soft；</p>
+<p>–hard是指完全重设，会把回退到某版本之后的修改全部删除，</p>
+<p>–soft这是个回退解体，让版本库回退到某个版本，这个版本之后的修改全部存在缓存区，这个时候在commit的话，又会把会退的部分重新加载到最新版本中；</p>
+<p>git cherry-pick<br><code>git cherry-pick &lt;commit id&gt;</code>用于把另一个本地分支的commit修改应用到当前分支，也是解决之前遇到问题的关键，可以直接把其他的分支上的修改或者是某一个版本直接引过来，可能会存在冲突，这个时候就和正常的冲突一样的解决就好了。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/MySQL中的函数总结.html" itemprop="url">
-            
-              <span itemprop="name">MySQL中的函数总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-22T15:53:42Z" content="2019-05-22">
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/Java多线程-“基础”03之-Thread中start-和run-的区别.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-“基础”03之-Thread中start()和run()的区别</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T21:58:15Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/Java多线程-“基础”02之-多线程实现方式.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-“基础”02之 多线程实现方式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T21:27:41Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/Java多线程-“基础”01之 基本概念.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-“基础”01之 基本概念</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T20:30:12Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/22/MySQL性能优化.html" itemprop="url">
-            
-              <span itemprop="name">MySQL性能优化</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T18:10:38Z" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/21/Java面试题总结.html" itemprop="url">
-            
-              <span itemprop="name">Java面试题总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T22:00:56Z" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/21/多线程面试题总结.html" itemprop="url">
-            
-              <span itemprop="name">多线程面试题总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T20:41:46Z" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/06/03/Git-cherry-pick、revert、reset介绍.html">Git:cherry-pick、revert、reset介绍</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年06月03日 - 11:06</p>
+  <p><span>最后更新:</span>2019年06月03日 - 04:06</p>
+  <p><span>原始链接:</span><a href="/2019/06/03/Git-cherry-pick、revert、reset介绍.html" title="Git:cherry-pick、revert、reset介绍">http://whb1990.github.io/2019/06/03/Git-cherry-pick、revert、reset介绍.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/06/03/Git-cherry-pick、revert、reset介绍.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>捐赠作者请点击下方的“打赏”按钮</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/03/Git安装.html" rel="next" title="Git安装">
+                <i class="fa fa-chevron-left"></i> Git安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1258,6 +1186,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1303,6 +1235,8 @@
 
 
 
+
+  
 
 
   
