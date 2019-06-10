@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+  <meta name="description" content="首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。1$ git log --stat ![git log stat][link1] 通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以提交说明中看不到任何对实质内容的修改。 修改不能直接提交">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习之~工作区、暂存区、HEAD">
 <meta property="og:url" content="http://whb1990.github.io/2019/06/06/Git学习之~工作区、暂存区、HEAD.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta property="og:description" content="首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。1$ git log --stat ![git log stat][link1] 通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以提交说明中看不到任何对实质内容的修改。 修改不能直接提交">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-06T03:56:52.032Z">
+<meta property="og:updated_time" content="2019-06-10T14:44:32.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习之~工作区、暂存区、HEAD">
-<meta name="twitter:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta name="twitter:description" content="首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。1$ git log --stat ![git log stat][link1] 通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以提交说明中看不到任何对实质内容的修改。 修改不能直接提交">
 
 
 
@@ -543,7 +543,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">0字</span>
+            <span class="post-count">3.3k字</span>
           </span>
 		  
           <span class="post-time">
@@ -553,7 +553,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  1分钟</span>
+            <span class="post-count">  12分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -571,7 +571,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">6.2k</span>
               
 
               
@@ -585,7 +585,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -605,7 +605,102 @@
       
 
       
-        
+        <p>首先看一下git-demo的提交日志，使用<code>git log</code>查看提交日志（附加<code>--stat</code>参数可以看到每次提交的文件变更统计）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat</span><br></pre></td></tr></table></figure></p>
+<p>![git log stat][link1]</p>
+<p>通过日志可以看到第一次提交对文件<code>welcome.txt</code>有一行的变更，而第二次提交因为使用了<code>--allow-empty</code>参数进行<br>的空提交，所以提交说明中看不到任何对实质内容的修改。</p>
+<h4 id="修改不能直接提交？"><a href="#修改不能直接提交？" class="headerlink" title="修改不能直接提交？"></a>修改不能直接提交？</h4><p>首先更改<code>welcome.txt</code>文件的内容，在文件后面追加一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;很高兴见到你。&quot; &gt;&gt; welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>这时就可以通过<code>git diff</code>命令看到修改后的文件和版本库中文件的差异。实质和本地比较的不是版本库，而是一个<br>中间状态的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br></pre></td></tr></table></figure></p>
+<p>![git diff][link2]</p>
+<p>接下来执行提交，看能否提交成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;追加一行：很高兴见到你。&quot;</span><br></pre></td></tr></table></figure></p>
+<p>![git no commit][link3]</p>
+<p>提交成功了吗？好像没有。<br>提交没有成功的证据：</p>
+<ul>
+<li>先看看提交日志，如果提交成功就会有新的提交记录。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>![git log oneline][link4]<br>使用了精简输出来显示日志，以便更简洁和清晰地看到提交历史。可以看到版本库中只有两个提交，针对刚才<br>修改文件的提交没有成功！</p>
+<ul>
+<li>执行<code>git diff</code>可以看到和之前相同的差异输出，这也说明提交没有成功。</li>
+<li>执行<code>git status</code>查看文件状态，可以看到文件处于未提交状态。</li>
+<li>执行<code>git status -s</code>可以显示精简格式的状态输出。<br>![图片5][link5]</li>
+</ul>
+<p>提交为什么会失败呢？原因是没有对修改的<code>welcome.txt</code>文件执行<code>git add</code>命令，将修改的文件添加到“提交任务”，<br>然后才能提交。<br>现在就将修改的文件“添加”到提交任务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>现在再执行一些Git命令，看看当执行“添加”后会发生什么变化。</p>
+<ul>
+<li>执行<code>git diff</code>没有输出。</li>
+<li><p>执行<code>git diff head</code>或<code>git diff master</code>进行比较会发现有差异，这个差异是正常的，因为还没有提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff head</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>git status</code>，状态输出和之前不一样了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>![图片6][link6]<br>对新的Git状态输出做下翻译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">位于分支master上</span><br><span class="line">下列的修改将被提交：</span><br><span class="line">  （如果你后悔了，可以使用“git reset HEAD &lt;file&gt;...”命令将下列改动撤出提交任务（提交暂存区，stage），</span><br><span class="line">  否则执行提交命令将会提交）</span><br><span class="line">  已修改： welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>不得不说，Git太人性化了，它把各种情况下可以使用到的命令都告诉了用户，虽然这显得有点啰嗦。<br>如果不要这么啰嗦，可以使用简洁方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line">M  welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>![图片7][link7]<br>上面精简状态输出与执行<code>git add</code>之前的精简状态的输出相比，有细微的差别。</p>
+<ul>
+<li>虽然都是M(Modified)标识，但是位置不同。在执行<code>git add</code>之前，这个M位于第二列（第一列是个空格），<br>执行完<code>git add</code>之后，字符M位于第一列（第二列是空白）。</li>
+<li>位于第一列的字符M的含义：版本库中的文件和处于中间状态–提交任务（提交暂存区，stage）中的文件相比有改动；</li>
+<li>位于第二列的字符M的含义：工作区当前的文件和处于中间状态–提交任务（提交暂存区，stage）中的文件相比有改动。<br>这时如果直接提交<code>git commit</code>,加入提交任务的<code>welcome.txt</code>文件的更改就被提交入库了。但是先不忙着提交，<br>再进行一些操作，看看能否被彻底搞糊涂。</li>
+<li><p>继续修改<code>welcome.txt</code>文件（在文件后面追加一行）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;Good-bye&quot; &gt;&gt; welcome.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后执行<code>git status</code>查看一下状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>![图片8][link8]<br>状态输出中居然是之前出现的两种不同状态的输出。</p>
+<ul>
+<li>使用简洁模式输出，也会看到两种精简输出的杂合。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status -s</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>![图片9][link9]<br>上面Git状态的输出可以这么理解：不但版本库中最新提交的文件和处于中间状态（提交暂存区，stage）中文件<br>相比有改动，而且工作区当前的文件和处于中间状态（提交暂存区，stage）中的文件相比也有改动。<br>即现在<code>welcome.txt</code>中有三个不同的版本：一个在工作区，一个在暂存区，一个是版本库中最新版本。通过<br>不同的参数调用<code>git diff</code>命令可以看到不同版本库之间的差异。</p>
+<ul>
+<li>不带任何选项和参数调用<code>git diff</code>显示工作区最新改动，即工作区和提交暂存区中相比的差异。<br>![图片10][link10]</li>
+<li>将工作区和HEAD（当前工作分支）相比，会看到更多差异。<br>![图片11][link11]</li>
+<li>通过参数<code>--cached</code>或者<code>--staged</code>参数调用<code>git diff</code>命令，看到的是提交暂存区和版本库中文件的差异。<br>![图片12][link12]</li>
+</ul>
+<p>好了，现在提交下看看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;哪个版本的数据会被提交？&quot;</span><br><span class="line">[master a67c6fd] 哪个版本的数据会被提交？</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure></p>
+<p>这次提交终于成功了，查看下日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line">a67c6fdd0a0e809340944432a3bf7d78e7e10f31 (HEAD -&gt; master) 哪个版本的数据会被提交？</span><br><span class="line">d3617dadd10c274e6e2b6caf47635d5771b9034c 这是谁提交的？</span><br><span class="line">d3e0684a1c510f4effd155b01591019e2c5d7812 初始化的第一次提交</span><br></pre></td></tr></table></figure></p>
+<p>查看精简状态输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status -s</span><br><span class="line"> M welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>状态输出中文件名的前面出现了一个字母M，即只位于第二列的字母M。那么第一列的M去哪了？很明显被提交了。<br>即提交任务（提交暂存区，stage）中的内容被提交到版本库，所以第一列因为提交暂存区和版本库中的状态一致，<br>所以显示空白。<br>![图片13][link13]<br>那提交的<code>welcome.txt</code>是哪个版本呢？通过执行<code>git diff</code>或者<code>git diff head</code>命令查看差异。虽然命令<br><code>git diff</code>和<code>git diff head</code>的比较过程并不同，但是会看到下面相同的差异输出结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">$ git diff head</span><br></pre></td></tr></table></figure></p>
+<p>![图片14][link14]</p>
+<h4 id="理解Git暂存区（stage）"><a href="#理解Git暂存区（stage）" class="headerlink" title="理解Git暂存区（stage）"></a>理解Git暂存区（stage）</h4><p>Git暂存区（stage，或称为index）的设计是Git最成功的设计之一，也是最难理解的一个设计。<br>在版本库<code>.git</code>目录下，有一个<code>index</code>文件，下面针对这个文件做个实验。<br>首先执行<code>git checkout</code>命令，撤销工作区中welcome.txt文件尚未提交的修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- welcome.txt</span><br><span class="line">$ git status -s</span><br></pre></td></tr></table></figure></p>
+<p>![图片15][link15]<br>通过状态输出可以看到工作区已经没有改动了，查看下<code>.git/index</code>文件的时间戳： 2019-06-10 22:00:43<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls --full-time .git/index</span><br></pre></td></tr></table></figure></p>
+<p>![图片16][link16]</p>
+<p>再次执行<code>git status</code>命令，然后显示<code>.git/index</code>文件的时间戳：2019-06-10 22:00:43，和上面的一样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status -s </span><br><span class="line">$ ls --full-time .git/index</span><br></pre></td></tr></table></figure></p>
+<p>![图片17][link17]<br>现在更改一下welcome.txt文件的时间戳，但不改变它的内容。然后再执行<code>git status</code>命令，然后查看<br><code>.git/index</code>文件时间戳为：22:06:32<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ touch welcome.txt</span><br><span class="line">$ git status -s </span><br><span class="line">$ ls --full-time .git/index</span><br></pre></td></tr></table></figure></p>
+<p>![图片18][link18]<br>可以看到时间戳改变了。<br>这个实验说明当执行<code>git status</code>或者<code>git diff</code>命令扫描工作区改动的时候，先依据<code>.git/index</code>文件中记录的<br>（工作区跟踪文件）时间戳、长度等信息判断工作区文件是否改变。如果工作区的文件时间戳改变，说明文件的<br>内容可能被改变了，需要打开文件，读取文件内容，和更改前的原始文件相比，判断文件内容是否被更改。如果<br>文件内容没有改变，则将该文件新的时间戳记录到<code>.git/index</code>文件中。因为判断文件是否更改使用的是时间戳、<br>文件长度等信息进行比较，要比通过文件内容比较快的多，所以GIt这样的实现方式可以让工作区状态扫描更快<br>执行，这也是Git高效的因素之一。<br>文件<code>.git/index</code>实际上就是一个包含文件索引的目录树，像是一个虚拟的工作区。在这个虚拟工作区的目录树中，<br>记录了文件名、文件的状态信息（时间戳、文件长度等）。文件的内容并不存储其中，而是保存在Git对象库<br><code>.git/objects</code>目录中，文件索引建立了文件和对象库中对象实体之间的对应。<br>下面这张图展示了工作区、版本库中的暂存区和版本库之间的关系。</p>
+<p>![图片19][link19]</p>
+<ul>
+<li>图中左侧为工作区，右侧为版本库。在版本库中标记为index的区域是暂存区(stage，亦称index),标记为master<br>的是master分支所代表的目录树。</li>
+<li>图中可以看出此时HEAD实际上是指向master分支的一个“游标”，所以图示的命令中出现HEAD的地方可以用master替换。</li>
+<li>图中的objects标识的区域为Git的对象库，实际位于<code>.git/objects</code>目录下。</li>
+<li>当对工作区修改（或新增）的文件执行<code>git add</code>命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件<br>内容被写入到对象库中的一个新的对象中，而对象的ID被记录在暂存区的文件索引中。</li>
+<li>当执行提交操作时，暂存区的目录树写到版本库（对象库）中，master分支会做出相应的更新。即master最新指向的<br>目录树就是提交时原暂存区的目录树。</li>
+<li>当执行<code>git reset HEAD</code>命令时，暂存区的目录树会被重写，被master分支指向的目录树所替换，但是工作区不受影响。</li>
+<li>当执行<code>git rm --cached &lt;file&gt;</code>命令时，会直接从暂存区删除文件，工作区则不做改变。</li>
+<li>当执行<code>git checkout .</code> 或者<code>git checkout -- &lt;file&gt;</code>命令时，会用暂存区全部或指定的文件替换工作区的文件，。<br>这个操作很危险，会清除工作区中未添加到暂存区的改动。</li>
+<li>当执行<code>git checkout HEAD .</code>或者<code>git checkout HEAD &lt;file&gt;</code>命令时，会用HEAD指向的master分支中的全部或者<br>部分文件替换暂存区和工作区中的文件。这个命令也极具危险性，因为不但会清除工作区中未提交的改动，<br>也会清除暂存区中未提交的改动。</li>
+</ul>
+<h4 id="Git-Diff-魔法"><a href="#Git-Diff-魔法" class="headerlink" title="Git Diff 魔法"></a>Git Diff 魔法</h4><p><strong>暂存区目录树浏览</strong></p>
+<p>对于HEAD（版本库中当前提交）指向的目录树，可以使用<code>git ls-tree</code>来查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git ls-tree -l HEAD </span><br><span class="line">100644 blob d7230d74c5f8d61ff3c1adbfd3b035c09cb62c16      33    welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>![图片20][link20]</p>
+<ul>
+<li>使用<code>-l</code>参数，可以显示文件大小。上面<code>welcome.txt</code>大小33字节。</li>
+<li>输出的条目从左至右，第一个字段是文件的属性（rw-r–r–）,第二个字段说明是Git对象库中的一个blob对象（文件），<br>第三个字段则是该文件在对象库中对应的ID–一个40位的SHA1哈希值格式的ID，第四个字段是文件大小，第五个字段是文件名。</li>
+</ul>
+<p>在浏览暂存区中的目录树之前，首先清除工作区当中的改动。通过 <code>git clean -fd</code>命令清除当前工作区中没有加入<br>版本库的文件和目录（非跟踪文件和目录），然后执行<code>git checkout .</code>命令，用暂存区刷新工作区。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clean -fd</span><br><span class="line">$ git checkout .</span><br></pre></td></tr></table></figure></p>
+<p>然后在工作区中做出一些修改（修改<code>welcome.txt</code>，增加一个子目录和文件），然后添加到暂存区。<br>最后再对工作区做出修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;( ^_^ )/~~拜拜&quot; &gt;&gt; welcome.txt</span><br><span class="line">$ mkdir -p a/b/c</span><br><span class="line">$ echo &quot;Hello.&quot; &gt;&gt; a/b/c/hello.txt </span><br><span class="line">$ git add .</span><br><span class="line">$ echo &quot;ヾ(￣▽￣)Bye~Bye~&quot; &gt;&gt; a/b/c/hello.txt </span><br><span class="line">$ git status -s</span><br></pre></td></tr></table></figure></p>
+<p>![图片21][link21]<br>上面的命令运行完毕后，通过精简的状态输出，可以看出工作区、暂存区、版本库当前分支的最新版本（HEAD）<br>各不相同。先来看看工作区中文件的大小：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ find . -path ./.git -prune -o -type f -printf &quot;%-20p\t%s\n&quot;</span><br><span class="line">./a/b/c/hello.txt       30</span><br><span class="line">./welcome.txt           52</span><br></pre></td></tr></table></figure></p>
+<p>![图片22][link22]</p>
+<p>要显示暂存区的目录树，可以使用<code>git ls-files</code>命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git ls-files -s</span><br><span class="line">100644 18832d35117ef2f013c4009f5b2128dfaeff354f 0       a/b/c/hello.txt</span><br><span class="line">100644 a2b90cc2992cf3ff4e0d6beb0c9461158124c2b6 0       welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>![图片23][link23]<br>这个输出和之前使用<code>git ls-tree</code>命令的输出不一样，如果想要使用<code>git ls-tree</code>命令，需要先将暂存区的<br>目录树写入Git对象库<code>git write-tree</code>命令，然后在针对<code>git write-tree</code>命令写入的tree执行<code>git ls-tree</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git write-tree </span><br><span class="line">1e9d611d50af21a2f0ec7bce6e270fd170a8f557</span><br><span class="line">$ git ls-tree -l </span><br><span class="line">040000 tree 53583ee687fbb2e913d18d508aefd512465b2092       -    a</span><br><span class="line">100644 blob a2b90cc2992cf3ff4e0d6beb0c9461158124c2b6      50    welcome.txt</span><br></pre></td></tr></table></figure></p>
+<p>![图片24][link24]<br>从上面的命令可以看出：</p>
+<p>[link1]:</p>
+<p>[link2]:</p>
+<p>[link3]:</p>
+
       
     </div>
 
@@ -627,7 +722,7 @@
   <p><span>本文标题:</span><a href="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html">Git学习之~工作区、暂存区、HEAD</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年06月05日 - 22:06</p>
-  <p><span>最后更新:</span>2019年06月06日 - 03:06</p>
+  <p><span>最后更新:</span>2019年06月10日 - 14:06</p>
   <p><span>原始链接:</span><a href="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html" title="Git学习之~工作区、暂存区、HEAD">http://whb1990.github.io/2019/06/06/Git学习之~工作区、暂存区、HEAD.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/06/06/Git学习之~工作区、暂存区、HEAD.html" aria-label="复制成功！"></i></span>
   </p>
@@ -772,8 +867,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1015,6 +1119,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改不能直接提交？"><span class="nav-number">1.</span> <span class="nav-text">修改不能直接提交？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Git暂存区（stage）"><span class="nav-number">2.</span> <span class="nav-text">理解Git暂存区（stage）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-Diff-魔法"><span class="nav-number">3.</span> <span class="nav-text">Git Diff 魔法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1044,7 +1165,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">105k</span>
+    <span title="站点总字数">111k</span>
   
 
   
@@ -1055,7 +1176,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:35</span>
+    <span title="站点阅读时长">1:41</span>
   
 </div>
 
