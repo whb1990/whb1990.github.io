@@ -430,6 +430,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html" class="post-title-link" itemprop="url">Git学习之~合并指定文件或Commits到另一分支</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-30 21:06:04" itemprop="dateCreated datePublished" datetime="2019-05-30T21:06:04Z">2019-05-30</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html" class="leancloud_visitors" data-flag-title="Git学习之~合并指定文件或Commits到另一分支">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">730字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  2分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常
+会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/31/Git学习之~合并指定文件或Commits到另一分支.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/05/22/MySQL中的函数总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2732,256 +2982,6 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/05/18/修改GitHub项目语言显示问题.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/18/修改GitHub项目语言显示问题.html" class="post-title-link" itemprop="url">修改GitHub项目语言显示问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-18 15:32:57" itemprop="dateCreated datePublished" datetime="2019-05-18T15:32:57Z">2019-05-18</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/GitHub/" itemprop="url" rel="index"><span itemprop="name">GitHub</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/18/修改GitHub项目语言显示问题.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/18/修改GitHub项目语言显示问题.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/05/18/修改GitHub项目语言显示问题.html" class="leancloud_visitors" data-flag-title="修改GitHub项目语言显示问题">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">363字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  1分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">831</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。
-修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/18/修改GitHub项目语言显示问题.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3028,7 +3028,7 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3071,7 +3071,9 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3110,7 +3112,9 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3284,7 +3288,7 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">124k</span>
+    <span title="站点总字数">134k</span>
   
 
   
@@ -3295,7 +3299,7 @@ Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含�
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:53</span>
+    <span title="站点阅读时长">2:02</span>
   
 </div>
 
