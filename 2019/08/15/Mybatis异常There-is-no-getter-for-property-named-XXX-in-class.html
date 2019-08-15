@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口：1UserCouponBo getUserCouponInfoById(Long userCouponId); 然后对应的sql的xml如下：12345678&amp;lt;select id=&amp;quot;selectUserCouponInfoById&amp;quot; parameterType=&amp;quot;j">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T08:52:20.073Z">
+<meta property="og:updated_time" content="2019-08-14T08:58:18.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis异常There is no getter for property named &#39;XXX&#39; in class">
 <meta name="twitter:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口：1UserCouponBo getUserCouponInfoById(Long userCouponId); 然后对应的sql的xml如下：12345678&amp;lt;select id=&amp;quot;selectUserCouponInfoById&amp;quot; parameterType=&amp;quot;j">
@@ -609,7 +609,7 @@
 <p>定义接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserCouponBo getUserCouponInfoById(Long userCouponId);</span><br></pre></td></tr></table></figure></p>
 <p>然后对应的sql的xml如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long&quot; resultMap=&quot;baseResultMap&quot;&gt;</span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">		&lt;if test=&quot;userCouponId != null&quot;&gt;</span><br><span class="line">			id = #&#123;userCouponId,jdbcType=BIGINT&#125;</span><br><span class="line">		&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
 <p>上面的接口就是通过id查询指定的优惠券信息，个人感觉该sql写的不够优雅。就是这个接口，报错：There is no gettery for property…!!!<br>这是为什么呢？<br>原因是在if里面用了Mybatis的内置对象，<code>&lt;if test=&quot;id != null&quot;&gt;</code>，Mybatis默认采用OGNL解析参数，所以会自动采用对象树的形式取<code>long.xxx</code>值，如果没在方法中定义，则会抛出异常。</p>
-<p>解决方案一：把#{xxx}修改为#{_parameter}即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long&quot; resultMap=&quot;baseResultMap&quot;&gt;</span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">		&lt;if test=&quot;userCouponId != null&quot;&gt;</span><br><span class="line">			id = #&#123;_parameter&#125;</span><br><span class="line">		&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<p>解决方案一：把#{xxx}修改为#{_parameter}即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long&quot; resultMap=&quot;baseResultMap&quot;&gt;</span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">		&lt;if test=&quot;_parameter != null&quot;&gt;</span><br><span class="line">			id = #&#123;_parameter&#125;</span><br><span class="line">		&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
 <p>解决解决方案二：在方法中提前定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserCouponBo getUserCouponInfoById(@Param(&quot;userCouponId&quot;) Long userCouponId);</span><br></pre></td></tr></table></figure></p>
 <p>给userCouponId加@Param注解，定义一下就可以了。</p>
 
@@ -729,6 +729,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/08/15/Java-String常见问题.html" rel="prev" title="Java String常见问题">
+                Java String常见问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -791,7 +795,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -858,7 +862,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1093,7 +1099,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">221k</span>
   
 
   
@@ -1104,7 +1110,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">3:17</span>
+    <span title="站点阅读时长">3:21</span>
   
 </div>
 
