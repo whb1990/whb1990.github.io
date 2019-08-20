@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://whb1990.github.io/2019/08/20/Java8-LongAdder.html</loc>
+    <loc>http://whb1990.github.io/2019/08/20/%E7%94%B1%E5%89%94%E9%99%A4Intellij%E4%B8%ADMybatis%E7%9A%84Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E5%BC%95%E5%85%A5%E5%AF%B9%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%AD%A6%E4%B9%A0.html</loc>
     <lastmod>2019-08-20</lastmod>
   </url>  <url>
-    <loc>http://whb1990.github.io/2019/08/20/%E7%94%B1%E5%89%94%E9%99%A4Intellij%E4%B8%ADMybatis%E7%9A%84Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E5%BC%95%E5%85%A5%E5%AF%B9%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%AD%A6%E4%B9%A0.html</loc>
+    <loc>http://whb1990.github.io/2019/08/20/Java8-CompletableFuture.html</loc>
+    <lastmod>2019-08-20</lastmod>
+  </url>  <url>
+    <loc>http://whb1990.github.io/2019/08/20/Java8-LongAdder.html</loc>
     <lastmod>2019-08-20</lastmod>
   </url>  <url>
     <loc>http://whb1990.github.io/2019/08/19/%E6%89%8B%E5%86%99RPC-%E5%8D%87%E7%BA%A7%E7%89%88.html</loc>
