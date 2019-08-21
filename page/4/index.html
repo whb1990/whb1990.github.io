@@ -430,6 +430,266 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/06/25/排序算法-希尔排序.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/25/排序算法-希尔排序.html" class="post-title-link" itemprop="url">排序算法 - 希尔排序</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-25 10:31:50" itemprop="dateCreated datePublished" datetime="2019-06-25T10:31:50Z">2019-06-25</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/25/排序算法-希尔排序.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/25/排序算法-希尔排序.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/25/排序算法-希尔排序.html" class="leancloud_visitors" data-flag-title="排序算法 - 希尔排序">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">815字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  3分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              基本思想：
+先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。希尔排序，也称递减增量排序算法，是插入排序的一种高速而稳定的改进版本。
+操作方法：
+
+选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/25/排序算法-希尔排序.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/06/25/排序算法-快速排序.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2722,262 +2982,11 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/06/06/Git学习之~工作区、暂存区、HEAD.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html" class="post-title-link" itemprop="url">Git学习之~工作区、暂存区、HEAD</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-05 22:06:10" itemprop="dateCreated datePublished" datetime="2019-06-05T22:06:10Z">2019-06-05</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html" class="leancloud_visitors" data-flag-title="Git学习之~工作区、暂存区、HEAD">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">3.6k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  13分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">6.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。$ git log --stat
-
-通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以提
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/06/Git学习之~工作区、暂存区、HEAD.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3019,7 +3028,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3096,7 +3105,9 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3163,7 +3174,9 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3337,7 +3350,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">313k</span>
+    <span title="站点总字数">324k</span>
   
 
   
@@ -3348,7 +3361,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标识
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:55</span>
   
 </div>
 
