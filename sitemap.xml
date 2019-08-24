@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E9%A1%BA%E5%BA%8F%E4%B8%80%E8%87%B4%E6%80%A7.html</loc>
+    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E7%90%86%E8%A7%A3Volatile.html</loc>
     
-    <lastmod>2019-08-24T01:13:16.529Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E9%87%8D%E6%8E%92%E5%BA%8F.html</loc>
-    
-    <lastmod>2019-08-24T00:52:33.313Z</lastmod>
+    <lastmod>2019-08-24T01:37:13.317Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E5%9F%BA%E7%A1%80.html</loc>
+    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E9%A1%BA%E5%BA%8F%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8B.html</loc>
     
-    <lastmod>2019-08-24T00:31:53.529Z</lastmod>
+    <lastmod>2019-08-24T01:15:40.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F.html</loc>
+    
+    <lastmod>2019-08-24T01:15:31.206Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/2019/08/24/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0.html</loc>
+    
+    <lastmod>2019-08-24T01:15:22.993Z</lastmod>
     
   </url>
   
