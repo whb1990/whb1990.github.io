@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&amp;quot;validationQuery&amp;quot; value=&amp;quot;sele">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-08T02:02:32.195Z">
+<meta property="og:updated_time" content="2019-08-24T07:07:48.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里巴巴连接池DruidDataSource的一个bug">
 <meta name="twitter:description" content="问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&amp;quot;validationQuery&amp;quot; value=&amp;quot;sele">
@@ -550,7 +550,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">640字</span>
+            <span class="post-count">622字</span>
           </span>
 		  
           <span class="post-time">
@@ -578,7 +578,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.5k</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -614,7 +614,8 @@
       
         <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：<code>caused by wait mills 5000,active 0,maxactive 20</code><br>连接数据库超时，但是使用单独的jdbc连接却是可以连接的。</p>
 <h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>经过反复测试，发现问题所在，原来是连接池参数<code>&lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&gt;</code>配置错误。虽然是配置错误，但是连接池版本是1.0.10，太旧，<br>导致没有把真正的报错提示出来<code>ora-00923 未找到要求的关键字from</code>，而是报这个错：<code>caused by wait mills 5000,active 0,maxactive 20</code>。也就是说，本来是因为配置错误导致的，<br>但是因为阿里巴巴连接池DruidDataSource的bug，把这个错误隐藏起来了，一直没有把真正的错误报出来。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>将Druid版本升级到最新的稳定版本，DruidDataSource配置成如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;property name=&quot;validationQuery&quot; value=&quot;SELECT 1 FROM DUAL&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;property name=&quot;initialSize&quot; value=1 /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>将Druid版本升级到最新的稳定版本，DruidDataSource配置成如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"SELECT 1 FROM DUAL"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolPreparedStatements"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">1</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><ol>
 <li>validationQuery   </li>
 </ol>
@@ -668,7 +669,7 @@
   <p><span>本文标题:</span><a href="/2019/08/08/阿里巴巴连接池DruidDataSource的一个bug.html">阿里巴巴连接池DruidDataSource的一个bug</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年08月08日 - 09:08</p>
-  <p><span>最后更新:</span>2019年08月08日 - 02:08</p>
+  <p><span>最后更新:</span>2019年08月24日 - 07:08</p>
   <p><span>原始链接:</span><a href="/2019/08/08/阿里巴巴连接池DruidDataSource的一个bug.html" title="阿里巴巴连接池DruidDataSource的一个bug">http://whb1990.github.io/2019/08/08/阿里巴巴连接池DruidDataSource的一个bug.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/08/08/阿里巴巴连接池DruidDataSource的一个bug.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1131,7 +1132,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">382k</span>
+    <span title="站点总字数">379k</span>
   
 
   
@@ -1142,7 +1143,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">5:48</span>
+    <span title="站点阅读时长">5:45</span>
   
 </div>
 
