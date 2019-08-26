@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理，第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常。第三种方式在中断的基础上添加了超时返回的功。所以理解了一种方式再看其">
+  <meta name="description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。    这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常;第三种方式在中断的基础上添加了超时返回的功能。  不响应线程">
 <meta name="keywords" content="Java,J.U.C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发-AQS源码分析之共享模式">
 <meta property="og:url" content="http://whb1990.github.io/2019/08/26/Java并发-AQS源码分析之共享模式.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理，第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常。第三种方式在中断的基础上添加了超时返回的功。所以理解了一种方式再看其">
+<meta property="og:description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。    这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常;第三种方式在中断的基础上添加了超时返回的功能。  不响应线程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T03:31:14.974Z">
+<meta property="og:updated_time" content="2019-08-26T03:39:18.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发-AQS源码分析之共享模式">
-<meta name="twitter:description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理，第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常。第三种方式在中断的基础上添加了超时返回的功。所以理解了一种方式再看其">
+<meta name="twitter:description" content="AQS为在共享模式下获取锁分别提供三种获取方式：   不响应线程中断获取; 响应线程中断获取; 设置超时时间获取。    这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常;第三种方式在中断的基础上添加了超时返回的功能。  不响应线程">
 
 
 
@@ -550,7 +550,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">4.1k字</span>
+            <span class="post-count">4k字</span>
           </span>
 		  
           <span class="post-time">
@@ -617,8 +617,11 @@
 <ul>
 <li>不响应线程中断获取;</li>
 <li>响应线程中断获取;</li>
-<li>设置超时时间获取。<br>这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理，第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常。第三种方式在中断的基础上添加了超时返回的功。所以理解了一种方式再看其他方式的实现都是大同小异。</li>
+<li>设置超时时间获取。</li>
 </ul>
+</blockquote>
+<blockquote>
+<p>这三种方式整体步骤大致是相同的，只有少部分不同的地方：<br>第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;<br>第二种方式则不同，如果当前线程获取资源时被中断，它会抛出中断异常;<br>第三种方式在中断的基础上添加了超时返回的功能。</p>
 </blockquote>
 <h4 id="不响应线程中断的获取"><a href="#不响应线程中断的获取" class="headerlink" title="不响应线程中断的获取"></a>不响应线程中断的获取</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以不可中断模式获取锁(共享模式)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquireShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.尝试去获取锁，如果获取成功，则流程结束</span></span><br><span class="line">    <span class="keyword">if</span> (tryAcquireShared(arg) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//2.如果获取失败就进入这个方法：将当前线程包装成Node结点放入到同步队列尾部并按照条件判断是否挂起，等待被唤醒</span></span><br><span class="line">        doAcquireShared(arg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//尝试去获取锁(共享模式，该方法需要子类去实现，返回值需要遵循以下三个定义)</span></span><br><span class="line"><span class="comment">//负数：表示获取失败</span></span><br><span class="line"><span class="comment">//零值：表示当前结点获取成功, 但是后继结点不能再获取了</span></span><br><span class="line"><span class="comment">//正数：表示当前结点获取成功, 并且后继结点同样可以获取成功</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">tryAcquireShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
