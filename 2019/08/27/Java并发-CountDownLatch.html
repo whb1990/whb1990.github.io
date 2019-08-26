@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简介CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方法计数器都会减1，直到计数器的值减为0时就代表条件已成熟，所有因调用await方法而阻塞的线程都会被">
+<meta name="keywords" content="Java,J.U.C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发-CountDownLatch">
+<meta property="og:url" content="http://whb1990.github.io/2019/08/27/Java并发-CountDownLatch.html">
+<meta property="og:site_name" content="王洪博&#39;s blog">
+<meta property="og:description" content="简介CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方法计数器都会减1，直到计数器的值减为0时就代表条件已成熟，所有因调用await方法而阻塞的线程都会被">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="data:image/gif;base64,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zzTZL+KDFHw95iO4AA7WjhEKxGDcr3YAFzRNd4nsoAInyLejR/CC/w/Uue8ZkUADXvB2M1uACDrAgNIRrxEMTMADMIhA4x0QASKkQAZGmDzlOUIBDDxgAic3wAQeYAQejP71sI+97GdP+9rb/va4z73ud8/73vv+98APvvCHT/ziG//4yE++8pfP/OY7//nQj770p0/96lv/+tjPvva3z/3ue//74A+/+MdP/vKb//zoT7/618/+9rv//fCPv/znT//62//++M+//vfP//77//8AGIACOIAEWIAGeIAImIAKuIAM2IAO+IAQGIESOIEUWIEWeIEYmIEauIEc2IEe+IEgGIIiOIIkWIImeIIomIIquIIs2IIu+IIwGIMyOIM0WIM2eIM4mGmDOriDPNiDPviDQBiEQjiERFiERniESJiESriETNiETviEUBiFUjiFVFiFVniFWJiFWriFXNiFXviFYBiGYjiGZFiGZniGaJiGariGbNiGbviGcBiHcjiHdFiHdniHeJiHeriHfDh9gQAAIfkEAWQAAAAsbADoAAkACwCkAP8A95ZGY2tGAAAAsDwAADwy1FUQi4BGAAAQ94An1JZG95Y895YyOAAAACInYwAA92sciyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSogII7CaBKmmTRFOrZmAA0lENxL5CgpgRyBE+0WBBhoNuKxRAQwHqbBLwQAIfkEAWQAAAAsbADoAAgACwCjAP8A95ZGADwyiyIA95Y81FUQAAAA94Ani4A8AAAQOAAAsDwAAAAAAAAAAAAAAAAABCIQhHCUCEAuYy4uCTJ4GUCMU3mS2Zq2aGmOcrCW0y0VchYBACH5BAEMAAAALF4AHwApAeIApgD/AJLQUP///9/f3yAgIBgYGK2urI2OjFBQUBAQEIC2Rvf39+/v79fX11hYWG2cPDk9NQAAAAgICJLQOTsAAJWWlDREIzA0K1OzUAAAE3BwcGCINHepQYS8SEhNREloKCF1RCotJqenpygoKDAwMHKiPluCMonDSzg4OB4kGCEAADuUUCgxH5KzLY3JTZKUICIqGQBUOXx+ehkdFX51EyoyIUVeKyAlG2mVOWaQO1J1LWhUAFFVTUFFPUBXKE5qMHp9dycsImxuaSw3HzxRJhccEjA+IrW2sy85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169gw4odS7as2bNo06pdy7at27dw48qdS7eu3bt48+rdy7ev37+AAwseTLiw4cOIEytezLix48eQI0ueTLmy5cuYM2vezLmz58+gQ4seTbq06dOoU6tezbq169ewY8ueTbu27du4c+vezbu379/AgwsfTry48ePIkytfzry58+fQo0ufTr269evYs2vfzr279+/gw4sfT768+fPo06tfz769oCYN6cBfeGRH/Bj26defTyLI/Uw2/CdKgPq941+B+RDoDP8AAgi4B4MO6lBCgwgmCGGF+0wIAwkDNKhQhxiSAeKHHlYTwIgjdNiOisWw2KIAK8L4wkchUkHjjSm4eIuOs/DYo4y58OgjLEOqUqSRQO6YJABHhtIkI09CueSPKERZiJV/YJnllEQuqWUfX9oRpphcsiJkmUjyMuYca8JxZjNtphGnnGg66WWdmMw5hp574illlX5eGeiWcA5K6Al8gpFoFosyaiiYdxaq5qN6NGrFm5NmqmmQkW5ai6VTgPoEppx6+imlZAIqaammUokoqmzC2oaoTtC6BKlKttrlqibYqoSvRgAbrKyzyhgBAUwKkAAEsxyb7LKwONshtNEiOy17s9U+CwEBChzQoQEFzMKttwKAC8u434Z7brfpistuueGCO4ADDBxQi7z02gsLvvXeW8C8/c7Cr70JLLCAAsjWUvDBCcOyMMK3PNywwwZDLMIDDRjAC8Ya38LxxhmD3LEICAgrRMnEjoEyLyvn0rIJKacR8xgz0/wRkCEAACH5BAEMAAAALJUAUwDyAMYApAD/AP///9/f3yAgIK+vr4+Pj1BQUPf39+/v79fX1xgYGBAQECgoKAAAAJeXl3BwcDAwMFhYWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX/ICAGgWieaKqubGuSbizPKUzf+GrnfL6PpZ6Q9hsaVcWj8hVcOoGo5NMonfaqVh42iytuucQm+Coea8vmbvmbbrHbSDRc9p5H13K7O6+P98N/M158gSd1fYeIhIVQhouMiXaRko+Fg4wuk3Cam5WBl5gsnGmjpJ5/oKF+qjWniqyrTLCts461treNsrkApWO+v656qbfAXMbHwpR3vL3Knc3IWcS10lPW18/QuLnYTt7f2m3Us+BK5ufipsy86FTqZu7v7N3wYPJD+ELksPpn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">
+<meta property="og:updated_time" content="2019-08-26T09:27:49.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java并发-CountDownLatch">
+<meta name="twitter:description" content="简介CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方法计数器都会减1，直到计数器的值减为0时就代表条件已成熟，所有因调用await方法而阻塞的线程都会被">
+<meta name="twitter:image" content="data:image/gif;base64,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zzTZL+KDFHw95iO4AA7WjhEKxGDcr3YAFzRNd4nsoAInyLejR/CC/w/Uue8ZkUADXvB2M1uACDrAgNIRrxEMTMADMIhA4x0QASKkQAZGmDzlOUIBDDxgAic3wAQeYAQejP71sI+97GdP+9rb/va4z73ud8/73vv+98APvvCHT/ziG//4yE++8pfP/OY7//nQj770p0/96lv/+tjPvva3z/3ue//74A+/+MdP/vKb//zoT7/618/+9rv//fCPv/znT//62//++M+//vfP//77//8AGIACOIAEWIAGeIAImIAKuIAM2IAO+IAQGIESOIEUWIEWeIEYmIEauIEc2IEe+IEgGIIiOIIkWIImeIIomIIquIIs2IIu+IIwGIMyOIM0WIM2eIM4mGmDOriDPNiDPviDQBiEQjiERFiERniESJiESriETNiETviEUBiFUjiFVFiFVniFWJiFWriFXNiFXviFYBiGYjiGZFiGZniGaJiGariGbNiGbviGcBiHcjiHdFiHdniHeJiHeriHfDh9gQAAIfkEAWQAAAAsbADoAAkACwCkAP8A95ZGY2tGAAAAsDwAADwy1FUQi4BGAAAQ94An1JZG95Y895YyOAAAACInYwAA92sciyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSogII7CaBKmmTRFOrZmAA0lENxL5CgpgRyBE+0WBBhoNuKxRAQwHqbBLwQAIfkEAWQAAAAsbADoAAgACwCjAP8A95ZGADwyiyIA95Y81FUQAAAA94Ani4A8AAAQOAAAsDwAAAAAAAAAAAAAAAAABCIQhHCUCEAuYy4uCTJ4GUCMU3mS2Zq2aGmOcrCW0y0VchYBACH5BAEMAAAALF4AHwApAeIApgD/AJLQUP///9/f3yAgIBgYGK2urI2OjFBQUBAQEIC2Rvf39+/v79fX11hYWG2cPDk9NQAAAAgICJLQOTsAAJWWlDREIzA0K1OzUAAAE3BwcGCINHepQYS8SEhNREloKCF1RCotJqenpygoKDAwMHKiPluCMonDSzg4OB4kGCEAADuUUCgxH5KzLY3JTZKUICIqGQBUOXx+ehkdFX51EyoyIUVeKyAlG2mVOWaQO1J1LWhUAFFVTUFFPUBXKE5qMHp9dycsImxuaSw3HzxRJhccEjA+IrW2sy85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169gw4odS7as2bNo06pdy7at27dw48qdS7eu3bt48+rdy7ev37+AAwseTLiw4cOIEytezLix48eQI0ueTLmy5cuYM2vezLmz58+gQ4seTbq06dOoU6tezbq169ewY8ueTbu27du4c+vezbu379/AgwsfTry48ePIkytfzry58+fQo0ufTr269evYs2vfzr279+/gw4sfT768+fPo06tfz769oCYN6cBfeGRH/Bj26defTyLI/Uw2/CdKgPq941+B+RDoDP8AAgi4B4MO6lBCgwgmCGGF+0wIAwkDNKhQhxiSAeKHHlYTwIgjdNiOisWw2KIAK8L4wkchUkHjjSm4eIuOs/DYo4y58OgjLEOqUqSRQO6YJABHhtIkI09CueSPKERZiJV/YJnllEQuqWUfX9oRpphcsiJkmUjyMuYca8JxZjNtphGnnGg66WWdmMw5hp574illlX5eGeiWcA5K6Al8gpFoFosyaiiYdxaq5qN6NGrFm5NmqmmQkW5ai6VTgPoEppx6+imlZAIqaammUokoqmzC2oaoTtC6BKlKttrlqibYqoSvRgAbrKyzyhgBAUwKkAAEsxyb7LKwONshtNEiOy17s9U+CwEBChzQoQEFzMKttwKAC8u434Z7brfpistuueGCO4ADDBxQi7z02gsLvvXeW8C8/c7Cr70JLLCAAsjWUvDBCcOyMMK3PNywwwZDLMIDDRjAC8Ya38LxxhmD3LEICAgrRMnEjoEyLyvn0rIJKacR8xgz0/wRkCEAACH5BAEMAAAALJUAUwDyAMYApAD/AP///9/f3yAgIK+vr4+Pj1BQUPf39+/v79fX1xgYGBAQECgoKAAAAJeXl3BwcDAwMFhYWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX/ICAGgWieaKqubGuSbizPKUzf+GrnfL6PpZ6Q9hsaVcWj8hVcOoGo5NMonfaqVh42iytuucQm+Coea8vmbvmbbrHbSDRc9p5H13K7O6+P98N/M158gSd1fYeIhIVQhouMiXaRko+Fg4wuk3Cam5WBl5gsnGmjpJ5/oKF+qjWniqyrTLCts461treNsrkApWO+v656qbfAXMbHwpR3vL3Knc3IWcS10lPW18/QuLnYTt7f2m3Us+BK5ufipsy86FTqZu7v7N3wYPJD+ELksPpn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">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王洪博's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://whb1990.github.io/2019/08/27/Java并发-CountDownLatch">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java并发-CountDownLatch | 王洪博's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<!--Fork me on github-->
+	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王洪博's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">surpass</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/whb1990" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/2019/08/27/Java并发-CountDownLatch.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java并发-CountDownLatch
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-26 16:59:13" itemprop="dateCreated datePublished" datetime="2019-08-26T16:59:13Z">2019-08-26</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/J-U-C/" itemprop="url" rel="index"><span itemprop="name">J.U.C</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/08/27/Java并发-CountDownLatch.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/Java并发-CountDownLatch.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/08/27/Java并发-CountDownLatch.html" class="leancloud_visitors" data-flag-title="Java并发-CountDownLatch">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.7k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  6分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。<br>它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。<br>另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方法计数器都会减1，直到计数器的值减为0时就代表条件已成熟，所有因调用await方法而阻塞的线程都会被唤醒。<br>这就是CountDownLatch的内部机制，看起来很简单，无非就是阻塞一部分线程让其在达到某个条件之后再执行。但是CountDownLatch的应用场景却比较广泛，只要你脑洞够大利用它就可以玩出各种花样。最常见的一个应用场景是开启多个线程同时执行某个任务，等到所有任务都执行完再统计汇总结果。下图动态演示了闭锁阻塞线程的整个过程。<br><img src="data:image/gif;base64,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zzTZL+KDFHw95iO4AA7WjhEKxGDcr3YAFzRNd4nsoAInyLejR/CC/w/Uue8ZkUADXvB2M1uACDrAgNIRrxEMTMADMIhA4x0QASKkQAZGmDzlOUIBDDxgAic3wAQeYAQejP71sI+97GdP+9rb/va4z73ud8/73vv+98APvvCHT/ziG//4yE++8pfP/OY7//nQj770p0/96lv/+tjPvva3z/3ue//74A+/+MdP/vKb//zoT7/618/+9rv//fCPv/znT//62//++M+//vfP//77//8AGIACOIAEWIAGeIAImIAKuIAM2IAO+IAQGIESOIEUWIEWeIEYmIEauIEc2IEe+IEgGIIiOIIkWIImeIIomIIquIIs2IIu+IIwGIMyOIM0WIM2eIM4mGmDOriDPNiDPviDQBiEQjiERFiERniESJiESriETNiETviEUBiFUjiFVFiFVniFWJiFWriFXNiFXviFYBiGYjiGZFiGZniGaJiGariGbNiGbviGcBiHcjiHdFiHdniHeJiHeriHfDh9gQAAIfkEAWQAAAAsbADoAAkACwCkAP8A95ZGY2tGAAAAsDwAADwy1FUQi4BGAAAQ94An1JZG95Y895YyOAAAACInYwAA92sciyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSogII7CaBKmmTRFOrZmAA0lENxL5CgpgRyBE+0WBBhoNuKxRAQwHqbBLwQAIfkEAWQAAAAsbADoAAgACwCjAP8A95ZGADwyiyIA95Y81FUQAAAA94Ani4A8AAAQOAAAsDwAAAAAAAAAAAAAAAAABCIQhHCUCEAuYy4uCTJ4GUCMU3mS2Zq2aGmOcrCW0y0VchYBACH5BAEMAAAALF4AHwApAeIApgD/AJLQUP///9/f3yAgIBgYGK2urI2OjFBQUBAQEIC2Rvf39+/v79fX11hYWG2cPDk9NQAAAAgICJLQOTsAAJWWlDREIzA0K1OzUAAAE3BwcGCINHepQYS8SEhNREloKCF1RCotJqenpygoKDAwMHKiPluCMonDSzg4OB4kGCEAADuUUCgxH5KzLY3JTZKUICIqGQBUOXx+ehkdFX51EyoyIUVeKyAlG2mVOWaQO1J1LWhUAFFVTUFFPUBXKE5qMHp9dycsImxuaSw3HzxRJhccEjA+IrW2sy85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169gw4odS7as2bNo06pdy7at27dw48qdS7eu3bt48+rdy7ev37+AAwseTLiw4cOIEytezLix48eQI0ueTLmy5cuYM2vezLmz58+gQ4seTbq06dOoU6tezbq169ewY8ueTbu27du4c+vezbu379/AgwsfTry48ePIkytfzry58+fQo0ufTr269evYs2vfzr279+/gw4sfT768+fPo06tfz769oCYN6cBfeGRH/Bj26defTyLI/Uw2/CdKgPq941+B+RDoDP8AAgi4B4MO6lBCgwgmCGGF+0wIAwkDNKhQhxiSAeKHHlYTwIgjdNiOisWw2KIAK8L4wkchUkHjjSm4eIuOs/DYo4y58OgjLEOqUqSRQO6YJABHhtIkI09CueSPKERZiJV/YJnllEQuqWUfX9oRpphcsiJkmUjyMuYca8JxZjNtphGnnGg66WWdmMw5hp574illlX5eGeiWcA5K6Al8gpFoFosyaiiYdxaq5qN6NGrFm5NmqmmQkW5ai6VTgPoEppx6+imlZAIqaammUokoqmzC2oaoTtC6BKlKttrlqibYqoSvRgAbrKyzyhgBAUwKkAAEsxyb7LKwONshtNEiOy17s9U+CwEBChzQoQEFzMKttwKAC8u434Z7brfpistuueGCO4ADDBxQi7z02gsLvvXeW8C8/c7Cr70JLLCAAsjWUvDBCcOyMMK3PNywwwZDLMIDDRjAC8Ya38LxxhmD3LEICAgrRMnEjoEyLyvn0rIJKacR8xgz0/wRkCEAACH5BAEMAAAALJUAUwDyAMYApAD/AP///9/f3yAgIK+vr4+Pj1BQUPf39+/v79fX1xgYGBAQECgoKAAAAJeXl3BwcDAwMFhYWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX/ICAGgWieaKqubGuSbizPKUzf+GrnfL6PpZ6Q9hsaVcWj8hVcOoGo5NMonfaqVh42iytuucQm+Coea8vmbvmbbrHbSDRc9p5H13K7O6+P98N/M158gSd1fYeIhIVQhouMiXaRko+Fg4wuk3Cam5WBl5gsnGmjpJ5/oKF+qjWniqyrTLCts461treNsrkApWO+v656qbfAXMbHwpR3vL3Knc3IWcS10lPW18/QuLnYTt7f2m3Us+BK5ufipsy86FTqZu7v7N3wYPJD+ELksPpn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" alt="img"></p>
+<p>上图演示了有5个线程因调用await方法而被阻塞，它们需要等待计数器的值减为0才能继续执行。计数器的初始值在构造闭锁时被指定，后面随着每次countDown方法的调用而减1。</p>
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CountDownLatch</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (count &lt; <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"count &lt; 0"</span>);</span><br><span class="line">    <span class="keyword">this</span>.sync = <span class="keyword">new</span> Sync(count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CountDownLatch只有一个带参构造器，必须传入一个大于0的值作为计数器初始值，否则会报错。可以看到在构造方法中只是去new了一个Sync对象并赋值给成员变量sync。和其他同步工具类一样，CountDownLatch的实现依赖于AQS，它是AQS共享模式下的一个应用。CountDownLatch实现了一个内部类Sync并用它去继承AQS，这样就能使用AQS提供的大部分方法了。<br>下面来看一下Sync内部类的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同步器</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Sync</span> <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造器</span></span><br><span class="line">    Sync(<span class="keyword">int</span> count) &#123;</span><br><span class="line">        setState(count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取当前同步状态</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//尝试获取锁</span></span><br><span class="line">    <span class="comment">//返回负数：表示当前线程获取失败</span></span><br><span class="line">    <span class="comment">//返回零值：表示当前线程获取成功, 但是后继线程不能再获取了</span></span><br><span class="line">    <span class="comment">//返回正数：表示当前线程获取成功, 并且后继线程同样可以获取成功</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">tryAcquireShared</span><span class="params">(<span class="keyword">int</span> acquires)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (getState() == <span class="number">0</span>) ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//尝试释放锁</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryReleaseShared</span><span class="params">(<span class="keyword">int</span> releases)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="comment">//获取同步状态</span></span><br><span class="line">            <span class="keyword">int</span> c = getState();</span><br><span class="line">            <span class="comment">//如果同步状态为0, 则不能再释放了</span></span><br><span class="line">            <span class="keyword">if</span> (c == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//否则的话就将同步状态减1</span></span><br><span class="line">            <span class="keyword">int</span> nextc = c-<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//使用CAS方式更新同步状态</span></span><br><span class="line">            <span class="keyword">if</span> (compareAndSetState(c, nextc)) &#123;</span><br><span class="line">                <span class="keyword">return</span> nextc == <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到Sync的构造方法会将同步状态的值设置为传入的参数值。之后每次调用countDown方法都会将同步状态的值减1，这也就是计数器的实现原理。<br>在平时使用CountDownLatch工具类时最常用的两个方法就是await方法和countDown方法。调用await方法会阻塞当前线程直到计数器为0，调用countDown方法会将计数器的值减1直到减为0。</p>
+<h4 id="阻塞线程await"><a href="#阻塞线程await" class="headerlink" title="阻塞线程await"></a>阻塞线程await</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导致当前线程等待, 直到state减少到0, 或者线程被打断</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="comment">//以响应线程中断方式获取</span></span><br><span class="line">    sync.acquireSharedInterruptibly(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//以可中断模式获取锁(共享模式)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquireSharedInterruptibly</span><span class="params">(<span class="keyword">int</span> arg)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="comment">//首先判断线程是否中断, 如果是则抛出异常</span></span><br><span class="line">    <span class="keyword">if</span> (Thread.interrupted()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> InterruptedException();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1.尝试去获取锁</span></span><br><span class="line">    <span class="keyword">if</span> (tryAcquireShared(arg) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//2. 如果获取失败则进人该方法</span></span><br><span class="line">        doAcquireSharedInterruptibly(arg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当线程调用await方法时其实是调用到了AQS的acquireSharedInterruptibly方法，该方法是以响应线程中断的方式来获取锁的。在acquireSharedInterruptibly方法首先会去调用tryAcquireShared方法尝试获取锁。Sync里面重写的tryAcquireShared方法的逻辑，方法的实现逻辑很简单，就是判断当前同步状态是否为0，如果为0则返回1表明可以获取锁，否则返回-1表示不能获取锁。如果tryAcquireShared方法返回1则线程能够不必等待而继续执行，如果返回-1那么后续就会去调用doAcquireSharedInterruptibly方法让线程进入到同步队列里面等待。这就是调用await方法会阻塞当前线程的原理。</p>
+<h4 id="唤醒线程countDown"><a href="#唤醒线程countDown" class="headerlink" title="唤醒线程countDown"></a>唤醒线程countDown</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//减少state的方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">countDown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    sync.releaseShared(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//释放锁的操作(共享模式)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">releaseShared</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.尝试去释放锁</span></span><br><span class="line">    <span class="keyword">if</span> (tryReleaseShared(arg)) &#123;</span><br><span class="line">        <span class="comment">//2.如果释放成功就唤醒其他线程</span></span><br><span class="line">        doReleaseShared();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>countDown方法里面调用了releaseShared方法，该方法同样是AQS里面的方法。releaseShared方法里面首先是调用tryReleaseShared方法尝试释放锁，tryReleaseShared方法在AQS里面是一个抽象方法，它的具体实现逻辑在子类Sync类里面，在上面贴出的Sync类代码里可以找到该方法。tryReleaseShared方法如果返回true表示释放成功，返回false表示释放失败，只有当将同步状态减1后该同步状态恰好为0时才会返回true，其他情况都是返回false。那么当tryReleaseShared返回true之后就会马上调用doReleaseShared方法去唤醒同步队列的所有线程。这样就解释了为什么最后一次调用countDown方法将计数器减为0后就会唤醒所有被阻塞的线程。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>CountDownLatch是通过“共享锁”实现的。在创建CountDownLatch中时，会传递一个int类型参数count，该参数是“锁计数器”的初始状态，表示该“共享锁”最多能被count个线程同时获取。当某线程调用该CountDownLatch对象的await()方法时，该线程会等待“共享锁”可用时，才能获取“共享锁”进而继续运行。而“共享锁”可用的条件，就是“锁计数器”的值为0！而“锁计数器”的初始值为count，每当一个线程调用该CountDownLatch对象的countDown()方法时，才将“锁计数器”-1；通过这种方式，必须有count个线程调用countDown()之后，“锁计数器”才为0，而前面提到的等待线程才能继续运行！</p>
+</blockquote>
+<h4 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h4><p>在玩欢乐斗地主时必须等待三个玩家都到齐才可以进行发牌。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id = count++;</span><br><span class="line">    <span class="keyword">private</span> CountDownLatch latch;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Player</span><span class="params">(CountDownLatch latch)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.latch = latch;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"【玩家"</span> + id + <span class="string">"】已入场"</span>);</span><br><span class="line">        latch.countDown();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">"牌局开始, 等待玩家入场..."</span>);</span><br><span class="line">        <span class="keyword">new</span> Player(latch).start();</span><br><span class="line">        <span class="keyword">new</span> Player(latch).start();</span><br><span class="line">        <span class="keyword">new</span> Player(latch).start();</span><br><span class="line">        latch.await();</span><br><span class="line">        System.out.println(<span class="string">"玩家已到齐, 开始发牌..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/08/27/Java并发-CountDownLatch.html">Java并发-CountDownLatch</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年08月26日 - 16:08</p>
+  <p><span>最后更新:</span>2019年08月26日 - 09:08</p>
+  <p><span>原始链接:</span><a href="/2019/08/27/Java并发-CountDownLatch.html" title="Java并发-CountDownLatch">http://whb1990.github.io/2019/08/27/Java并发-CountDownLatch.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/2019/08/27/Java并发-CountDownLatch.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>捐赠作者请点击下方的“打赏”按钮</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/J-U-C/" rel="tag"><i class="fa fa-tag"></i> J.U.C</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/26/Java并发-ReentrantLock.html" rel="next" title="Java并发-ReentrantLock">
+                <i class="fa fa-chevron-left"></i> Java并发-ReentrantLock
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">王洪博</p>
+              <div class="site-description motion-element" itemprop="description">雄心不惧泥泞路，展翅翱翔九重天！</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/whb1990" title="GitHub &rarr; https://github.com/whb1990" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:whbsurpass@163.com" title="E-Mail &rarr; mailto:whbsurpass@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eirunye.github.io/" title="http://eirunye.github.io/" rel="noopener" target="_blank">Eirunye</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.infoq.cn/profile/1278512" title="https://www.infoq.cn/profile/1278512" rel="noopener" target="_blank">程晓明</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器"><span class="nav-number">2.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞线程await"><span class="nav-number">3.</span> <span class="nav-text">阻塞线程await</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#唤醒线程countDown"><span class="nav-number">4.</span> <span class="nav-text">唤醒线程countDown</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用示例"><span class="nav-number">6.</span> <span class="nav-text">应用示例</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by 王洪博</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">429k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:30</span>
+  
+</div>
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+	<span id="busuanzi_container_site_uv">
+      本站总访问量:<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	<span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+  </div>
+  <!--<div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tguvE1gKAizd8oe9rHeNHlu5-gzGzoHsz',
+    appKey: 't6UfoGi0IqSKFSN0x1Vhnrg0',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'wavatar',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 鼠标点击显示小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+  <!--鼠标点击显示文字-->
+  <script type="text/javascript" src="/js/click_show_text.js"></script>
+  <!--鼠标点击烟花爆炸效果-->
+  <!--
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/fireworks.js"></script>
+  -->
+  <!--浏览器搞笑标题-->
+  <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+  <!-- 雪花特效 -->
+  <script type="text/javascript" src="/js/snow.js"></script>
+  <!--<script type="text/javascript" src="/js/snow2.js"></script>--><!--雪花效果2-->
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
