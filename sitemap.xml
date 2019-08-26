@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whb1990.github.io/2019/08/27/Java%E5%B9%B6%E5%8F%91-CyclicBarrier.html</loc>
+    
+    <lastmod>2019-08-26T10:02:39.956Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whb1990.github.io/2019/08/27/Java%E5%B9%B6%E5%8F%91-CountDownLatch.html</loc>
     
-    <lastmod>2019-08-26T09:27:49.462Z</lastmod>
+    <lastmod>2019-08-26T09:46:37.565Z</lastmod>
     
   </url>
   
