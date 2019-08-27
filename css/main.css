@@ -1974,7 +1974,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6ce90d;
+  background: #2dc92b;
 }
 .feed-link,
 .chat {
@@ -3440,4 +3440,18 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
+}
+.header-inner {
+  box-shadow: inset 0 2px 6px #000;
+  background: url("/images/bk.jpg");
+  background-size: 240px 438px;
+  background-repeat: no-repeat;
+  -webkit-transform: translateZ(0);
+}
+.sidebar-inner {
+  box-shadow: inset 0 2px 6px #000;
+  background: url("/images/bk.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-transform: translateZ(0);
 }
