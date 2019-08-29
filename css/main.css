@@ -2021,7 +2021,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cb14ff;
+  background: #bd2aff;
 }
 .feed-link,
 .chat {
@@ -3610,4 +3610,18 @@ p#div-border-top-purple {
 }
 img.img-topic {
   width: 100%;
+}
+canvas {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: -1;
+}
+body {
+  cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur"), auto;
+  background-color: ;
 }
