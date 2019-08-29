@@ -2021,7 +2021,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bd2aff;
+  background: #ff203c;
 }
 .feed-link,
 .chat {
@@ -3622,6 +3622,6 @@ canvas {
   z-index: -1;
 }
 body {
-  cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur"), auto;
+  cursor: url("/images/point.cur"), auto;
   background-color: ;
 }
