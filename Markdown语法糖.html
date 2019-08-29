@@ -710,7 +710,7 @@
 <p>效果如下：<br>[百度][1]<br>[1]:<a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>语法：使用尖括号。</p>
 <p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://www.baidu.com&gt;</span><br><span class="line">&lt;1111111@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
-<p>效果如下：<br><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a><br><a href="mailto:&#x31;&#x31;&#x31;&#x31;&#49;&#49;&#x31;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x31;&#x31;&#x31;&#x31;&#49;&#49;&#x31;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>效果如下：<br><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a><br><a href="mailto:&#x31;&#49;&#x31;&#x31;&#49;&#49;&#49;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x31;&#49;&#x31;&#x31;&#49;&#49;&#49;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>语法：<br>无序列表用 - + * 任何一种都可以。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"></span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：</p>
 <ul>
@@ -1512,24 +1512,24 @@ cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">
             
           
           <div id="days"></div>
-    <script>
-    function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("01/10/2017 12:34:56");
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=setzero(Math.floor(e_hrsold));
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-        seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-    }
+<script>
+function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay = new Date("04/10/2019 12:34:56");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+}
 function setzero(i){
     if (i<10)
     {i="0" + i};
@@ -1564,24 +1564,24 @@ show_date_time();
     </div>
 	
 	<div id="days"></div>
-    <script>
-    function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("01/10/2017 12:34:56");
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=setzero(Math.floor(e_hrsold));
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
-        seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
-    }
+<script>
+function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay = new Date("04/10/2019 12:34:56");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+}
 function setzero(i){
     if (i<10)
     {i="0" + i};
