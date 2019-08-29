@@ -2021,7 +2021,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff3;
+  background: #dfdeaa;
 }
 .feed-link,
 .chat {
@@ -3624,4 +3624,7 @@ canvas {
 body {
   cursor: url("/images/mouse.cur"), auto;
   background-color: ;
+}
+.post-tags i {
+  clolor: #79d626;
 }
