@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -766,33 +766,31 @@
 <h3 id="CyclicBarrier和CountDownLatch的区别"><a href="#CyclicBarrier和CountDownLatch的区别" class="headerlink" title="CyclicBarrier和CountDownLatch的区别"></a>CyclicBarrier和CountDownLatch的区别</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">CountDownLatch</th>
-<th style="text-align:center">CyclicBarrier</th>
+<th align="center">CountDownLatch</th>
+<th align="center">CyclicBarrier</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">减计数方式</td>
-<td style="text-align:center">加计数方式</td>
+<tbody><tr>
+<td align="center">减计数方式</td>
+<td align="center">加计数方式</td>
 </tr>
 <tr>
-<td style="text-align:center">计数为0时唤醒所有等待的线程</td>
-<td style="text-align:center">计数达到指定值时唤醒所有等待的线程</td>
+<td align="center">计数为0时唤醒所有等待的线程</td>
+<td align="center">计数达到指定值时唤醒所有等待的线程</td>
 </tr>
 <tr>
-<td style="text-align:center">计数为0无法重置</td>
-<td style="text-align:center">计数达到指定值时，计数置为0重新开始</td>
+<td align="center">计数为0无法重置</td>
+<td align="center">计数达到指定值时，计数置为0重新开始</td>
 </tr>
 <tr>
-<td style="text-align:center">调用countDown()方法计数减一，调用await()方法只进行阻塞，对计数没有影响</td>
-<td style="text-align:center">调用await()方法计数加1，若加1后的值不等于构造方法的值，则线程阻塞</td>
+<td align="center">调用countDown()方法计数减一，调用await()方法只进行阻塞，对计数没有影响</td>
+<td align="center">调用await()方法计数加1，若加1后的值不等于构造方法的值，则线程阻塞</td>
 </tr>
 <tr>
-<td style="text-align:center">不能重复利用</td>
-<td style="text-align:center">可重复使用</td>
+<td align="center">不能重复利用</td>
+<td align="center">可重复使用</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="voliate和synchronized对比"><a href="#voliate和synchronized对比" class="headerlink" title="voliate和synchronized对比"></a>voliate和synchronized对比</h3><blockquote>
 <ul>
 <li>volatile本质是在告诉jvm当前变量在寄存器中的值是不确定的,需要从主存中读取,synchronized则是锁定当前变量,只有当前线程可以访问该变量,其他线程被阻塞住。</li>
@@ -874,6 +872,7 @@
 </ul>
 </blockquote>
 <h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLock</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TestDeadLock tl = <span class="keyword">new</span> TestDeadLock();</span><br><span class="line">        <span class="keyword">new</span> Thread(tl, <span class="string">"线程A"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(tl, <span class="string">"线程B"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TestDeadLock</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Object objA = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="keyword">private</span> Object objB = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                flag = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">synchronized</span> (objA) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"锁住资源A，等待资源B"</span>);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">synchronized</span> (objB) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">"获得资源B"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">synchronized</span> (objB) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"锁住资源B，等待资源A"</span>);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">synchronized</span> (objA) &#123;</span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">"获得资源A"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> DeadLock().run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果是：</span><br><span class="line">线程A锁住资源A，等待资源B</span><br><span class="line">线程B锁住资源B，等待资源A</span><br></pre></td></tr></table></figure>
+
 <h3 id="Java中如何避免死锁"><a href="#Java中如何避免死锁" class="headerlink" title="Java中如何避免死锁"></a>Java中如何避免死锁</h3><blockquote>
 <p>死锁发生是因为两个线程试图获取被对方持有的资源。但是要想发生这种情况，必须满足以下四个条件：</p>
 </blockquote>
@@ -1634,7 +1633,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">461k</span>
+    <span title="站点总字数">473k</span>
   
 
   
@@ -1645,7 +1644,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:59</span>
+    <span title="站点阅读时长">7:10</span>
   
 </div>
 
@@ -2234,5 +2233,5 @@ show_date_time();
   <!--<script charset="Shift_JIS" src="/js/honehone_clock_wh.js"></script>-->
   <!--访客地理信息-->
   <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

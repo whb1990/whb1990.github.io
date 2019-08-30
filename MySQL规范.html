@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -613,7 +613,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.5k</span>
+                <span title="本文字数">5.4k</span>
               
 
               
@@ -674,7 +674,7 @@
 </ul>
 <p>插入数据前，先用 inet_aton 把 IP 地址转为整型，可以节省空间。显示数据时，使用 inet_ntoa 把整型的 IP 地址转为地址显示即可。</p>
 <ul>
-<li>对于非负型的数据（如自增 ID、整型 IP）来说，要优先使用无符号整型来存储,因为无符号相对于有符号可以多出一倍的存储空间。<br>SIGNED INT -2147483648~2147483647<br>UNSIGNED INT 0~4294967295</li>
+<li>对于非负型的数据（如自增 ID、整型 IP）来说，要优先使用无符号整型来存储,因为无符号相对于有符号可以多出一倍的存储空间。<br>SIGNED INT -2147483648<del>2147483647<br>UNSIGNED INT 0</del>4294967295</li>
 </ul>
 <p>VARCHAR(N) 中的 N 代表的是字符数，而不是字节数。使用 UTF8 存储 255 个汉字 Varchar(255)=765 个字节。过大的长度会消耗更多的内存。</p>
 <ol start="2">
@@ -1469,7 +1469,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">461k</span>
+    <span title="站点总字数">473k</span>
   
 
   
@@ -1480,7 +1480,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:59</span>
+    <span title="站点阅读时长">7:10</span>
   
 </div>
 
@@ -2069,5 +2069,5 @@ show_date_time();
   <!--<script charset="Shift_JIS" src="/js/honehone_clock_wh.js"></script>-->
   <!--访客地理信息-->
   <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

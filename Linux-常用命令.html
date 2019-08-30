@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -151,18 +151,18 @@
 
 
 
-  <meta name="description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数] 查询目录的内容命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  cd">
+  <meta name="description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux - 常用命令">
 <meta property="og:url" content="http://whb1990.github.io/Linux-常用命令.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数] 查询目录的内容命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  cd">
+<meta property="og:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-21T08:36:33.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - 常用命令">
-<meta name="twitter:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数] 查询目录的内容命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  cd">
+<meta name="twitter:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 
 
 
@@ -613,7 +613,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">2.1k</span>
               
 
               
@@ -650,8 +650,10 @@
         <h5 id="命令的基本格式"><a href="#命令的基本格式" class="headerlink" title="命令的基本格式"></a>命令的基本格式</h5><p><code>[root@localhost~]</code></p>
 <p>root为用户名（<code>#</code>超级用户  <code>$</code>普通用户）   localhost主机名<br>命令的基本格式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令[选项][参数]</span><br></pre></td></tr></table></figure>
+
 <h4 id="查询目录的内容"><a href="#查询目录的内容" class="headerlink" title="查询目录的内容"></a>查询目录的内容</h4><p>命令格式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项][文件或目录]</span><br></pre></td></tr></table></figure>
+
 <p>选项：</p>
 <ul>
 <li>-a 所有文件</li>
@@ -668,10 +670,12 @@
 </ol>
 <p><code>cd [目录]</code><br>简化操作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~ 进入当前用户目录</span><br><span class="line">cd - 上次目录</span><br><span class="line">cd .. 进入上一级目录</span><br><span class="line">pwd 查看当前目录所在位置</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>删除目录</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir [目录] 删除所有文件</span><br><span class="line">rm -rf [目录] 删除目录所有文件</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>复制目录</li>
 </ol>
@@ -693,6 +697,7 @@
 <li>常见目录作用</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ 根目录</span><br><span class="line"></span><br><span class="line">/bin 命令保存目录</span><br><span class="line"></span><br><span class="line">/boot 启动目录</span><br><span class="line"></span><br><span class="line">/dev 设备文件命令</span><br><span class="line"></span><br><span class="line">/etc 配置文件保存目录</span><br><span class="line"></span><br><span class="line">/home 家目录</span><br><span class="line"></span><br><span class="line">/lib 系统库保存命令</span><br><span class="line"></span><br><span class="line">/mnt 系统挂载目录</span><br></pre></td></tr></table></figure>
+
 <h4 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h4><ol>
 <li>locate</li>
 </ol>
@@ -733,6 +738,7 @@
 <p><code>zip -r [压缩文件名][原文件]</code></p>
 <p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch jp/cangls</span><br><span class="line"></span><br><span class="line">touch jp/longls</span><br><span class="line"></span><br><span class="line">zip -r jp.zip jp</span><br></pre></td></tr></table></figure>
+
 <p><strong>解压：</strong></p>
 <p><code>unzip [压缩文件名]</code></p>
 <p><strong>压缩为gz格式，原文件不保留</strong></p>
@@ -788,6 +794,7 @@
 </ol>
 <p>举个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig&gt;&gt; ip.log</span><br><span class="line"></span><br><span class="line">cat ip.log</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>查看网络状态</li>
 </ol>
@@ -1516,7 +1523,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">461k</span>
+    <span title="站点总字数">473k</span>
   
 
   
@@ -1527,7 +1534,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:59</span>
+    <span title="站点阅读时长">7:10</span>
   
 </div>
 
@@ -2116,5 +2123,5 @@ show_date_time();
   <!--<script charset="Shift_JIS" src="/js/honehone_clock_wh.js"></script>-->
   <!--访客地理信息-->
   <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whb1990.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-08-30T02:38:06.725Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/categories/index.html</loc>
+    
+    <lastmod>2019-08-30T02:37:49.849Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/archives/index.html</loc>
+    
+    <lastmod>2019-08-30T02:37:36.762Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/about/index.html</loc>
+    
+    <lastmod>2019-08-30T02:37:01.365Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whb1990.github.io/404/index.html</loc>
+    
+    <lastmod>2019-08-30T02:35:50.342Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whb1990.github.io/Java%E5%B9%B6%E5%8F%91-ReentrantReadWriteLock.html</loc>
     
     <lastmod>2019-08-27T08:09:43.255Z</lastmod>
@@ -555,34 +590,6 @@
   </url>
   
   <url>
-    <loc>http://whb1990.github.io/about/index.html</loc>
-    
-    <lastmod>2019-05-21T13:54:40.145Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whb1990.github.io/tags/index.html</loc>
-    
-    <lastmod>2019-05-21T10:14:58.665Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whb1990.github.io/categories/index.html</loc>
-    
-    <lastmod>2019-05-21T10:14:51.019Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whb1990.github.io/archives/index.html</loc>
-    
-    <lastmod>2019-05-21T10:14:25.649Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://whb1990.github.io/Markdown-%E8%AF%AD%E6%B3%95%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE.html</loc>
     
     <lastmod>2019-05-21T09:30:07.387Z</lastmod>
@@ -600,13 +607,6 @@
     <loc>http://whb1990.github.io/hello-world.html</loc>
     
     <lastmod>2019-05-21T09:28:28.314Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whb1990.github.io/404/index.html</loc>
-    
-    <lastmod>2019-05-18T06:09:21.266Z</lastmod>
     
   </url>
   

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -622,7 +622,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.1k</span>
+                <span title="本文字数">8k</span>
               
 
               
@@ -664,7 +664,10 @@
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>众所周知，IDEA是非常智能的，它可以理解Spring的上下文。然而 UserMapper 这个接口是Mybatis的，IDEA理解不了。</p>
 <p>而 <code>@Autowired</code> 注解，默认情况下要求依赖对象（也就是 <code>userMapper</code> ）必须存在。而IDEA认为这个对象的实例/代理是个null，所以就友好地给个提示。按照提示修改如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">UserServiceImpl</span><span class="params">(UserMapper userMapper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userMapper = userMapper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时仍然存在一个问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not autowire.</span><br></pre></td></tr></table></figure></p>
+
+<p>此时仍然存在一个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not autowire.</span><br></pre></td></tr></table></figure>
+
 <p>自动注入 bean， spring帮助我们完成了，但是同时Spring提供了一些注解来显式的注明bean之间的引用关系，其中最为熟知的自然是@Controller,@Service,@Repository,@Component等。<br>这里其实给UserMapper接口加上@Repository,@Component就可以解决，那么他们之间有什么区别？</p>
 <h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>Spring不但支持自己定义的@Autowired注解，还支持几个由JSR-250规范定义的注解，它们分别是@Resource、@PostConstruct以及@PreDestroy。</p>
 <p>@Resource的作用相当于@Autowired，只不过@Autowired按byType自动注入，而@Resource默认按 byName自动注入罢了。@Resource有两个属性是比较重要的，分是name和type，Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不指定name也不指定type属性，这时将通过反射机制使用byName自动注入策略。</p>
@@ -683,34 +686,48 @@
 <p>2、@Autowired默认按类型装配（这个注解是属于spring的），默认情况下必须要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false，如：@Autowired(required=false) ，如果我们想使用名称装配可以结合@Qualifier注解进行使用，如下：</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>()<span class="meta">@Qualifier</span>(<span class="string">"baseDao"</span>)</span><br><span class="line">privateBaseDao baseDao;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>3、@Resource（这个注解属于J2EE的），默认按照名称进行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行装配查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配。但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span>(name=<span class="string">"baseDao"</span>)</span><br><span class="line">privateBaseDao baseDao;</span><br></pre></td></tr></table></figure>
+
 <p>推荐使用：@Resource注解在字段上，这样就不用写setter方法了，并且这个注解是属于J2EE的，减少了与spring的耦合。这样代码看起就比较优雅。</p>
 <h5 id="Spring-Qualifier注解"><a href="#Spring-Qualifier注解" class="headerlink" title="Spring @Qualifier注解"></a>Spring @Qualifier注解</h5><p>@Autowired是根据类型进行自动装配的。如果当Spring上下文中存在不止一个UserDao类型的bean时，就会抛出BeanCreationException异常;如果Spring上下文中不存在UserDao类型的bean，也会抛出BeanCreationException异常。我们可以使用@Qualifier配合@Autowired来解决这些问题。如下：</p>
 <ol>
 <li>可能存在多个UserDao实例</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>   </span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"userServiceImpl"</span>)   </span><br><span class="line"><span class="keyword">public</span> IUserService userService;</span><br></pre></td></tr></table></figure>
+
 <p>或者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>   </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserDao</span><span class="params">(@Qualifier(<span class="string">"userDao"</span>)</span> UserDao userDao) </span>&#123;   </span><br><span class="line">    <span class="keyword">this</span>.userDao = userDao;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这样Spring会找到id为userServiceImpl和userDao的bean进行装配。</p>
 <ol start="2">
 <li>可能不存在UserDao实例</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)   </span><br><span class="line"><span class="keyword">public</span> IUserService userService</span><br></pre></td></tr></table></figure>
+
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>@Autowired  默认按type注入<br>@Qualifier(“baseDao”)  一般作为@Autowired()的修饰用<br>@Resource(name=”baseDao”)  默认按name注入，可以通过name和type属性进行选择性注入</p>
 <p>一般@Autowired和@Qualifier一起用，@Resource单独用。当然没有冲突的话@Autowired也可以单独用。</p>
 <h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><h5 id="声明Bean的注解"><a href="#声明Bean的注解" class="headerlink" title="声明Bean的注解"></a>声明Bean的注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义控制层Bean,如Action</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span>(<span class="string">"Bean的名称"</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义业务逻辑层Bean</span></span><br><span class="line"><span class="meta">@Service</span>          </span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"Bean的名称"</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义DAO层/数据访问层Bean</span></span><br><span class="line"><span class="meta">@Repository</span>   </span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span>(<span class="string">"Bean的名称"</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义Bean, 不好归类时使用.</span></span><br><span class="line"><span class="meta">@Component</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="自动装配Bean"><a href="#自动装配Bean" class="headerlink" title="自动装配Bean"></a>自动装配Bean</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认按类型匹配,自动装配(Srping提供的)，可以写在成员属性上,或写在setter方法上</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要找到匹配的Bean，否则抛异常。 默认值就是true</span></span><br><span class="line"><span class="meta">@Autowired</span>(required=<span class="keyword">true</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按名称装配Bean,与@Autowired组合使用，解决按类型匹配找到多个Bean问题。</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"bean的名字"</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JSR-250提供的,默认按名称装配,当找不到名称匹配的bean再按类型装配.可以写在成员属性上,或写在setter方法上</span></span><br><span class="line"><span class="meta">@Resource</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">//可以通过@Resource(name="beanName") 指定被注入的bean的名称, 要是未指定name属性, 默认使用成员属性的变量名,一般不用写name属性.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Resource</span>(name=<span class="string">"beanName"</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//是JSR-330提供的,按类型装配，功能比@Autowired少，没有使用的必要。</span></span><br><span class="line"><span class="meta">@Inject</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="Java配置类"><a href="#Java配置类" class="headerlink" title="Java配置类"></a>Java配置类</h5><blockquote>
 <p>@Configuration 声明当前类为配置类，相当于xml形式的Spring配置（类上）</p>
 </blockquote>
@@ -749,38 +766,49 @@
 <p>在java配置类中使用@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持（类上）</p>
 </blockquote>
 <h5 id="定义Bean的作用域和生命过程"><a href="#定义Bean的作用域和生命过程" class="headerlink" title="定义Bean的作用域和生命过程"></a>定义Bean的作用域和生命过程</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置Spring容器如何新建Bean实例（方法上，得有@Bean）</span></span><br><span class="line"><span class="meta">@Scope</span>(<span class="string">"prototype"</span>)</span><br><span class="line"></span><br><span class="line">其设置类型包括：</span><br><span class="line"></span><br><span class="line">Singleton （单例,一个Spring容器中只有一个bean实例，默认模式）,</span><br><span class="line"></span><br><span class="line">Protetype （每次调用新建一个bean）,</span><br><span class="line"></span><br><span class="line">Request （web项目中，给每个http request新建一个bean）,</span><br><span class="line"></span><br><span class="line">Session （web项目中，给每个http session新建一个bean）,</span><br><span class="line"></span><br><span class="line">GlobalSession（给每一个 global http session新建一个Bean实例）</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相当于init-method,使用在方法上，当Bean初始化时执行。</span></span><br><span class="line"><span class="meta">@PostConstruct</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相当于destory-method，使用在方法上，当Bean销毁时执行。</span></span><br><span class="line"><span class="meta">@PreDestroy</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="声明式事务"><a href="#声明式事务" class="headerlink" title="声明式事务"></a>声明式事务</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h5><p>@Value 为属性注入值（属性上）支持如下方式的注入：</p>
 <ol>
 <li>注入普通字符</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"Tom"</span>)</span><br><span class="line">String name;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>注入操作系统属性</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;systemProperties['os.name']&#125;"</span>)</span><br><span class="line">String osName;</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>注入表达式结果</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;T(java.lang.Math).random() * 100&#125;"</span>)</span><br><span class="line">String randomNumber;</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>注入其他bean属性</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"#&#123;demoClass.name&#125;"</span>)</span><br><span class="line">String name;</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>注入文件资源</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"classpath:com/springboot/study/hello/test.txt"</span>)</span><br><span class="line">String resourceFile;</span><br></pre></td></tr></table></figure>
+
 <ol start="6">
 <li>注入网站资源</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"http://www.baiduc.om"</span>)</span><br><span class="line">Resource url;</span><br></pre></td></tr></table></figure>
+
 <ol start="7">
 <li>注入配置文件</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;book.name&#125;"</span>)</span><br><span class="line">String bookName;</span><br></pre></td></tr></table></figure>
+
 <h5 id="环境切换"><a href="#环境切换" class="headerlink" title="环境切换"></a>环境切换</h5><blockquote>
 <p>@Profile 通过设定Environment的ActiveProfiles来设定当前context需要使用的配置环境。（类或方法上）</p>
 </blockquote>
@@ -826,8 +854,10 @@
 </blockquote>
 <h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><p>@RunWith 运行器，Spring中通常用于对JUnit的支持</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br></pre></td></tr></table></figure>
+
 <p>@ContextConfiguration 用来加载配置ApplicationContext，其中classes属性用来加载配置类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ContextConfiguration</span>(classes=&#123;Test.class&#125;)</span><br></pre></td></tr></table></figure>
+
 <h5 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h5><blockquote>
 <p>@EnableWebMvc 在配置类中开启Web MVC的配置支持，如一些ViewResolver或者MessageConverter等，若无此句，重写WebMvcConfigurerAdapter方法（用于对SpringMVC的配置）。</p>
 </blockquote>
@@ -878,18 +908,24 @@
 <p><strong>方法1：为 @Autowired 注解设置required = false</strong></p>
 <p>使用 @Autowired 注解时，若希望允许null值，可设置required = false，像这样：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
+
 <p>这样就不会有警告了。原因很好理解：IDEA认为userMapper是个null，给了警告；加上required = false后，使用 @Autowired 注解不再去校验userMapper是否存在了。也就不会有警告了。</p>
 <p><strong>方法2：用 @Resource 替换 @Autowired</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
+
 <p><strong>方法3：在Mapper接口上加上@Repository注解</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这样也能让你的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
+
 <p>不再报错。当然，如果你用@Component替换@Repository也是可以的。原理大致：IDEA不是认为 userMapper 是个null嘛…加个@Repository注解骗一下IDEA就OK了……</p>
 <p><strong>方法4：用Lombok</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>(onConstructor = @__(<span class="meta">@Autowired</span>))</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Lombok生成的代码是这样的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">TestService</span><span class="params">(<span class="keyword">final</span> UserMapper userMapper)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.userMapper = userMapper;</span><br><span class="line"> &#125;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>但如果自己手写成Lombok生成的代码，IDEA依然会给你报警告 。我猜，应该是IDEA的Lombok插件把IDEA搞懵逼了…所以不提示了…</p>
 <p><strong>方法5：把IDEA的警告关闭掉</strong><br>个人没试过。</p>
 <p><strong>方法6：安装mybatis plugin</strong><br>据说安装mybatis plugin可以解决该问题。</p>
@@ -1561,7 +1597,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">461k</span>
+    <span title="站点总字数">473k</span>
   
 
   
@@ -1572,7 +1608,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:59</span>
+    <span title="站点阅读时长">7:10</span>
   
 </div>
 
@@ -2161,5 +2197,5 @@ show_date_time();
   <!--<script charset="Shift_JIS" src="/js/honehone_clock_wh.js"></script>-->
   <!--访客地理信息-->
   <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
