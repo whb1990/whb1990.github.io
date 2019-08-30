@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whb1990.github.io/"/>
-  <updated>2019-08-27T08:09:43.255Z</updated>
+  <updated>2019-08-30T06:40:43.285Z</updated>
   <id>http://whb1990.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo live2d插件效果预览</title>
+    <link href="http://whb1990.github.io/Hexo-live2d%E6%8F%92%E4%BB%B6%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88.html"/>
+    <id>http://whb1990.github.io/Hexo-live2d插件效果预览.html</id>
+    <published>2019-08-30T14:16:33.000Z</published>
+    <updated>2019-08-30T06:40:43.285Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Epsilon2-1"><a href="#Epsilon2-1" class="headerlink" title="Epsilon2.1"></a>Epsilon2.1</h4><p><img src="images/live2d/Epsilon2.1.gif" alt="Epsilon2.1"></p><h4 id="Gantzert-Felixander"><a href="#Gantzert-Felixander" class="headerlink" title="Gantzert_Felixander"></a>Gantzert_Felixander</h4><p><img src="images/live2d/Gantzert_Felixander.gif" alt="Gantzert_Felixander"></p><h4 id="haru"><a href="#haru" class="headerlink" title="haru"></a>haru</h4><p><img src="images/live2d/haru.gif" alt="haru"></p><h4 id="miku"><a href="#miku" class="headerlink" title="miku"></a>miku</h4><p><img src="images/live2d/miku.gif" alt="miku"></p><h4 id="ni-j"><a href="#ni-j" class="headerlink" title="ni-j"></a>ni-j</h4><p><img src="images/live2d/ni-j.gif" alt="ni-j"></p><h4 id="nico"><a href="#nico" class="headerlink" title="nico"></a>nico</h4><p><img src="images/live2d/nico.gif" alt="nico"></p><h4 id="nietzche"><a href="#nietzche" class="headerlink" title="nietzche"></a>nietzche</h4><p><img src="images/live2d/nietzche.gif" alt="nietzche"></p><h4 id="nipsilon"><a href="#nipsilon" class="headerlink" title="nipsilon"></a>nipsilon</h4><p><img src="images/live2d/nipsilon.gif" alt="nipsilon"></p><h4 id="nito"><a href="#nito" class="headerlink" title="nito"></a>nito</h4><p><img src="images/live2d/nito.gif" alt="nito"></p><h4 id="shizuku"><a href="#shizuku" class="headerlink" title="shizuku"></a>shizuku</h4><p><img src="images/live2d/shizuku.gif" alt="shizuku"></p><h4 id="tsumiki"><a href="#tsumiki" class="headerlink" title="tsumiki"></a>tsumiki</h4><p><img src="images/live2d/tsumiki.gif" alt="tsumiki"></p><h4 id="wanko"><a href="#wanko" class="headerlink" title="wanko"></a>wanko</h4><p><img src="images/live2d/wanko.gif" alt="wanko"></p><h4 id="z16"><a href="#z16" class="headerlink" title="z16"></a>z16</h4><p><img src="images/live2d/z16.gif" alt="z16"></p><h4 id="hibiki"><a href="#hibiki" class="headerlink" title="hibiki"></a>hibiki</h4><p><img src="images/live2d/hibiki.gif" alt="hibiki"></p><h4 id="koharu"><a href="#koharu" class="headerlink" title="koharu"></a>koharu</h4><p><img src="images/live2d/koharu.gif" alt="koharu"></p><h4 id="haruto"><a href="#haruto" class="headerlink" title="haruto"></a>haruto</h4><p><img src="images/live2d/haruto.gif" alt="haruto"></p><h4 id="Unitychan"><a href="#Unitychan" class="headerlink" title="Unitychan"></a>Unitychan</h4><p><img src="images/live2d/Unitychan.gif" alt="Unitychan"></p><h4 id="tororo"><a href="#tororo" class="headerlink" title="tororo"></a>tororo</h4><p><img src="images/live2d/tororo.gif" alt="tororo"></p><h4 id="hijiki"><a href="#hijiki" class="headerlink" title="hijiki"></a>hijiki</h4><p><img src="images/live2d/hijiki.gif" alt="hijiki"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Epsilon2-1&quot;&gt;&lt;a href=&quot;#Epsilon2-1&quot; class=&quot;headerlink&quot; title=&quot;Epsilon2.1&quot;&gt;&lt;/a&gt;Epsilon2.1&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;images/live2d/Epsilon2.1.gif
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://whb1990.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://whb1990.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Java并发-ReentrantReadWriteLock</title>
@@ -580,33 +605,6 @@
       <category term="高可用" scheme="http://whb1990.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
     
       <category term="负载均衡" scheme="http://whb1990.github.io/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL规范</title>
-    <link href="http://whb1990.github.io/MySQL%E8%A7%84%E8%8C%83.html"/>
-    <id>http://whb1990.github.io/MySQL规范.html</id>
-    <published>2019-08-22T17:54:15.000Z</published>
-    <updated>2019-08-22T10:10:25.809Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="数据库命名规范"><a href="#数据库命名规范" class="headerlink" title="数据库命名规范"></a>数据库命名规范</h4><ol><li>所有数据库对象名称必须使用小写字母并用下划线分割。</li><li>所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）。</li><li>数据库对象的命名要能做到见名识意，并且最后不要超过32 个字符。</li><li>临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必须以 bak_ 为前缀并以日期 ( 时间戳 ) 为后缀。</li><li>所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）。</li></ol><h4 id="数据库基本设计规范"><a href="#数据库基本设计规范" class="headerlink" title="数据库基本设计规范"></a>数据库基本设计规范</h4><ol><li>没有特殊要求（即 InnoDB 无法满足的功能如：列存储，存储空间数据等）的情况下，所有表必须使用 InnoDB 存储引擎（MySQL5.5 之前默认使用 Myisam，5.6 以后默认的为 InnoDB）InnoDB 支持事务，支持行级锁，更好的恢复性，高并发下性能更好。</li><li>数据库和表的字符集统一使用 UTF8，兼容性更好。统一字符集可以避免由于字符集转换产生的乱码，不同的字符集进行比较前需要进行转换会造成索引失效。</li><li>所有表和字段都需要添加注释，使用 comment 从句添加表和列的备注 从一开始就进行数据字典的维护。</li><li>尽量控制单表数据量的大小，建议控制在500万以内，500万并不是 MySQL 数据库的限制，过大会造成修改表结构、备份、恢复都会有很大的问题，可以用历史数据归档（应用于日志数据），分库分表（应用于业务数据）等手段来控制数据量大小。</li><li>谨慎使用 MySQL 分区表。分区表在物理上表现为多个文件，在逻辑上表现为一个表。谨慎选择分区键，跨分区查询效率可能更低，建议采用物理分表的方式管理大数据。</li><li>尽量做到冷热数据分离，减小表的宽度。MySQL 限制每个表最多存储 4096 列，并且每一行数据的大小不能超过 65535 字节。减少磁盘 IO，保证热数据的内存缓存命中率（表越宽，把表装载进内存缓冲池时所占用的内存也就越大,也会消耗更多的 IO） 更有效的利用缓存，避免读入无用的冷数据；经常一起使用的列放到一个表中（避免更多的关联操作）</li><li>禁止在数据库中存储图片，文件等大的二进制数据。通常文件很大，会短时间内造成数据量快速增长，数据库进行数据库读取时，通常会进行大量的随机 IO 操作，文件很大时，IO 操作很耗时。通常存储于文件服务器，数据库只存储文件地址信息。</li><li>禁止在线上做数据库压力测试。</li><li>禁止从开发环境，测试环境直接连接生产环境数据库。</li></ol><h4 id="数据库字段设计规范"><a href="#数据库字段设计规范" class="headerlink" title="数据库字段设计规范"></a>数据库字段设计规范</h4><ol><li>优先选择符合存储需要的最小的数据类型</li></ol><p>列的字段越大，建立索引时所需要的空间也就越大，这样一页中所能存储的索引节点的数量也就越少，在遍历时所需要的IO次数也就越多，索引的性能也就越差。</p><ul><li>将字符串转换成数字类型存储，如：将IP地址转换成整形数据。<br>MySQL 提供了两个方法来处理 IP 地址<br>inet_aton 把ip转为无符号整型(4-8位)<br>inet_ntoa 把整型的ip转为地址</li></ul><p>插入数据前，先用 inet_aton 把 IP 地址转为整型，可以节省空间。显示数据时，使用 inet_ntoa 把整型的 IP 地址转为地址显示即可。</p><ul><li>对于非负型的数据（如自增 ID、整型 IP）来说，要优先使用无符号整型来存储,因为无符号相对于有符号可以多出一倍的存储空间。<br>SIGNED INT -2147483648<del>2147483647<br>UNSIGNED INT 0</del>4294967295</li></ul><p>VARCHAR(N) 中的 N 代表的是字符数，而不是字节数。使用 UTF8 存储 255 个汉字 Varchar(255)=765 个字节。过大的长度会消耗更多的内存。</p><ol start="2"><li>避免使用 TEXT、BLOB 数据类型</li></ol><p>最常见的TEXT类型可以存储64k的数据，建议把 BLOB 或是TEXT列分离到单独的扩展表中。<br>MySQL 内存临时表不支持 TEXT、BLOB 这样的大数据类型，如果查询中包含这样的数据，在排序等操作时，就不能使用内存临时表，必须使用磁盘临时表进行。<br>而且对于这种数据，MySQL 还是要进行二次查询，会使 SQL 性能变得很差，但是不是说一定不能使用这样的数据类型。<br>如果一定要使用，建议把 BLOB 或是 TEXT 列分离到单独的扩展表中，查询时一定不要使用 <code>select *</code> 而只需要取出必要的列，不需要 TEXT 列的数据时不要对该列进行查询。</p><p>TEXT 或 BLOB 类型只能使用前缀索引,因为 MySQL 对索引字段长度是有限制的，所以 TEXT 类型只能使用前缀索引，并且 TEXT 列上是不能有默认值的。</p><ol start="3"><li><p>避免使用 ENUM 类型</p><ul><li>修改 ENUM 值需要使用 ALTER 语句</li><li>ENUM 类型的 ORDER BY 操作效率低，需要额外操作</li><li>禁止使用数值作为 ENUM 的枚举值</li></ul></li><li><p>尽可能把所有列定义为 NOT NULL</p></li></ol><p>索引 NULL 列需要额外的空间来保存，所以要占用更多的空间。进行比较和计算时要对 NULL 值做特别的处理。</p><ol start="5"><li>使用 TIMESTAMP（4 个字节）或 DATETIME 类型（8 个字节）存储时间</li></ol><p>TIMESTAMP 存储的时间范围 1970-01-01 00:00:01 ~ 2038-01-19-03:14:07。</p><p>TIMESTAMP 占用 4 字节和 INT 相同，但比 INT 可读性高，超出 TIMESTAMP 取值范围的使用 DATETIME 类型存储。</p><p>经常会有人用字符串存储日期型的数据（不正确的做法）：</p><p>缺点 1：无法用日期函数进行计算和比较。<br>缺点 2：用字符串存储日期要占用更多的空间。</p><ol start="6"><li>同财务相关的金额类数据必须使用 decimal 类型</li></ol><p>非精准浮点：float，double<br>精准浮点：decimal<br>Decimal 类型为精准浮点数，在计算时不会丢失精度。占用空间由定义的宽度决定，每 4 个字节可以存储 9 位数字，并且小数点要占用一个字节。可用于存储比 bigint 更大的整型数据。</p><h4 id="索引设计规范"><a href="#索引设计规范" class="headerlink" title="索引设计规范"></a>索引设计规范</h4><ol><li>限制每张表上的索引数量，建议单张表索引不超过 5 个</li></ol><p>索引并不是越多越好！索引可以提高效率同样也可以降低效率；索引可以增加查询效率，但同样也会降低插入和更新的效率，甚至有些情况下会降低查询效率。因为 MySQL 优化器在选择如何优化查询时，会根据统一信息，对每一个可以用到的索引来进行评估，以生成出一个最好的执行计划，如果同时有很多个索引都可以用于查询，就会增加 MySQL 优化器生成执行计划的时间，同样会降低查询性能。</p><ol start="2"><li>禁止给表中的每一列都建立单独的索引</li></ol><p>5.6版本之前，一个 SQL 只能使用到一个表中的一个索引，5.6 以后，虽然有了合并索引的优化方式，但是还是远远没有使用一个联合索引的查询方式好</p><ol start="3"><li>每个 InnoDB 表必须有个主键</li></ol><p>InnoDB 是一种索引组织表：数据的存储的逻辑顺序和索引的顺序是相同的。每个表都可以有多个索引，但是表的存储顺序只能有一种 InnoDB是按照主键索引的顺序来组织表的。</p><p>不要使用更新频繁的列作为主键，不适用多列主键（相当于联合索引） 不要使用 UUID、MD5、HASH、字符串列作为主键（无法保证数据的顺序增长）。主键建议使用自增 ID 值。</p><h4 id="如何选择索引列的顺序"><a href="#如何选择索引列的顺序" class="headerlink" title="如何选择索引列的顺序"></a>如何选择索引列的顺序</h4><p>建立索引的目的是希望通过索引进行数据查找，减少随机 IO，增加查询性能 ，索引能过滤出越少的数据，则从磁盘中读入的数据也就越少。</p><ul><li>区分度最高的放在联合索引的最左侧（区分度 = 列中不同值的数量 / 列的总行数）。</li><li>尽量把字段长度小的列放在联合索引的最左侧（因为字段长度越小，一页能存储的数据量越大，IO 性能也就越好）。</li><li>使用最频繁的列放到联合索引的左侧（这样可以比较少的建立一些索引）。</li></ul><h4 id="避免建立冗余索引和重复索引"><a href="#避免建立冗余索引和重复索引" class="headerlink" title="避免建立冗余索引和重复索引"></a>避免建立冗余索引和重复索引</h4><p>因为这样会增加查询优化器生成执行计划的时间。</p><p>重复索引示例：primary key(id)、index(id)、unique index(id)<br>冗余索引示例：index(a,b,c)、index(a,b)、index(a)</p><h4 id="优先考虑覆盖索引"><a href="#优先考虑覆盖索引" class="headerlink" title="优先考虑覆盖索引"></a>优先考虑覆盖索引</h4><p>对于频繁的查询优先考虑使用覆盖索引。</p><p>覆盖索引：就是包含了所有查询字段(where,select,ordery by,group by包含的字段)的索引</p><p>覆盖索引的好处：</p><ul><li>避免 InnoDB 表进行索引的二次查询。InnoDB 是以聚集索引的顺序来存储的，对于 InnoDB 来说，二级索引在叶子节点中所保存的是行的主键信息，如果是用二级索引查询数据的话，在查找到相应的键值后，还要通过主键进行二次查询才能获取我们真实所需要的数据。而在覆盖索引中，二级索引的键值中可以获取所有的数据，避免了对主键的二次查询 ，减少了 IO 操作，提升了查询效率。</li><li>可以把随机 IO 变成顺序 IO 加快查询效率。由于覆盖索引是按键值的顺序存储的，对于 IO 密集型的范围查找来说，对比随机从磁盘读取每一行的数据 IO 要少的多，因此利用覆盖索引在访问时也可以把磁盘的随机读取的 IO 转变成索引查找的顺序 IO。</li></ul><h4 id="数据库-SQL-开发规范"><a href="#数据库-SQL-开发规范" class="headerlink" title="数据库 SQL 开发规范"></a>数据库 SQL 开发规范</h4><ol><li>建议使用预编译语句进行数据库操作</li></ol><p>预编译语句可以重复使用这些计划，减少 SQL 编译所需要的时间，还可以解决动态 SQL 所带来的 SQL 注入的问题， 只传参数，比传递 SQL 语句更高效 相同语句可以一次解析，多次使用，提高处理效率。</p><ol start="2"><li>避免数据类型的隐式转换</li></ol><p>隐式转换会导致索引失效。如：<code>select name,phone from customer where id = &#39;111&#39;;</code></p><ol start="3"><li>充分利用表上已经存在的索引</li></ol><p>避免使用双 % 号的查询条件。如<code>a like &#39;%123%&#39;</code>，（如果无前置 %，只有后置 %，是可以用到列上的索引的）</p><p>使用 left join 或 not exists 来优化 not in 操作,因为 not in 也通常会使用索引失效。</p><ol start="4"><li><p>数据库设计时，应该要对以后扩展进行考虑</p></li><li><p>程序连接不同的数据库使用不同的账号，进制跨库查询</p></li><li><p>禁止使用 <code>SELECT *</code> 必须使用 <code>SELECT &lt;字段列表&gt;</code> 查询</p><ul><li>消耗更多的 CPU 和 IO 以网络带宽资源</li></ul></li></ol><ul><li>无法使用覆盖索引</li><li>可减少表结构变更带来的影响</li></ul><ol start="7"><li>禁止使用不含字段列表的 INSERT 语句</li></ol><p>如：<code>insert into values (&#39;a&#39;,&#39;b&#39;,&#39;c&#39;);</code><br>应使用：<code>insert into t(c1,c2,c3) values (&#39;a&#39;,&#39;b&#39;,&#39;c&#39;);</code></p><ol start="8"><li>避免使用子查询，可以把子查询优化为 JOIN 操作</li></ol><p>通常子查询在 in 子句中，且子查询中为简单 SQL ( 不包含 union、group by、order by、limit 从句 ) 时，才可以把子查询转化为关联查询进行优化。</p><p>子查询性能差的原因：</p><p>子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响。<br>特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大。<br>由于子查询会产生大量的临时表也没有索引，所以会消耗过多的 CPU 和 IO 资源，产生大量的慢查询。</p><ol start="9"><li>避免使用 JOIN 关联太多的表</li></ol><p>对于 MySQL 来说，是存在关联缓存的，缓存的大小可以由 join_buffer_size 参数进行设置。</p><p>在 MySQL 中，对于同一个 SQL 多关联（join）一个表，就会多分配一个关联缓存，如果在一个 SQL 中关联的表越多，所占用的内存也就越大。</p><p>如果程序中大量的使用了多表关联的操作，同时 join_buffer_size 设置的也不合理的情况下，就容易造成服务器内存溢出的情况，就会影响到服务器数据库性能的稳定性。</p><p>同时对于关联操作来说，会产生临时表操作，影响查询效率 MySQL 最多允许关联 61 个表，建议不超过 5 个。</p><ol start="10"><li>减少同数据库的交互次数</li></ol><p>数据库更适合处理批量操作 合并多个相同的操作到一起，可以提高处理效率</p><ol start="11"><li>对应同一列进行 or 判断时，使用 in 代替 or</li></ol><p>In 的值不要超过 500 个， in 操作可以更有效的利用索引，or 大多数情况下很少能利用到索引。</p><ol start="12"><li>禁止使用 order by rand() 进行随机排序</li></ol><p>会把表中所有符合条件的数据装载到内存中，然后在内存中对所有数据根据随机生成的值进行排序，并且可能会对每一行都生成一个随机值，如果满足条件的数据集非常大，就会消耗大量的 CPU 和 IO 及内存资源。</p><p>推荐在程序中获取一个随机值，然后从数据库中获取数据的方式。</p><ol start="13"><li>WHERE从句中禁止对列进行函数转换和计算</li></ol><p>对列进行函数转换或计算时会导致无法使用索引。</p><ol start="14"><li>在明显不会有重复值时使用 UNION ALL 而不是 UNION</li></ol><p>UNION 会把两个结果集的所有数据放到临时表中后再进行去重操作。<br>UNION ALL 不会再对结果集进行去重操作。</p><ol start="15"><li>拆分复杂的大 SQL 为多个小 SQL</li></ol><p>大 SQL：逻辑上比较复杂，需要占用大量 CPU 进行计算的SQL 。<br>MySQL：一个 SQL 只能使用一个 CPU 进行计算。<br>SQL 拆分后可以通过并行执行来提高处理效率。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;数据库命名规范&quot;&gt;&lt;a href=&quot;#数据库命名规范&quot; class=&quot;headerlink&quot; title=&quot;数据库命名规范&quot;&gt;&lt;/a&gt;数据库命名规范&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;所有数据库对象名称必须使用小写字母并用下划线分割。&lt;/li&gt;
-&lt;li&gt;所有数据库对象名称
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://whb1990.github.io/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://whb1990.github.io/tags/MySQL/"/>
     
   </entry>
   
