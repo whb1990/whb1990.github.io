@@ -483,6 +483,268 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/Java内存模型-基础学习.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Java内存模型-基础学习.html" class="post-title-link" itemprop="url">Java内存模型-基础学习</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-24 07:36:55" itemprop="dateCreated datePublished" datetime="2019-08-24T07:36:55Z">2019-08-24</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/JMM/" itemprop="url" rel="index"><span itemprop="name">JMM</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/Java内存模型-基础学习.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/Java内存模型-基础学习.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/Java内存模型-基础学习.html" class="leancloud_visitors" data-flag-title="Java内存模型-基础学习">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">2.9k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  10分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              并发编程模型分类
+在并发编程中，需要处理两个关键问题：线程之间如何通信及线程之间如何同步（这里的线程是指并发执行的活动实体）。通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：共享内存和消息传递。
+在共享内存的并发模型里，线程之间共享程序的公共状态，线程之间通过写 - 
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Java内存模型-基础学习.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/分布式学习-Session丢失及解决.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,8 +928,9 @@
         
           
             <p>
-              什么是Session丢失Session是为了将同一个用户的多次访问在系统中被识别为“同一个用户”而产生的概念。除此之外，还可以基于它来减少重复往DB或者远程服务处获取与该用户相关的信息，以起到提升性能的作用。
-在做了负载均衡的场景中，如果选择的负载策略是hash策略，那么会使得Session产生一个
+              什么是Session丢失
+Session是为了将同一个用户的多次访问在系统中被识别为“同一个用户”而产生的概念。除此之外，还可以基于它来减少重复往DB或者远程服务处获取与该用户相关的信息，以起到提升性能的作用。
+在做了负载均衡的场景中，如果选择的负载策略是hash策略，那么会使得Session产生一
               ...
             </p>
           <!--noindex-->
@@ -920,8 +1183,10 @@
         
           
             <p>
-              概述分布式系统的关键是做冗余，让这些冗余能发挥高可用作用的就是负载均衡。负载均衡的作用是一个“连接者”，让上下游之间以期望的方式“连接”起来。所以，有必要先了解一下这些上下游的全貌，并且从中找到做负载均衡的地方。
-分布式系统有各式各样的架构方式，不过本质上都是上图这样的一个分层架构。图中红点标记出的
+              概述
+分布式系统的关键是做冗余，让这些冗余能发挥高可用作用的就是负载均衡。负载均衡的作用是一个“连接者”，让上下游之间以期望的方式“连接”起来。所以，有必要先了解一下这些上下游的全貌，并且从中找到做负载均衡的地方。
+
+分布式系统有各式各样的架构方式，不过本质上都是上图这样的一个分层架构。图中红点标记
               ...
             </p>
           <!--noindex-->
@@ -1133,7 +1398,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.4k</span>
+                <span title="本文字数">5.3k</span>
               
 
               
@@ -1175,10 +1440,11 @@
           
             <p>
               数据库命名规范
+
 所有数据库对象名称必须使用小写字母并用下划线分割。
 所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）。
 数据库对象的命名要能做到见名识意，并且最后不要超过32 个字符。
-临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必须
+临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必
               ...
             </p>
           <!--noindex-->
@@ -1431,9 +1697,12 @@
         
           
             <p>
-              公平锁/非公平锁公平锁是指多个线程按照申请锁的顺序来获取锁。
-非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
-对于Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非
+              公平锁/非公平锁
+公平锁
+是指多个线程按照申请锁的顺序来获取锁。
+非公平锁
+是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平
               ...
             </p>
           <!--noindex-->
@@ -1686,20 +1955,26 @@
         
           
             <p>
-              概述Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
+              概述
+Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
+
 
 String（字符类型）
 
+
 Hash（散列类型）
+
 
 List（列表类型）
 
+
 Set（集合类型）
+
 
 SortedSet（有序集合类型，简称zset）
 
 
-注意：在redis中的命令语句中，命令是忽略
+注意：在redis中的命令语句中
               ...
             </p>
           <!--noindex-->
@@ -1952,19 +2227,20 @@ SortedSet（有序集合类型，简称zset）
         
           
             <p>
-              命令的基本格式[root@localhost~]
-root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式：
+              命令的基本格式
+[root@localhost~]
+root为用户名（#超级用户  $普通用户）   localhost主机名
+命令的基本格式：
 命令[选项][参数]
-
-查询目录的内容命令格式：
+查询目录的内容
+命令格式：
 ls [选项][文件或目录]
-
 选项：
 
 -a 所有文件
 -l 查看详情
 -d 查看目录属性
--h 显示文件
+-h 显示文
               ...
             </p>
           <!--noindex-->
@@ -2148,7 +2424,7 @@ ls [选项][文件或目录]
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">842字</span>
+            <span class="post-count">889字</span>
           </span>
 		  
           <span class="post-time">
@@ -2176,7 +2452,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -2190,7 +2466,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -2218,13 +2494,14 @@ ls [选项][文件或目录]
           
             <p>
               
-git config –global user.name “你的名字” 让你全部的Git仓库绑定你的名字
 
-git config –global user.email “你的邮箱” 让你全部的Git仓库绑定你的邮箱
+git config --global user.name &quot;你的名字&quot; 让你全部的Git仓库绑定你的名字
 
-git init 初始化你的仓库
 
-git add . 把工作区的文件全部提交到
+git config --global user.email &quot;你的邮箱&quot; 让你全部的Git仓库绑定你的邮箱
+
+
+git init 初始化你的仓
               ...
             </p>
           <!--noindex-->
@@ -2739,276 +3016,15 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。在大量线程高并
+              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。
+这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。
+在大量线程
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/Java-LongAdder.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html" class="post-title-link" itemprop="url">由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-20 10:49:33" itemprop="dateCreated datePublished" datetime="2019-08-20T10:49:33Z">2019-08-20</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html" class="leancloud_visitors" data-flag-title="由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">3.1k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  12分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">7 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              起源相信使用Mybatis的小伙们一定经常编写类似如下的代码：
-可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。先看下警告信息：
-
-Spring team recommends: “Always use constructor based 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/由剔除Intellij中Mybatis的Mapper自动注入警告引入对注解的学习.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3110,7 +3126,7 @@ Spring team recommends: “Always use constructor based
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">86</span>
+                    <span class="site-state-item-count">87</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3547,7 +3563,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">542k</span>
+    <span title="站点总字数">553k</span>
   
 
   
@@ -3558,7 +3574,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">8:13</span>
+    <span title="站点阅读时长">8:23</span>
   
 </div>
 
