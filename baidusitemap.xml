@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-08%E4%B9%8B-%E7%BA%BF%E7%A8%8BJoin.html</loc>
-    <lastmod>2019-09-02</lastmod>
-  </url>  <url>
-    <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-01%E4%B9%8B-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html</loc>
-    <lastmod>2019-09-02</lastmod>
-  </url>  <url>
     <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-02%E4%B9%8B-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html</loc>
     <lastmod>2019-09-02</lastmod>
   </url>  <url>
@@ -23,6 +17,15 @@
     <lastmod>2019-09-02</lastmod>
   </url>  <url>
     <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-07%E4%B9%8B-%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0.html</loc>
+    <lastmod>2019-09-02</lastmod>
+  </url>  <url>
+    <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-01%E4%B9%8B-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html</loc>
+    <lastmod>2019-09-02</lastmod>
+  </url>  <url>
+    <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-08%E4%B9%8B-%E7%BA%BF%E7%A8%8BJoin.html</loc>
+    <lastmod>2019-09-02</lastmod>
+  </url>  <url>
+    <loc>http://whb1990.github.io/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-09%E4%B9%8B-%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E5%92%8C%E7%BB%88%E6%AD%A2%E6%96%B9%E5%BC%8F.html</loc>
     <lastmod>2019-09-02</lastmod>
   </url>  <url>
     <loc>http://whb1990.github.io/Java%E5%B9%B6%E5%8F%91-Semaphore.html</loc>
