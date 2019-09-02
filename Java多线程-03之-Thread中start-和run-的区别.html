@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T01:26:36.673Z">
+<meta property="og:updated_time" content="2019-09-02T03:19:18.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程-03之-Thread中start()和run()的区别">
 <meta name="twitter:description" content="start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
@@ -675,7 +675,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadMethodDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread mythread = <span class="keyword">new</span> TestThread(<span class="string">"testThread"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.run()"</span>);</span><br><span class="line">        mythread.run();</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.start()"</span>);</span><br><span class="line">        mythread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>运行结果：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main call testThread.run()</span><br><span class="line">main is running</span><br><span class="line">main call testThread.start()</span><br><span class="line">testThread is running</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main call testThread.run()</span><br><span class="line">main is running</span><br><span class="line">main call testThread.start()</span><br><span class="line">testThread is running</span><br></pre></td></tr></table></figure>
 
 <p><strong>结果说明：</strong><br>1) Thread.currentThread().getName()是用于获取“当前线程”的名字。当前线程是指正在cpu中调度执行的线程。<br>2) testThread.run()是在“主线程main”中调用的，该run()方法直接运行在“主线程main”上。<br>3) testThread.start()会启动“线程testThread”，“线程testThread”启动之后，会调用run()方法；此时的run()方法是运行在“线程testThread”上。</p>
 <h4 id="start-和run-源码说明（基于JDK1-8-0-171）"><a href="#start-和run-源码说明（基于JDK1-8-0-171）" class="headerlink" title="start()和run()源码说明（基于JDK1.8.0_171）"></a>start()和run()源码说明（基于JDK1.8.0_171）</h4><ul>
@@ -690,10 +690,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">start0</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>Thread.java中run()方法源码如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">		target.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>Thread.java中run()方法源码如下：</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">		target.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>说明：</strong></p>
 <blockquote>
 <p>target是一个Runnable对象。run()就是直接调用Thread线程的Runnable成员的run()方法，并不会新建一个线程。</p>
@@ -720,7 +720,7 @@
   <p><span>本文标题:</span><a href="/Java多线程-03之-Thread中start-和run-的区别.html">Java多线程-03之-Thread中start()和run()的区别</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年05月21日 - 21:05</p>
-  <p><span>最后更新:</span>2019年09月02日 - 01:09</p>
+  <p><span>最后更新:</span>2019年09月02日 - 03:09</p>
   <p><span>原始链接:</span><a href="/Java多线程-03之-Thread中start-和run-的区别.html" title="Java多线程-03之-Thread中start()和run()的区别">http://whb1990.github.io/Java多线程-03之-Thread中start-和run-的区别.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/Java多线程-03之-Thread中start-和run-的区别.html" aria-label="复制成功！"></i></span>
   </p>
@@ -913,7 +913,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1367,7 +1367,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">527k</span>
+    <span title="站点总字数">542k</span>
   
 
   
@@ -1378,7 +1378,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:59</span>
+    <span title="站点阅读时长">8:13</span>
   
 </div>
 

@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。 1git init  添加文件并提交 12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;  为初始提交建立一个里程碑：”v1” 1git tag v1  然后开始在工作区中工作–修改文件，提交 1git commit -a  当对修改结果满意，想将工作成功保存带走时，可">
+  <meta name="description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。  1git init   添加文件并提交  12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;   为初始提交建立一个里程碑：”v1”  1git tag v1   然后开始在工作区中工作–修改文件，提交  1git commit -a   当对修改结果满意，想将工作成">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习之~爱上Git的理由">
 <meta property="og:url" content="http://whb1990.github.io/Git学习之~爱上Git的理由.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。 1git init  添加文件并提交 12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;  为初始提交建立一个里程碑：”v1” 1git tag v1  然后开始在工作区中工作–修改文件，提交 1git commit -a  当对修改结果满意，想将工作成功保存带走时，可">
+<meta property="og:description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。  1git init   添加文件并提交  12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;   为初始提交建立一个里程碑：”v1”  1git tag v1   然后开始在工作区中工作–修改文件，提交  1git commit -a   当对修改结果满意，想将工作成">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-06T03:55:11.154Z">
+<meta property="og:updated_time" content="2019-09-02T02:45:17.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习之~爱上Git的理由">
-<meta name="twitter:description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。 1git init  添加文件并提交 12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;  为初始提交建立一个里程碑：”v1” 1git tag v1  然后开始在工作区中工作–修改文件，提交 1git commit -a  当对修改结果满意，想将工作成功保存带走时，可">
+<meta name="twitter:description" content="现场版本控制 现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。  1git init   添加文件并提交  12git add -Agit commit -m &amp;quot;本次提交的内容描述&amp;quot;   为初始提交建立一个里程碑：”v1”  1git tag v1   然后开始在工作区中工作–修改文件，提交  1git commit -a   当对修改结果满意，想将工作成">
 
 
 
@@ -659,26 +659,35 @@
 
       
         <h4 id="现场版本控制"><a href="#现场版本控制" class="headerlink" title="现场版本控制"></a>现场版本控制</h4><ol>
-<li><p>现场版本库创建。<br>直接在需要版本控制的目录下执行Git版本库初始化命令。</p>
+<li>现场版本库创建。<br>直接在需要版本控制的目录下执行Git版本库初始化命令。</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加文件并提交</p>
+
+<ol start="2">
+<li>添加文件并提交</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m &quot;本次提交的内容描述&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为初始提交建立一个里程碑：”v1”</p>
+
+<ol start="3">
+<li>为初始提交建立一个里程碑：”v1”</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后开始在工作区中工作–修改文件，提交</p>
+
+<ol start="4">
+<li>然后开始在工作区中工作–修改文件，提交</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当对修改结果满意，想将工作成功保存带走时，可以通过下面的命令，将从v1开始的历次提交<br>逐一导出为补丁文件。转换的补丁文件都包含一个数字前缀，并提取提交日志信息作为文件名，而且补丁文件<br>还提供对二进制文件的支持。</p>
+
+<ol start="5">
+<li>当对修改结果满意，想将工作成功保存带走时，可以通过下面的命令，将从v1开始的历次提交<br>逐一导出为补丁文件。转换的补丁文件都包含一个数字前缀，并提取提交日志信息作为文件名，而且补丁文件<br>还提供对二进制文件的支持。</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git format-patch v1..HEAD</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过邮件将补丁文件发出。当然也可以通过其他方式将补丁文件带走。</p>
+
+<ol start="6">
+<li>通过邮件将补丁文件发出。当然也可以通过其他方式将补丁文件带走。</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git send-email *.patch</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <p>Git创建的补丁文件使用了Git扩展格式，因此在导入时为了避免数据遗漏，要使用Git提供的命令而不能<br>使用GNU patch命令。即时要导入的不是Git版本库，也可以使用Git命令。</p>
 <h4 id="修改提交说明"><a href="#修改提交说明" class="headerlink" title="修改提交说明"></a>修改提交说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
 
@@ -727,19 +736,19 @@
 </ul>
 <p>对于默认未提供分页器的Git命令，例如 <code>git status</code> 命令，可通过下面任一方法启用分页器：</p>
 <ul>
-<li>在 <code>git</code> 和子命令(如：<code>status</code>)之间插入参数<code>-p</code>或<code>--paginate</code>，为命令启用内建分页器。如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -p status</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>在 <code>git</code> 和子命令(如：<code>status</code>)之间插入参数<code>-p</code>或<code>--paginate</code>，为命令启用内建分页器。如：</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -p status</span><br></pre></td></tr></table></figure>
+
 <p>-设置Git变量，设置完毕后运行相应的命令，将启用内建分页器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global pager.status true</span><br></pre></td></tr></table></figure>
 
 <p>Git 命令的分页器支持带颜色的字符输出，对于太长的行则采用截断方式处理（可用左右方向键滚动）。<br>如果不习惯分页器的长行截断模式而希望采用自动折行模式，可通过下面任一方法进行设置：</p>
 <ul>
-<li>通过设置LESS环境变量来实现。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LESS=FRX</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>通过设置LESS环境变量来实现。</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LESS=FRX</span><br></pre></td></tr></table></figure>
+
 <p>-或者通过定义Git配置变量来改变分页器的默认行为。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.pager &apos;less -+$LESS -FRX&apos;</span><br></pre></td></tr></table></figure>
 
@@ -765,7 +774,7 @@
   <p><span>本文标题:</span><a href="/Git学习之~爱上Git的理由.html">Git学习之~爱上Git的理由</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年06月04日 - 20:06</p>
-  <p><span>最后更新:</span>2019年06月06日 - 03:06</p>
+  <p><span>最后更新:</span>2019年09月02日 - 02:09</p>
   <p><span>原始链接:</span><a href="/Git学习之~爱上Git的理由.html" title="Git学习之~爱上Git的理由">http://whb1990.github.io/Git学习之~爱上Git的理由.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/Git学习之~爱上Git的理由.html" aria-label="复制成功！"></i></span>
   </p>
@@ -956,7 +965,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1410,7 +1419,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">527k</span>
+    <span title="站点总字数">542k</span>
   
 
   
@@ -1421,7 +1430,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">7:59</span>
+    <span title="站点阅读时长">8:13</span>
   
 </div>
 
