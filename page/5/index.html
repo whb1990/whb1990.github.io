@@ -673,10 +673,12 @@
         
           
             <p>
-              起源相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+              起源
+相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+
 可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。先看下警告信息：
 
-Spring team recommends: “Always use constructor based 
+Spring team recommends: &quot;Always use constructor
               ...
             </p>
           <!--noindex-->
@@ -860,7 +862,7 @@ Spring team recommends: “Always use constructor based
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">7.5k字</span>
+            <span class="post-count">7.6k字</span>
           </span>
 		  
           <span class="post-time">
@@ -929,8 +931,11 @@ Spring team recommends: “Always use constructor based
         
           
             <p>
-              概述手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
-ZookeeperZooKeeper（简称zk）
+              概述
+手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，
+这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
+Zookeeper
+ZooKeeper（简称
               ...
             </p>
           <!--noindex-->
@@ -1190,8 +1195,10 @@ ZookeeperZooKeeper（简称zk）
         
           
             <p>
-              概述NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
-IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系统的
+              概述
+NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
+IO模型
+IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系
               ...
             </p>
           <!--noindex-->
@@ -1445,7 +1452,8 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
           
             <p>
               之前在网上看很多公司在面试的时候都会问到Dubbo等一些RPC框架，更有甚者直接要求面试者手写PRC，今天就来撩下RPC。
-什么是RPCRPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随着
+什么是RPC
+RPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随
               ...
             </p>
           <!--noindex-->
@@ -1636,7 +1644,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.6k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1664,7 +1672,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -1962,9 +1970,8 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
               在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
 定义接口：
 UserCouponBo getUserCouponInfoById(Long userCouponId);
-
 然后对应的sql的xml如下：
-&lt;select id="selectUserCou
+&lt;select id="selectUserCoup
               ...
             </p>
           <!--noindex-->
@@ -2218,14 +2225,19 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
           
             <p>
               数据库架构原则
+
 高可用
 高性能
 一致性
 扩展性
 
-常见的架构方案主备架构该方案只有主库提供读写服务，备库冗余作故障转移。数据库链接字符串：jdbc:mysql://vip:3306/xxdb
+常见的架构方案
+主备架构
+该方案只有主库提供读写服务，备库冗余作故障转移。
+数据库链接字符串：jdbc:mysql://vip:3306/xxdb
 
-高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是透明的，无
+
+高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是
               ...
             </p>
           <!--noindex-->
@@ -2478,7 +2490,8 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              前言Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬
+              前言
+Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到
               ...
             </p>
           <!--noindex-->
@@ -2731,12 +2744,18 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              概述Spring中的注解大概可以分为两类：
+              概述
+Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
+Spring的bean容器相关的注解有：
+@Required,
+@Autowired,
+@PostConstruct,
+@PreDestory,
+还
               ...
             </p>
           <!--noindex-->
@@ -2927,7 +2946,7 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">687字</span>
+            <span class="post-count">689字</span>
           </span>
 		  
           <span class="post-time">
@@ -2996,9 +3015,11 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              BTree索引BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。
+              BTree索引
+BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。
 不适合：
-单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查
+单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值
+不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢
               ...
             </p>
           <!--noindex-->
@@ -3547,7 +3568,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">613k</span>
+    <span title="站点总字数">623k</span>
   
 
   
@@ -3558,7 +3579,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:17</span>
+    <span title="站点阅读时长">9:27</span>
   
 </div>
 
