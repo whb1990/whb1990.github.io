@@ -673,7 +673,8 @@
         
           
             <p>
-              概述现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBar
+              概述
+现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBa
               ...
             </p>
           <!--noindex-->
@@ -933,7 +934,10 @@
         
           
             <p>
-              概述CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方
+              概述
+CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。
+它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。
+另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDo
               ...
             </p>
           <!--noindex-->
@@ -1193,7 +1197,8 @@
         
           
             <p>
-              概述在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等待
+              概述
+在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等
               ...
             </p>
           <!--noindex-->
@@ -1453,8 +1458,10 @@
         
           
             <p>
-              通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。拿ATM机取款举例，ATM机如下图所示：
-同步队列是主要的排队区
+              通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。
+拿ATM机取款举例，ATM机如下图所示：
+
+同步队列是主要的排
               ...
             </p>
           <!--noindex-->
@@ -1645,7 +1652,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">4k字</span>
+            <span class="post-count">4.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1723,7 +1730,9 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;
+第二种方式则不同，如果
               ...
             </p>
           <!--noindex-->
@@ -1992,9 +2001,13 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种在获取时会忽略中断;而第二种则是获取时响应中断;第三种是获取时，如果超时则立即返回。
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种在获取时会忽略中断;
+而第二种则是获取时响应中断;
+第三种是获取时，如果超时则立即返回。
 
-不响应线程中断获取锁//不响应
+不响应线程中断获取锁
+/
               ...
             </p>
           <!--noindex-->
@@ -2254,7 +2267,8 @@
         
           
             <p>
-              AbstractQueuedSynchronizer是做什么的java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了AbstractQ
+              AbstractQueuedSynchronizer是做什么的
+java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了Abstract
               ...
             </p>
           <!--noindex-->
@@ -2514,7 +2528,8 @@
         
           
             <p>
-              处理器内存模型顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大的
+              处理器内存模型
+顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大
               ...
             </p>
           <!--noindex-->
@@ -3038,8 +3053,9 @@
         
           
             <p>
-              锁的happens-before关系锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
-class MonitorExample &#123;    int a = 0;    public synchronized void w
+              锁的happens-before关系
+锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
+class MonitorExample &#123;    int a = 0;    public synchronized void 
               ...
             </p>
           <!--noindex-->
@@ -3588,7 +3604,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">617k</span>
+    <span title="站点总字数">630k</span>
   
 
   
@@ -3599,7 +3615,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:21</span>
+    <span title="站点阅读时长">9:33</span>
   
 </div>
 
