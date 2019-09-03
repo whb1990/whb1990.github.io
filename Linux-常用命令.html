@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="命令的基本格式 [root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名 命令的基本格式： 1命令[选项][参数] 查询目录的内容 命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理  建立目录  mkdir -p[目录名] -p表示递归创建文件夹  切换目录">
+  <meta name="description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux - 常用命令">
 <meta property="og:url" content="http://whb1990.github.io/Linux-常用命令.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="命令的基本格式 [root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名 命令的基本格式： 1命令[选项][参数] 查询目录的内容 命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理  建立目录  mkdir -p[目录名] -p表示递归创建文件夹  切换目录">
+<meta property="og:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-21T08:36:33.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - 常用命令">
-<meta name="twitter:description" content="命令的基本格式 [root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名 命令的基本格式： 1命令[选项][参数] 查询目录的内容 命令格式： 1ls [选项][文件或目录] 选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理  建立目录  mkdir -p[目录名] -p表示递归创建文件夹  切换目录">
+<meta name="twitter:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件 -l 查看详情 -d 查看目录属性 -h 显示文件大小  文件处理 建立目录  mkdir -p[目录名]-p表示递归创建文件夹  切换目录  c">
 
 
 
@@ -658,14 +658,13 @@
       
 
       
-        <h5>命令的基本格式</h5>
-<p><code>[root@localhost~]</code></p>
-<p>root为用户名（<code>#</code>超级用户  <code>$</code>普通用户）   localhost主机名
-命令的基本格式：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令[选项][参数]</span><br></pre></td></tr></table></figure></p>
-<h4>查询目录的内容</h4>
-<p>命令格式：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项][文件或目录]</span><br></pre></td></tr></table></figure></p>
+        <h5 id="命令的基本格式"><a href="#命令的基本格式" class="headerlink" title="命令的基本格式"></a>命令的基本格式</h5><p><code>[root@localhost~]</code></p>
+<p>root为用户名（<code>#</code>超级用户  <code>$</code>普通用户）   localhost主机名<br>命令的基本格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令[选项][参数]</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询目录的内容"><a href="#查询目录的内容" class="headerlink" title="查询目录的内容"></a>查询目录的内容</h4><p>命令格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项][文件或目录]</span><br></pre></td></tr></table></figure>
+
 <p>选项：</p>
 <ul>
 <li>-a 所有文件</li>
@@ -673,36 +672,32 @@
 <li>-d 查看目录属性</li>
 <li>-h 显示文件大小</li>
 </ul>
-<h4>文件处理</h4>
-<ol>
+<h4 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h4><ol>
 <li>建立目录</li>
 </ol>
-<p><code>mkdir -p[目录名]</code>
--p表示递归创建文件夹</p>
+<p><code>mkdir -p[目录名]</code><br>-p表示递归创建文件夹</p>
 <ol start="2">
 <li>切换目录</li>
 </ol>
-<p><code>cd [目录]</code>
-简化操作：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~ 进入当前用户目录</span><br><span class="line">cd - 上次目录</span><br><span class="line">cd .. 进入上一级目录</span><br><span class="line">pwd 查看当前目录所在位置</span><br></pre></td></tr></table></figure></p>
+<p><code>cd [目录]</code><br>简化操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~ 进入当前用户目录</span><br><span class="line">cd - 上次目录</span><br><span class="line">cd .. 进入上一级目录</span><br><span class="line">pwd 查看当前目录所在位置</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>删除目录</li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir [目录] 删除所有文件</span><br><span class="line">rm -rf [目录] 删除目录所有文件</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir [目录] 删除所有文件</span><br><span class="line">rm -rf [目录] 删除目录所有文件</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>复制目录</li>
 </ol>
 <p><code>cp [选项] [原文件目录] [目标目录]</code></p>
 <p>选项：</p>
 <ul>
-<li>
-<p>-r复制目录</p>
+<li><p>-r复制目录</p>
 </li>
-<li>
-<p>-p连文件属性一起复制</p>
+<li><p>-p连文件属性一起复制</p>
 </li>
-<li>
-<p>-a 相当于-pdr</p>
+<li><p>-a 相当于-pdr</p>
 </li>
 </ul>
 <ol start="5">
@@ -712,9 +707,9 @@
 <ol start="6">
 <li>常见目录作用</li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ 根目录</span><br><span class="line"></span><br><span class="line">/bin 命令保存目录</span><br><span class="line"></span><br><span class="line">/boot 启动目录</span><br><span class="line"></span><br><span class="line">/dev 设备文件命令</span><br><span class="line"></span><br><span class="line">/etc 配置文件保存目录</span><br><span class="line"></span><br><span class="line">/home 家目录</span><br><span class="line"></span><br><span class="line">/lib 系统库保存命令</span><br><span class="line"></span><br><span class="line">/mnt 系统挂载目录</span><br></pre></td></tr></table></figure></p>
-<h4>文件搜索</h4>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/ 根目录</span><br><span class="line"></span><br><span class="line">/bin 命令保存目录</span><br><span class="line"></span><br><span class="line">/boot 启动目录</span><br><span class="line"></span><br><span class="line">/dev 设备文件命令</span><br><span class="line"></span><br><span class="line">/etc 配置文件保存目录</span><br><span class="line"></span><br><span class="line">/home 家目录</span><br><span class="line"></span><br><span class="line">/lib 系统库保存命令</span><br><span class="line"></span><br><span class="line">/mnt 系统挂载目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h4><ol>
 <li>locate</li>
 </ol>
 <p><code>locate [文件名]</code> 在系统数据库中查找文件。新建的文件，要执行updatedb操作之后才能搜到。</p>
@@ -724,11 +719,9 @@
 <p><code>whereis [选项] [命令名]</code> 或者 <code>which [选项][命令名]</code></p>
 <p>选项：</p>
 <ul>
-<li>
-<p>-b 只查找可执行文件</p>
+<li><p>-b 只查找可执行文件</p>
 </li>
-<li>
-<p>-m 只查找帮助文件</p>
+<li><p>-m 只查找帮助文件</p>
 </li>
 </ul>
 <ol start="3">
@@ -736,10 +729,8 @@
 </ol>
 <p><code>find [搜索范围][选项][条件]</code></p>
 <p>举例：</p>
-<p>在根目录下查找名为install.log文件
-<code>find / -name install.log</code></p>
-<p>忽略大小写查找文件
-<code>find /root -inname install.log</code></p>
+<p>在根目录下查找名为install.log文件<br><code>find / -name install.log</code></p>
+<p>忽略大小写查找文件<br><code>find /root -inname install.log</code></p>
 <p><code>find /var/log -mtime +10</code></p>
 <p>其中<code>-mtime</code> 文件修改时间</p>
 <p><code>-atime</code> 文件访问时间</p>
@@ -747,10 +738,8 @@
 <p><code>+10</code> 10天前</p>
 <p><code>10</code> 10天</p>
 <p><code>-10</code> 10天内</p>
-<p>查找文件大于20M的文件
-<code>find /etc -size +20M</code></p>
-<h4>压缩与解压缩</h4>
-<p>常见压缩格式：.zip 、 .gz 、 .bz2、 .tar.gz 、 .tar.bz2</p>
+<p>查找文件大于20M的文件<br><code>find /etc -size +20M</code></p>
+<h4 id="压缩与解压缩"><a href="#压缩与解压缩" class="headerlink" title="压缩与解压缩"></a>压缩与解压缩</h4><p>常见压缩格式：.zip 、 .gz 、 .bz2、 .tar.gz 、 .tar.bz2</p>
 <ol>
 <li>zip格式</li>
 </ol>
@@ -759,7 +748,8 @@
 <p><strong>压缩目录</strong></p>
 <p><code>zip -r [压缩文件名][原文件]</code></p>
 <p>举例：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch jp/cangls</span><br><span class="line"></span><br><span class="line">touch jp/longls</span><br><span class="line"></span><br><span class="line">zip -r jp.zip jp</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch jp/cangls</span><br><span class="line"></span><br><span class="line">touch jp/longls</span><br><span class="line"></span><br><span class="line">zip -r jp.zip jp</span><br></pre></td></tr></table></figure>
+
 <p><strong>解压：</strong></p>
 <p><code>unzip [压缩文件名]</code></p>
 <p><strong>压缩为gz格式，原文件不保留</strong></p>
@@ -786,66 +776,51 @@
 </ol>
 <p><strong>打包</strong></p>
 <p><code>tar -zcvf 压缩包名.tar.gz 原文件</code></p>
-<p><strong>解压</strong>
-<code>tar -zxvf 压缩包名.tar.gz</code></p>
-<h4>关机、重启</h4>
-<p><code>shutdown [选项][时间]</code></p>
+<p><strong>解压</strong><br><code>tar -zxvf 压缩包名.tar.gz</code></p>
+<h4 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a>关机、重启</h4><p><code>shutdown [选项][时间]</code></p>
 <p><strong>选项：</strong></p>
 <ul>
-<li>
-<p>-c 取消前一个关机命令</p>
+<li><p>-c 取消前一个关机命令</p>
 </li>
-<li>
-<p>-h 关机</p>
+<li><p>-h 关机</p>
 </li>
-<li>
-<p>-r 重启</p>
+<li><p>-r 重启</p>
 </li>
-<li>
-<p>init 6 重启</p>
+<li><p>init 6 重启</p>
 </li>
-<li>
-<p>init 0 关机</p>
+<li><p>init 0 关机</p>
 </li>
-<li>
-<p>logout 退出登陆</p>
+<li><p>logout 退出登陆</p>
 </li>
 </ul>
-<h4>查看用户信息</h4>
-<p><code>w</code>、<code>who</code>、<code>last</code>、<code>lastlog</code></p>
-<h4>输出重定向</h4>
-<p><code>命令&gt;文件</code> 以覆盖的方式，把正确的命令输出到指定文件</p>
+<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><p><code>w</code>、<code>who</code>、<code>last</code>、<code>lastlog</code></p>
+<h4 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h4><p><code>命令&gt;文件</code> 以覆盖的方式，把正确的命令输出到指定文件</p>
 <p><code>命令&gt;&gt;文件</code> 以追加的方式，把正确的命令输出到指定文件、</p>
 <p><code>错误命令 2&gt; 文件</code> 以覆盖的方式把错误的命令覆盖到指定文件</p>
 <p><code>错误命令 2&gt;&gt; 文件</code> 以追击的方式把错误的命令覆盖到指定文件</p>
 <p><code>命令&gt;&gt;文件 2&gt;&amp;1</code> 同时追加正确命令和错误命令到 指定文件</p>
 <p><code>命令 &gt;&gt;文件1 2&gt;&gt;文件2</code> 把正确的命令输出到文件1错误的文件2</p>
-<h4>网络相关</h4>
-<ol>
+<h4 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h4><ol>
 <li>ifconfig查看ip</li>
 </ol>
 <p>举个例子：</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig&gt;&gt; ip.log</span><br><span class="line"></span><br><span class="line">cat ip.log</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig&gt;&gt; ip.log</span><br><span class="line"></span><br><span class="line">cat ip.log</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>查看网络状态</li>
 </ol>
 <p><code>netstat [选项]</code></p>
 <p>选项：</p>
 <ul>
-<li>
-<p>-t: 列出tcp 协议端口</p>
+<li><p>-t: 列出tcp 协议端口</p>
 </li>
-<li>
-<p>-u: 列出upd协议端口</p>
+<li><p>-u: 列出upd协议端口</p>
 </li>
-<li>
-<p>-n ip地址个端口号</p>
+<li><p>-n ip地址个端口号</p>
 </li>
-<li>
-<p>-l 列出监听状态的</p>
+<li><p>-l 列出监听状态的</p>
 </li>
-<li>
-<p>-a 所有</p>
+<li><p>-a 所有</p>
 </li>
 </ul>
 <ol start="3">
@@ -856,8 +831,7 @@
 <li>查看某域名与自己的电脑的网络状态</li>
 </ol>
 <p><code>ping www.baidu.com</code></p>
-<h4>vi编辑器</h4>
-<p>vi的升级版是vim</p>
+<h4 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h4><p>vi的升级版是vim</p>
 <ol>
 <li>vim的操作模式</li>
 </ol>
@@ -887,8 +861,7 @@
 <p><code>dd</code>删除光标所在行</p>
 <p><code>ctr+f</code> 向下翻页</p>
 <p><code>ctr+b</code> 向上翻页</p>
-<h4>常用操作快捷键</h4>
-<p><code>ctr+c</code> 终止当前命令</p>
+<h4 id="常用操作快捷键"><a href="#常用操作快捷键" class="headerlink" title="常用操作快捷键"></a>常用操作快捷键</h4><p><code>ctr+c</code> 终止当前命令</p>
 <p><code>ctr+l</code> 清屏 相当于 clear</p>
 <p><code>ctr+a</code> 光标移到行首</p>
 <p><code>ctr+e</code> 光标移到行尾</p>
@@ -1108,7 +1081,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">100</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1459,7 +1432,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">命令的基本格式</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">压缩与解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">关机、重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">vi编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number"></span> <span class="nav-text">常用操作快捷键</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#命令的基本格式"><span class="nav-number">1.</span> <span class="nav-text">命令的基本格式</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#查询目录的内容"><span class="nav-number"></span> <span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件处理"><span class="nav-number"></span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件搜索"><span class="nav-number"></span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩与解压缩"><span class="nav-number"></span> <span class="nav-text">压缩与解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关机、重启"><span class="nav-number"></span> <span class="nav-text">关机、重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number"></span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出重定向"><span class="nav-number"></span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络相关"><span class="nav-number"></span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vi编辑器"><span class="nav-number"></span> <span class="nav-text">vi编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用操作快捷键"><span class="nav-number"></span> <span class="nav-text">常用操作快捷键</span></a></li></div>
             
 
           </div>
@@ -1566,7 +1539,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">623k</span>
+    <span title="站点总字数">617k</span>
   
 
   
@@ -1577,7 +1550,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:27</span>
+    <span title="站点阅读时长">9:21</span>
   
 </div>
 
