@@ -673,8 +673,10 @@
         
           
             <p>
-              通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。拿ATM机取款举例，ATM机如下图所示：
-同步队列是主要的排队区
+              通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。
+拿ATM机取款举例，ATM机如下图所示：
+
+同步队列是主要的排
               ...
             </p>
           <!--noindex-->
@@ -865,7 +867,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">4k字</span>
+            <span class="post-count">4.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -943,7 +945,9 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;
+第二种方式则不同，如果
               ...
             </p>
           <!--noindex-->
@@ -1212,9 +1216,13 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种在获取时会忽略中断;而第二种则是获取时响应中断;第三种是获取时，如果超时则立即返回。
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种在获取时会忽略中断;
+而第二种则是获取时响应中断;
+第三种是获取时，如果超时则立即返回。
 
-不响应线程中断获取锁//不响应
+不响应线程中断获取锁
+/
               ...
             </p>
           <!--noindex-->
@@ -1474,7 +1482,8 @@
         
           
             <p>
-              AbstractQueuedSynchronizer是做什么的java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了AbstractQ
+              AbstractQueuedSynchronizer是做什么的
+java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了Abstract
               ...
             </p>
           <!--noindex-->
@@ -1734,7 +1743,8 @@
         
           
             <p>
-              处理器内存模型顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大的
+              处理器内存模型
+顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大
               ...
             </p>
           <!--noindex-->
@@ -2258,8 +2268,9 @@
         
           
             <p>
-              锁的happens-before关系锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
-class MonitorExample &#123;    int a = 0;    public synchronized void w
+              锁的happens-before关系
+锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
+class MonitorExample &#123;    int a = 0;    public synchronized void 
               ...
             </p>
           <!--noindex-->
@@ -2519,8 +2530,9 @@ class MonitorExample &#123;    int a = 0;    public synchronized void w
         
           
             <p>
-              volatile特性当声明共享变量为 volatile 后，对这个变量的读 / 写将会很特别。理解 volatile 特性的一个好方法是：把对 volatile 变量的单个读 / 写，看成是使用同一个监视器锁对这些单个读 / 写操作做了同步。如下示例代码：
-class VolatileFeature
+              volatile特性
+当声明共享变量为 volatile 后，对这个变量的读 / 写将会很特别。理解 volatile 特性的一个好方法是：把对 volatile 变量的单个读 / 写，看成是使用同一个监视器锁对这些单个读 / 写操作做了同步。如下示例代码：
+class VolatileFeatur
               ...
             </p>
           <!--noindex-->
@@ -2780,9 +2792,10 @@ class VolatileFeature
         
           
             <p>
-              顺序一致性保证当程序未正确同步时，就会存在数据竞争。java 内存模型规范对数据竞争的定义如下：
+              顺序一致性保证
+当程序未正确同步时，就会存在数据竞争。java 内存模型规范对数据竞争的定义如下：
 在一个线程中写一个变量，在另一个线程读同一个变量，而且写和读没有通过同步来排序。
-当代码中包含数据竞争时，程序的执行往往产生违反直觉的结果。如果一个多线程程序能正确同步，这个程序将是一个没有数据竞争的程
+当代码中包含数据竞争时，程序的执行往往产生违反直觉的结果。如果一个多线程程序能正确同步，这个程序将是一个没有数据竞争的
               ...
             </p>
           <!--noindex-->
@@ -2973,7 +2986,7 @@ class VolatileFeature
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.7k字</span>
+            <span class="post-count">1.8k字</span>
           </span>
 		  
           <span class="post-time">
@@ -3001,7 +3014,7 @@ class VolatileFeature
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.7k</span>
+                <span title="本文字数">2.8k</span>
               
 
               
@@ -3015,7 +3028,7 @@ class VolatileFeature
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -3042,13 +3055,15 @@ class VolatileFeature
         
           
             <p>
-              数据依赖性如果两个操作访问同一个变量，且这两个操作中有一个为写操作，此时这两个操作之间就存在数据依赖性。数据依赖分下列三种类型：
+              数据依赖性
+如果两个操作访问同一个变量，且这两个操作中有一个为写操作，此时这两个操作之间就存在数据依赖性。数据依赖分下列三种类型：
 
 
 
 名称
 代码示例
 说明
+
 
 
 
@@ -3060,8 +3075,6 @@ a = 1;b = a;
 写后写
 a = 1;a = 2;
 写一个变量后，再写这个变量。
-
-
               ...
             </p>
           <!--noindex-->
@@ -3610,7 +3623,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">679k</span>
+    <span title="站点总字数">689k</span>
   
 
   
@@ -3621,7 +3634,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10:18</span>
+    <span title="站点阅读时长">10:26</span>
   
 </div>
 

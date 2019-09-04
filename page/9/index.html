@@ -673,11 +673,12 @@
         
           
             <p>
-              基本思想：在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。
+              基本思想：
+在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。
 算法步骤：
 
 比较相邻的元素。如果第一个比第二个大，就交换他们两个。
-对每一对相邻元素作同
+对每一对相邻元素作
               ...
             </p>
           <!--noindex-->
@@ -937,11 +938,12 @@
         
           
             <p>
-              单例模式介绍** 意图 **：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+              单例模式介绍
+** 意图 **：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
 ** 主要解决 **：一个全局使用的类频繁地创建与销毁。
 ** 何时使用 **：当您想控制实例数目，节省系统资源的时候。
 ** 如何解决 **：判断系统是否已经有这个单例，如果有则返回，如果没有则创建。
-** 关键
+** 关
               ...
             </p>
           <!--noindex-->
@@ -1153,7 +1155,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -1194,9 +1196,9 @@
         
           
             <p>
-              HEAD的重置即检出HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
+              HEAD的重置即检出
+HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
 $ cat .git/HEAD
-
 
 可以看出HEAD指向了分支master，此时执行git branch会看到当前处于master分支。
 $ g
@@ -1383,7 +1385,7 @@ $ g
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2k字</span>
+            <span class="post-count">2.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1411,7 +1413,7 @@ $ g
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -1452,8 +1454,9 @@ $ g
         
           
             <p>
-              分支游标master的探秘先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
-$ touch new-commit.txt $ git add new-commit.txt
+              分支游标master的探秘
+先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
+$ touch new-commit.txt $ git add new-commit.tx
               ...
             </p>
           <!--noindex-->
@@ -1706,13 +1709,15 @@ $ touch new-commit.txt $ git add new-commit.txt
         
           
             <p>
-              Git对象库探秘通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
+              Git对象库探秘
+通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
 $ git log -l --pretty=raw
-
 
 一个提交中居然包含了三个SHA1哈希值表示的对象ID。
 
-commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
+
+commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
+这是本次提交的唯
               ...
             </p>
           <!--noindex-->
@@ -1924,7 +1929,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.7k</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -1968,8 +1973,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
               首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。
 $ git log --stat
 
-
-通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所
+通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以
               ...
             </p>
           <!--noindex-->
@@ -2222,9 +2226,9 @@ $ git log --stat
         
           
             <p>
-              创建版本库及第一次提交首先看一下当前Git的版本
+              创建版本库及第一次提交
+首先看一下当前Git的版本
 $ git --version
-
 
 在开始Git之前，我们需要设置一下Git的环境变量，这个设置是一次性的工作。即这些设置会在全局文件（用户主目录的 .gitconfig）或系统文件（/etc/gitconfig）中做永久记录。
 
@@ -2440,7 +2444,7 @@ $ git --version
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -2482,22 +2486,19 @@ $ git --version
           
             <p>
               现场版本控制
-现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。
+
+现场版本库创建。
+直接在需要版本控制的目录下执行Git版本库初始化命令。
 
 git init
-
 
 添加文件并提交
 
 git add -Agit commit -m &quot;本次提交的内容描述&quot;
 
+为初始提交建立一个里程碑：&quot;v1&quot;
 
-为初始提交建立一个里程碑：”v1”
-
-git tag v1
-
-
-然后开始在工
+git tag v
               ...
             </p>
           <!--noindex-->
@@ -2757,9 +2758,10 @@ git tag v1
         
           
             <p>
-              下载安装在Idea中，打开”File”–&gt;”Settings”，或者使用快捷键”Ctrl+Alt+S”打开设置窗口：
-在设置窗口找到** plugins *标签页，然后点击下方的 * Browse Repositories **：
-在新打开的Browse Repositories窗口搜索fin
+              下载安装
+在Idea中，打开&quot;File&quot;--&gt;&quot;Settings&quot;，或者使用快捷键&quot;Ctrl+Alt+S&quot;打开设置窗口：
+
+在设置窗口找到** plugins **标签页，然后点击下方的 ** Browse Repositories 
               ...
             </p>
           <!--noindex-->
@@ -3012,7 +3014,9 @@ git tag v1
         
           
             <p>
-              ** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对
+              ** gti checkout -- filename **
+git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.
+可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这
               ...
             </p>
           <!--noindex-->
@@ -3561,7 +3565,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">679k</span>
+    <span title="站点总字数">689k</span>
   
 
   
@@ -3572,7 +3576,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">10:18</span>
+    <span title="站点阅读时长">10:26</span>
   
 </div>
 
