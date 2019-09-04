@@ -604,7 +604,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">598字</span>
+            <span class="post-count">639字</span>
           </span>
 		  
           <span class="post-time">
@@ -632,7 +632,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.6k</span>
               
 
               
@@ -673,9 +673,10 @@
         
           
             <p>
-              start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
+              start()和run()方法的区别
+start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！
-下面以代码来进
+下面以代码来
               ...
             </p>
           <!--noindex-->
@@ -866,7 +867,7 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">798字</span>
+            <span class="post-count">849字</span>
           </span>
 		  
           <span class="post-time">
@@ -894,7 +895,7 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3.4k</span>
               
 
               
@@ -937,14 +938,17 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
             <p>
               实现多线程的几种方式
 
+
 继承Thread类
 实现Runnable接口
 通过Callable和Future
 通过线程池
 
 
-Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：
-public interface Runnable 
+Thread和Runnable简介
+Runnable
+Runnable是一个接口库，该接口只包含了一个run()方法，定义如下：
+public interface Runnab
               ...
             </p>
           <!--noindex-->
@@ -1135,7 +1139,7 @@ public interface Runnable
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">961字</span>
+            <span class="post-count">1.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1145,7 +1149,7 @@ public interface Runnable
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
+            <span class="post-count">  4分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1163,7 +1167,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">2.2k</span>
               
 
               
@@ -1177,7 +1181,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -1205,10 +1209,11 @@ public interface Runnable
           
             <p>
               线程状态图
-线程状态解析 1. 新建状态(New): 线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
- 2. 就绪状态(Runnable): 也被称为“可执行状态”，处于就绪状态的线程，随时可能被CPU调度执行。
 
-调用线程的start()方法，
+线程状态解析
+&lt;span id=&quot;inline-green&quot;&gt; 1. 新建状态(New): &lt;/span&gt;
+线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
+&lt;span id=&quo
               ...
             </p>
           <!--noindex-->
@@ -1688,7 +1693,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -1702,7 +1707,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -1730,8 +1735,10 @@ public interface Runnable
           
             <p>
               Java里面所有的不变的属性需要用final修饰吗
-答：没必要。你可以实现相同的功能通过以下操作：设为非final的private 变量，且只有在构造函数中才能修改。不设set方法，如果是一个可变对象，不要泄露任何指向这个对象的引用。
-设置一个引用变量为final 只能确保这个变量不会被赋予一个不同
+
+答：没必要。你可以实现相同的功能通过以下操作：
+设为非final的private 变量，且只有在构造函数中才能修改。不设set方法，如果是一个可变对象，不要泄露任何指向这个对象的引用。
+设置一个引用变量为final 只能确保这个变量不会被赋予一个
               ...
             </p>
           <!--noindex-->
@@ -1991,7 +1998,9 @@ public interface Runnable
         
           
             <p>
-              多线程的优缺点优点：
+              多线程的优缺点
+优点：
+
 
 多线程技术使程序的响应速度更快。
 当前没有进行处理的任务可以将处理器时间让给其它任务。
@@ -2002,8 +2011,9 @@ public interface Runnable
 
 缺点
 
+
 等候使用共享资源时造成程序的运行速度变慢。
-对线程进行
+对线
               ...
             </p>
           <!--noindex-->
@@ -2187,7 +2197,7 @@ public interface Runnable
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">690字</span>
+            <span class="post-count">771字</span>
           </span>
 		  
           <span class="post-time">
@@ -2215,7 +2225,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -2229,7 +2239,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -2256,11 +2266,13 @@ public interface Runnable
         
           
             <p>
-              添加支持Hexo 默认是不支持流程图的 Markdown 语法的，需要添加支持：
+              添加支持
+Hexo 默认是不支持流程图的 Markdown 语法的，需要添加支持：
 npm install --save hexo-filter-flowchart
-
-演示一个简单的流程图语法如下：
-···flow         #由于渲染问题，请自行将 · 替换为 `st=&gt;start: 开
+演示
+一个简单的流程图
+语法如下：
+···flow         #由于渲染问题，请自行将 · 替换为 `st=&gt;start:
               ...
             </p>
           <!--noindex-->
@@ -2444,7 +2456,7 @@ npm install --save hexo-filter-flowchart
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.9k字</span>
+            <span class="post-count">3.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2454,7 +2466,7 @@ npm install --save hexo-filter-flowchart
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  11分钟</span>
+            <span class="post-count">  12分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -2472,7 +2484,7 @@ npm install --save hexo-filter-flowchart
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.1k</span>
+                <span title="本文字数">7.7k</span>
               
 
               
@@ -2486,7 +2498,7 @@ npm install --save hexo-filter-flowchart
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -2513,12 +2525,15 @@ npm install --save hexo-filter-flowchart
         
           
             <p>
-              前言Markdown 是一种轻量级的标记语言，其用简单的标记语法便可达到排版的目的，可以使我们更加专注于内容的编写，而不需过多关注排版。本文主要整理了 Markdown 中的常用的标记语法，以便自己与他人以后查用。
+              前言
+Markdown 是一种轻量级的标记语言，其用简单的标记语法便可达到排版的目的，可以使我们更加专注于内容的编写，而不需过多关注排版。
+本文主要整理了 Markdown 中的常用的标记语法，以便自己与他人以后查用。
 优点
+
 纯文本，所以兼容性极强，可以用所有文本编辑器打开。
 
 
-让你专注于文字而不是排
+让你专注于文字而
               ...
             </p>
           <!--noindex-->
@@ -2702,7 +2717,7 @@ npm install --save hexo-filter-flowchart
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">363字</span>
+            <span class="post-count">364字</span>
           </span>
 		  
           <span class="post-time">
@@ -2771,8 +2786,11 @@ npm install --save hexo-filter-flowchart
         
           
             <p>
-              概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。
-修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下
+              概述
+当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，
+或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。
+修改GitHub语言
+1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输
               ...
             </p>
           <!--noindex-->
@@ -3025,7 +3043,8 @@ npm install --save hexo-filter-flowchart
         
           
             <p>
-              千里马                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_    
+              千里马
+                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_   
               ...
             </p>
           <!--noindex-->
@@ -3574,7 +3593,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">659k</span>
+    <span title="站点总字数">671k</span>
   
 
   
@@ -3585,7 +3604,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">9:59</span>
+    <span title="站点阅读时长">10:10</span>
   
 </div>
 
