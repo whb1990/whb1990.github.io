@@ -483,6 +483,278 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/Redis-常用数据类型及命令.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Redis-常用数据类型及命令.html" class="post-title-link" itemprop="url">Redis - 常用数据类型及命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-21 15:23:32" itemprop="dateCreated datePublished" datetime="2019-08-21T15:23:32Z">2019-08-21</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/Redis-常用数据类型及命令.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/Redis-常用数据类型及命令.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/Redis-常用数据类型及命令.html" class="leancloud_visitors" data-flag-title="Redis - 常用数据类型及命令">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">3.9k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  18分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              概述
+Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
+
+
+String（字符类型）
+
+
+Hash（散列类型）
+
+
+List（列表类型）
+
+
+Set（集合类型）
+
+
+SortedSet（有序集合类型，简称zset）
+
+
+注意：在redis中的命令语句中
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Redis-常用数据类型及命令.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/Linux-常用命令.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,19 +938,20 @@
         
           
             <p>
-              命令的基本格式[root@localhost~]
-root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式：
+              命令的基本格式
+[root@localhost~]
+root为用户名（#超级用户  $普通用户）   localhost主机名
+命令的基本格式：
 命令[选项][参数]
-
-查询目录的内容命令格式：
+查询目录的内容
+命令格式：
 ls [选项][文件或目录]
-
 选项：
 
 -a 所有文件
 -l 查看详情
 -d 查看目录属性
--h 显示文件
+-h 显示文
               ...
             </p>
           <!--noindex-->
@@ -862,7 +1135,7 @@ ls [选项][文件或目录]
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">842字</span>
+            <span class="post-count">889字</span>
           </span>
 		  
           <span class="post-time">
@@ -890,7 +1163,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -904,7 +1177,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -932,13 +1205,14 @@ ls [选项][文件或目录]
           
             <p>
               
-git config –global user.name “你的名字” 让你全部的Git仓库绑定你的名字
 
-git config –global user.email “你的邮箱” 让你全部的Git仓库绑定你的邮箱
+git config --global user.name &quot;你的名字&quot; 让你全部的Git仓库绑定你的名字
 
-git init 初始化你的仓库
 
-git add . 把工作区的文件全部提交到
+git config --global user.email &quot;你的邮箱&quot; 让你全部的Git仓库绑定你的邮箱
+
+
+git init 初始化你的仓
               ...
             </p>
           <!--noindex-->
@@ -1453,7 +1727,9 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。在大量线程高并
+              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。
+这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。
+在大量线程
               ...
             </p>
           <!--noindex-->
@@ -1713,10 +1989,12 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              起源相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+              起源
+相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+
 可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。先看下警告信息：
 
-Spring team recommends: “Always use constructor based 
+Spring team recommends: &quot;Always use constructor
               ...
             </p>
           <!--noindex-->
@@ -1900,7 +2178,7 @@ Spring team recommends: “Always use constructor based
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">7.5k字</span>
+            <span class="post-count">7.6k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1969,8 +2247,11 @@ Spring team recommends: “Always use constructor based
         
           
             <p>
-              概述手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
-ZookeeperZooKeeper（简称zk）
+              概述
+手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，
+这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
+Zookeeper
+ZooKeeper（简称
               ...
             </p>
           <!--noindex-->
@@ -2230,8 +2511,10 @@ ZookeeperZooKeeper（简称zk）
         
           
             <p>
-              概述NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
-IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系统的
+              概述
+NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
+IO模型
+IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系
               ...
             </p>
           <!--noindex-->
@@ -2485,7 +2768,8 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
           
             <p>
               之前在网上看很多公司在面试的时候都会问到Dubbo等一些RPC框架，更有甚者直接要求面试者手写PRC，今天就来撩下RPC。
-什么是RPCRPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随着
+什么是RPC
+RPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随
               ...
             </p>
           <!--noindex-->
@@ -2676,7 +2960,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.6k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2704,7 +2988,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -2753,264 +3037,6 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
           
             <div class="post-button text-center">
               <a class="btn" href="/Java-String常见问题.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html" class="post-title-link" itemprop="url">Mybatis异常There is no getter for property named 'XXX' in class</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-14 16:39:45" itemprop="dateCreated datePublished" datetime="2019-08-14T16:39:45Z">2019-08-14</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Mybatis/" itemprop="url" rel="index"><span itemprop="name">Mybatis</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html" class="leancloud_visitors" data-flag-title="Mybatis异常There is no getter for property named 'XXX' in class">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">291字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  1分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
-定义接口：
-UserCouponBo getUserCouponInfoById(Long userCouponId);
-
-然后对应的sql的xml如下：
-&lt;select id="selectUserCou
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3112,7 +3138,7 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3557,7 +3583,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">728k</span>
+    <span title="站点总字数">751k</span>
   
 
   
@@ -3568,7 +3594,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:02</span>
+    <span title="站点阅读时长">11:23</span>
   
 </div>
 

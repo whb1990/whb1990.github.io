@@ -483,6 +483,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/分布式学习-限流算法.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/分布式学习-限流算法.html" class="post-title-link" itemprop="url">分布式学习-限流算法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-06 11:10:53" itemprop="dateCreated datePublished" datetime="2019-09-06T11:10:53Z">2019-09-06</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/分布式学习-限流算法.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/分布式学习-限流算法.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/分布式学习-限流算法.html" class="leancloud_visitors" data-flag-title="分布式学习-限流算法">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">3.1k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  13分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              概述
+在开发高并发系统时，有三把利器用来保护系统：缓存、降级和限流。缓存的使用相信很多开发者都很了解了，诸如redis，memcache等工具。
+那么何为限流呢？顾名思义，限流就是限制流量，就像你宽带包了1个G的流量，用完了就没了。通过限流，可以很好地控制系统的qps，从而达到保护系统的目的。而限流
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/分布式学习-限流算法.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/分布式学习-一致性Hash算法.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,10 +921,11 @@
         
           
             <p>
-              示例引入比如现在有 N 个 Redis 服务器，不考虑使用Redis Cluster的情况下，那么如何将一个对象 object 映射到 N 个 Redis 上呢？
+              示例引入
+比如现在有 N 个 Redis 服务器，不考虑使用Redis Cluster的情况下，那么如何将一个对象 object 映射到 N 个 Redis 上呢？
 你很可能会采用类似下面的通用方法计算 object 的 hash 值，然后均匀的映射到到 N 个 cache：
 
-求余算法: hash(
+求余算法: hash
               ...
             </p>
           <!--noindex-->
@@ -929,7 +1185,8 @@
         
           
             <p>
-              模式定义责任链模式（Chain of Responsibility） 是行为型设计模式之一，其将链中每一个节点看作是一个对象，每个节点处理的请求均不同，从而避免了请求的发送者和接收者之间的耦合关系，且内部自动维护一个下一节点对象。当一个请求从链式的首端发出时，会沿着链的路径依次传递给每一个节点对象，
+              模式定义
+责任链模式（Chain of Responsibility） 是行为型设计模式之一，其将链中每一个节点看作是一个对象，每个节点处理的请求均不同，从而避免了请求的发送者和接收者之间的耦合关系，且内部自动维护一个下一节点对象。当一个请求从链式的首端发出时，会沿着链的路径依次传递给每一个节点对象
               ...
             </p>
           <!--noindex-->
@@ -1189,9 +1446,10 @@
         
           
             <p>
-              模式定义建造者模式(Builder Pattern)：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。
+              模式定义
+建造者模式(Builder Pattern)：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式。
 建造者模式一步一步创建一个复杂的对象，它允许用户只通过指定复杂对象的类型和内容就可以构建它们，用户不需要知道内部的具体构建细节。
-主要作用
+主要作
               ...
             </p>
           <!--noindex-->
@@ -1451,8 +1709,10 @@
         
           
             <p>
-              模式定义定义一个操作中算法的框架，而将一些步骤延迟到子类中。模板方法模式使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法模式是一种基于继承的代码复用技术，它是一种类行为型模式。
-主要作用当完成一个操作具有固定的流程时，由抽象固定流程步骤，具体步骤交给子类进行具体实现（固定的流
+              模式定义
+定义一个操作中算法的框架，而将一些步骤延迟到子类中。模板方法模式使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法模式是一种基于继承的代码复用技术，它是一种类行为型模式。
+主要作用
+当完成一个操作具有固定的流程时，由抽象固定流程步骤，具体步骤交给子类进行具体实现（固定
               ...
             </p>
           <!--noindex-->
@@ -1712,10 +1972,14 @@
         
           
             <p>
-              模式定义外观模式，又称为门面模式，是一种使用频率非常高的结构型设计模式，是迪米特法则的一种具体实现，它通过引入一个外观角色来简化客户端与子系统之间的交互，为复杂的子系统调用提供一个统一的入口，降低子系统与客户端的耦合度，且客户端调用非常方便。如下图：
+              模式定义
+外观模式，又称为门面模式，是一种使用频率非常高的结构型设计模式，是迪米特法则的一种具体实现，它通过引入一个外观角色来简化客户端与子系统之间的交互，为复杂的子系统调用提供一个统一的入口，降低子系统与客户端的耦合度，且客户端调用非常方便。如下图：
+
 举个例子：如网站导航
+
 主要作用
-实现客户类与子系
+
+实现客户
               ...
             </p>
           <!--noindex-->
@@ -1975,8 +2239,9 @@
         
           
             <p>
-              模式定义观察者模式（Observer Pattern），又叫 发布-订阅（Publish/Subscribe）模式、模型-视图（Model/View）模式、源-监听器（Source/Listener）模式 或 从属者（Dependents）模式。
-观察者模式 是对象的行为模式，定义了一种一对多的依赖
+              模式定义
+观察者模式（Observer Pattern），又叫 发布-订阅（Publish/Subscribe）模式、模型-视图（Model/View）模式、源-监听器（Source/Listener）模式 或 从属者（Dependents）模式。
+观察者模式 是对象的行为模式，定义了一种一对多的依
               ...
             </p>
           <!--noindex-->
@@ -2236,8 +2501,10 @@
         
           
             <p>
-              模式定义装饰者模式(Decorator Pattern)：动态地给一个对象增加一些额外的职责，增加对象功能来说，装饰模式比生成子类实现更为灵活。装饰模式是一种对象结构型模式。
-模式原理让装饰器实现被包装类（Concrete Component）相同的接口（Component）（使得装饰器与被扩展类类
+              模式定义
+装饰者模式(Decorator Pattern)：动态地给一个对象增加一些额外的职责，增加对象功能来说，装饰模式比生成子类实现更为灵活。装饰模式是一种对象结构型模式。
+模式原理
+让装饰器实现被包装类（Concrete Component）相同的接口（Component）（使得装饰器与被扩展
               ...
             </p>
           <!--noindex-->
@@ -2497,10 +2764,13 @@
         
           
             <p>
-              模式定义将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。
+              模式定义
+将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。
 适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。
-主要作用提供一个转换器（适配器），将当前系统存在的一个对象转化为客户端能够访问的接口对象。
-模式分类根据适配器类与适配者类
+主要作用
+提供一个转换器（适配器），将当前系统存在的一个对象转化为客户端能够访问的接口对象。
+模式分类
+根据适配器类与适
               ...
             </p>
           <!--noindex-->
@@ -2691,7 +2961,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">6.7k字</span>
+            <span class="post-count">6.8k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2760,279 +3030,17 @@
         
           
             <p>
-              代理模式实现方式介绍什么是代理模式日常生活中我们经常会碰到代理模式，例如我们找房产中介帮我们找房子，找婚姻中介帮我们介绍对象，找保洁帮我们打理房间等。在无形中运用到了代理模式。
-为什么要使用代理？运用代理可以使我们的生活更加便利，有了代理，我们不需要自己去找房子，不需要自己去找对象，不需要自己去打理
+              代理模式实现方式介绍
+什么是代理模式
+日常生活中我们经常会碰到代理模式，例如我们找房产中介帮我们找房子，找婚姻中介帮我们介绍对象，找保洁帮我们打理房间等。在无形中运用到了代理模式。
+为什么要使用代理？
+运用代理可以使我们的生活更加便利，有了代理，我们不需要自己去找房子，不需要自己去找对象，不需要自己
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/JDK动态代理.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/设计模式-代理模式.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/设计模式-代理模式.html" class="post-title-link" itemprop="url">设计模式-代理模式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-03 21:30:10" itemprop="dateCreated datePublished" datetime="2019-09-03T21:30:10Z">2019-09-03</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/设计模式-代理模式.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/设计模式-代理模式.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/设计模式-代理模式.html" class="leancloud_visitors" data-flag-title="设计模式-代理模式">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  7分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">6.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              模式定义给目标对象提供一个代理对象，并由代理对象控制对目标对象的引用。
-主要作用通过引入代理对象的方式来间接访问目标对象。
-解决的问题防止直接访问目标对象给系统带来的不必要复杂性。
-模式原理UML类图
-模式组成
-抽象主题角色（Subject）：抽象主题类 的主要职责是声明 真实主题 与 代理 的共同
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/设计模式-代理模式.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3134,7 +3142,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3579,7 +3587,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">728k</span>
+    <span title="站点总字数">751k</span>
   
 
   
@@ -3590,7 +3598,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:02</span>
+    <span title="站点阅读时长">11:23</span>
   
 </div>
 
