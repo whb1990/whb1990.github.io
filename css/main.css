@@ -2021,7 +2021,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffa7ff;
+  background: #30ffc2;
 }
 .feed-link,
 .chat {
@@ -2177,7 +2177,7 @@ pre .javascript .function {
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -3652,4 +3652,8 @@ pre {
 }
 .headband {
   display: none;
+}
+#menu>li.menu-item.menu-item-\28 灬ºωº灬\29 ♡>a {
+  color: #f00;
+  font-weight: 700;
 }

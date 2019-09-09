@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <title>（づ￣3￣）づ╭❤～</title>
+    <link rel="stylesheet" href="css/TimeCircles.css">
+  </head>
+  <body style="color:#f06" name="no_live2d">
+    <h1 style="margin:40px;font:32px Microsoft Yahei;text-align:center;color:#fff">（づ￣3￣）づ╭<nobr style="color:red"> ❤</nobr>～</h1>
+    <div style="text-align:center">
+      <p><strong>From: 2009-12-27 13:14:21 We show our feelings, And we fell in love</strong></p>
+      <p><strong>Then: 2009-12-27 10:30:00 The first time I hold your hand</strong></p>
+      <p><strong>And: 2009-12-27 13:14:21 we openly love each other.</strong></p>
+    </div>
+    <div id="someTimer" class="someTimer" data-date="2009/12/27 13:14:21" style="width:750px;margin:0 auto"></div>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/TimeCircles.js"></script>
+    <script>
+      $(function () {
+        $("#someTimer").TimeCircles({
+          time: {
+            Days: {show: !1, text: "天", color: "#FC6"},
+            Hours: {show: !1, text: "时", color: "#9CF"},
+            Minutes: {show: !1, text: "分", color: "#BFB"},
+            Seconds: {show: !1, text: "秒", color: "#F99"}
+          }
+        })
+      });
+    </script>
+  </body>
+</html>
