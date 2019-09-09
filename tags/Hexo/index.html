@@ -513,6 +513,32 @@
 
       <h2 class="post-title">
         
+          <a class="post-title-link" href="/Hexo搭建博客常见问题总结.html" itemprop="url">
+            
+              <span itemprop="name">Hexo搭建博客常见问题</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-09-09T15:58:43Z" content="2019-09-09">
+          09-09
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
           <a class="post-title-link" href="/Hexo-live2d插件效果预览.html" itemprop="url">
             
               <span itemprop="name">Hexo live2d插件效果预览</span>
@@ -639,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">113</span>
+                    <span class="site-state-item-count">114</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1084,7 +1110,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">752k</span>
+    <span title="站点总字数">756k</span>
   
 
   
@@ -1095,7 +1121,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:24</span>
+    <span title="站点阅读时长">11:28</span>
   
 </div>
 
@@ -1262,6 +1288,15 @@ show_date_time();
     visitor: true,
     lang: 'zh-cn' || 'zh-cn'
   });
+  
+  //新增以下代码即可，可以移除.info下所有子节点。
+  var infoEle = document.querySelector('#comments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+    infoEle.childNodes.forEach(function(item) {
+    item.parentNode.removeChild(item);
+    });
+  }
+
 </script>
 
 
