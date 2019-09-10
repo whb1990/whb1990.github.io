@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="html/css/custom_main.css">
-    <title>じò ぴé</title>
+    <title>(灬ºωº灬)♡じò ぴé</title>
     <link rel="icon" href="html/images/favicon.png" type="img/x-ico">
   </head>
   <body name="mobile_force_show">
@@ -25,11 +25,21 @@
     </nav>
     <div>
       <script type="text/javascript">
-        function setIframeHeight(t) {
-          t && (t.height = t.contentWindow.body.scrollHeight + 60);
-        }
+		function setIframeHeight(iframe) {
+		  if (iframe) {
+			var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+			if (iframeWin.document.body) {
+			  iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+			}
+		  }
+		};
+
+		window.onload = function () {
+		  setIframeHeight(document.getElementById('loveFrame'));
+		};
       </script>
-      <iframe name="i" src="html/loveTime.html" frameborder="0" width="100%" height="500px"></iframe>
+      
+	  <iframe name="i" src="html/loveTime.html" frameborder="0" width="100%" scrolling="no" id="loveFrame" onload="setIframeHeight(this)"></iframe>
     </div>
   </div>
   </body>
