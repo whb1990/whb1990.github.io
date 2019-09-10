@@ -731,7 +731,7 @@
 <p>3、运行时报错，应用程序可能会动态创建大量 class，而这些 class 的生命周期很短暂，但是 JVM 默认不会卸载 class，可以设置 <code>-XX:+CMSClassUnloadingEnabled</code> 和 <code>-XX:+UseConcMarkSweepGC</code>这两个参数允许 JVM 卸载 class。</p>
 </blockquote>
 <blockquote>
-<p>如果上述方法无法解决，可以通过 jmap 命令 dump 内存对象 <code>jmap-dump:format=b,file=dump.hprof&lt;process-id&gt;</code>，然后利用 Eclipse MAT <a href="https://www.eclipse.org/mat" target="_blank" rel="noopener">https://www.eclipse.org/mat</a> 功能逐一分析开销最大的 classloader 和重复 class。</p>
+<p>如果上述方法无法解决，可以通过 jmap 命令 dump 内存对象 <code>jmap-dump:format=b,file=dump.hprof&lt;process-id&gt;</code>，然后利用 Eclipse MAT https://www.eclipse.org/mat 功能逐一分析开销最大的 classloader 和重复 class。</p>
 </blockquote>
 <ol start="4">
 <li>Metaspace</li>
@@ -796,7 +796,7 @@
 <p>ulimit -a</p>
 </blockquote>
 <blockquote>
-<p>…. 省略部分内容 …..</p>
+<p>.... 省略部分内容 .....</p>
 </blockquote>
 <blockquote>
 <p>max user processes (-u) 16384</p>
@@ -1091,7 +1091,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-count">115</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1358,11 +1358,13 @@
               </ul>
             </div>
           
-		  
+		    
+		  <!--以下代码是播放器-->
 		  <link rel="stylesheet" href="/dist/APlayer.min.css">
-			<div id="aplayer"></div>
-			<script type="text/javascript" src="/dist/APlayer.min.js"></script>
-			<script type="text/javascript" src="/dist/music.js"></script>
+		  <div id="aplayer"></div>
+		  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+	      <script type="text/javascript" src="/dist/music.js"></script>
+		  <!--以上代码是播放器-->
 
           
             
@@ -1541,7 +1543,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">756k</span>
+    <span title="站点总字数">771k</span>
   
 
   
@@ -1552,7 +1554,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:27</span>
+    <span title="站点阅读时长">11:41</span>
   
 </div>
 

@@ -483,6 +483,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/JVM类加载机制.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/JVM类加载机制.html" class="post-title-link" itemprop="url">JVM类加载机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-03 09:05:36" itemprop="dateCreated datePublished" datetime="2019-09-03T09:05:36Z">2019-09-03</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/JVM类加载机制.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/JVM类加载机制.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/JVM类加载机制.html" class="leancloud_visitors" data-flag-title="JVM类加载机制">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">5k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  17分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              类加载时机
+类的生命周期
+一个类从加载进内存到卸载出内存为止，一共经历7个阶段：
+&lt;span id=&quot;inline-blue&quot;&gt; 加载——&gt;验证——&gt;准备——&gt;解析——&gt;初始化——&gt;使用——&gt;卸载 &lt;/span&gt;
+
+其中
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/JVM类加载机制.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/JVM原理.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -604,7 +869,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">14.3k字</span>
+            <span class="post-count">14.5k字</span>
           </span>
 		  
           <span class="post-time">
@@ -614,7 +879,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  49分钟</span>
+            <span class="post-count">  50分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -673,9 +938,11 @@
         
           
             <p>
-              Java内存模型Java程序执行流程日常Java的基本开发模式是，我们写的所有java程序都保存在*.java的文件中，即我们的源代码，这些源代码必须经过javac.exe命令将其编译成*.class文件，而后利用java.exe命令在JVM进程中解释执行。整个过程如下图：
+              Java内存模型
+Java程序执行流程
+日常Java的基本开发模式是，我们写的所有java程序都保存在*.java的文件中，即我们的源代码，这些源代码必须经过javac.exe命令将其编译成*.class文件，而后利用java.exe命令在JVM进程中解释执行。整个过程如下图：
 
-实际上，当JVM将所需
+实际上，当JVM将
               ...
             </p>
           <!--noindex-->
@@ -894,7 +1161,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -908,7 +1175,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -935,12 +1202,13 @@
         
           
             <p>
-              生产者/消费者模型生产/消费者问题是个非常典型的多线程问题，涉及到的对象包括“生产者”、“消费者”、“仓库”和“产品”。他们之间的关系如下：
+              生产者/消费者模型
+生产/消费者问题是个非常典型的多线程问题，涉及到的对象包括“生产者”、“消费者”、“仓库”和“产品”。他们之间的关系如下：
 
 生产者仅仅在仓储未满时候生产，仓满则停止生产。
 消费者仅仅在仓储有产品时候才能消费，仓空则等待。
 当消费者发现仓储没产品可消费时候会通知生产者生产。
-生产者
+生产
               ...
             </p>
           <!--noindex-->
@@ -1159,7 +1427,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.1k</span>
+                <span title="本文字数">5.3k</span>
               
 
               
@@ -1200,8 +1468,10 @@
         
           
             <p>
-              线程优先级java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
-java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。用户线程一般用户执行用户
+              线程优先级
+java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
+java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。
+用户线程一般用户执行
               ...
             </p>
           <!--noindex-->
@@ -1392,7 +1662,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.4k字</span>
+            <span class="post-count">2.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1402,7 +1672,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  10分钟</span>
+            <span class="post-count">  12分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1420,7 +1690,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">10k</span>
+                <span title="本文字数">11k</span>
               
 
               
@@ -1434,7 +1704,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -1461,9 +1731,11 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
         
           
             <p>
-              interrupt()说明关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
+              interrupt()说明
+关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
 
-Interrupts this thread.Unless the current thread is interrupting 
+Interrupts this thread.
+Unless the current thread is interruptin
               ...
             </p>
           <!--noindex-->
@@ -1654,7 +1926,7 @@ Interrupts this thread.Unless the current thread is interrupting
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">850字</span>
+            <span class="post-count">946字</span>
           </span>
 		  
           <span class="post-time">
@@ -1664,7 +1936,7 @@ Interrupts this thread.Unless the current thread is interrupting
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
+            <span class="post-count">  4分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1682,7 +1954,7 @@ Interrupts this thread.Unless the current thread is interrupting
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.1k</span>
+                <span title="本文字数">3.6k</span>
               
 
               
@@ -1723,8 +1995,9 @@ Interrupts this thread.Unless the current thread is interrupting
         
           
             <p>
-              join()介绍join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
-// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new Son
+              join()介绍
+join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
+// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new So
               ...
             </p>
           <!--noindex-->
@@ -1915,7 +2188,7 @@ Interrupts this thread.Unless the current thread is interrupting
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">675字</span>
+            <span class="post-count">719字</span>
           </span>
 		  
           <span class="post-time">
@@ -1943,7 +2216,7 @@ Interrupts this thread.Unless the current thread is interrupting
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.9k</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -1984,8 +2257,10 @@ Interrupts this thread.Unless the current thread is interrupting
         
           
             <p>
-              sleep()介绍sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。
-sleep()示例package m
+              sleep()介绍
+sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。
+sleep()示例
+package
               ...
             </p>
           <!--noindex-->
@@ -2176,7 +2451,7 @@ sleep()示例package m
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">983字</span>
+            <span class="post-count">1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2204,7 +2479,7 @@ sleep()示例package m
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3.5k</span>
               
 
               
@@ -2245,9 +2520,8 @@ sleep()示例package m
         
           
             <p>
-              yield()介绍 yield()的作用是让步。它能让当前线程由“运行状态”进入到“就绪状态”，从而让其它具有相同优先级的等待线程获取执行权；但是，并不能保证在当前线程调用yield()之后，其它具有相同优先级的线程就一定能获得执行权；也有可能是当前线程又进入到“运行状态”继续运行！ 
-
-yield
+              yield()介绍
+&lt;p id=&quot;div-border-left-green&quot;&gt; yield()的作用是让步。它能让当前线程由“运行状态”进入到“就绪状态”，从而让其它具有相同优先级的等待线程获取执行权；但是，并不能保证在当前线程调用yield()之后，其它具有相同优
               ...
             </p>
           <!--noindex-->
@@ -2438,7 +2712,7 @@ yield
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.4k字</span>
+            <span class="post-count">2.6k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2448,7 +2722,7 @@ yield
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  10分钟</span>
+            <span class="post-count">  11分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -2466,7 +2740,7 @@ yield
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.2k</span>
+                <span title="本文字数">9.2k</span>
               
 
               
@@ -2480,7 +2754,7 @@ yield
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -2507,7 +2781,10 @@ yield
         
           
             <p>
-              wait(), notify(), notifyAll()等方法介绍在Object.java中，定义了wait(), notify()和notifyAll()等接口。wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。而notify()和notifyAll(
+              wait(), notify(), notifyAll()等方法介绍
+在Object.java中，定义了wait(), notify()和notifyAll()等接口。
+wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。
+而notify()和notifyA
               ...
             </p>
           <!--noindex-->
@@ -2698,7 +2975,7 @@ yield
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">3.6k字</span>
+            <span class="post-count">3.8k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2708,7 +2985,7 @@ yield
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  16分钟</span>
+            <span class="post-count">  17分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -2726,7 +3003,7 @@ yield
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">17k</span>
+                <span title="本文字数">18k</span>
               
 
               
@@ -2740,7 +3017,7 @@ yield
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">16 分钟</span>
+                <span title="阅读时长">17 分钟</span>
               
             </div>
           
@@ -2767,278 +3044,15 @@ yield
         
           
             <p>
-              synchronized原理在java中，每一个对象有且仅有一个同步锁。这也意味着，同步锁是依赖于对象而存在。当我们调用某对象的synchronized方法时，就获取了该对象的同步锁。例如，synchronized(obj)就获取了“obj这个对象”的同步锁。不同线程对同步锁的访问是互斥的。也就是说
+              synchronized原理
+&lt;font color=&quot;red&quot;&gt;在java中，每一个对象有且仅有一个同步锁。这也意味着，同步锁是依赖于对象而存在。&lt;/font&gt;
+&lt;font color=&quot;green&quot;&gt;当我们调用某对象的s
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/Java多线程-04之-synchronized关键字.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/本地代码上传到GitHub.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/本地代码上传到GitHub.html" class="post-title-link" itemprop="url">本地代码上传到GitHub</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-30 15:10:42" itemprop="dateCreated datePublished" datetime="2019-08-30T15:10:42Z">2019-08-30</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/GitHub/" itemprop="url" rel="index"><span itemprop="name">GitHub</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/本地代码上传到GitHub.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/本地代码上传到GitHub.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/本地代码上传到GitHub.html" class="leancloud_visitors" data-flag-title="本地代码上传到GitHub">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">897字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              首先你需要一个github账号，所有还没有的话先去注册吧！
-https://github.com/
-我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：
-https://git-for-windows.github.io/
-
-进入Github首页，点击New reposit
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/本地代码上传到GitHub.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3141,7 +3155,7 @@ https://git-for-windows.github.io/
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-count">115</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3408,11 +3422,13 @@ https://git-for-windows.github.io/
               </ul>
             </div>
           
-		  
+		    
+		  <!--以下代码是播放器-->
 		  <link rel="stylesheet" href="/dist/APlayer.min.css">
-			<div id="aplayer"></div>
-			<script type="text/javascript" src="/dist/APlayer.min.js"></script>
-			<script type="text/javascript" src="/dist/music.js"></script>
+		  <div id="aplayer"></div>
+		  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+	      <script type="text/javascript" src="/dist/music.js"></script>
+		  <!--以上代码是播放器-->
 
           
             
@@ -3591,7 +3607,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">756k</span>
+    <span title="站点总字数">771k</span>
   
 
   
@@ -3602,7 +3618,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:27</span>
+    <span title="站点阅读时长">11:41</span>
   
 </div>
 
