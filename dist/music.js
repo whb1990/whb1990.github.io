@@ -13,19 +13,35 @@ const ap = new APlayer({
     mutex: false,                                    //互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
 	audio: [                                        //音频信息
         {
-            name: '大鱼',                           //音频名称
-            artist: '周深、郭沁',                       //音频艺术家
-            url: '"http://lc-tguve1gk.cn-n1.lcfile.com/47b5548df9c80bba84f4/%E5%91%A8%E6%B7%B1%E3%80%81%E9%83%AD%E6%B2%81%20-%20%E5%A4%A7%E9%B1%BC%20%282017%E4%B8%AD%E5%9B%BD%E6%96%B0%E6%AD%8C%E5%A3%B0%E7%AC%AC%E4%BA%8C%E5%AD%A3%E7%AC%AC%E5%8D%81%E6%9C%9F%E7%8E%B0%E5%9C%BA%E4%BC%B4%E5%A5%8F%29.mp3',                         //音频链接
-            cover: 'http://lc-tguve1gk.cn-n1.lcfile.com/a9fff99abbddc8757d4b/%E5%A4%A7%E9%B1%BC.jpg',                     //音频封面
-            //lrc: 'lrc1.lrc',                         //歌词
-            theme: '#ebd0c2'                         //切换到此音频时的主题色，比上面的 theme 优先级高
+            name: '응급실',                               //音频名称
+            artist: '정승환',                       //音频艺术家
+            url: 'https://avos-cloud-jej3f06miele.s3.amazonaws.com/c66e52252291d2fa8947/%E8%B1%AA%E6%9D%B0%E6%98%A5%E9%A6%99%20-%20%E6%9C%89%E5%BF%85%E8%A6%81%E4%B8%8D%E5%A5%BD%E6%84%8F%E6%80%9D%E5%90%97.mp3',                         //音频链接
+            cover: 'http://y.gtimg.cn/music/photo_new/T002R800x800M000003x5xa32jA2DE.jpg',                     //音频封面
+            lrc: 'http://lab.liumingye.cn/api/lrc/get/type/qq/mid/000JoF1Q0GWBM0/download/1/name/%EC%9D%91%EA%B8%89%EC%8B%A4%20(%E6%80%A5%E6%95%91%E5%AE%A4)%20-%20%EC%A0%95%EC%8A%B9%ED%99%98.lrc',                         //歌词
+            theme: '#ebd0c2'                           //切换到此音频时的主题色，比上面的 theme 优先级高
         },
+		{
+            name: '행복하길 바래(希望你幸福)',
+            artist: '임형주',
+            url: 'https://avos-cloud-jej3f06miele.s3.amazonaws.com/808967f464c9a5ace342/%ED%96%89%EB%B3%B5%ED%95%98%EA%B8%B8%20%EB%B0%94%EB%9E%98%20%28%E5%B8%8C%E6%9C%9B%E4%BD%A0%E5%B9%B8%E7%A6%8F%29%20-%20%EC%9E%84%ED%98%95%EC%A3%BC.mp3',
+            cover: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000000fvwBw4aRYLv.jpg?max_age=2592000',
+            lrc: 'http://lab.liumingye.cn/api/lrc/get/type/qq/mid/000dtSva1Mzebi/download/1/name/%ED%96%89%EB%B3%B5%ED%95%98%EA%B8%B8%20%EB%B0%94%EB%9E%98%20(%E5%B8%8C%E6%9C%9B%E4%BD%A0%E5%B9%B8%E7%A6%8F)%20-%20%EC%9E%84%ED%98%95%EC%A3%BC.lrc',
+            theme: '#46718b'
+        }
 		{
             name: 'Something just like this',
             artist: 'Alex Goot _ Madilyn Bailey',
-            url: 'http://lc-tguve1gk.cn-n1.lcfile.com/f3bee3260fa207648d34/Alex%20Goot%20_%20Madilyn%20Bailey%20-%20Something%20Just%20Like%20This.mp3',
-            cover: 'http://lc-tguve1gk.cn-n1.lcfile.com/d21b8e3392433807b1e2/Something%20just%20like%20this.jpg',
-            //lrc: 'lrc2.lrc',
+            url: 'https://avos-cloud-jej3f06miele.s3.amazonaws.com/efbd2e1faef47bebf5c3/Alex%20Goot%20_%20Madilyn%20Bailey%20-%20Something%20Just%20Like%20This.mp3',
+            cover: 'http://y.gtimg.cn/music/photo_new/T002R800x800M000001fyOld32C1nv.jpg',
+            lrc: 'http://lab.liumingye.cn/api/lrc/get/type/qq/mid/004JaCzc1KhTrU/download/1/name/Something%20Just%20Like%20This%20-%20The%20Chainsmokers%2CColdplay.lrc',
+            theme: '#46718b'
+        }
+		{
+            name: 'MyLove',
+            artist: 'WestLife',
+            url: 'https://avos-cloud-jej3f06miele.s3.amazonaws.com/bdde762c7c03bf7ef5db/My%20Love%20-%20Westlife.mp3',
+            cover: 'http://y.gtimg.cn/music/photo_new/T002R800x800M0000044JjUp1GeIwf.jpg',
+            lrc: 'http://lab.liumingye.cn/api/lrc/get/type/qq/mid/001cuorY1VFcP1/download/1/name/My%20Love%20-%20Westlife.lrc',
             theme: '#46718b'
         }
     ]

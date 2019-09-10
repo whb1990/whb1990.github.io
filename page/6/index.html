@@ -666,10 +666,8 @@
         
           
             <p>
-              概述
-分布式系统的关键是做冗余，让这些冗余能发挥高可用作用的就是负载均衡。负载均衡的作用是一个“连接者”，让上下游之间以期望的方式“连接”起来。所以，有必要先了解一下这些上下游的全貌，并且从中找到做负载均衡的地方。
-
-分布式系统有各式各样的架构方式，不过本质上都是上图这样的一个分层架构。图中红点标记
+              概述分布式系统的关键是做冗余，让这些冗余能发挥高可用作用的就是负载均衡。负载均衡的作用是一个“连接者”，让上下游之间以期望的方式“连接”起来。所以，有必要先了解一下这些上下游的全貌，并且从中找到做负载均衡的地方。
+分布式系统有各式各样的架构方式，不过本质上都是上图这样的一个分层架构。图中红点标记出的
               ...
             </p>
           <!--noindex-->
@@ -881,7 +879,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.3k</span>
+                <span title="本文字数">5.4k</span>
               
 
               
@@ -923,11 +921,10 @@
           
             <p>
               数据库命名规范
-
 所有数据库对象名称必须使用小写字母并用下划线分割。
 所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）。
 数据库对象的命名要能做到见名识意，并且最后不要超过32 个字符。
-临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必
+临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必须
               ...
             </p>
           <!--noindex-->
@@ -1180,12 +1177,9 @@
         
           
             <p>
-              公平锁/非公平锁
-公平锁
-是指多个线程按照申请锁的顺序来获取锁。
-非公平锁
-是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
-对于Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平
+              公平锁/非公平锁公平锁是指多个线程按照申请锁的顺序来获取锁。
+非公平锁是指多个线程获取锁的顺序并不是按照申请锁的顺序，有可能后申请的线程比先申请的线程优先获取锁。有可能，会造成优先级反转或者饥饿现象。
+对于Java ReentrantLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非
               ...
             </p>
           <!--noindex-->
@@ -1438,26 +1432,20 @@
         
           
             <p>
-              概述
-Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
-
+              概述Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
 
 String（字符类型）
 
-
 Hash（散列类型）
-
 
 List（列表类型）
 
-
 Set（集合类型）
-
 
 SortedSet（有序集合类型，简称zset）
 
 
-注意：在redis中的命令语句中
+注意：在redis中的命令语句中，命令是忽略
               ...
             </p>
           <!--noindex-->
@@ -1710,20 +1698,19 @@ SortedSet（有序集合类型，简称zset）
         
           
             <p>
-              命令的基本格式
-[root@localhost~]
-root为用户名（#超级用户  $普通用户）   localhost主机名
-命令的基本格式：
+              命令的基本格式[root@localhost~]
+root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式：
 命令[选项][参数]
-查询目录的内容
-命令格式：
+
+查询目录的内容命令格式：
 ls [选项][文件或目录]
+
 选项：
 
 -a 所有文件
 -l 查看详情
 -d 查看目录属性
--h 显示文
+-h 显示文件
               ...
             </p>
           <!--noindex-->
@@ -1907,7 +1894,7 @@ ls [选项][文件或目录]
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">889字</span>
+            <span class="post-count">842字</span>
           </span>
 		  
           <span class="post-time">
@@ -1935,7 +1922,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.8k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -1949,7 +1936,7 @@ ls [选项][文件或目录]
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -1977,14 +1964,13 @@ ls [选项][文件或目录]
           
             <p>
               
+git config –global user.name “你的名字” 让你全部的Git仓库绑定你的名字
 
-git config --global user.name &quot;你的名字&quot; 让你全部的Git仓库绑定你的名字
+git config –global user.email “你的邮箱” 让你全部的Git仓库绑定你的邮箱
 
+git init 初始化你的仓库
 
-git config --global user.email &quot;你的邮箱&quot; 让你全部的Git仓库绑定你的邮箱
-
-
-git init 初始化你的仓
+git add . 把工作区的文件全部提交到
               ...
             </p>
           <!--noindex-->
@@ -2499,9 +2485,7 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。
-这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。
-在大量线程
+              CAS有没有问题呢？肯定是有的。比如说大量的线程同时并发修改一个AtomicLong，可能有很多线程会不停的自旋，进入一个无限重复的循环中。这些线程不停地获取值，然后发起CAS操作，但是发现这个值被别人改过了，于是再次进入下一个循环，获取值，发起CAS操作又失败了，再次进入下一个循环。在大量线程高并
               ...
             </p>
           <!--noindex-->
@@ -2761,12 +2745,10 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              起源
-相信使用Mybatis的小伙们一定经常编写类似如下的代码：
-
+              起源相信使用Mybatis的小伙们一定经常编写类似如下的代码：
 可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。先看下警告信息：
 
-Spring team recommends: &quot;Always use constructor
+Spring team recommends: “Always use constructor based 
               ...
             </p>
           <!--noindex-->
@@ -2950,7 +2932,7 @@ Spring team recommends: &quot;Always use constructor
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">7.6k字</span>
+            <span class="post-count">7.5k字</span>
           </span>
 		  
           <span class="post-time">
@@ -3019,11 +3001,8 @@ Spring team recommends: &quot;Always use constructor
         
           
             <p>
-              概述
-手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，
-这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
-Zookeeper
-ZooKeeper（简称
+              概述手写RPC-简易版 ，实现了一个很简单的RPC调用示例，其中还存在很多问题及可优化的点，这次做个升级，完全重写之前的代码，使得代码逻辑更加规范，同时引入Zookeeper辅助完成服务治理。在代码展示前，先介绍下Zookeeper、服务治理等概念。
+ZookeeperZooKeeper（简称zk）
               ...
             </p>
           <!--noindex-->
@@ -3584,7 +3563,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">772k</span>
+    <span title="站点总字数">762k</span>
   
 
   
@@ -3595,7 +3574,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:42</span>
+    <span title="站点阅读时长">11:33</span>
   
 </div>
 
