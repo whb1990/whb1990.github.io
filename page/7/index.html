@@ -673,8 +673,10 @@
         
           
             <p>
-              概述NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
-IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系统的
+              概述
+NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
+IO模型
+IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系
               ...
             </p>
           <!--noindex-->
@@ -928,7 +930,8 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
           
             <p>
               之前在网上看很多公司在面试的时候都会问到Dubbo等一些RPC框架，更有甚者直接要求面试者手写PRC，今天就来撩下RPC。
-什么是RPCRPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随着
+什么是RPC
+RPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随
               ...
             </p>
           <!--noindex-->
@@ -1119,7 +1122,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.6k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1147,7 +1150,7 @@ IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -1445,9 +1448,8 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
               在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
 定义接口：
 UserCouponBo getUserCouponInfoById(Long userCouponId);
-
 然后对应的sql的xml如下：
-&lt;select id="selectUserCou
+&lt;select id="selectUserCoup
               ...
             </p>
           <!--noindex-->
@@ -1701,14 +1703,19 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
           
             <p>
               数据库架构原则
+
 高可用
 高性能
 一致性
 扩展性
 
-常见的架构方案主备架构该方案只有主库提供读写服务，备库冗余作故障转移。数据库链接字符串：jdbc:mysql://vip:3306/xxdb
+常见的架构方案
+主备架构
+该方案只有主库提供读写服务，备库冗余作故障转移。
+数据库链接字符串：jdbc:mysql://vip:3306/xxdb
 
-高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是透明的，无
+
+高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是
               ...
             </p>
           <!--noindex-->
@@ -1961,7 +1968,8 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              前言Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬
+              前言
+Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到
               ...
             </p>
           <!--noindex-->
@@ -2214,12 +2222,18 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              概述Spring中的注解大概可以分为两类：
+              概述
+Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
+Spring的bean容器相关的注解有：
+@Required,
+@Autowired,
+@PostConstruct,
+@PreDestory,
+还
               ...
             </p>
           <!--noindex-->
@@ -2410,7 +2424,7 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">687字</span>
+            <span class="post-count">689字</span>
           </span>
 		  
           <span class="post-time">
@@ -2479,9 +2493,11 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              BTree索引BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。
+              BTree索引
+BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。
 不适合：
-单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查
+单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值
+不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢
               ...
             </p>
           <!--noindex-->
@@ -2741,8 +2757,11 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
-解决经过反复测试，发现问题所在，原来是连接池参数&lt;property
+              问题
+使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20
+连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
+解决
+经过反复测试，发现问题所在，原来是连接池参数&lt;prope
               ...
             </p>
           <!--noindex-->
@@ -3003,7 +3022,9 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
           
             <p>
               只要用缓存，就可能会涉及到缓存与数据库双存储双写，只要是双写，就一定会有数据一致性问题，如何保证缓存与数据库的双写一致性？
-读写串行化一般来说，如果允许缓存可以稍微跟数据库偶尔有不一致，也就是说系统不是严格要求缓存+数据库必须保持一致性的话，可以采用读写请求串行化：即读请求和写请求串到一个内存队列里
+读写串行化
+一般来说，如果允许缓存可以稍微跟数据库偶尔有不一致，也就是说系统不是严格要求缓存+数据库必须保持一致性的话，可以采用读写请求串行化：
+即读请求和写请求串到一个内存队
               ...
             </p>
           <!--noindex-->
@@ -3564,7 +3585,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">762k</span>
+    <span title="站点总字数">772k</span>
   
 
   
@@ -3575,7 +3596,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:32</span>
+    <span title="站点阅读时长">11:42</span>
   
 </div>
 
