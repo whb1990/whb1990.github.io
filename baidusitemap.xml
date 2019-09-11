@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://whb1990.github.io/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</loc>
+    <lastmod>2019-09-11</lastmod>
+  </url>  <url>
     <loc>http://whb1990.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F.html</loc>
     <lastmod>2019-09-11</lastmod>
   </url>  <url>
@@ -50,9 +53,6 @@
     <lastmod>2019-09-10</lastmod>
   </url>  <url>
     <loc>http://whb1990.github.io/Redis-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%91%BD%E4%BB%A4.html</loc>
-    <lastmod>2019-09-10</lastmod>
-  </url>  <url>
-    <loc>http://whb1990.github.io/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html</loc>
     <lastmod>2019-09-10</lastmod>
   </url>  <url>
     <loc>http://whb1990.github.io/Java%E5%B9%B6%E5%8F%91-ReentrantReadWriteLock.html</loc>
