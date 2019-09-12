@@ -673,10 +673,12 @@
         
           
             <p>
-              概述ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
+              概述
+ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
 
 “读取锁”用于只读操作，它是“共享锁”，能同时被多个线程获取。
-“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。注意：不能同时存在读
+“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。
+&lt;font
               ...
             </p>
           <!--noindex-->
@@ -929,12 +931,18 @@
         
           
             <p>
-              概述Spring中的注解大概可以分为两类：
+              概述
+Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
+Spring的bean容器相关的注解有：
+@Required,
+@Autowired,
+@PostConstruct,
+@PreDestory,
+还
               ...
             </p>
           <!--noindex-->
@@ -1194,7 +1202,8 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              概述在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等待
+              概述
+在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等
               ...
             </p>
           <!--noindex-->
@@ -1454,7 +1463,9 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              概述LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻塞线程，而且park()和unpark()不会遇到“Thread.suspend 和 Thread.resume所可能引发的死锁”问题。因为
+              概述
+LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。
+LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻塞线程，而且park()和unpark()不会遇到“Thread.suspend 和 Thread.resume所可能引发的死锁”问题。
               ...
             </p>
           <!--noindex-->
@@ -1714,7 +1725,10 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              概述CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方
+              概述
+CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。
+它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。
+另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDo
               ...
             </p>
           <!--noindex-->
@@ -1974,7 +1988,9 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              概述Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下去，
+              概述
+Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。
+Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下
               ...
             </p>
           <!--noindex-->
@@ -2234,7 +2250,8 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              概述现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBar
+              概述
+现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBa
               ...
             </p>
           <!--noindex-->
@@ -2418,7 +2435,7 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">73字</span>
+            <span class="post-count">78字</span>
           </span>
 		  
           <span class="post-time">
@@ -2747,8 +2764,11 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
         
           
             <p>
-              通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。拿ATM机取款举例，ATM机如下图所示：
-同步队列是主要的排队区
+              概述
+通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。
+拿ATM机取款举例，ATM机如下图所示：
+
+同步队列是主
               ...
             </p>
           <!--noindex-->
@@ -3017,9 +3037,13 @@ Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@Pre
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种在获取时会忽略中断;而第二种则是获取时响应中断;第三种是获取时，如果超时则立即返回。
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种在获取时会忽略中断;
+而第二种则是获取时响应中断;
+第三种是获取时，如果超时则立即返回。
 
-不响应线程中断获取锁//不响应
+不响应线程中断获取锁
+/
               ...
             </p>
           <!--noindex-->
@@ -3576,7 +3600,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">785k</span>
+    <span title="站点总字数">796k</span>
   
 
   
@@ -3587,7 +3611,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:54</span>
+    <span title="站点阅读时长">12:04</span>
   
 </div>
 

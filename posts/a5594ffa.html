@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="Java heap space  当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、">
+  <meta name="description" content="Java heap space 当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、请求">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOM常见原因及解决">
 <meta property="og:url" content="http://whb1990.github.io/posts/a5594ffa.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="Java heap space  当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、">
+<meta property="og:description" content="Java heap space 当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、请求">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T02:25:02.830Z">
+<meta property="og:updated_time" content="2019-09-12T10:25:59.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOM常见原因及解决">
-<meta name="twitter:description" content="Java heap space  当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、">
+<meta name="twitter:description" content="Java heap space 当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。 原因分析  Javaheap space 错误产生的常见原因可以分为以下几类：   1、请求">
 
 
 
@@ -658,11 +658,9 @@
       
 
       
-        <ol>
-<li>Java heap space</li>
-</ol>
+        <h1>Java heap space</h1>
 <p>当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 <code>java.lang.OutOfMemoryError:Javaheap space</code> 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理）。</p>
-<p><strong>原因分析</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>Javaheap space 错误产生的常见原因可以分为以下几类：</p>
 </blockquote>
@@ -678,7 +676,7 @@
 <blockquote>
 <p>4、内存泄漏（Memory Leak），大量对象引用没有释放，JVM 无法对其自动回收，常见于使用了 File 等资源没有回收。</p>
 </blockquote>
-<p><strong>解决方案</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>针对大部分情况，通常只需要通过 <code>-Xmx</code> 参数调高 JVM 堆内存空间即可。如果仍然没有解决，可以参考以下情况做进一步处理：</p>
 </blockquote>
@@ -691,16 +689,12 @@
 <blockquote>
 <p>3、如果是内存泄漏，需要找到持有的对象，修改代码设计，比如关闭没有释放的连接。</p>
 </blockquote>
-<ol start="2">
-<li>GC overhead limit exceeded</li>
-</ol>
+<h1>GC overhead limit exceeded</h1>
 <p>当 Java 进程花费 98% 以上的时间执行 GC，但只恢复了不到 2% 的内存，且该动作连续重复了 5 次，就会抛出 <code>java.lang.OutOfMemoryError:GC overhead limit exceeded</code>错误。简单地说，就是应用程序已经基本耗尽了所有可用内存， GC 也无法回收。</p>
 <p>此类问题的原因与解决方案跟 Javaheap space 非常类似，可以参考。</p>
-<ol start="3">
-<li>Permgen space</li>
-</ol>
+<h1>Permgen space</h1>
 <p>该错误表示永久代（Permanent Generation）已用满，通常是因为加载的 class 数目太多或体积太大。</p>
-<p><strong>原因分析:</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>永久代存储对象主要包括以下几类：</p>
 </blockquote>
@@ -717,7 +711,7 @@
 <p>4、JIT 编译器优化后的 class 信息。</p>
 </blockquote>
 <p>PermGen 的使用量与加载到内存的 class 的数量/大小正相关。</p>
-<p><strong>解决方案:</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>根据 Permgen space 报错的时机，可以采用不同的解决方案，如下：</p>
 </blockquote>
@@ -731,18 +725,14 @@
 <p>3、运行时报错，应用程序可能会动态创建大量 class，而这些 class 的生命周期很短暂，但是 JVM 默认不会卸载 class，可以设置 <code>-XX:+CMSClassUnloadingEnabled</code> 和 <code>-XX:+UseConcMarkSweepGC</code>这两个参数允许 JVM 卸载 class。</p>
 </blockquote>
 <blockquote>
-<p>如果上述方法无法解决，可以通过 jmap 命令 dump 内存对象 <code>jmap-dump:format=b,file=dump.hprof&lt;process-id&gt;</code>，然后利用 Eclipse MAT <a href="https://www.eclipse.org/mat" target="_blank" rel="noopener">https://www.eclipse.org/mat</a> 功能逐一分析开销最大的 classloader 和重复 class。</p>
+<p>如果上述方法无法解决，可以通过 jmap 命令 dump 内存对象 <code>jmap-dump:format=b,file=dump.hprof&lt;process-id&gt;</code>，然后利用 Eclipse MAT https://www.eclipse.org/mat 功能逐一分析开销最大的 classloader 和重复 class。</p>
 </blockquote>
-<ol start="4">
-<li>Metaspace</li>
-</ol>
+<h1>Metaspace</h1>
 <p>JDK 1.8 使用 Metaspace 替换了永久代（Permanent Generation），该错误表示 Metaspace 已被用满，通常是因为加载的 class 数目太多或体积太大。</p>
 <p>此类问题的原因与解决方法跟 Permgenspace 非常类似，可以参考。需要特别注意的是调整 Metaspace 空间大小的启动参数为 <code>-XX:MaxMetaspaceSize</code>。</p>
-<ol start="5">
-<li>Unable to create new native thread</li>
-</ol>
+<h1>Unable to create new native thread</h1>
 <p>每个 Java 线程都需要占用一定的内存空间，当 JVM 向底层操作系统请求创建一个新的 native 线程时，如果没有足够的资源分配就会报此类错误。</p>
-<p><strong>原因分析:</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>JVM 向 OS 请求创建 native 线程失败，就会抛出 <code>Unableto create new native thread</code>，常见的原因包括以下几类：</p>
 </blockquote>
@@ -773,7 +763,7 @@
 <blockquote>
 <p>5、JVM 将抛出 <code>java.lang.OutOfMemoryError:Unable to create new native thread</code> 错误。</p>
 </blockquote>
-<p><strong>解决方案:</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>1、升级配置，为机器提供更多的内存；</p>
 </blockquote>
@@ -796,16 +786,14 @@
 <p>ulimit -a</p>
 </blockquote>
 <blockquote>
-<p>…. 省略部分内容 …..</p>
+<p>.... 省略部分内容 .....</p>
 </blockquote>
 <blockquote>
 <p>max user processes (-u) 16384</p>
 </blockquote>
-<ol start="6">
-<li>Out of swap space?</li>
-</ol>
+<h1>Out of swap space?</h1>
 <p>该错误表示所有可用的虚拟内存已被耗尽。虚拟内存（Virtual Memory）由物理内存（Physical Memory）和交换空间（Swap Space）两部分组成。当运行时程序请求的虚拟内存溢出时就会报 <code>Outof swap space?</code>错误。</p>
-<p><strong>原因分析:</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>该错误出现的常见原因包括以下几类：</p>
 </blockquote>
@@ -821,7 +809,7 @@
 <blockquote>
 <p>4、执行 <code>jmap-histo:live&lt;pid&gt;</code> 命令，强制执行 Full GC；如果几次执行后内存明显下降，则基本确认为 Direct ByteBuffer 问题。</p>
 </blockquote>
-<p><strong>解决方案:</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>1、升级地址空间为 64 bit；</p>
 </blockquote>
@@ -834,40 +822,34 @@
 <blockquote>
 <p>4、升级服务器配置/隔离部署，避免争用。</p>
 </blockquote>
-<ol start="7">
-<li>Kill process or sacrifice child</li>
-</ol>
+<h1>Kill process or sacrifice child</h1>
 <p>有一种内核作业（Kernel Job）名为 <code>Out of Memory Killer</code>，它会在可用内存极低的情况下“杀死”（kill）某些进程。OOM Killer 会对所有进程进行打分，然后将评分较低的进程“杀死”，具体的评分规则可以参考 <code>Surviving the Linux OOM Killer</code>。</p>
 <p>不同于其他的 OOM 错误， Killprocessorsacrifice child 错误不是由 JVM 层面触发的，而是由操作系统层面触发的。</p>
-<p><strong>原因分析:</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>默认情况下，Linux 内核允许进程申请的内存总量大于系统可用内存，通过这种“错峰复用”的方式可以更有效的利用系统资源。</p>
 </blockquote>
 <blockquote>
 <p>然而，这种方式也会无可避免地带来一定的“超卖”风险。例如某些进程持续占用系统内存，然后导致其他进程没有可用内存。此时，系统将自动激活 OOM Killer，寻找评分低的进程，并将其“杀死”，释放内存资源。</p>
 </blockquote>
-<p><strong>解决方案:</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>1、升级服务器配置/隔离部署，避免争用。</p>
 </blockquote>
 <blockquote>
 <p>2、OOM Killer 调优。</p>
 </blockquote>
-<ol start="8">
-<li>Requested array size exceeds VM limit</li>
-</ol>
+<h1>Requested array size exceeds VM limit</h1>
 <p>JVM 限制了数组的最大长度，该错误表示程序请求创建的数组超过最大长度限制。</p>
 <p>JVM 在为数组分配内存前，会检查要分配的数据结构在系统中是否可寻址，通常为 <code>Integer.MAX_VALUE-2</code>。</p>
 <p>此类问题比较罕见，通常需要检查代码，确认业务是否需要创建如此大的数组，是否可以拆分为多个块，分批执行。</p>
-<ol start="9">
-<li>Direct buffer memory</li>
-</ol>
+<h1>Direct buffer memory</h1>
 <p>Java 允许应用程序通过 Direct ByteBuffer 直接访问堆外内存，许多高性能程序通过 Direct ByteBuffer 结合内存映射文件（Memory Mapped File）实现高速 IO。</p>
-<p><strong>原因分析:</strong></p>
+<h2>原因分析</h2>
 <blockquote>
 <p>Direct ByteBuffer 的默认大小为 64 MB，一旦使用超出限制，就会抛出 Directbuffer memory 错误。</p>
 </blockquote>
-<p><strong>解决方案:</strong></p>
+<h2>解决方案</h2>
 <blockquote>
 <p>1、Java 只能通过 <code>ByteBuffer.allocateDirect</code> 方法使用 Direct ByteBuffer，因此，可以通过 Arthas 等在线诊断工具拦截该方法进行排查。</p>
 </blockquote>
@@ -908,7 +890,7 @@
   <p><span>本文标题:</span><a href="/posts/a5594ffa.html">OOM常见原因及解决</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2018年12月06日 - 11:12</p>
-  <p><span>最后更新:</span>2019年09月12日 - 02:09</p>
+  <p><span>最后更新:</span>2019年09月12日 - 10:09</p>
   <p><span>原始链接:</span><a href="/posts/a5594ffa.html" title="OOM常见原因及解决">http://whb1990.github.io/posts/a5594ffa.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/a5594ffa.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1068,8 +1050,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1511,6 +1502,23 @@ show_date_time();
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Java heap space</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">GC overhead limit exceeded</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">Permgen space</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">Metaspace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">Unable to create new native thread</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">Out of swap space?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">6.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">6.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">Kill process or sacrifice child</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">7.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">Requested array size exceeds VM limit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">9.</span> <span class="nav-text">Direct buffer memory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">9.1.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">9.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1540,7 +1548,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">785k</span>
+    <span title="站点总字数">796k</span>
   
 
   
@@ -1551,7 +1559,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:54</span>
+    <span title="站点阅读时长">12:04</span>
   
 </div>
 
