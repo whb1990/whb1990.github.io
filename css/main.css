@@ -2071,7 +2071,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #52ffc2;
+  background: #087afb;
 }
 .feed-link,
 .chat {
@@ -3408,6 +3408,12 @@ pre {
   border: 1px solid #d6d6d6;
 }
 #days {
+  display: block;
+  color: #f33;
+  font-size: 14px;
+  margin-top: 15px;
+}
+#span_dt_dt {
   display: block;
   color: #f33;
   font-size: 14px;
