@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="start()和run()方法的区别 start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
+  <meta name="description" content="start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
 <meta name="keywords" content="Java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程-03之-Thread中start()和run()的区别">
 <meta property="og:url" content="http://whb1990.github.io/Java多线程-03之-Thread中start-和run-的区别.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="start()和run()方法的区别 start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
+<meta property="og:description" content="start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T02:25:02.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程-03之-Thread中start()和run()的区别">
-<meta name="twitter:description" content="start()和run()方法的区别 start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
+<meta name="twitter:description" content="start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！ 下面以代码来进行说明。 123456class MyThread extends Thread&amp;#123;">
 
 
 
@@ -603,7 +603,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">639字</span>
+            <span class="post-count">598字</span>
           </span>
 		  
           <span class="post-time">
@@ -631,7 +631,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -665,39 +665,36 @@
       
 
       
-        <h4>start()和run()方法的区别</h4>
-<p>start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。</p>
+        <h4 id="start-和run-方法的区别"><a href="#start-和run-方法的区别" class="headerlink" title="start()和run()方法的区别"></a>start()和run()方法的区别</h4><p>start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。</p>
 <p>run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！</p>
 <p>下面以代码来进行说明。</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line">MyThread mythread = <span class="keyword">new</span> MyThread();</span><br></pre></td></tr></table></figure></p>
-<p>mythread.start()会启动一个新线程，并在新线程中运行run()方法。
-而mythread.run()则会直接在当前线程中运行run()方法，并不会启动一个新线程来运行run()。</p>
-<h4>start()和run()方法示例</h4>
-<p>下面，通过一个简单示例演示它们之间的区别。源码如下：
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadMethodDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread mythread = <span class="keyword">new</span> TestThread(<span class="string">"testThread"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.run()"</span>);</span><br><span class="line">        mythread.run();</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.start()"</span>);</span><br><span class="line">        mythread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&lt;span id=&quot;inline-blue&quot;&gt; 运行结果： &lt;/span&gt;</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main call testThread.run()</span><br><span class="line">main is running</span><br><span class="line">main call testThread.start()</span><br><span class="line">testThread is running</span><br></pre></td></tr></table></figure></p>
-<p>&lt;span id=&quot;inline-green&quot;&gt; 结果说明： &lt;/span&gt;</p>
-<ol>
-<li>Thread.currentThread().getName()是用于获取“当前线程”的名字。当前线程是指正在cpu中调度执行的线程。</li>
-<li>testThread.run()是在“主线程main”中调用的，该run()方法直接运行在“主线程main”上。</li>
-<li>testThread.start()会启动“线程testThread”，“线程testThread”启动之后，会调用run()方法；此时的run()方法是运行在“线程testThread”上。</li>
-</ol>
-<h4>start()和run()源码说明（基于JDK1.8.0_171）</h4>
-<ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line">MyThread mythread = <span class="keyword">new</span> MyThread();</span><br></pre></td></tr></table></figure></div>
+
+<p>mythread.start()会启动一个新线程，并在新线程中运行run()方法。<br>而mythread.run()则会直接在当前线程中运行run()方法，并不会启动一个新线程来运行run()。</p>
+<h4 id="start-和run-方法示例"><a href="#start-和run-方法示例" class="headerlink" title="start()和run()方法示例"></a>start()和run()方法示例</h4><p>下面，通过一个简单示例演示它们之间的区别。源码如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" is running"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadMethodDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread mythread = <span class="keyword">new</span> TestThread(<span class="string">"testThread"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.run()"</span>);</span><br><span class="line">        mythread.run();</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">" call testThread.start()"</span>);</span><br><span class="line">        mythread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><span id="inline-blue"> 运行结果： </span></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">main call testThread.run()</span><br><span class="line">main is running</span><br><span class="line">main call testThread.start()</span><br><span class="line">testThread is running</span><br></pre></td></tr></table></figure></div>
+
+<p><span id="inline-green"> 结果说明： </span><br>1) Thread.currentThread().getName()是用于获取“当前线程”的名字。当前线程是指正在cpu中调度执行的线程。<br>2) testThread.run()是在“主线程main”中调用的，该run()方法直接运行在“主线程main”上。<br>3) testThread.start()会启动“线程testThread”，“线程testThread”启动之后，会调用run()方法；此时的run()方法是运行在“线程testThread”上。</p>
+<h4 id="start-和run-源码说明（基于JDK1-8-0-171）"><a href="#start-和run-源码说明（基于JDK1-8-0-171）" class="headerlink" title="start()和run()源码说明（基于JDK1.8.0_171）"></a>start()和run()源码说明（基于JDK1.8.0_171）</h4><ul>
 <li>Thread.java中start()方法源码如下：</li>
 </ul>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 如果线程不是"新建状态"，则抛出异常</span></span><br><span class="line"><span class="comment">	 * 状态值0 对应"新建"</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (threadStatus != <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalThreadStateException();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 将线程添加到ThreadGroup中 */</span></span><br><span class="line">	group.add(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> started = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">/** 通过start0()启动线程 */</span></span><br><span class="line">		start0();</span><br><span class="line">		<span class="comment">/** 设置started标记 */</span></span><br><span class="line">		started = <span class="keyword">true</span>;</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (!started) &#123;</span><br><span class="line">				group.threadStartFailed(<span class="keyword">this</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			<span class="comment">/* do nothing. If start0 threw a Throwable then</span></span><br><span class="line"><span class="comment">			  it will be passed up the call stack */</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&lt;span id=&quot;inline-green&quot;&gt; 说明： &lt;/span&gt;</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 如果线程不是"新建状态"，则抛出异常</span></span><br><span class="line"><span class="comment">	 * 状态值0 对应"新建"</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (threadStatus != <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalThreadStateException();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 将线程添加到ThreadGroup中 */</span></span><br><span class="line">	group.add(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> started = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">/** 通过start0()启动线程 */</span></span><br><span class="line">		start0();</span><br><span class="line">		<span class="comment">/** 设置started标记 */</span></span><br><span class="line">		started = <span class="keyword">true</span>;</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (!started) &#123;</span><br><span class="line">				group.threadStartFailed(<span class="keyword">this</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			<span class="comment">/* do nothing. If start0 threw a Throwable then</span></span><br><span class="line"><span class="comment">			  it will be passed up the call stack */</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><span id="inline-green"> 说明： </span></p>
 <blockquote>
 <p>start()实际上是通过本地方法start0()启动线程的。而start0()会新运行一个线程，新线程会调用run()方法。</p>
 </blockquote>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">start0</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">start0</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></div>
+
 <ul>
 <li>Thread.java中run()方法源码如下：</li>
 </ul>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">		target.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&lt;span id=&quot;inline-green&quot;&gt; 说明： &lt;/span&gt;</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (target != <span class="keyword">null</span>) &#123;</span><br><span class="line">		target.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><span id="inline-green"> 说明： </span></p>
 <blockquote>
 <p>target是一个Runnable对象。run()就是直接调用Thread线程的Runnable成员的run()方法，并不会新建一个线程。</p>
 </blockquote>
@@ -1427,7 +1424,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">start()和run()方法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">start()和run()方法示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">start()和run()源码说明（基于JDK1.8.0_171）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#start-和run-方法的区别"><span class="nav-number">1.</span> <span class="nav-text">start()和run()方法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#start-和run-方法示例"><span class="nav-number">2.</span> <span class="nav-text">start()和run()方法示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#start-和run-源码说明（基于JDK1-8-0-171）"><span class="nav-number">3.</span> <span class="nav-text">start()和run()源码说明（基于JDK1.8.0_171）</span></a></li></ol></div>
             
 
           </div>
@@ -1534,7 +1531,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">792k</span>
+    <span title="站点总字数">781k</span>
   
 
   
@@ -1545,7 +1542,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">12:01</span>
+    <span title="站点阅读时长">11:50</span>
   
 </div>
 
