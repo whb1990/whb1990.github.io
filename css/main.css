@@ -521,6 +521,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
   padding: 0px 80px;
   text-indent: 15px;
@@ -2070,7 +2071,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1b6239;
+  background: #d1d149;
 }
 .feed-link,
 .chat {
