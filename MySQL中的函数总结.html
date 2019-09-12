@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+----">
+  <meta name="description" content="CONCAT()函数 CONCAT（）函数用于将多个字符串连接成一个字符串。 使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+--">
 <meta name="keywords" content="数据库,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中的函数总结">
 <meta property="og:url" content="http://whb1990.github.io/MySQL中的函数总结.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+----">
+<meta property="og:description" content="CONCAT()函数 CONCAT（）函数用于将多个字符串连接成一个字符串。 使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+--">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-10T10:32:41.880Z">
+<meta property="og:updated_time" content="2019-09-12T02:25:02.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中的函数总结">
-<meta name="twitter:description" content="CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+----">
+<meta name="twitter:description" content="CONCAT()函数 CONCAT（）函数用于将多个字符串连接成一个字符串。 使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+--">
 
 
 
@@ -603,7 +603,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">730字</span>
+            <span class="post-count">722字</span>
           </span>
 		  
           <span class="post-time">
@@ -665,52 +665,52 @@
       
 
       
-        <h4 id="CONCAT-函数"><a href="#CONCAT-函数" class="headerlink" title="CONCAT()函数"></a>CONCAT()函数</h4><p>CONCAT（）函数用于将多个字符串连接成一个字符串。<br>使用数据表sys_user作为示例，sql如下：</p>
+        <h4>CONCAT()函数</h4>
+<p>CONCAT（）函数用于将多个字符串连接成一个字符串。
+使用数据表sys_user作为示例，sql如下：</p>
 <p><code>SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;</code></p>
 <p>返回结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| id | name   |</span><br><span class="line">+----+--------+</span><br><span class="line">|  1 | 张三   |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure>
-
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----+--------+</span><br><span class="line">| id | name   |</span><br><span class="line">+----+--------+</span><br><span class="line">|  1 | 张三   |</span><br><span class="line">+----+--------+</span><br></pre></td></tr></table></figure></p>
 <p>1、语法及使用特点：</p>
-<p><code>CONCAT(str1,str2,…)</code><br>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以有一个或多个参数。</p>
+<p><code>CONCAT(str1,str2,…)</code><br>
+返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。可以有一个或多个参数。</p>
 <p>2、使用示例：</p>
-<p><code>SELECT CONCAT(user_id, ‘，’, zwxm) AS con FROM sys_user LIMIT 1;</code><br>返回结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| con      |</span><br><span class="line">+----------+</span><br><span class="line">| 1,张三   |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
-
+<p><code>SELECT CONCAT(user_id, ‘，’, zwxm) AS con FROM sys_user LIMIT 1;</code>
+返回结果如下：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| con      |</span><br><span class="line">+----------+</span><br><span class="line">| 1,张三   |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure></p>
 <p><code>SELECT CONCAT(‘My’, NULL, ‘QL’);</code></p>
 <p>返回结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+</span><br><span class="line">| CONCAT(&apos;My&apos;, NULL, &apos;QL&apos;) |</span><br><span class="line">+--------------------------+</span><br><span class="line">| NULL                     |</span><br><span class="line">+--------------------------+</span><br></pre></td></tr></table></figure>
-
-<h4 id="CONCAT-WS-函数"><a href="#CONCAT-WS-函数" class="headerlink" title="CONCAT_WS()函数"></a>CONCAT_WS()函数</h4><p>使用语法为：· CONCAT_WS(separator,str1,str2,…) ·<br>CONCAT_WS() 代表 CONCAT With Separator ，是CONCAT()的特殊形式。第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。但是CONCAT_WS()不会忽略任何空字符串。 (然而会忽略所有的 NULL）。</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+</span><br><span class="line">| CONCAT(&apos;My&apos;, NULL, &apos;QL&apos;) |</span><br><span class="line">+--------------------------+</span><br><span class="line">| NULL                     |</span><br><span class="line">+--------------------------+</span><br></pre></td></tr></table></figure></p>
+<h4>CONCAT_WS()函数</h4>
+<p>使用语法为：· CONCAT_WS(separator,str1,str2,…) ·
+CONCAT_WS() 代表 CONCAT With Separator ，是CONCAT()的特殊形式。第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL，则结果为 NULL。函数会忽略任何分隔符参数后的 NULL 值。但是CONCAT_WS()不会忽略任何空字符串。 (然而会忽略所有的 NULL）。</p>
 <p>示例1：</p>
-<p><code>SELECT CONCAT_WS(&#39;_&#39;,user_id,zwxm) AS con_ws FROM sys_user LIMIT 1;</code></p>
+<p><code>SELECT CONCAT_WS('_',user_id,zwxm) AS con_ws FROM sys_user LIMIT 1;</code></p>
 <p>返回结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| con_ws   |</span><br><span class="line">+----------+</span><br><span class="line">| 1_张三   |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
-
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| con_ws   |</span><br><span class="line">+----------+</span><br><span class="line">| 1_张三   |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure></p>
 <p>示例2：</p>
-<p><code>SELECT CONCAT_WS(&#39;,&#39;,&#39;First name&#39;,NULL,&#39;Last Name&#39;);</code></p>
-<p>返回结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------------------------------------------+</span><br><span class="line">| CONCAT_WS(&apos;,&apos;,&apos;First name&apos;,NULL,&apos;Last Name&apos;) |</span><br><span class="line">+----------------------------------------------+</span><br><span class="line">| First name,Last Name                         |</span><br><span class="line">+----------------------------------------------+</span><br></pre></td></tr></table></figure>
-
-<h4 id="GROUP-CONCAT-函数"><a href="#GROUP-CONCAT-函数" class="headerlink" title="GROUP_CONCAT()函数"></a>GROUP_CONCAT()函数</h4><p>语法如下： </p>
+<p><code>SELECT CONCAT_WS(',','First name',NULL,'Last Name');</code></p>
+<p>返回结果：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------------------------------------------+</span><br><span class="line">| CONCAT_WS(&apos;,&apos;,&apos;First name&apos;,NULL,&apos;Last Name&apos;) |</span><br><span class="line">+----------------------------------------------+</span><br><span class="line">| First name,Last Name                         |</span><br><span class="line">+----------------------------------------------+</span><br></pre></td></tr></table></figure></p>
+<h4>GROUP_CONCAT()函数</h4>
+<p>语法如下：</p>
 <blockquote>
-<p>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator ‘分隔符’]) </p>
+<p>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator '分隔符'])</p>
 </blockquote>
-<p>基本查询： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from test; </span><br><span class="line">+------+------+ </span><br><span class="line">| id| name    | </span><br><span class="line">+------+------+ </span><br><span class="line">|1  | 10      | </span><br><span class="line">|1  | 20      | </span><br><span class="line">|1  | 20      | </span><br><span class="line">|2  | 20      | </span><br><span class="line">|3  | 200     | </span><br><span class="line">|3  | 500     | </span><br><span class="line">+------+------+ </span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，逗号分隔(默认) </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name) from test group by id; </span><br><span class="line">+------+--------------------+ </span><br><span class="line">| id   | group_concat(name) | </span><br><span class="line">+------+--------------------+ </span><br><span class="line">|1     | 10,20,20           | </span><br><span class="line">|2     | 20                 | </span><br><span class="line">|3     | 200,500            | </span><br><span class="line">+------+--------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，分号分隔 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name separator &apos;;&apos;) from test group by id; </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">| id   | group_concat(name separator &apos;;&apos;) | </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">|1     | 10;20;20                         | </span><br><span class="line">|2     | 20                               | </span><br><span class="line">|3     | 200;500                          | </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
+<p>基本查询：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from test; </span><br><span class="line">+------+------+ </span><br><span class="line">| id| name    | </span><br><span class="line">+------+------+ </span><br><span class="line">|1  | 10      | </span><br><span class="line">|1  | 20      | </span><br><span class="line">|1  | 20      | </span><br><span class="line">|2  | 20      | </span><br><span class="line">|3  | 200     | </span><br><span class="line">|3  | 500     | </span><br><span class="line">+------+------+ </span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>以id分组，把name字段的值打印在一行，逗号分隔(默认)</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name) from test group by id; </span><br><span class="line">+------+--------------------+ </span><br><span class="line">| id   | group_concat(name) | </span><br><span class="line">+------+--------------------+ </span><br><span class="line">|1     | 10,20,20           | </span><br><span class="line">|2     | 20                 | </span><br><span class="line">|3     | 200,500            | </span><br><span class="line">+------+--------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>以id分组，把name字段的值打印在一行，分号分隔</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name separator &apos;;&apos;) from test group by id; </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">| id   | group_concat(name separator &apos;;&apos;) | </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">|1     | 10;20;20                         | </span><br><span class="line">|2     | 20                               | </span><br><span class="line">|3     | 200;500                          | </span><br><span class="line">+------+----------------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
 <p>以id分组，把去冗余的name字段的值打印在一行，逗号分隔</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(distinct name) from test group by id; </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">| id   | group_concat(distinct name) | </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">|1     | 10,20                       | </span><br><span class="line">|2     | 20                          | </span><br><span class="line">|3     | 200,500                     | </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from test group by id; </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">| id   | group_concat(name order by name desc) | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">|1     | 20,20,10                              | </span><br><span class="line">|2     | 20                                    | </span><br><span class="line">|3     | 500,200                               | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<p>使用group_concat_max_len系统变量，你可以设置允许的最大长度。 程序中进行这项操作的语法如下，其中 val 是一个无符号整数：<br>SET [SESSION | GLOBAL] group_concat_max_len = val;<br>若已经设置了最大长度， 则结果被截至这个最大长度。<br>将环境变量group_concat_max_len 增大。默认是1024.我就设置了session级的环境变量将其变为2048（不够用再加大）</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(distinct name) from test group by id; </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">| id   | group_concat(distinct name) | </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">|1     | 10,20                       | </span><br><span class="line">|2     | 20                          | </span><br><span class="line">|3     | 200,500                     | </span><br><span class="line">+------+-----------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from test group by id; </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">| id   | group_concat(name order by name desc) | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">|1     | 20,20,10                              | </span><br><span class="line">|2     | 20                                    | </span><br><span class="line">|3     | 500,200                               | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>使用group_concat_max_len系统变量，你可以设置允许的最大长度。 程序中进行这项操作的语法如下，其中 val 是一个无符号整数：
+SET [SESSION | GLOBAL] group_concat_max_len = val;
+若已经设置了最大长度， 则结果被截至这个最大长度。
+将环境变量group_concat_max_len 增大。默认是1024.我就设置了session级的环境变量将其变为2048（不够用再加大）</p>
 
       
     </div>
@@ -733,7 +733,7 @@
   <p><span>本文标题:</span><a href="/MySQL中的函数总结.html">MySQL中的函数总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2018年03月22日 - 15:03</p>
-  <p><span>最后更新:</span>2019年09月10日 - 10:09</p>
+  <p><span>最后更新:</span>2019年09月12日 - 02:09</p>
   <p><span>原始链接:</span><a href="/MySQL中的函数总结.html" title="MySQL中的函数总结">http://whb1990.github.io/MySQL中的函数总结.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/MySQL中的函数总结.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1113,6 +1113,158 @@
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
+			  <!--为Hexo Next主题添加哈林摇特效-->
+			  <!--<a title="收藏到书签，偶尔High一下^_^" rel="alternate" class="mw-harlem_shake_slow wobble shake" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+ 
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+ 
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()'><i class="fa fa-music"></i> High</a>-->
+			  
             </div>
           
 
@@ -1285,7 +1437,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CONCAT-函数"><span class="nav-number">1.</span> <span class="nav-text">CONCAT()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CONCAT-WS-函数"><span class="nav-number">2.</span> <span class="nav-text">CONCAT_WS()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GROUP-CONCAT-函数"><span class="nav-number">3.</span> <span class="nav-text">GROUP_CONCAT()函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">CONCAT()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">CONCAT_WS()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">GROUP_CONCAT()函数</span></a></li></ol></div>
             
 
           </div>
@@ -1392,7 +1544,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">781k</span>
+    <span title="站点总字数">792k</span>
   
 
   
@@ -1403,7 +1555,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:50</span>
+    <span title="站点阅读时长">12:01</span>
   
 </div>
 

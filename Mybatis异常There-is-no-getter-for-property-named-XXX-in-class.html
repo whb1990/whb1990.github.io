@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId);  然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Lon">
+  <meta name="description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId); 然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long">
 <meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis异常There is no getter for property named &#39;XXX&#39; in class">
 <meta property="og:url" content="http://whb1990.github.io/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId);  然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Lon">
+<meta property="og:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId); 然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-10T10:41:47.978Z">
+<meta property="og:updated_time" content="2019-09-12T02:25:02.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis异常There is no getter for property named &#39;XXX&#39; in class">
-<meta name="twitter:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId);  然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Lon">
+<meta name="twitter:description" content="在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下： 定义接口： 1UserCouponBo getUserCouponInfoById(Long userCouponId); 然后对应的sql的xml如下： 12345678&amp;lt;select id=&quot;selectUserCouponInfoById&quot; parameterType=&quot;java.lang.Long">
 
 
 
@@ -660,18 +660,16 @@
       
         <p>在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：</p>
 <p>定义接口：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UserCouponBo <span class="title">getUserCouponInfoById</span><span class="params">(Long userCouponId)</span></span>;</span><br></pre></td></tr></table></figure>
-
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UserCouponBo <span class="title">getUserCouponInfoById</span><span class="params">(Long userCouponId)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>然后对应的sql的xml如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserCouponInfoById"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Long"</span> <span class="attr">resultMap</span>=<span class="string">"baseResultMap"</span>&gt;</span></span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userCouponId != null"</span>&gt;</span></span><br><span class="line">			id = #&#123;userCouponId,jdbcType=BIGINT&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的接口就是通过id查询指定的优惠券信息，个人感觉该sql写的不够优雅。就是这个接口，报错：There is no gettery for property…!!!<br>这是为什么呢？<br>原因是在if里面用了Mybatis的内置对象，<code>&lt;if test=&quot;id != null&quot;&gt;</code>，Mybatis默认采用OGNL解析参数，所以会自动采用对象树的形式取<code>long.xxx</code>值，如果没在方法中定义，则会抛出异常。</p>
+<p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserCouponInfoById"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Long"</span> <span class="attr">resultMap</span>=<span class="string">"baseResultMap"</span>&gt;</span></span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userCouponId != null"</span>&gt;</span></span><br><span class="line">			id = #&#123;userCouponId,jdbcType=BIGINT&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的接口就是通过id查询指定的优惠券信息，个人感觉该sql写的不够优雅。就是这个接口，报错：There is no gettery for property...!!!
+这是为什么呢？
+原因是在if里面用了Mybatis的内置对象，<code>&lt;if test=&quot;id != null&quot;&gt;</code>，Mybatis默认采用OGNL解析参数，所以会自动采用对象树的形式取<code>long.xxx</code>值，如果没在方法中定义，则会抛出异常。</p>
 <p>解决方案一：把#{xxx}修改为#{_parameter}即可</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserCouponInfoById"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Long"</span> <span class="attr">resultMap</span>=<span class="string">"baseResultMap"</span>&gt;</span></span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"_parameter != null"</span>&gt;</span></span><br><span class="line">			id = #&#123;_parameter&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserCouponInfoById"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Long"</span> <span class="attr">resultMap</span>=<span class="string">"baseResultMap"</span>&gt;</span></span><br><span class="line">	select amount,receive_time from user_coupon</span><br><span class="line">	<span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"_parameter != null"</span>&gt;</span></span><br><span class="line">			id = #&#123;_parameter&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>解决解决方案二：在方法中提前定义。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UserCouponBo <span class="title">getUserCouponInfoById</span><span class="params">(@Param(<span class="string">"userCouponId"</span>)</span> Long userCouponId)</span>;</span><br></pre></td></tr></table></figure>
-
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UserCouponBo <span class="title">getUserCouponInfoById</span><span class="params">(@Param(<span class="string">"userCouponId"</span>)</span> Long userCouponId)</span>;</span><br></pre></td></tr></table></figure></p>
 <p>给userCouponId加@Param注解，定义一下就可以了。</p>
 
       
@@ -695,7 +693,7 @@
   <p><span>本文标题:</span><a href="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html">Mybatis异常There is no getter for property named 'XXX' in class</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年03月14日 - 16:03</p>
-  <p><span>最后更新:</span>2019年09月10日 - 10:09</p>
+  <p><span>最后更新:</span>2019年09月12日 - 02:09</p>
   <p><span>原始链接:</span><a href="/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html" title="Mybatis异常There is no getter for property named 'XXX' in class">http://whb1990.github.io/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/Mybatis异常There-is-no-getter-for-property-named-XXX-in-class.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1064,6 +1062,158 @@
                 <i class="fa fa-rss"></i>
                 RSS
               </a>
+			  <!--为Hexo Next主题添加哈林摇特效-->
+			  <!--<a title="收藏到书签，偶尔High一下^_^" rel="alternate" class="mw-harlem_shake_slow wobble shake" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+ 
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+ 
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()'><i class="fa fa-music"></i> High</a>-->
+			  
             </div>
           
 
@@ -1326,7 +1476,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">781k</span>
+    <span title="站点总字数">792k</span>
   
 
   
@@ -1337,7 +1487,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">11:50</span>
+    <span title="站点阅读时长">12:01</span>
   
 </div>
 
