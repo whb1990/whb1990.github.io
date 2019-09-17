@@ -483,6 +483,267 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/2d3dc485.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/2d3dc485.html" class="post-title-link" itemprop="url">设计模式-模板方法模式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-08 16:30:44" itemprop="dateCreated datePublished" datetime="2018-08-08T16:30:44Z">2018-08-08</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/2d3dc485.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2d3dc485.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/2d3dc485.html" class="leancloud_visitors" data-flag-title="设计模式-模板方法模式">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.1k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  4分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              模式定义定义一个操作中算法的框架，而将一些步骤延迟到子类中。模板方法模式使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法模式是一种基于继承的代码复用技术，它是一种类行为型模式。
+主要作用当完成一个操作具有固定的流程时，由抽象固定流程步骤，具体步骤交给子类进行具体实现（固定的流
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/2d3dc485.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/fc4de834.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -632,7 +893,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.3k</span>
+                <span title="本文字数">5.1k</span>
               
 
               
@@ -673,10 +934,8 @@
         
           
             <p>
-              线程优先级
-java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
-java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。
-用户线程一般用户执行
+              线程优先级java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
+java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。用户线程一般用户执行用户
               ...
             </p>
           <!--noindex-->
@@ -867,7 +1126,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.7k字</span>
+            <span class="post-count">2.4k字</span>
           </span>
 		  
           <span class="post-time">
@@ -877,7 +1136,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  12分钟</span>
+            <span class="post-count">  10分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -895,7 +1154,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">11k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -909,7 +1168,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">10 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -936,11 +1195,9 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
         
           
             <p>
-              interrupt()说明
-关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
+              interrupt()说明关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
 
-Interrupts this thread.
-Unless the current thread is interruptin
+Interrupts this thread.Unless the current thread is interrupting 
               ...
             </p>
           <!--noindex-->
@@ -1200,8 +1457,7 @@ Unless the current thread is interruptin
         
           
             <p>
-              处理器内存模型
-顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大
+              处理器内存模型顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大的
               ...
             </p>
           <!--noindex-->
@@ -1392,7 +1648,7 @@ Unless the current thread is interruptin
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">946字</span>
+            <span class="post-count">850字</span>
           </span>
 		  
           <span class="post-time">
@@ -1402,7 +1658,7 @@ Unless the current thread is interruptin
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  4分钟</span>
+            <span class="post-count">  3分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1420,7 +1676,7 @@ Unless the current thread is interruptin
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -1461,9 +1717,8 @@ Unless the current thread is interruptin
         
           
             <p>
-              join()介绍
-join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
-// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new So
+              join()介绍join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
+// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new Son
               ...
             </p>
           <!--noindex-->
@@ -1723,12 +1978,11 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
         
           
             <p>
-              概述
-与锁和 volatile 相比较，对 final 域的读和写更像是普通的变量访问。对于 final 域，编译器和处理器要遵守两个重排序规则：
+              概述与锁和 volatile 相比较，对 final 域的读和写更像是普通的变量访问。对于 final 域，编译器和处理器要遵守两个重排序规则：
 
 
 在构造函数内对一个 final 域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。
-初次读一个包含 final 域
+初次读一个包含 final 域的
               ...
             </p>
           <!--noindex-->
@@ -1988,9 +2242,8 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
         
           
             <p>
-              锁的happens-before关系
-锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
-class MonitorExample &#123;    int a = 0;    public synchronized void 
+              锁的happens-before关系锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
+class MonitorExample &#123;    int a = 0;    public synchronized void w
               ...
             </p>
           <!--noindex-->
@@ -2250,10 +2503,9 @@ class MonitorExample &#123;    int a = 0;    public synchronized void
         
           
             <p>
-              顺序一致性保证
-当程序未正确同步时，就会存在数据竞争。java 内存模型规范对数据竞争的定义如下：
+              顺序一致性保证当程序未正确同步时，就会存在数据竞争。java 内存模型规范对数据竞争的定义如下：
 在一个线程中写一个变量，在另一个线程读同一个变量，而且写和读没有通过同步来排序。
-当代码中包含数据竞争时，程序的执行往往产生违反直觉的结果。如果一个多线程程序能正确同步，这个程序将是一个没有数据竞争的
+当代码中包含数据竞争时，程序的执行往往产生违反直觉的结果。如果一个多线程程序能正确同步，这个程序将是一个没有数据竞争的程
               ...
             </p>
           <!--noindex-->
@@ -2444,7 +2696,7 @@ class MonitorExample &#123;    int a = 0;    public synchronized void
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.8k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2472,7 +2724,7 @@ class MonitorExample &#123;    int a = 0;    public synchronized void
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.8k</span>
+                <span title="本文字数">2.7k</span>
               
 
               
@@ -2486,7 +2738,7 @@ class MonitorExample &#123;    int a = 0;    public synchronized void
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -2513,15 +2765,13 @@ class MonitorExample &#123;    int a = 0;    public synchronized void
         
           
             <p>
-              数据依赖性
-如果两个操作访问同一个变量，且这两个操作中有一个为写操作，此时这两个操作之间就存在数据依赖性。数据依赖分下列三种类型：
+              数据依赖性如果两个操作访问同一个变量，且这两个操作中有一个为写操作，此时这两个操作之间就存在数据依赖性。数据依赖分下列三种类型：
 
 
 
 名称
 代码示例
 说明
-
 
 
 
@@ -2533,6 +2783,8 @@ a = 1;b = a;
 写后写
 a = 1;a = 2;
 写一个变量后，再写这个变量。
+
+
               ...
             </p>
           <!--noindex-->
@@ -2792,278 +3044,14 @@ a = 1;a = 2;
         
           
             <p>
-              模式定义
-抽象工厂模式，即Abstract Factory Pattern，提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类；具体的工厂负责实现具体的产品实例。
-主要作用
-允许使用抽象的接口来创建一组相关产品，而不需要知道或关心实际生产出的具体产品是什么，这样就可以从具体产品中被解
+              模式定义抽象工厂模式，即Abstract Factory Pattern，提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类；具体的工厂负责实现具体的产品实例。
+主要作用允许使用抽象的接口来创建一组相关产品，而不需要知道或关心实际生产出的具体产品是什么，这样就可以从具体产品中被解耦。
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/posts/5a86ebac.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/e72020d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/e72020d.html" class="post-title-link" itemprop="url">Java内存模型-理解Volatile</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-12 09:16:20" itemprop="dateCreated datePublished" datetime="2018-07-12T09:16:20Z">2018-07-12</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/JMM/" itemprop="url" rel="index"><span itemprop="name">JMM</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/e72020d.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e72020d.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/posts/e72020d.html" class="leancloud_visitors" data-flag-title="Java内存模型-理解Volatile">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">3.1k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  11分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">6.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              volatile特性
-当声明共享变量为 volatile 后，对这个变量的读 / 写将会很特别。理解 volatile 特性的一个好方法是：把对 volatile 变量的单个读 / 写，看成是使用同一个监视器锁对这些单个读 / 写操作做了同步。如下示例代码：
-class VolatileFeatur
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/e72020d.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3166,7 +3154,7 @@ class VolatileFeatur
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">119</span>
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3618,7 +3606,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">799k</span>
+    <span title="站点总字数">789k</span>
   
 
   
@@ -3629,7 +3617,7 @@ show_date_time();
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">12:06</span>
+    <span title="站点阅读时长">11:57</span>
   
 </div>
 
