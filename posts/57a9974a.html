@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+<!--文章加密访问-->
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。 锁的种类共享锁(Shared lock) 例1： 12T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: update table set column1=&amp;apos;hello&amp;apos;   过程：">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库锁机制及事务隔离级别">
+<meta property="og:url" content="http://whb1990.github.io/posts/57a9974a.html">
+<meta property="og:site_name" content="王洪博&#39;s blog">
+<meta property="og:description" content="前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。 锁的种类共享锁(Shared lock) 例1： 12T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: update table set column1=&amp;apos;hello&amp;apos;   过程：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-18T03:45:50.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库锁机制及事务隔离级别">
+<meta name="twitter:description" content="前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。 锁的种类共享锁(Shared lock) 例1： 12T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: update table set column1=&amp;apos;hello&amp;apos;   过程：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王洪博's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://whb1990.github.io/posts/57a9974a">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据库锁机制及事务隔离级别 | 王洪博's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+	<!--Fork me on github-->
+	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王洪博's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">身体和灵魂总要有一个在路上</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-(灬ºωº灬)♡">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/(灬ºωº灬)♡/" rel="section"><i class="menu-item-icon fa fa-fw fa-heart"></i> <br>(灬ºωº灬)♡</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/whb1990" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/57a9974a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库锁机制及事务隔离级别
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 10:40:42" itemprop="dateCreated datePublished" datetime="2019-09-18T10:40:42Z">2019-09-18</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/57a9974a.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/57a9974a.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/57a9974a.html" class="leancloud_visitors" data-flag-title="数据库锁机制及事务隔离级别">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">3.6k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  13分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。</p>
+<h1 id="锁的种类"><a href="#锁的种类" class="headerlink" title="锁的种类"></a>锁的种类</h1><h2 id="共享锁-Shared-lock"><a href="#共享锁-Shared-lock" class="headerlink" title="共享锁(Shared lock)"></a>共享锁(Shared lock)</h2><p><i class="fa fa-pencil"></i> 例1：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）</span><br><span class="line">T2: update table set column1=&apos;hello&apos;</span><br></pre></td></tr></table></figure></div>
+
+<p><i class="fa fa-cog"></i> 过程：</p>
+<div class="note info no-icon">
+            <p>T1运行 （加共享锁)<br>T2运行<br>If T1 还没执行完<br> T2等……<br>else<br> 锁被释放<br> T2执行<br>endif</p>
+          </div>
+
+<div class="note success no-icon">
+            <p>T2之所以要等，是因为T2在执行update前，试图对table表加一个排他锁，而数据库规定同一资源上不能同时共存共享锁和排他锁。所以T2必须等T1执行完，释放了共享锁，才能加上排他锁，然后才能开始执行update语句。</p>
+          </div>
+
+<hr>
+<p><i class="fa fa-pencil"></i> 例2：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table</span><br><span class="line">T2: select * from table</span><br></pre></td></tr></table></figure></div>
+
+<p>这里T2不用等待T1执行完，而是可以马上执行。</p>
+<p><i class="fa fa-cog"></i> 分析：</p>
+<div class="note success no-icon">
+            <p>T1运行，则table被加锁，比如叫lockA，T2运行，再对table加一个共享锁，比如叫lockB。<br>两个锁是可以同时存在于同一资源上的（比如同一个表上）。这被称为共享锁与共享锁兼容。<br>这意味着共享锁不阻止其它session同时读资源，但阻止其它session update</p>
+          </div>
+<hr>
+<p><i class="fa fa-pencil"></i> 例3：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table</span><br><span class="line">T2: select * from table</span><br><span class="line">T3: update table set column1=&apos;hello&apos;</span><br></pre></td></tr></table></figure></div>
+
+<p>这次，T2不用等T1运行完就能运行，T3却要等T1和T2都运行完才能运行。</p>
+<h2 id="因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"><a href="#因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。" class="headerlink" title="因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"></a>因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。</h2><p><i class="fa fa-pencil"></i> 例4：（死锁的发生）</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (holdlock) (holdlock意思是加共享锁，直到事物结束才释放)</span><br><span class="line">update table set column1=&apos;hello&apos;</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(holdlock)</span><br><span class="line">update table set column1=&apos;world&apos;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>假设T1和T2同时达到select，T1对table加共享锁，T2也对加共享锁，当T1的select执行完，准备执行update时，根据锁机制，T1的共享锁需要升级到排他锁才能执行接下来的update.在升级排他锁前，必须等table上的其它共享锁释放，但因为holdlock这样的共享锁只有等事务结束后才释放，所以因为T2的共享锁不释放而导致T1等(等T2释放共享锁，自己好升级成排他锁），同理，也因为T1的共享锁不释放而导致T2等。死锁产生了。</p>
+</blockquote>
+<hr>
+<p><i class="fa fa-pencil"></i> 例5：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=10</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;world&apos; where id=20</span><br></pre></td></tr></table></figure></div>
+
+<p>这种语句虽然最为常见，很多人觉得它有机会产生死锁，但实际上要看情况，如果id是主键上面有索引，那么T1会一下子找到该条记录(id=10的记录），然后对该条记录加排他锁，T2，同样，一下子通过索引定位到记录，然后对id=20的记录加排他锁，这样T1和T2各更新各的，互不影响。T2也不需要等。</p>
+<h2 id="但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"><a href="#但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。" class="headerlink" title="但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"></a>但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。</h2><p>死锁怎么解决呢？一种办法是，如下：<br><i class="fa fa-pencil"></i> 例6：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(xlock) (xlock意思是直接对表加排他锁)</span><br><span class="line">update table set column1=&apos;hello&apos;</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(xlock)</span><br><span class="line">update table set column1=&apos;world&apos;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"><a href="#当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。" class="headerlink" title="当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"></a>当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。</h2><h2 id="更新锁-Update-lock"><a href="#更新锁-Update-lock" class="headerlink" title="更新锁(Update lock)"></a>更新锁(Update lock)</h2><blockquote>
+<p>为解决死锁，引入更新锁。</p>
+</blockquote>
+<p><i class="fa fa-pencil"></i> 例7：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(updlock) (加更新锁)</span><br><span class="line">update table set column1=&apos;hello&apos;</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(updlock)</span><br><span class="line">update table set column1=&apos;world&apos;</span><br></pre></td></tr></table></figure></div>
+
+<p>更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁（用来更新）的资格”。一个事物只能有一个更新锁获此资格。</p>
+<p>T1执行select，加更新锁。</p>
+<p>T2运行，准备加更新锁，但发现已经有一个更新锁在那儿了，只好等。</p>
+<h2 id="当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"><a href="#当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。" class="headerlink" title="当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"></a>当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。</h2><p><i class="fa fa-pencil"></i> 例8：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table(updlock) (加更新锁）</span><br><span class="line">T2: select * from table(updlock) (等待，直到T1释放更新锁，因为同一时间不能在同一资源上有两个更新锁）</span><br><span class="line">T3: select * from table (加共享锁，但不用等updlock释放，就可以读）</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"><a href="#这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。" class="headerlink" title="这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"></a>这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。</h2><h2 id="排他锁（独占锁，Exclusive-Locks"><a href="#排他锁（独占锁，Exclusive-Locks" class="headerlink" title="排他锁（独占锁，Exclusive Locks)"></a>排他锁（独占锁，Exclusive Locks)</h2><blockquote>
+<p>其它事务既不能读，又不能改排他锁锁定的资源。</p>
+</blockquote>
+<p><i class="fa fa-pencil"></i> 例9：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin</span><br><span class="line">select * from table(updlock) (加更新锁）</span><br><span class="line">update table set column1=&apos;hello&apos; (重点：这里T1做update时，不需要等T2释放什么，而是直接把更新锁升级为排他锁，然后执行update)</span><br><span class="line">T2:</span><br><span class="line">begin</span><br><span class="line">select * from table (T1加的更新锁不影响T2读取）</span><br><span class="line">update table set column1=&apos;world&apos; (T2的update需要等T1的update做完才能执行)</span><br></pre></td></tr></table></figure></div>
+
+<p>第一种情况：T1先达，T2紧接到达；在这种情况中，T1先对表加更新锁，T2对表加共享锁，假设T2的select先执行完，准备执行update，发现已有更新锁存在，T2等。T1这时才执行完select，准备执行update，更新锁升级为排他锁，然后执行update，执行完成，事务结束，释放锁，T2才轮到执行update。</p>
+<p>第二种情况：T2先达，T1紧接达；在这种情况，T2先对表加共享锁，T1到达后，T1对表加更新锁，假设T2 select先结束，准备update，发现已有更新锁，则等待，后面步骤就跟第一种情况一样了。</p>
+<h2 id="这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"><a href="#这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。" class="headerlink" title="这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"></a>这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。</h2><p><i class="fa fa-pencil"></i> 例10：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: update table set column1=&apos;hello&apos; where id&lt;1000</span><br><span class="line">T2: update table set column1=&apos;world&apos; where id&gt;1000</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。"><a href="#假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。" class="headerlink" title="假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。"></a>假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。</h2><p><i class="fa fa-pencil"></i> 例11：(假设id都是自增长且连续的）</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: update table set column1=&apos;hello&apos; where id&lt;1000</span><br><span class="line">T2: update table set column1=&apos;world&apos; where id&gt;900</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"><a href="#如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。" class="headerlink" title="如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"></a>如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。</h2><h2 id="意向锁-Intent-Locks"><a href="#意向锁-Intent-Locks" class="headerlink" title="意向锁(Intent Locks)"></a>意向锁(Intent Locks)</h2><p>意向锁就是说在屋（比如代表一个表）门口设置一个标识，说明屋子里有人（比如代表某些记录）被锁住了。另一个人想知道屋子里是否有人被锁，不用进屋子里一个个去查，直接看门口标识就行了。</p>
+<h2 id="当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"><a href="#当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。" class="headerlink" title="当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"></a>当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</h2><p><i class="fa fa-pencil"></i> 例12：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">select * from table (xlock) where id=10 --意思是对id=10这一行强加排他锁</span><br><span class="line">T2: begin tran</span><br><span class="line">select * from table (tablock) --意思是要加表级锁</span><br></pre></td></tr></table></figure></div>
+
+<p>假设T1先执行，T2后执行，T2执行时，欲加表锁，为判断是否可以加表锁，数据库系统要逐条判断table表每行记录是否已有排他锁，如果发现其中一行已经有排他锁了，就不允许再加表锁了。只是这样逐条判断效率太低了。</p>
+<h2 id="实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"><a href="#实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。" class="headerlink" title="实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"></a>实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</h2><p><i class="fa fa-pencil"></i> 例13：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=1</span><br><span class="line">T2: begin tran</span><br><span class="line">update table set column1=&apos;world&apos; where id=1</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"><a href="#这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。" class="headerlink" title="这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"></a>这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。</h2><h2 id="计划锁-Schema-Locks"><a href="#计划锁-Schema-Locks" class="headerlink" title="计划锁(Schema Locks)"></a>计划锁(Schema Locks)</h2><p><i class="fa fa-pencil"></i> 例14：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table .... (加schema locks，称之为Schema modification (Sch-M) locks</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"><a href="#DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。" class="headerlink" title="DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"></a>DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</h2><p><i class="fa fa-pencil"></i> 例15：</p>
+<p>用jdbc向数据库发送了一条新的sql语句，数据库要先对之进行编译，在编译期间，也会加锁，称之为：Schema stability (Sch-S) locks。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tableA</span><br></pre></td></tr></table></figure></div>
+
+<p>编译这条语句过程中，其它session可以对表tableA做任何操作(update,delete，加排他锁等等），但不能做DDL(比如alter table)操作。</p>
+<h2 id="Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。"><a href="#Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。" class="headerlink" title="Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。"></a>Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。</h2><h1 id="何时加锁"><a href="#何时加锁" class="headerlink" title="何时加锁"></a>何时加锁</h1><p><i class="fa fa-pencil"></i> 例16：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=1</span><br><span class="line">T2: SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED -- 事务隔离级别为允许脏读</span><br><span class="line"></span><br><span class="line">select * from table where id=1</span><br></pre></td></tr></table></figure></div>
+
+<p>这里，T2的select可以查出结果。如果事务隔离级别不设为脏读，则T2会等T1事务执行完才能读出结果。</p>
+<blockquote>
+<p>数据库如何自动加锁的？</p>
+</blockquote>
+<blockquote>
+<p>1) T1执行，数据库自动加排他锁<br>2) T2执行，数据库发现事务隔离级别允许脏读，便不加共享锁。不加共享锁，则不会与已有的排他锁冲突，所以可以脏读。</p>
+</blockquote>
+<hr>
+<p><i class="fa fa-pencil"></i> 例17：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=1</span><br><span class="line">T2: select * from table where id=1 –未指定隔离级别，则使用系统默认隔离级别，它不允许脏读</span><br></pre></td></tr></table></figure></div>
+
+<div class="note danger no-icon">
+            <p>如果事务级别不设为脏读，则：<br>1) T1执行，数据库自动加排他锁<br>2) T2执行，数据库发现事务隔离级别不允许脏读，便准备为此次select过程加共享锁，但发现加不上，因为已经有排他锁了，所以就等到T1执行完，释放了排他锁，T2才加上了共享锁，然后开始读….</p>
+          </div>
+<hr>
+<h1 id="锁的粒度"><a href="#锁的粒度" class="headerlink" title="锁的粒度"></a>锁的粒度</h1><p>锁的粒度就是指锁的生效范围，就是说是行锁，还是页锁，还是整表锁. 锁的粒度同样既可以由数据库自动管理，也可以通过手工指定hint来管理。</p>
+<p><i class="fa fa-pencil"></i> 例18：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (paglock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id&gt;10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"><a href="#T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。" class="headerlink" title="T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"></a>T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</h2><p><i class="fa fa-pencil"></i> 例19：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (rowlock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id=10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"><a href="#T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。" class="headerlink" title="T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"></a>T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。</h2><p><i class="fa fa-pencil"></i> 例20：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (tablock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。"><a href="#T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。" class="headerlink" title="T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。"></a>T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</h2><h1 id="锁与事务隔离级别的优先级"><a href="#锁与事务隔离级别的优先级" class="headerlink" title="锁与事务隔离级别的优先级"></a>锁与事务隔离级别的优先级</h1><blockquote>
+<p>手工指定的锁优先。</p>
+</blockquote>
+<p><i class="fa fa-pencil"></i> 例21：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T1: </span><br><span class="line">SET TRANSACTION ISOLATION LEVEL SERIALIZABLE</span><br><span class="line"></span><br><span class="line">BEGIN TRANSACTION</span><br><span class="line">SELECT * FROM table (NOLOCK)</span><br><span class="line"></span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id=10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"><a href="#T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。" class="headerlink" title="T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"></a>T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。</h2><h1 id="数据库其他锁及其区别"><a href="#数据库其他锁及其区别" class="headerlink" title="数据库其他锁及其区别"></a>数据库其他锁及其区别</h1><ol>
+<li>holdlock 对表加共享锁，且事务（commit/rollback）不完成，共享锁不释放。</li>
+<li>tablock 对表加共享锁，只要statement不完成，共享锁不释放。</li>
+</ol>
+<h2 id="tablock"><a href="#tablock" class="headerlink" title="tablock"></a>tablock</h2><p><i class="fa fa-pencil"></i> 例22：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (tablock)</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1执行完select，就会释放共享锁，然后T2就可以执行update。"><a href="#T1执行完select，就会释放共享锁，然后T2就可以执行update。" class="headerlink" title="T1执行完select，就会释放共享锁，然后T2就可以执行update。"></a>T1执行完select，就会释放共享锁，然后T2就可以执行update。</h2><h2 id="holdlock"><a href="#holdlock" class="headerlink" title="holdlock"></a>holdlock</h2><p><i class="fa fa-pencil"></i> 例23：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (holdlock)</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"><a href="#T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。" class="headerlink" title="T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"></a>T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。</h2><h2 id="TABLOCKX-对表加排他锁"><a href="#TABLOCKX-对表加排他锁" class="headerlink" title="TABLOCKX 对表加排他锁"></a>TABLOCKX 对表加排他锁</h2><p><i class="fa fa-pencil"></i> 例24：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table(tablockx) (强行加排他锁）</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"><a href="#其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。" class="headerlink" title="其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"></a>其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</h2><p><i class="fa fa-pencil"></i> 例25：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">select * from table(tablockx)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"><a href="#单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。" class="headerlink" title="单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"></a>单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。</h2><h2 id="xlock-加排他锁"><a href="#xlock-加排他锁" class="headerlink" title="xlock 加排他锁"></a>xlock 加排他锁</h2><p><i class="fa fa-pencil"></i> 例26：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table(xlock paglock) 对page加排他锁</span><br></pre></td></tr></table></figure></div>
+
+<p>xlock还可这么用：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table(xlock tablock)</span><br></pre></td></tr></table></figure></div>
+
+<p>效果等同于</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table(tablockx)</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="锁的超时等待"><a href="#锁的超时等待" class="headerlink" title="锁的超时等待"></a>锁的超时等待</h1><p><code>SET LOCK_TIMEOUT 4000</code> 用来设置锁等待时间，单位是毫秒，4000意味着等待4秒可以用<code>select @@LOCK_TIMEOUT</code>查看当前session的锁超时设置。-1 意味着永远等待。</p>
+<p><i class="fa fa-pencil"></i> 例27：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">udpate table set column1=&apos;hello&apos; where id = 10</span><br><span class="line">T2: set lock_timeout 4000</span><br><span class="line">select * from table wehre id = 10</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。"><a href="#T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。" class="headerlink" title="T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： Lock request time out period exceeded。"></a>T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： <code>Lock request time out period exceeded</code>。</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/57a9974a.html">数据库锁机制及事务隔离级别</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年09月18日 - 10:09</p>
+  <p><span>最后更新:</span>2019年09月18日 - 03:09</p>
+  <p><span>原始链接:</span><a href="/posts/57a9974a.html" title="数据库锁机制及事务隔离级别">http://whb1990.github.io/posts/57a9974a.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/57a9974a.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>▄︻┻═┳一如果你喜欢这篇文章，请点击下方"打赏"按钮请我喝杯 ☕</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-envira"></i> 数据库</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+		    <div style="color: rgba(255,100,97,1); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/230bf701.html" rel="next" title="DevOps初识">
+                <i class="fa fa-chevron-left"></i> DevOps初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+			<a href="/">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="王洪博">
+			</a>	
+            
+              <p class="site-author-name" itemprop="name">王洪博</p>
+			  <!--个人描述-->
+              <!--<div class="site-description motion-element" itemprop="description">雄心不惧泥泞路，展翅翱翔九重天！</div>-->
+			  <!--动态文字-->
+			  <div class="site-description motion-element" itemprop="description"><div id="binft"></div></div>
+          
+		  </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">124</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/whb1990" title="GitHub &rarr; https://github.com/whb1990" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:whbsurpass@163.com" title="E-Mail &rarr; mailto:whbsurpass@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/270028806" title="QQ &rarr; 270028806"><i class="fa fa-fw fa-qq"></i>QQ</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/yan521bo" title="微信 &rarr; yan521bo"><i class="fa fa-fw fa-weixin"></i>微信</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://eirunye.github.io/" title="http://eirunye.github.io/" rel="noopener" target="_blank">Eirunye</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.infoq.cn/profile/1278512" title="https://www.infoq.cn/profile/1278512" rel="noopener" target="_blank">程晓明</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+		    
+		  <!--以下代码是播放器-->
+		  <link rel="stylesheet" href="/dist/APlayer.min.css">
+		  <div id="aplayer"></div>
+		  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+	      <script type="text/javascript" src="/dist/music.js"></script>
+		  <!--以上代码是播放器-->
+		  
+		  <!--动态文字-->
+<script>
+var binft = function (r) {
+  function t() {
+	return b[Math.floor(Math.random() * b.length)]
+  }  
+  function e() {
+	return String.fromCharCode(94 * Math.random() + 33)
+  }
+  function n(r) {
+	for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+	  var l = document.createElement("span");
+	  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+	}
+	return n
+  }
+  function i() {
+	var t = o[c.skillI];
+	c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+  }
+  var l = "",
+  o = ["雄心不惧泥泞路，展翅翱翔九重天！", "青青陵上柏，磊磊涧中石。", "人生天地间，忽如远行客。","斗酒相娱乐，聊厚不为薄。", "驱车策驽马，游戏宛与洛。","洛中何郁郁，冠带自相索。","长衢罗夹巷，王侯多第宅。","两宫遥相望，双阙百余尺。","极宴娱心意，戚戚何所迫？"].map(function (r) {
+  return r + ""
+  }),
+  a = 2,
+  g = 1,
+  s = 5,
+  d = 75,
+  b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+  c = {
+	text: "",
+	prefixP: -s,
+	skillI: 0,
+	skillP: 0,
+	direction: "forward",
+	delay: a,
+	step: g
+  };
+  i()
+  };
+  binft(document.getElementById('binft'));
+</script>
+
+<!--站点运行时长-->
+<div id="days"></div>
+<script>
+function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay = new Date("02/14/2018 12:34:56");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+          
+            
+          
+          <!--动态文字-->
+<script>
+var binft = function (r) {
+  function t() {
+	return b[Math.floor(Math.random() * b.length)]
+  }  
+  function e() {
+	return String.fromCharCode(94 * Math.random() + 33)
+  }
+  function n(r) {
+	for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+	  var l = document.createElement("span");
+	  l.textContent = e(), l.style.color = t(), n.appendChild(l)
+	}
+	return n
+  }
+  function i() {
+	var t = o[c.skillI];
+	c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+  }
+  var l = "",
+  o = ["雄心不惧泥泞路，展翅翱翔九重天！", "青青陵上柏，磊磊涧中石。", "人生天地间，忽如远行客。","斗酒相娱乐，聊厚不为薄。", "驱车策驽马，游戏宛与洛。","洛中何郁郁，冠带自相索。","长衢罗夹巷，王侯多第宅。","两宫遥相望，双阙百余尺。","极宴娱心意，戚戚何所迫？"].map(function (r) {
+  return r + ""
+  }),
+  a = 2,
+  g = 1,
+  s = 5,
+  d = 75,
+  b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+  c = {
+	text: "",
+	prefixP: -s,
+	skillI: 0,
+	skillP: 0,
+	direction: "forward",
+	delay: a,
+	step: g
+  };
+  i()
+  };
+  binft(document.getElementById('binft'));
+</script>
+
+<!--站点运行时长-->
+<div id="days"></div>
+<script>
+function show_date_time(){
+	window.setTimeout("show_date_time()", 1000);
+	BirthDay = new Date("02/14/2018 12:34:56");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的种类"><span class="nav-number">2.</span> <span class="nav-text">锁的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享锁-Shared-lock"><span class="nav-number">2.1.</span> <span class="nav-text">共享锁(Shared lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"><span class="nav-number">2.2.</span> <span class="nav-text">因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"><span class="nav-number">2.3.</span> <span class="nav-text">但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"><span class="nav-number">2.4.</span> <span class="nav-text">当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新锁-Update-lock"><span class="nav-number">2.5.</span> <span class="nav-text">更新锁(Update lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"><span class="nav-number">2.6.</span> <span class="nav-text">当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"><span class="nav-number">2.7.</span> <span class="nav-text">这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排他锁（独占锁，Exclusive-Locks"><span class="nav-number">2.8.</span> <span class="nav-text">排他锁（独占锁，Exclusive Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"><span class="nav-number">2.9.</span> <span class="nav-text">这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。"><span class="nav-number">2.10.</span> <span class="nav-text">假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"><span class="nav-number">2.11.</span> <span class="nav-text">如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#意向锁-Intent-Locks"><span class="nav-number">2.12.</span> <span class="nav-text">意向锁(Intent Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"><span class="nav-number">2.13.</span> <span class="nav-text">当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"><span class="nav-number">2.14.</span> <span class="nav-text">实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"><span class="nav-number">2.15.</span> <span class="nav-text">这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计划锁-Schema-Locks"><span class="nav-number">2.16.</span> <span class="nav-text">计划锁(Schema Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"><span class="nav-number">2.17.</span> <span class="nav-text">DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。"><span class="nav-number">2.18.</span> <span class="nav-text">Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#何时加锁"><span class="nav-number">3.</span> <span class="nav-text">何时加锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的粒度"><span class="nav-number">4.</span> <span class="nav-text">锁的粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"><span class="nav-number">4.1.</span> <span class="nav-text">T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"><span class="nav-number">4.2.</span> <span class="nav-text">T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。"><span class="nav-number">4.3.</span> <span class="nav-text">T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁与事务隔离级别的优先级"><span class="nav-number">5.</span> <span class="nav-text">锁与事务隔离级别的优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"><span class="nav-number">5.1.</span> <span class="nav-text">T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库其他锁及其区别"><span class="nav-number">6.</span> <span class="nav-text">数据库其他锁及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tablock"><span class="nav-number">6.1.</span> <span class="nav-text">tablock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行完select，就会释放共享锁，然后T2就可以执行update。"><span class="nav-number">6.2.</span> <span class="nav-text">T1执行完select，就会释放共享锁，然后T2就可以执行update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#holdlock"><span class="nav-number">6.3.</span> <span class="nav-text">holdlock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"><span class="nav-number">6.4.</span> <span class="nav-text">T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TABLOCKX-对表加排他锁"><span class="nav-number">6.5.</span> <span class="nav-text">TABLOCKX 对表加排他锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"><span class="nav-number">6.6.</span> <span class="nav-text">其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"><span class="nav-number">6.7.</span> <span class="nav-text">单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xlock-加排他锁"><span class="nav-number">6.8.</span> <span class="nav-text">xlock 加排他锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的超时等待"><span class="nav-number">7.</span> <span class="nav-text">锁的超时等待</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。"><span class="nav-number">7.1.</span> <span class="nav-text">T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： Lock request time out period exceeded。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by 王洪博</span>
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">814k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">12:20</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("2/14/2018 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="本站已安全运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+    
+
+</span></section>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color="204,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'jEJ3f06MIELEd6jO6Fs6dfRt-MdYXbMMI',
+    appKey: 'PdpNJ5fWdonW4D1cH8qxbadO',
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'wavatar',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+  
+  //新增以下代码即可，可以移除.info下所有子节点。
+  var infoEle = document.querySelector('#comments .info');
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+    infoEle.childNodes.forEach(function(item) {
+    item.parentNode.removeChild(item);
+    });
+  }
+
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20604,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 分享功能 -->
+  
+  <!-- 鼠标点击显示小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+  <!--鼠标点击显示文字-->
+  <script type="text/javascript" src="/js/click_show_text.js"></script>
+  <!--鼠标点击烟花爆炸效果-->
+  <!--
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/fireworks.js"></script>
+  -->
+  <!--浏览器搞笑标题-->
+  <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+  <!-- 雪花特效 -->
+  <script type="text/javascript" src="/js/snow.js"></script>
+  <!--<script type="text/javascript" src="/js/snow2.js"></script>--><!--雪花效果2-->
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/clipboard-use.js"></script>
+  <!-- 飘动的彩带 -->
+  <script src="/js/piaodai.js" type="text/javascript"></script>
+  <!--代码雨-->
+  <!-- <canvas id="canvas" width="1440" height="900" ></canvas>
+  <script src="/js/digitalRain.js" type="text/javascript"></script>-->
+  <!--人体时钟背景透明-->
+  <!--<script charset="Shift_JIS" src="/js/honehone_clock_tr.js"></script>-->
+  <!--人体时钟背景白-->
+  <!--<script charset="Shift_JIS" src="/js/honehone_clock_wh.js"></script>-->
+  <!--访客地理信息-->
+  <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
+  <!--看板娘-->
+  <script src="/live2d-widget/autoload.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
