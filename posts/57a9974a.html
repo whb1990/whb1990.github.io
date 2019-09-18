@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。 锁的种类共享锁(Shared lock) 例1： 12T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: update table set column1=&amp;apos;hello&amp;apos;   过程：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T03:45:50.266Z">
+<meta property="og:updated_time" content="2019-09-18T03:52:59.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库锁机制及事务隔离级别">
 <meta name="twitter:description" content="前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。 锁的种类共享锁(Shared lock) 例1： 12T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: update table set column1=&amp;apos;hello&amp;apos;   过程：">
@@ -528,7 +528,7 @@
                 
               
 
-              <time title="创建时间：2019-09-18 10:40:42" itemprop="dateCreated datePublished" datetime="2019-09-18T10:40:42Z">2019-09-18</time>
+              <time title="创建时间：2018-08-08 10:40:42" itemprop="dateCreated datePublished" datetime="2018-08-08T10:40:42Z">2018-08-08</time>
             
 
             
@@ -680,12 +680,15 @@
 <div class="note success no-icon">
             <p>T1运行，则table被加锁，比如叫lockA，T2运行，再对table加一个共享锁，比如叫lockB。<br>两个锁是可以同时存在于同一资源上的（比如同一个表上）。这被称为共享锁与共享锁兼容。<br>这意味着共享锁不阻止其它session同时读资源，但阻止其它session update</p>
           </div>
+
 <hr>
 <p><i class="fa fa-pencil"></i> 例3：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table</span><br><span class="line">T2: select * from table</span><br><span class="line">T3: update table set column1=&apos;hello&apos;</span><br></pre></td></tr></table></figure></div>
 
 <p>这次，T2不用等T1运行完就能运行，T3却要等T1和T2都运行完才能运行。</p>
-<h2 id="因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"><a href="#因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。" class="headerlink" title="因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"></a>因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。</h2><p><i class="fa fa-pencil"></i> 例4：（死锁的发生）</p>
+<p>因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例4：（死锁的发生）</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (holdlock) (holdlock意思是加共享锁，直到事物结束才释放)</span><br><span class="line">update table set column1=&apos;hello&apos;</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(holdlock)</span><br><span class="line">update table set column1=&apos;world&apos;</span><br></pre></td></tr></table></figure></div>
 
 <blockquote>
@@ -696,10 +699,14 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=10</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;world&apos; where id=20</span><br></pre></td></tr></table></figure></div>
 
 <p>这种语句虽然最为常见，很多人觉得它有机会产生死锁，但实际上要看情况，如果id是主键上面有索引，那么T1会一下子找到该条记录(id=10的记录），然后对该条记录加排他锁，T2，同样，一下子通过索引定位到记录，然后对id=20的记录加排他锁，这样T1和T2各更新各的，互不影响。T2也不需要等。</p>
-<h2 id="但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"><a href="#但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。" class="headerlink" title="但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"></a>但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。</h2><p>死锁怎么解决呢？一种办法是，如下：<br><i class="fa fa-pencil"></i> 例6：</p>
+<p>但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。</p>
+<hr>
+<p>死锁怎么解决呢？一种办法是，如下：<br><i class="fa fa-pencil"></i> 例6：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(xlock) (xlock意思是直接对表加排他锁)</span><br><span class="line">update table set column1=&apos;hello&apos;</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">select * from table(xlock)</span><br><span class="line">update table set column1=&apos;world&apos;</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"><a href="#当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。" class="headerlink" title="当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"></a>当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。</h2><h2 id="更新锁-Update-lock"><a href="#更新锁-Update-lock" class="headerlink" title="更新锁(Update lock)"></a>更新锁(Update lock)</h2><blockquote>
+<p>当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。</p>
+<hr>
+<h2 id="更新锁-Update-lock"><a href="#更新锁-Update-lock" class="headerlink" title="更新锁(Update lock)"></a>更新锁(Update lock)</h2><blockquote>
 <p>为解决死锁，引入更新锁。</p>
 </blockquote>
 <p><i class="fa fa-pencil"></i> 例7：</p>
@@ -708,10 +715,14 @@
 <p>更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁（用来更新）的资格”。一个事物只能有一个更新锁获此资格。</p>
 <p>T1执行select，加更新锁。</p>
 <p>T2运行，准备加更新锁，但发现已经有一个更新锁在那儿了，只好等。</p>
-<h2 id="当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"><a href="#当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。" class="headerlink" title="当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"></a>当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。</h2><p><i class="fa fa-pencil"></i> 例8：</p>
+<p>当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例8：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table(updlock) (加更新锁）</span><br><span class="line">T2: select * from table(updlock) (等待，直到T1释放更新锁，因为同一时间不能在同一资源上有两个更新锁）</span><br><span class="line">T3: select * from table (加共享锁，但不用等updlock释放，就可以读）</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"><a href="#这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。" class="headerlink" title="这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"></a>这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。</h2><h2 id="排他锁（独占锁，Exclusive-Locks"><a href="#排他锁（独占锁，Exclusive-Locks" class="headerlink" title="排他锁（独占锁，Exclusive Locks)"></a>排他锁（独占锁，Exclusive Locks)</h2><blockquote>
+<p>这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。</p>
+<hr>
+<h2 id="排他锁（独占锁，Exclusive-Locks"><a href="#排他锁（独占锁，Exclusive-Locks" class="headerlink" title="排他锁（独占锁，Exclusive Locks)"></a>排他锁（独占锁，Exclusive Locks)</h2><blockquote>
 <p>其它事务既不能读，又不能改排他锁锁定的资源。</p>
 </blockquote>
 <p><i class="fa fa-pencil"></i> 例9：</p>
@@ -719,29 +730,45 @@
 
 <p>第一种情况：T1先达，T2紧接到达；在这种情况中，T1先对表加更新锁，T2对表加共享锁，假设T2的select先执行完，准备执行update，发现已有更新锁存在，T2等。T1这时才执行完select，准备执行update，更新锁升级为排他锁，然后执行update，执行完成，事务结束，释放锁，T2才轮到执行update。</p>
 <p>第二种情况：T2先达，T1紧接达；在这种情况，T2先对表加共享锁，T1到达后，T1对表加更新锁，假设T2 select先结束，准备update，发现已有更新锁，则等待，后面步骤就跟第一种情况一样了。</p>
-<h2 id="这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"><a href="#这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。" class="headerlink" title="这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"></a>这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。</h2><p><i class="fa fa-pencil"></i> 例10：</p>
+<p>这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例10：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: update table set column1=&apos;hello&apos; where id&lt;1000</span><br><span class="line">T2: update table set column1=&apos;world&apos; where id&gt;1000</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。"><a href="#假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。" class="headerlink" title="假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。"></a>假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。</h2><p><i class="fa fa-pencil"></i> 例11：(假设id都是自增长且连续的）</p>
+<p>假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例11：(假设id都是自增长且连续的）</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: update table set column1=&apos;hello&apos; where id&lt;1000</span><br><span class="line">T2: update table set column1=&apos;world&apos; where id&gt;900</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"><a href="#如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。" class="headerlink" title="如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"></a>如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。</h2><h2 id="意向锁-Intent-Locks"><a href="#意向锁-Intent-Locks" class="headerlink" title="意向锁(Intent Locks)"></a>意向锁(Intent Locks)</h2><p>意向锁就是说在屋（比如代表一个表）门口设置一个标识，说明屋子里有人（比如代表某些记录）被锁住了。另一个人想知道屋子里是否有人被锁，不用进屋子里一个个去查，直接看门口标识就行了。</p>
-<h2 id="当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"><a href="#当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。" class="headerlink" title="当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"></a>当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</h2><p><i class="fa fa-pencil"></i> 例12：</p>
+<p>如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。</p>
+<hr>
+<h2 id="意向锁-Intent-Locks"><a href="#意向锁-Intent-Locks" class="headerlink" title="意向锁(Intent Locks)"></a>意向锁(Intent Locks)</h2><p>意向锁就是说在屋（比如代表一个表）门口设置一个标识，说明屋子里有人（比如代表某些记录）被锁住了。另一个人想知道屋子里是否有人被锁，不用进屋子里一个个去查，直接看门口标识就行了。</p>
+<p>当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例12：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">select * from table (xlock) where id=10 --意思是对id=10这一行强加排他锁</span><br><span class="line">T2: begin tran</span><br><span class="line">select * from table (tablock) --意思是要加表级锁</span><br></pre></td></tr></table></figure></div>
 
 <p>假设T1先执行，T2后执行，T2执行时，欲加表锁，为判断是否可以加表锁，数据库系统要逐条判断table表每行记录是否已有排他锁，如果发现其中一行已经有排他锁了，就不允许再加表锁了。只是这样逐条判断效率太低了。</p>
-<h2 id="实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"><a href="#实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。" class="headerlink" title="实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"></a>实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</h2><p><i class="fa fa-pencil"></i> 例13：</p>
+<p>实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例13：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=1</span><br><span class="line">T2: begin tran</span><br><span class="line">update table set column1=&apos;world&apos; where id=1</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"><a href="#这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。" class="headerlink" title="这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"></a>这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。</h2><h2 id="计划锁-Schema-Locks"><a href="#计划锁-Schema-Locks" class="headerlink" title="计划锁(Schema Locks)"></a>计划锁(Schema Locks)</h2><p><i class="fa fa-pencil"></i> 例14：</p>
+<p>这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。</p>
+<hr>
+<h2 id="计划锁-Schema-Locks"><a href="#计划锁-Schema-Locks" class="headerlink" title="计划锁(Schema Locks)"></a>计划锁(Schema Locks)</h2><p><i class="fa fa-pencil"></i> 例14：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table .... (加schema locks，称之为Schema modification (Sch-M) locks</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"><a href="#DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。" class="headerlink" title="DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"></a>DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</h2><p><i class="fa fa-pencil"></i> 例15：</p>
+<p>DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例15：</p>
 <p>用jdbc向数据库发送了一条新的sql语句，数据库要先对之进行编译，在编译期间，也会加锁，称之为：Schema stability (Sch-S) locks。</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tableA</span><br></pre></td></tr></table></figure></div>
 
 <p>编译这条语句过程中，其它session可以对表tableA做任何操作(update,delete，加排他锁等等），但不能做DDL(比如alter table)操作。</p>
-<h2 id="Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。"><a href="#Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。" class="headerlink" title="Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。"></a>Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。</h2><h1 id="何时加锁"><a href="#何时加锁" class="headerlink" title="何时加锁"></a>何时加锁</h1><p><i class="fa fa-pencil"></i> 例16：</p>
+<p>Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。</p>
+<hr>
+<h1 id="何时加锁"><a href="#何时加锁" class="headerlink" title="何时加锁"></a>何时加锁</h1><p><i class="fa fa-pencil"></i> 例16：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id=1</span><br><span class="line">T2: SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED -- 事务隔离级别为允许脏读</span><br><span class="line"></span><br><span class="line">select * from table where id=1</span><br></pre></td></tr></table></figure></div>
 
 <p>这里，T2的select可以查出结果。如果事务隔离级别不设为脏读，则T2会等T1事务执行完才能读出结果。</p>
@@ -758,40 +785,57 @@
 <div class="note danger no-icon">
             <p>如果事务级别不设为脏读，则：<br>1) T1执行，数据库自动加排他锁<br>2) T2执行，数据库发现事务隔离级别不允许脏读，便准备为此次select过程加共享锁，但发现加不上，因为已经有排他锁了，所以就等到T1执行完，释放了排他锁，T2才加上了共享锁，然后开始读….</p>
           </div>
+
 <hr>
 <h1 id="锁的粒度"><a href="#锁的粒度" class="headerlink" title="锁的粒度"></a>锁的粒度</h1><p>锁的粒度就是指锁的生效范围，就是说是行锁，还是页锁，还是整表锁. 锁的粒度同样既可以由数据库自动管理，也可以通过手工指定hint来管理。</p>
 <p><i class="fa fa-pencil"></i> 例18：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (paglock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id&gt;10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"><a href="#T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。" class="headerlink" title="T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"></a>T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</h2><p><i class="fa fa-pencil"></i> 例19：</p>
+<p>T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例19：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (rowlock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id=10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"><a href="#T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。" class="headerlink" title="T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"></a>T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。</h2><p><i class="fa fa-pencil"></i> 例20：</p>
+<p>T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例20：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table (tablock)</span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。"><a href="#T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。" class="headerlink" title="T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。"></a>T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</h2><h1 id="锁与事务隔离级别的优先级"><a href="#锁与事务隔离级别的优先级" class="headerlink" title="锁与事务隔离级别的优先级"></a>锁与事务隔离级别的优先级</h1><blockquote>
+<p>T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</p>
+<hr>
+<h1 id="锁与事务隔离级别的优先级"><a href="#锁与事务隔离级别的优先级" class="headerlink" title="锁与事务隔离级别的优先级"></a>锁与事务隔离级别的优先级</h1><blockquote>
 <p>手工指定的锁优先。</p>
 </blockquote>
 <p><i class="fa fa-pencil"></i> 例21：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T1: </span><br><span class="line">SET TRANSACTION ISOLATION LEVEL SERIALIZABLE</span><br><span class="line"></span><br><span class="line">BEGIN TRANSACTION</span><br><span class="line">SELECT * FROM table (NOLOCK)</span><br><span class="line"></span><br><span class="line">T2: update table set column1=&apos;hello&apos; where id=10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"><a href="#T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。" class="headerlink" title="T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"></a>T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。</h2><h1 id="数据库其他锁及其区别"><a href="#数据库其他锁及其区别" class="headerlink" title="数据库其他锁及其区别"></a>数据库其他锁及其区别</h1><ol>
+<p>T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。</p>
+<hr>
+<h1 id="数据库其他锁及其区别"><a href="#数据库其他锁及其区别" class="headerlink" title="数据库其他锁及其区别"></a>数据库其他锁及其区别</h1><ol>
 <li>holdlock 对表加共享锁，且事务（commit/rollback）不完成，共享锁不释放。</li>
 <li>tablock 对表加共享锁，只要statement不完成，共享锁不释放。</li>
 </ol>
 <h2 id="tablock"><a href="#tablock" class="headerlink" title="tablock"></a>tablock</h2><p><i class="fa fa-pencil"></i> 例22：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (tablock)</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1执行完select，就会释放共享锁，然后T2就可以执行update。"><a href="#T1执行完select，就会释放共享锁，然后T2就可以执行update。" class="headerlink" title="T1执行完select，就会释放共享锁，然后T2就可以执行update。"></a>T1执行完select，就会释放共享锁，然后T2就可以执行update。</h2><h2 id="holdlock"><a href="#holdlock" class="headerlink" title="holdlock"></a>holdlock</h2><p><i class="fa fa-pencil"></i> 例23：</p>
+<p>T1执行完select，就会释放共享锁，然后T2就可以执行update。</p>
+<hr>
+<h2 id="holdlock"><a href="#holdlock" class="headerlink" title="holdlock"></a>holdlock</h2><p><i class="fa fa-pencil"></i> 例23：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1:</span><br><span class="line">begin tran</span><br><span class="line">select * from table (holdlock)</span><br><span class="line">T2:</span><br><span class="line">begin tran</span><br><span class="line">update table set column1=&apos;hello&apos; where id = 10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"><a href="#T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。" class="headerlink" title="T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"></a>T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。</h2><h2 id="TABLOCKX-对表加排他锁"><a href="#TABLOCKX-对表加排他锁" class="headerlink" title="TABLOCKX 对表加排他锁"></a>TABLOCKX 对表加排他锁</h2><p><i class="fa fa-pencil"></i> 例24：</p>
+<p>T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。</p>
+<hr>
+<h2 id="TABLOCKX-对表加排他锁"><a href="#TABLOCKX-对表加排他锁" class="headerlink" title="TABLOCKX 对表加排他锁"></a>TABLOCKX 对表加排他锁</h2><p><i class="fa fa-pencil"></i> 例24：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T1: select * from table(tablockx) (强行加排他锁）</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"><a href="#其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。" class="headerlink" title="其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"></a>其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</h2><p><i class="fa fa-pencil"></i> 例25：</p>
+<p>其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</p>
+<hr>
+<p><i class="fa fa-pencil"></i> 例25：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">select * from table(tablockx)</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"><a href="#单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。" class="headerlink" title="单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"></a>单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。</h2><h2 id="xlock-加排他锁"><a href="#xlock-加排他锁" class="headerlink" title="xlock 加排他锁"></a>xlock 加排他锁</h2><p><i class="fa fa-pencil"></i> 例26：</p>
+<p>单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。</p>
+<hr>
+<h2 id="xlock-加排他锁"><a href="#xlock-加排他锁" class="headerlink" title="xlock 加排他锁"></a>xlock 加排他锁</h2><p><i class="fa fa-pencil"></i> 例26：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from table(xlock paglock) 对page加排他锁</span><br></pre></td></tr></table></figure></div>
 
 <p>xlock还可这么用：</p>
@@ -805,7 +849,9 @@
 <p><i class="fa fa-pencil"></i> 例27：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1: begin tran</span><br><span class="line">udpate table set column1=&apos;hello&apos; where id = 10</span><br><span class="line">T2: set lock_timeout 4000</span><br><span class="line">select * from table wehre id = 10</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。"><a href="#T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。" class="headerlink" title="T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： Lock request time out period exceeded。"></a>T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： <code>Lock request time out period exceeded</code>。</h2>
+<p>T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： <code>Lock request time out period exceeded</code>。</p>
+<hr>
+
       
     </div>
 
@@ -826,7 +872,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <p><span>本文标题:</span><a href="/posts/57a9974a.html">数据库锁机制及事务隔离级别</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
-  <p><span>发布时间:</span>2019年09月18日 - 10:09</p>
+  <p><span>发布时间:</span>2018年08月08日 - 10:08</p>
   <p><span>最后更新:</span>2019年09月18日 - 03:09</p>
   <p><span>原始链接:</span><a href="/posts/57a9974a.html" title="数据库锁机制及事务隔离级别">http://whb1990.github.io/posts/57a9974a.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/57a9974a.html" aria-label="复制成功！"></i></span>
@@ -925,8 +971,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/230bf701.html" rel="next" title="DevOps初识">
-                <i class="fa fa-chevron-left"></i> DevOps初识
+              <a href="/posts/fc4de834.html" rel="next" title="Java多线程-10之-线程优先级和守护线程">
+                <i class="fa fa-chevron-left"></i> Java多线程-10之-线程优先级和守护线程
               </a>
             
           </div>
@@ -934,6 +980,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/2d3dc485.html" rel="prev" title="设计模式-模板方法模式">
+                设计模式-模板方法模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1455,7 +1505,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的种类"><span class="nav-number">2.</span> <span class="nav-text">锁的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享锁-Shared-lock"><span class="nav-number">2.1.</span> <span class="nav-text">共享锁(Shared lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。"><span class="nav-number">2.2.</span> <span class="nav-text">因为T3必须等T1和T2的共享锁全部释放才能进行加排他锁然后执行update操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#但如果id是普通的一列，没有索引。那么当T1对id-10这一行加排他锁后，T2为了找到id-20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁-依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。"><span class="nav-number">2.3.</span> <span class="nav-text">但如果id是普通的一列，没有索引。那么当T1对id=10这一行加排他锁后，T2为了找到id=20，需要对全表扫描，那么就会预先对表加上共享锁或更新锁或排他锁(依赖于数据库执行策略和方式，比如第一次执行和第二次执行数据库执行策略就会不同）。但因为T1已经为一条记录加了排他锁，导致T2的全表扫描进行不下去，就导致T2等待。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当T1的select-执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。"><span class="nav-number">2.4.</span> <span class="nav-text">当T1的select 执行时，直接对表加上了排他锁，T2在执行select时，就需要等T1事务完全执行完才能执行。排除了死锁发生。但当第三个user过来想执行一个查询语句时，也因为排他锁的存在而不得不等待，第四个、第五个user也会因此而等待。在大并发情况下，让大家等待显得性能就太友好了，所以，这里引入了更新锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新锁-Update-lock"><span class="nav-number">2.5.</span> <span class="nav-text">更新锁(Update lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。"><span class="nav-number">2.6.</span> <span class="nav-text">当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高了效率。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。"><span class="nav-number">2.7.</span> <span class="nav-text">这个例子是说明：共享锁和更新锁可以同时在同一个资源上。这被称为共享锁和更新锁是兼容的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排他锁（独占锁，Exclusive-Locks"><span class="nav-number">2.8.</span> <span class="nav-text">排他锁（独占锁，Exclusive Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。"><span class="nav-number">2.9.</span> <span class="nav-text">这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一资源上。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假设T1先达，T2随后至，这个过程中T1会对id-lt-1000的记录施加排他锁-但不会阻塞T2的update。"><span class="nav-number">2.10.</span> <span class="nav-text">假设T1先达，T2随后至，这个过程中T1会对id&lt;1000的记录施加排他锁.但不会阻塞T2的update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。"><span class="nav-number">2.11.</span> <span class="nav-text">如同例10，T1先达，T2立刻也到，T1加的排他锁会阻塞T2的update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#意向锁-Intent-Locks"><span class="nav-number">2.12.</span> <span class="nav-text">意向锁(Intent Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。"><span class="nav-number">2.13.</span> <span class="nav-text">当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id-10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁-IX-，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。"><span class="nav-number">2.14.</span> <span class="nav-text">实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。"><span class="nav-number">2.15.</span> <span class="nav-text">这个例子和上面的例子实际效果相同，T1执行，系统同时对行加排他锁、对页加意向排他锁、对表加意向排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计划锁-Schema-Locks"><span class="nav-number">2.16.</span> <span class="nav-text">计划锁(Schema Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。"><span class="nav-number">2.17.</span> <span class="nav-text">DDL语句都会加Sch-M锁，该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bulk-Update-Locks-主要在批量导数据时用（比如用类似于oracle中的imp-exp的bcp命令）。"><span class="nav-number">2.18.</span> <span class="nav-text">Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#何时加锁"><span class="nav-number">3.</span> <span class="nav-text">何时加锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的粒度"><span class="nav-number">4.</span> <span class="nav-text">锁的粒度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页-当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。"><span class="nav-number">4.1.</span> <span class="nav-text">T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁-T2执行时，会对id-10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。"><span class="nav-number">4.2.</span> <span class="nav-text">T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，T2就可以顺利执行update操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行，对整个表加共享锁-T1必须完全查询完，T2才可以允许加锁，并开始更新。"><span class="nav-number">4.3.</span> <span class="nav-text">T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁与事务隔离级别的优先级"><span class="nav-number">5.</span> <span class="nav-text">锁与事务隔离级别的优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。"><span class="nav-number">5.1.</span> <span class="nav-text">T1是事务隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select语句不会加任何锁，所以T2也就不会有任何阻塞。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库其他锁及其区别"><span class="nav-number">6.</span> <span class="nav-text">数据库其他锁及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tablock"><span class="nav-number">6.1.</span> <span class="nav-text">tablock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行完select，就会释放共享锁，然后T2就可以执行update。"><span class="nav-number">6.2.</span> <span class="nav-text">T1执行完select，就会释放共享锁，然后T2就可以执行update。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#holdlock"><span class="nav-number">6.3.</span> <span class="nav-text">holdlock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T1执行完select，共享锁仍然不会释放，仍然会被hold-持有），T2也因此必须等待而不能update-当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。"><span class="nav-number">6.4.</span> <span class="nav-text">T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或rollback说明这一个事务结束了，T2才取得执行权。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TABLOCKX-对表加排他锁"><span class="nav-number">6.5.</span> <span class="nav-text">TABLOCKX 对表加排他锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。"><span class="nav-number">6.6.</span> <span class="nav-text">其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。"><span class="nav-number">6.7.</span> <span class="nav-text">单单select执行完还不行，必须整个事务完成（commit或rollback后）才会释放排他锁。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xlock-加排他锁"><span class="nav-number">6.8.</span> <span class="nav-text">xlock 加排他锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的超时等待"><span class="nav-number">7.</span> <span class="nav-text">锁的超时等待</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常：-Lock-request-time-out-period-exceeded。"><span class="nav-number">7.1.</span> <span class="nav-text">T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： Lock request time out period exceeded。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的种类"><span class="nav-number">2.</span> <span class="nav-text">锁的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享锁-Shared-lock"><span class="nav-number">2.1.</span> <span class="nav-text">共享锁(Shared lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新锁-Update-lock"><span class="nav-number">2.2.</span> <span class="nav-text">更新锁(Update lock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排他锁（独占锁，Exclusive-Locks"><span class="nav-number">2.3.</span> <span class="nav-text">排他锁（独占锁，Exclusive Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#意向锁-Intent-Locks"><span class="nav-number">2.4.</span> <span class="nav-text">意向锁(Intent Locks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计划锁-Schema-Locks"><span class="nav-number">2.5.</span> <span class="nav-text">计划锁(Schema Locks)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#何时加锁"><span class="nav-number">3.</span> <span class="nav-text">何时加锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的粒度"><span class="nav-number">4.</span> <span class="nav-text">锁的粒度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁与事务隔离级别的优先级"><span class="nav-number">5.</span> <span class="nav-text">锁与事务隔离级别的优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库其他锁及其区别"><span class="nav-number">6.</span> <span class="nav-text">数据库其他锁及其区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tablock"><span class="nav-number">6.1.</span> <span class="nav-text">tablock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#holdlock"><span class="nav-number">6.2.</span> <span class="nav-text">holdlock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TABLOCKX-对表加排他锁"><span class="nav-number">6.3.</span> <span class="nav-text">TABLOCKX 对表加排他锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xlock-加排他锁"><span class="nav-number">6.4.</span> <span class="nav-text">xlock 加排他锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的超时等待"><span class="nav-number">7.</span> <span class="nav-text">锁的超时等待</span></a></li></ol></div>
             
 
           </div>
