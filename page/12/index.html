@@ -625,7 +625,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -666,9 +666,9 @@
         
           
             <p>
-              HEAD的重置即检出HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
+              HEAD的重置即检出
+HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
 $ cat .git/HEAD
-
 
 可以看出HEAD指向了分支master，此时执行git branch会看到当前处于master分支。
 $ g
@@ -855,7 +855,7 @@ $ g
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">627字</span>
+            <span class="post-count">634字</span>
           </span>
 		  
           <span class="post-time">
@@ -1139,7 +1139,7 @@ Linux
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -1181,22 +1181,19 @@ Linux
           
             <p>
               现场版本控制
-现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。
+
+现场版本库创建。
+直接在需要版本控制的目录下执行Git版本库初始化命令。
 
 git init
-
 
 添加文件并提交
 
 git add -Agit commit -m &quot;本次提交的内容描述&quot;
 
+为初始提交建立一个里程碑：&quot;v1&quot;
 
-为初始提交建立一个里程碑：”v1”
-
-git tag v1
-
-
-然后开始在工
+git tag v
               ...
             </p>
           <!--noindex-->
@@ -1387,7 +1384,7 @@ git tag v1
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">961字</span>
+            <span class="post-count">1.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1397,7 +1394,7 @@ git tag v1
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
+            <span class="post-count">  4分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1415,7 +1412,7 @@ git tag v1
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">2.2k</span>
               
 
               
@@ -1429,7 +1426,7 @@ git tag v1
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -1457,10 +1454,11 @@ git tag v1
           
             <p>
               线程状态图
-线程状态解析 1. 新建状态(New): 线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
- 2. 就绪状态(Runnable): 也被称为“可执行状态”，处于就绪状态的线程，随时可能被CPU调度执行。
 
-调用线程的start()方法，
+线程状态解析
+&lt;span id=&quot;inline-green&quot;&gt; 1. 新建状态(New): &lt;/span&gt;
+线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
+&lt;span id=&quo
               ...
             </p>
           <!--noindex-->
@@ -1713,7 +1711,8 @@ git tag v1
         
           
             <p>
-              千里马                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_    
+              千里马
+                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_   
               ...
             </p>
           <!--noindex-->
@@ -1966,9 +1965,10 @@ git tag v1
         
           
             <p>
-              反向代理反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
+              反向代理
+反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
 下面贴上一段简单的实现反向代理的代码：
-server &#123;  listen 80;  serv
+server &#123;  listen 80;  ser
               ...
             </p>
           <!--noindex-->
@@ -2222,7 +2222,8 @@ server &#123;  listen 80;  serv
           
             <p>
               快速提取某一文件夹下所有文件名称
-            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成list
+
+            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成lis
               ...
             </p>
           <!--noindex-->
@@ -2413,7 +2414,7 @@ server &#123;  listen 80;  serv
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">730字</span>
+            <span class="post-count">722字</span>
           </span>
 		  
           <span class="post-time">
@@ -2482,10 +2483,12 @@ server &#123;  listen 80;  serv
         
           
             <p>
-              CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下：
+              CONCAT()函数
+CONCAT（）函数用于将多个字符串连接成一个字符串。
+使用数据表sys_user作为示例，sql如下：
 SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
 返回结果如下：
-+----+--------+| id | n
++----+--------+| id |
               ...
             </p>
           <!--noindex-->
@@ -2669,7 +2672,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">871字</span>
+            <span class="post-count">901字</span>
           </span>
 		  
           <span class="post-time">
@@ -2697,7 +2700,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.8k</span>
+                <span title="本文字数">1.9k</span>
               
 
               
@@ -2738,9 +2741,11 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
         
           
             <p>
-              虚拟机安装linux提示intel VT-x处于禁用状态问题描述我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
+              虚拟机安装linux提示intel VT-x处于禁用状态
+问题描述
+我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
 
-            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT-x
+            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT
               ...
             </p>
           <!--noindex-->
@@ -2931,7 +2936,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.6k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2959,7 +2964,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -3439,20 +3444,24 @@ var binft = function (r) {
 <script>
 function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	BirthDay = new Date("02/14/2018 12:34:56");
-	today = new Date();
-	timeold = (today.getTime()-BirthDay.getTime());
-	sectimeold = timeold/1000
-	secondsold = Math.floor(sectimeold);
-	msPerDay = 24*60*60*1000
-	e_daysold = timeold/msPerDay
-	daysold = Math.floor(e_daysold);
-	e_hrsold = (e_daysold-daysold)*24;
-	hrsold = setzero(Math.floor(e_hrsold));
-	e_minsold = (e_hrsold-hrsold)*60;
-	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
-	seconds = setzero(Math.floor((e_minsold-minsold)*60));
-	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+	var seconds = 1000;
+	var minutes = seconds * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var today = new Date();
+	var BirthDay = new Date("02/14/2018 12:34:56");
+	var diff = (today.getTime()-BirthDay.getTime());
+	var diffYears = Math.floor(diff/years);
+	var diffDays = Math.floor((diff/days)-diffYears*365);
+	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+	if(diffYears==0){
+	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	} else{
+	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	}
 }
 function setzero(i){
     if (i<10)
@@ -3513,20 +3522,24 @@ var binft = function (r) {
 <script>
 function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	BirthDay = new Date("02/14/2018 12:34:56");
-	today = new Date();
-	timeold = (today.getTime()-BirthDay.getTime());
-	sectimeold = timeold/1000
-	secondsold = Math.floor(sectimeold);
-	msPerDay = 24*60*60*1000
-	e_daysold = timeold/msPerDay
-	daysold = Math.floor(e_daysold);
-	e_hrsold = (e_daysold-daysold)*24;
-	hrsold = setzero(Math.floor(e_hrsold));
-	e_minsold = (e_hrsold-hrsold)*60;
-	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
-	seconds = setzero(Math.floor((e_minsold-minsold)*60));
-	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+	var seconds = 1000;
+	var minutes = seconds * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var today = new Date();
+	var BirthDay = new Date("02/14/2018 12:34:56");
+	var diff = (today.getTime()-BirthDay.getTime());
+	var diffYears = Math.floor(diff/years);
+	var diffDays = Math.floor((diff/days)-diffYears*365);
+	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+	if(diffYears==0){
+	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	} else{
+	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	}
 }
 function setzero(i){
     if (i<10)
@@ -3557,29 +3570,29 @@ show_date_time();
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-heart"></i>
+  <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">©2019 by 王洪博</span>
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">站点总字数：</span>
-    
-    <span title="站点总字数">814k</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+    <i class="fa fa-area-chart"></i>
+  </span>
+  
+    <span class="post-meta-item-text">站点总字数：</span>
+  
+  <span title="站点总字数">827k</span>
   
 
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    
-    <span title="站点阅读时长">12:20</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+  </span>
+  
+    <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+  
+  <span title="站点阅读时长">12:32</span>
   
 </div>
 
@@ -3592,33 +3605,37 @@ show_date_time();
 
 
 <section class="footer-time">
-    <span class="footer__copyright">
-    <div>
-    <span id="span_dt_dt"> </span>
-    <script language="javascript">
-      function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("2/14/2018 10:56:12");//这个日期是可以修改的
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=Math.floor(e_hrsold);
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=Math.floor((e_hrsold-hrsold)*60);
-        seconds=Math.floor((e_minsold-minsold)*60);
-        span_dt_dt.innerHTML="本站已安全运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
-      }
-      show_date_time();
-    </script>
-    </div>
-    
+  <span class="footer__copyright">
+  <div>
+  <span id="span_dt_dt"> </span>
+  <script language="javascript">
+    function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    var seconds = 1000;
+    var minutes = seconds * 60;
+    var hours = minutes * 60;
+    var days = hours * 24;
+    var years = days * 365;
+    var today = new Date();
+    var BirthDay = new Date("02/14/2018 12:34:56");
+    var diff = (today.getTime()-BirthDay.getTime());
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+    if(diffYears==0){
+      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+    } else{
+      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+    }
+    }
+    show_date_time();
+  </script>
+  </div>
 
-</span></section>
+</span>
+</section>
 
         
 <div class="busuanzi-count">

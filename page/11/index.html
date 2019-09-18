@@ -673,11 +673,13 @@
         
           
             <p>
-              基本思想将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
+              基本思想
+将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
 操作方法
+
 从第一个元素开始，该元素可以认为已经被排序
 取出下一个元素，在已经排序的元素序列中从后向前扫描
-如果该元素（
+如果该元
               ...
             </p>
           <!--noindex-->
@@ -937,8 +939,9 @@
         
           
             <p>
-              设计模式简介设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
-设计模式是一套被反复使用的、多数人知晓的、经过
+              设计模式简介
+设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
+设计模式是一套被反复使用的、多数人知晓的、经
               ...
             </p>
           <!--noindex-->
@@ -1129,7 +1132,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">598字</span>
+            <span class="post-count">639字</span>
           </span>
 		  
           <span class="post-time">
@@ -1157,7 +1160,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.6k</span>
               
 
               
@@ -1198,9 +1201,10 @@
         
           
             <p>
-              start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
+              start()和run()方法的区别
+start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！
-下面以代码来进
+下面以代码来
               ...
             </p>
           <!--noindex-->
@@ -1453,7 +1457,9 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
         
           
             <p>
-              ** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对
+              ** gti checkout -- filename **
+git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.
+可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这
               ...
             </p>
           <!--noindex-->
@@ -1706,7 +1712,10 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
         
           
             <p>
-              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另
+              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常
+
+会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。
+那么如何从一个分支合并特定的文件或者Commit
               ...
             </p>
           <!--noindex-->
@@ -1897,7 +1906,7 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">798字</span>
+            <span class="post-count">849字</span>
           </span>
 		  
           <span class="post-time">
@@ -1925,7 +1934,7 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3.4k</span>
               
 
               
@@ -1968,14 +1977,17 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
             <p>
               实现多线程的几种方式
 
+
 继承Thread类
 实现Runnable接口
 通过Callable和Future
 通过线程池
 
 
-Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：
-public interface Runnable 
+Thread和Runnable简介
+Runnable
+Runnable是一个接口库，该接口只包含了一个run()方法，定义如下：
+public interface Runnab
               ...
             </p>
           <!--noindex-->
@@ -2159,7 +2171,7 @@ public interface Runnable
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2k字</span>
+            <span class="post-count">2.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2187,7 +2199,7 @@ public interface Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -2228,8 +2240,9 @@ public interface Runnable
         
           
             <p>
-              分支游标master的探秘先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
-$ touch new-commit.txt $ git add new-commit.txt
+              分支游标master的探秘
+先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
+$ touch new-commit.txt $ git add new-commit.tx
               ...
             </p>
           <!--noindex-->
@@ -2482,13 +2495,15 @@ $ touch new-commit.txt $ git add new-commit.txt
         
           
             <p>
-              Git对象库探秘通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
+              Git对象库探秘
+通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
 $ git log -l --pretty=raw
-
 
 一个提交中居然包含了三个SHA1哈希值表示的对象ID。
 
-commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
+
+commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
+这是本次提交的唯
               ...
             </p>
           <!--noindex-->
@@ -2700,7 +2715,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.7k</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -2744,8 +2759,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
               首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。
 $ git log --stat
 
-
-通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所
+通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以
               ...
             </p>
           <!--noindex-->
@@ -2998,9 +3012,9 @@ $ git log --stat
         
           
             <p>
-              创建版本库及第一次提交首先看一下当前Git的版本
+              创建版本库及第一次提交
+首先看一下当前Git的版本
 $ git --version
-
 
 在开始Git之前，我们需要设置一下Git的环境变量，这个设置是一次性的工作。即这些设置会在全局文件（用户主目录的 .gitconfig）或系统文件（/etc/gitconfig）中做永久记录。
 
@@ -3442,20 +3456,24 @@ var binft = function (r) {
 <script>
 function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	BirthDay = new Date("02/14/2018 12:34:56");
-	today = new Date();
-	timeold = (today.getTime()-BirthDay.getTime());
-	sectimeold = timeold/1000
-	secondsold = Math.floor(sectimeold);
-	msPerDay = 24*60*60*1000
-	e_daysold = timeold/msPerDay
-	daysold = Math.floor(e_daysold);
-	e_hrsold = (e_daysold-daysold)*24;
-	hrsold = setzero(Math.floor(e_hrsold));
-	e_minsold = (e_hrsold-hrsold)*60;
-	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
-	seconds = setzero(Math.floor((e_minsold-minsold)*60));
-	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+	var seconds = 1000;
+	var minutes = seconds * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var today = new Date();
+	var BirthDay = new Date("02/14/2018 12:34:56");
+	var diff = (today.getTime()-BirthDay.getTime());
+	var diffYears = Math.floor(diff/years);
+	var diffDays = Math.floor((diff/days)-diffYears*365);
+	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+	if(diffYears==0){
+	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	} else{
+	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	}
 }
 function setzero(i){
     if (i<10)
@@ -3516,20 +3534,24 @@ var binft = function (r) {
 <script>
 function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	BirthDay = new Date("02/14/2018 12:34:56");
-	today = new Date();
-	timeold = (today.getTime()-BirthDay.getTime());
-	sectimeold = timeold/1000
-	secondsold = Math.floor(sectimeold);
-	msPerDay = 24*60*60*1000
-	e_daysold = timeold/msPerDay
-	daysold = Math.floor(e_daysold);
-	e_hrsold = (e_daysold-daysold)*24;
-	hrsold = setzero(Math.floor(e_hrsold));
-	e_minsold = (e_hrsold-hrsold)*60;
-	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
-	seconds = setzero(Math.floor((e_minsold-minsold)*60));
-	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+	var seconds = 1000;
+	var minutes = seconds * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var today = new Date();
+	var BirthDay = new Date("02/14/2018 12:34:56");
+	var diff = (today.getTime()-BirthDay.getTime());
+	var diffYears = Math.floor(diff/years);
+	var diffDays = Math.floor((diff/days)-diffYears*365);
+	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+	if(diffYears==0){
+	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	} else{
+	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+	}
 }
 function setzero(i){
     if (i<10)
@@ -3560,29 +3582,29 @@ show_date_time();
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-heart"></i>
+  <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">©2019 by 王洪博</span>
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">站点总字数：</span>
-    
-    <span title="站点总字数">814k</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+    <i class="fa fa-area-chart"></i>
+  </span>
+  
+    <span class="post-meta-item-text">站点总字数：</span>
+  
+  <span title="站点总字数">827k</span>
   
 
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    
-    <span title="站点阅读时长">12:20</span>
+  <span class="post-meta-divider">|</span>
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+  </span>
+  
+    <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+  
+  <span title="站点阅读时长">12:32</span>
   
 </div>
 
@@ -3595,33 +3617,37 @@ show_date_time();
 
 
 <section class="footer-time">
-    <span class="footer__copyright">
-    <div>
-    <span id="span_dt_dt"> </span>
-    <script language="javascript">
-      function show_date_time(){
-        window.setTimeout("show_date_time()", 1000);
-        BirthDay=new Date("2/14/2018 10:56:12");//这个日期是可以修改的
-        today=new Date();
-        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
-        sectimeold=timeold/1000
-        secondsold=Math.floor(sectimeold);
-        msPerDay=24*60*60*1000
-        e_daysold=timeold/msPerDay
-        daysold=Math.floor(e_daysold);
-        e_hrsold=(e_daysold-daysold)*24;
-        hrsold=Math.floor(e_hrsold);
-        e_minsold=(e_hrsold-hrsold)*60;
-        minsold=Math.floor((e_hrsold-hrsold)*60);
-        seconds=Math.floor((e_minsold-minsold)*60);
-        span_dt_dt.innerHTML="本站已安全运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
-      }
-      show_date_time();
-    </script>
-    </div>
-    
+  <span class="footer__copyright">
+  <div>
+  <span id="span_dt_dt"> </span>
+  <script language="javascript">
+    function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    var seconds = 1000;
+    var minutes = seconds * 60;
+    var hours = minutes * 60;
+    var days = hours * 24;
+    var years = days * 365;
+    var today = new Date();
+    var BirthDay = new Date("02/14/2018 12:34:56");
+    var diff = (today.getTime()-BirthDay.getTime());
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+    if(diffYears==0){
+      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+    } else{
+      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+    }
+    }
+    show_date_time();
+  </script>
+  </div>
 
-</span></section>
+</span>
+</section>
 
         
 <div class="busuanzi-count">
