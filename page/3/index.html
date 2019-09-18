@@ -673,11 +673,8 @@
         
           
             <p>
-              问题
-使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20
-连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
-解决
-经过反复测试，发现问题所在，原来是连接池参数&lt;prope
+              问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
+解决经过反复测试，发现问题所在，原来是连接池参数&lt;property
               ...
             </p>
           <!--noindex-->
@@ -933,8 +930,9 @@
               在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
 定义接口：
 UserCouponBo getUserCouponInfoById(Long userCouponId);
+
 然后对应的sql的xml如下：
-&lt;select id="selectUserCoup
+&lt;select id="selectUserCou
               ...
             </p>
           <!--noindex-->
@@ -1194,12 +1192,10 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              概述
-ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
+              概述ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
 
 “读取锁”用于只读操作，它是“共享锁”，能同时被多个线程获取。
-“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。
-&lt;font
+“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。注意：不能同时存在读
               ...
             </p>
           <!--noindex-->
@@ -1452,18 +1448,12 @@ ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 —
         
           
             <p>
-              概述
-Spring中的注解大概可以分为两类：
+              概述Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：
-@Required,
-@Autowired,
-@PostConstruct,
-@PreDestory,
-还
+Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
               ...
             </p>
           <!--noindex-->
@@ -1723,8 +1713,7 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等
+              概述在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等待
               ...
             </p>
           <!--noindex-->
@@ -1984,9 +1973,7 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。
-LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻塞线程，而且park()和unpark()不会遇到“Thread.suspend 和 Thread.resume所可能引发的死锁”问题。
+              概述LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻塞线程，而且park()和unpark()不会遇到“Thread.suspend 和 Thread.resume所可能引发的死锁”问题。因为
               ...
             </p>
           <!--noindex-->
@@ -2246,10 +2233,7 @@ LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻�
         
           
             <p>
-              概述
-CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。
-它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。
-另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDo
+              概述CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方
               ...
             </p>
           <!--noindex-->
@@ -2509,9 +2493,7 @@ CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦�
         
           
             <p>
-              概述
-Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。
-Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下
+              概述Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下去，
               ...
             </p>
           <!--noindex-->
@@ -2771,8 +2753,7 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
         
           
             <p>
-              概述
-现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBa
+              概述现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBar
               ...
             </p>
           <!--noindex-->
@@ -2956,7 +2937,7 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">78字</span>
+            <span class="post-count">73字</span>
           </span>
 		  
           <span class="post-time">
@@ -3459,35 +3440,31 @@ var binft = function (r) {
 </script>
 
 <!--站点运行时长-->
-<div id="days"></div>
-<script>
-function show_date_time(){
+<div id="days"> </div>
+<script language="javascript">
+  function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	var seconds = 1000;
-	var minutes = seconds * 60;
-	var hours = minutes * 60;
-	var days = hours * 24;
-	var years = days * 365;
-	var today = new Date();
-	var BirthDay = new Date("02/14/2018 12:34:56");
-	var diff = (today.getTime()-BirthDay.getTime());
-	var diffYears = Math.floor(diff/years);
-	var diffDays = Math.floor((diff/days)-diffYears*365);
-	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-	if(diffYears==0){
-	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-	} else{
-	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-	}
-}
-function setzero(i){
+	BirthDay = new Date("02/14/2018 13:14:21");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+  }
+  function setzero(i){
     if (i<10)
     {i="0" + i};
     return i;
-}
-show_date_time();
+  }
+  show_date_time();
 </script>
 
           
@@ -3537,35 +3514,31 @@ var binft = function (r) {
 </script>
 
 <!--站点运行时长-->
-<div id="days"></div>
-<script>
-function show_date_time(){
+<div id="days"> </div>
+<script language="javascript">
+  function show_date_time(){
 	window.setTimeout("show_date_time()", 1000);
-	var seconds = 1000;
-	var minutes = seconds * 60;
-	var hours = minutes * 60;
-	var days = hours * 24;
-	var years = days * 365;
-	var today = new Date();
-	var BirthDay = new Date("02/14/2018 12:34:56");
-	var diff = (today.getTime()-BirthDay.getTime());
-	var diffYears = Math.floor(diff/years);
-	var diffDays = Math.floor((diff/days)-diffYears*365);
-	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-	if(diffYears==0){
-	  document.getElementById("days").innerHTML=" 本站已运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-	} else{
-	  document.getElementById("days").innerHTML=" 本站已运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-	}
-}
-function setzero(i){
+	BirthDay = new Date("02/14/2018 13:14:21");
+	today = new Date();
+	timeold = (today.getTime()-BirthDay.getTime());
+	sectimeold = timeold/1000
+	secondsold = Math.floor(sectimeold);
+	msPerDay = 24*60*60*1000
+	e_daysold = timeold/msPerDay
+	daysold = Math.floor(e_daysold);
+	e_hrsold = (e_daysold-daysold)*24;
+	hrsold = setzero(Math.floor(e_hrsold));
+	e_minsold = (e_hrsold-hrsold)*60;
+	minsold = setzero(Math.floor((e_hrsold-hrsold)*60));
+	seconds = setzero(Math.floor((e_minsold-minsold)*60));
+	document.getElementById('days').innerHTML = "本站已运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
+  }
+  function setzero(i){
     if (i<10)
     {i="0" + i};
     return i;
-}
-show_date_time();
+  }
+  show_date_time();
 </script>
         </div>
       </div>
@@ -3600,7 +3573,7 @@ show_date_time();
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">827k</span>
+  <span title="站点总字数">815k</span>
   
 
   
@@ -3611,7 +3584,7 @@ show_date_time();
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:32</span>
+  <span title="站点阅读时长">12:21</span>
   
 </div>
 
@@ -3629,25 +3602,25 @@ show_date_time();
   <span id="span_dt_dt"> </span>
   <script language="javascript">
     function show_date_time(){
-    window.setTimeout("show_date_time()", 1000);
-    var seconds = 1000;
-    var minutes = seconds * 60;
-    var hours = minutes * 60;
-    var days = hours * 24;
-    var years = days * 365;
-    var today = new Date();
-    var BirthDay = new Date("02/14/2018 12:34:56");
-    var diff = (today.getTime()-BirthDay.getTime());
-    var diffYears = Math.floor(diff/years);
-    var diffDays = Math.floor((diff/days)-diffYears*365);
-    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-    if(diffYears==0){
-      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-    } else{
-      document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
-    }
+        window.setTimeout("show_date_time()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var BirthDay = new Date("02/14/2018 13:14:21");
+        var diff = (today.getTime()-BirthDay.getTime());
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        if(diffYears==0){
+          document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+        } else{
+          document.getElementById("span_dt_dt").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分 "+diffSeconds+" 秒";
+        }
     }
     show_date_time();
   </script>
