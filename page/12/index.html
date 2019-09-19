@@ -625,7 +625,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -666,9 +666,9 @@
         
           
             <p>
-              HEAD的重置即检出
-HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
+              HEAD的重置即检出HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
 $ cat .git/HEAD
+
 
 可以看出HEAD指向了分支master，此时执行git branch会看到当前处于master分支。
 $ g
@@ -855,7 +855,7 @@ $ g
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">634字</span>
+            <span class="post-count">627字</span>
           </span>
 		  
           <span class="post-time">
@@ -1139,7 +1139,7 @@ Linux
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -1181,19 +1181,22 @@ Linux
           
             <p>
               现场版本控制
-
-现场版本库创建。
-直接在需要版本控制的目录下执行Git版本库初始化命令。
+现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。
 
 git init
+
 
 添加文件并提交
 
 git add -Agit commit -m &quot;本次提交的内容描述&quot;
 
-为初始提交建立一个里程碑：&quot;v1&quot;
 
-git tag v
+为初始提交建立一个里程碑：”v1”
+
+git tag v1
+
+
+然后开始在工
               ...
             </p>
           <!--noindex-->
@@ -1384,7 +1387,7 @@ git tag v
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">961字</span>
           </span>
 		  
           <span class="post-time">
@@ -1394,7 +1397,7 @@ git tag v
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  4分钟</span>
+            <span class="post-count">  3分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1412,7 +1415,7 @@ git tag v
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -1426,7 +1429,7 @@ git tag v
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -1454,11 +1457,10 @@ git tag v
           
             <p>
               线程状态图
+线程状态解析 1. 新建状态(New): 线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
+ 2. 就绪状态(Runnable): 也被称为“可执行状态”，处于就绪状态的线程，随时可能被CPU调度执行。
 
-线程状态解析
-&lt;span id=&quot;inline-green&quot;&gt; 1. 新建状态(New): &lt;/span&gt;
-线程对象被创建后，就进入了新建状态。例如，Thread thread = new Thread()。
-&lt;span id=&quo
+调用线程的start()方法，
               ...
             </p>
           <!--noindex-->
@@ -1711,8 +1713,7 @@ git tag v
         
           
             <p>
-              千里马
-                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_   
+              千里马                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_    
               ...
             </p>
           <!--noindex-->
@@ -1965,10 +1966,9 @@ git tag v
         
           
             <p>
-              反向代理
-反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
+              反向代理反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
 下面贴上一段简单的实现反向代理的代码：
-server &#123;  listen 80;  ser
+server &#123;  listen 80;  serv
               ...
             </p>
           <!--noindex-->
@@ -2222,8 +2222,7 @@ server &#123;  listen 80;  ser
           
             <p>
               快速提取某一文件夹下所有文件名称
-
-            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成lis
+            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成list
               ...
             </p>
           <!--noindex-->
@@ -2414,7 +2413,7 @@ server &#123;  listen 80;  ser
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">722字</span>
+            <span class="post-count">730字</span>
           </span>
 		  
           <span class="post-time">
@@ -2483,12 +2482,10 @@ server &#123;  listen 80;  ser
         
           
             <p>
-              CONCAT()函数
-CONCAT（）函数用于将多个字符串连接成一个字符串。
-使用数据表sys_user作为示例，sql如下：
+              CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下：
 SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
 返回结果如下：
-+----+--------+| id |
++----+--------+| id | n
               ...
             </p>
           <!--noindex-->
@@ -2672,7 +2669,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.3k字</span>
+            <span class="post-count">2.9k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2682,7 +2679,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  9分钟</span>
+            <span class="post-count">  12分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -2700,7 +2697,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">6.9k</span>
               
 
               
@@ -2714,7 +2711,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -2741,11 +2738,9 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
         
           
             <p>
-              虚拟机安装linux提示intel VT-x处于禁用状态
-问题描述
-我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
+              虚拟机安装linux提示intel VT-x处于禁用状态问题描述我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
 
-            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT
+            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT-x
               ...
             </p>
           <!--noindex-->
@@ -2936,7 +2931,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.7k字</span>
+            <span class="post-count">1.6k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2964,7 +2959,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.7k</span>
+                <span title="本文字数">4.6k</span>
               
 
               
@@ -3573,7 +3568,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">841k</span>
+  <span title="站点总字数">830k</span>
   
 
   
@@ -3584,7 +3579,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:44</span>
+  <span title="站点阅读时长">12:34</span>
   
 </div>
 

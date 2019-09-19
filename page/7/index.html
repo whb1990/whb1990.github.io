@@ -887,7 +887,7 @@ public class CompletableFutureTest implements Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5k</span>
+                <span title="本文字数">4.9k</span>
               
 
               
@@ -901,7 +901,7 @@ public class CompletableFutureTest implements Runnable
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -928,13 +928,12 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              生产者/消费者模型
-生产/消费者问题是个非常典型的多线程问题，涉及到的对象包括“生产者”、“消费者”、“仓库”和“产品”。他们之间的关系如下：
+              生产者/消费者模型生产/消费者问题是个非常典型的多线程问题，涉及到的对象包括“生产者”、“消费者”、“仓库”和“产品”。他们之间的关系如下：
 
 生产者仅仅在仓储未满时候生产，仓满则停止生产。
 消费者仅仅在仓储有产品时候才能消费，仓空则等待。
 当消费者发现仓储没产品可消费时候会通知生产者生产。
-生产
+生产者
               ...
             </p>
           <!--noindex-->
@@ -1194,10 +1193,8 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              模式定义
-定义一个操作中算法的框架，而将一些步骤延迟到子类中。模板方法模式使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法模式是一种基于继承的代码复用技术，它是一种类行为型模式。
-主要作用
-当完成一个操作具有固定的流程时，由抽象固定流程步骤，具体步骤交给子类进行具体实现（固定
+              模式定义定义一个操作中算法的框架，而将一些步骤延迟到子类中。模板方法模式使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法模式是一种基于继承的代码复用技术，它是一种类行为型模式。
+主要作用当完成一个操作具有固定的流程时，由抽象固定流程步骤，具体步骤交给子类进行具体实现（固定的流
               ...
             </p>
           <!--noindex-->
@@ -1381,7 +1378,7 @@ public class CompletableFutureTest implements Runnable
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">4.3k字</span>
+            <span class="post-count">4k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1391,7 +1388,7 @@ public class CompletableFutureTest implements Runnable
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  17分钟</span>
+            <span class="post-count">  15分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1409,7 +1406,7 @@ public class CompletableFutureTest implements Runnable
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.5k</span>
+                <span title="本文字数">8.1k</span>
               
 
               
@@ -1423,7 +1420,7 @@ public class CompletableFutureTest implements Runnable
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -1450,12 +1447,9 @@ public class CompletableFutureTest implements Runnable
         
           
             <p>
-              前言
-用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。
-锁的种类
-共享锁(Shared lock)
-&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt; 例1：
-T1: select
+              前言用T1代表一个数据库执行请求，T2代表另一个请求，也可以理解为T1为一个线程，T2 为另一个线程。T3,T4以此类推。
+锁的种类共享锁(Shared lock) 例1：
+T1: select * from table (请想象它需要执行1个小时之久，后面的sql语句请都这么想象）T2: upda
               ...
             </p>
           <!--noindex-->
@@ -1674,7 +1668,7 @@ T1: select
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.3k</span>
+                <span title="本文字数">5.1k</span>
               
 
               
@@ -1715,10 +1709,8 @@ T1: select
         
           
             <p>
-              线程优先级
-java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
-java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。
-用户线程一般用户执行
+              线程优先级java 中的线程优先级的范围是1～10，默认的优先级是5。“高优先级线程”会优先于“低优先级线程”执行。
+java 中有两种线程：用户线程和守护线程。可以通过isDaemon()方法来区别它们：如果返回false，则说明该线程是“用户线程”；否则就是“守护线程”。用户线程一般用户执行用户
               ...
             </p>
           <!--noindex-->
@@ -1909,7 +1901,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.7k字</span>
+            <span class="post-count">2.4k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1919,7 +1911,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  12分钟</span>
+            <span class="post-count">  10分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -1937,7 +1929,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">11k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -1951,7 +1943,7 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">10 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -1978,11 +1970,9 @@ java 中有两种线程：用户线程和守护线程。可以通过isDaemon()�
         
           
             <p>
-              interrupt()说明
-关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
+              interrupt()说明关于interrupt()，java的djk文档描述如下：http://docs.oracle.com/javase/7/docs/api/
 
-Interrupts this thread.
-Unless the current thread is interruptin
+Interrupts this thread.Unless the current thread is interrupting 
               ...
             </p>
           <!--noindex-->
@@ -2242,8 +2232,7 @@ Unless the current thread is interruptin
         
           
             <p>
-              处理器内存模型
-顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大
+              处理器内存模型顺序一致性内存模型是一个理论参考模型，JMM 和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM 和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和 JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大的
               ...
             </p>
           <!--noindex-->
@@ -2434,7 +2423,7 @@ Unless the current thread is interruptin
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">946字</span>
+            <span class="post-count">850字</span>
           </span>
 		  
           <span class="post-time">
@@ -2444,7 +2433,7 @@ Unless the current thread is interruptin
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  4分钟</span>
+            <span class="post-count">  3分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -2462,7 +2451,7 @@ Unless the current thread is interruptin
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -2503,9 +2492,8 @@ Unless the current thread is interruptin
         
           
             <p>
-              join()介绍
-join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
-// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new So
+              join()介绍join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。通过例子来理解：
+// 主线程public class Father extends Thread &#123;    public void run() &#123;        Son s = new Son
               ...
             </p>
           <!--noindex-->
@@ -2765,12 +2753,11 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
         
           
             <p>
-              概述
-与锁和 volatile 相比较，对 final 域的读和写更像是普通的变量访问。对于 final 域，编译器和处理器要遵守两个重排序规则：
+              概述与锁和 volatile 相比较，对 final 域的读和写更像是普通的变量访问。对于 final 域，编译器和处理器要遵守两个重排序规则：
 
 
 在构造函数内对一个 final 域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。
-初次读一个包含 final 域
+初次读一个包含 final 域的
               ...
             </p>
           <!--noindex-->
@@ -3030,9 +3017,8 @@ join() 的作用：让“主线程”等待“子线程”结束之后才能继�
         
           
             <p>
-              锁的happens-before关系
-锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
-class MonitorExample &#123;    int a = 0;    public synchronized void 
+              锁的happens-before关系锁是 java 并发编程中最重要的同步机制。锁除了让临界区互斥执行外，还可以让释放锁的线程向获取同一个锁的线程发送消息。
+class MonitorExample &#123;    int a = 0;    public synchronized void w
               ...
             </p>
           <!--noindex-->
@@ -3599,7 +3585,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">841k</span>
+  <span title="站点总字数">830k</span>
   
 
   
@@ -3610,7 +3596,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:44</span>
+  <span title="站点阅读时长">12:34</span>
   
 </div>
 

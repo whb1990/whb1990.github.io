@@ -666,11 +666,10 @@
         
           
             <p>
-              示例引入
-比如现在有 N 个 Redis 服务器，不考虑使用Redis Cluster的情况下，那么如何将一个对象 object 映射到 N 个 Redis 上呢？
+              示例引入比如现在有 N 个 Redis 服务器，不考虑使用Redis Cluster的情况下，那么如何将一个对象 object 映射到 N 个 Redis 上呢？
 你很可能会采用类似下面的通用方法计算 object 的 hash 值，然后均匀的映射到到 N 个 cache：
 
-求余算法: hash
+求余算法: hash(
               ...
             </p>
           <!--noindex-->
@@ -930,10 +929,8 @@
         
           
             <p>
-              概述
-NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
-IO模型
-IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系
+              概述NIO是Java1.4推出的一种全新的IO模型，全称是java non-blocking IO，提供ByteBuffer等缓存的容器，达到非阻塞式的高伸缩性网络。
+IO模型IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都有各自的优缺点，需要注意的是要完成各模型的实际开发需要操作系统的
               ...
             </p>
           <!--noindex-->
@@ -1186,9 +1183,8 @@ IO模型是机器进行IO具体操作方法的一种抽象，每种IO模型都�
         
           
             <p>
-              redis 简介
-Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。
-因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于
+              redis 简介Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。
+因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于缓
               ...
             </p>
           <!--noindex-->
@@ -1442,8 +1438,7 @@ Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统
           
             <p>
               之前在网上看很多公司在面试的时候都会问到Dubbo等一些RPC框架，更有甚者直接要求面试者手写PRC，今天就来撩下RPC。
-什么是RPC
-RPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随
+什么是RPCRPC（Remote Procedure Call），远程过程调用，意思是可以在一台机器上调用远程的服务。在非分布式环境下，我们的程序调用服务都是本地调用，但是随着
               ...
             </p>
           <!--noindex-->
@@ -1627,7 +1622,7 @@ RPC（Remote Procedure Call），远程过程调用，意思是可以在一台�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">311字</span>
+            <span class="post-count">310字</span>
           </span>
 		  
           <span class="post-time">
@@ -1696,19 +1691,16 @@ RPC（Remote Procedure Call），远程过程调用，意思是可以在一台�
         
           
             <p>
-              No Layout:index.html
-问题描述
-最近对Hexo以及Next主题做了升级，升级之后在执行hexo g编译时出现了No layout:index.html的错误，如下图：
-
+              No Layout:index.html问题描述最近对Hexo以及Next主题做了升级，升级之后在执行hexo g编译时出现了No layout:index.html的错误，如下图：
 解决思路
-
 查看hexo插件安装情况，因内容较多，只部分截图：
 
 npm ls --depth 0
 
 
 
-he
+
+hexo的
               ...
             </p>
           <!--noindex-->
@@ -1968,11 +1960,8 @@ he
         
           
             <p>
-              概述
-只要用缓存，就可能会涉及到缓存与数据库双存储双写，只要是双写，就一定会有数据一致性问题，如何保证缓存与数据库的双写一致性？
-读写串行化
-一般来说，如果允许缓存可以稍微跟数据库偶尔有不一致，也就是说系统不是严格要求缓存+数据库必须保持一致性的话，可以采用读写请求串行化：
-即读请求和写请求串到一个
+              概述只要用缓存，就可能会涉及到缓存与数据库双存储双写，只要是双写，就一定会有数据一致性问题，如何保证缓存与数据库的双写一致性？
+读写串行化一般来说，如果允许缓存可以稍微跟数据库偶尔有不一致，也就是说系统不是严格要求缓存+数据库必须保持一致性的话，可以采用读写请求串行化：即读请求和写请求串到一个内存队
               ...
             </p>
           <!--noindex-->
@@ -2226,19 +2215,14 @@ he
           
             <p>
               数据库架构原则
-
 高可用
 高性能
 一致性
 扩展性
 
-常见的架构方案
-主备架构
-该方案只有主库提供读写服务，备库冗余作故障转移。
-数据库链接字符串：jdbc:mysql://vip:3306/xxdb
+常见的架构方案主备架构该方案只有主库提供读写服务，备库冗余作故障转移。数据库链接字符串：jdbc:mysql://vip:3306/xxdb
 
-
-高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是
+高可用分析：高可用，主库挂了，keepalive（一种工具）会自动切换到备库。这个过程对业务层是透明的，无
               ...
             </p>
           <!--noindex-->
@@ -2491,11 +2475,8 @@ he
         
           
             <p>
-              入门Hexo
-由于平时自己喜欢看一些技术类文章整理成Word笔记，总感觉这种方式太low，想自己搭建属于自己的博客，在网上查阅了一下，发现Hexo在GitHub或者是码云上搭建博客非常给力。
-然后自己也搭建了博客，这篇文章就记录了搭建的过程及一些优化。
-什么是Hexo
-Hexo 是一个快速、简洁且高
+              入门Hexo由于平时自己喜欢看一些技术类文章整理成Word笔记，总感觉这种方式太low，想自己搭建属于自己的博客，在网上查阅了一下，发现Hexo在GitHub或者是码云上搭建博客非常给力。然后自己也搭建了博客，这篇文章就记录了搭建的过程及一些优化。
+什么是HexoHexo 是一个快速、简洁且高效的博
               ...
             </p>
           <!--noindex-->
@@ -2748,8 +2729,7 @@ Hexo 是一个快速、简洁且高
         
           
             <p>
-              前言
-Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到
+              前言Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬
               ...
             </p>
           <!--noindex-->
@@ -3002,26 +2982,20 @@ Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redi
         
           
             <p>
-              概述
-Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
-
+              概述Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
 
 String（字符类型）
 
-
 Hash（散列类型）
-
 
 List（列表类型）
 
-
 Set（集合类型）
-
 
 SortedSet（有序集合类型，简称zset）
 
 
-注意：在redis中的命令语句中
+注意：在redis中的命令语句中，命令是忽略
               ...
             </p>
           <!--noindex-->
@@ -3588,7 +3562,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">841k</span>
+  <span title="站点总字数">830k</span>
   
 
   
@@ -3599,7 +3573,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:44</span>
+  <span title="站点阅读时长">12:34</span>
   
 </div>
 

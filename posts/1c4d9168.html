@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="** gti checkout -- filename ** git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略. 可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename ** git res">
+  <meta name="description" content="** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename **git reset HEA">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习之~cherry-pick、revert、reset介绍">
 <meta property="og:url" content="http://whb1990.github.io/posts/1c4d9168.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="** gti checkout -- filename ** git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略. 可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename ** git res">
+<meta property="og:description" content="** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename **git reset HEA">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T02:25:02.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习之~cherry-pick、revert、reset介绍">
-<meta name="twitter:description" content="** gti checkout -- filename ** git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略. 可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename ** git res">
+<meta name="twitter:description" content="** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题； ** git reset head filename **git reset HEA">
 
 
 
@@ -658,36 +658,17 @@
       
 
       
-        <p>** gti checkout -- filename **
-git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.
-可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；</p>
-<p>** git reset head filename **
-git reset HEAD filename 可以把add到缓存区的文件回退到工作区，也就是把add filename这个过程给回退了，这并不会修改文件的内容，
-只是把缓存区的某个文件变成和HEAD这个当前版本相同，也就是说如果你多次add，这会回退到第一次add的过程，和上面的操作一样，也可以不带上文件名来查看哪些文件被添加到了缓存区；</p>
-<p>** git reset --hard head^ **
-git reset --hard HEAD~【1，2，3，4，5...】这个是大家熟悉的本地版本的回退</p>
-<p>** 某分支上的修改迁移到另一分支 **
-比如我们在分支a上开发新功能，此时有个紧急bug需要修改，然后切换到了分支b。bug修复完之后忘了切回之前的分支a，而是在分支b上面继续编写本应该是分支a的内容，
-这样b分支存在了一部分a分支的代码，这个时候需要把这段代码迁移到a分支上，两个思路：</p>
-<p>1）如果还没有在b分支上commit的话(add的话没影响，在迁移后，就不会再当前分支的缓存中)。
-直接切到a分支，此时会提示有没有被commit的代码，切到a分支后，就可以commit这段没有被commit的代码，也就是在b分支上编写的代码正确的被迁移到了a分支。</p>
-<p>2）如果已经commit了，可以这么来：git log找到你commit的分支号，然后直接切换到a分支，执行<code>git cherry-pick commit-id</code>，这个commit-id就是那个b分支错误commit的id，
-这个命令就是把这个commit的修改拿到当前分支来，很简单粗暴而有效。再切换到b分支，使用<code>git revert commit-id</code>把这个错误的分支号移除。</p>
-<p>** revert reset cherry-pick **
-git revert
-当我们的某个分支中有了很多版本之后，形成了一条版本链，如果想去除这个线路中的某一版本，但是保留版本链中的其他所有修改，生成一个新的版本链，版本链中的HEAD就是revert最新生成的版本。所以revert是会生成新版本的指令。
-可以这么想，链就像一个链条，是一环扣一环的，其中的一环就是一个版本，现在想去这个链条中的某一环（某个版本），
-执行<code>git revert HEAD~2</code>，这个HEAD~2就是这个要删除的版本（链条中的一环），就会把这个环解开剔除，
-把和这个剔除的环（版本）相邻的环连在一起，形成了一个新的链条（少了一环），
-然后在链条的最后面添加一个新的没有任何修改的环（revert HEAD~2 这个新的commit版本）
-整个过程就像剔除了中间某一个版本，最后加上了一个没有任何修改的新的版本。
-需要注意的是，不要随意删除中间的版本，因为可能会存在依赖，最好是revert最新的版本，风险会小很多。</p>
-<p>git reset
-<code>git reset [--hard|soft|mixed|merge|keep] [&lt;commit&gt;或HEAD]</code>是比较常用的指令，其中比较重要的是mode，也就是 --hard、--soft、--mixed。。。比较常见的是--hard和--soft；</p>
-<p>--hard是指完全重设，会把回退到某版本之后的修改全部删除，</p>
-<p>--soft这是个回退解体，让版本库回退到某个版本，这个版本之后的修改全部存在缓存区，这个时候在commit的话，又会把会退的部分重新加载到最新版本中；</p>
-<p>git cherry-pick
-<code>git cherry-pick &lt;commit id&gt;</code>用于把另一个本地分支的commit修改应用到当前分支，也是解决之前遇到问题的关键，可以直接把其他的分支上的修改或者是某一个版本直接引过来，可能会存在冲突，这个时候就和正常的冲突一样的解决就好了。</p>
+        <p>** gti checkout – filename **<br>git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.<br>可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对工作区的问题；</p>
+<p>** git reset head filename **<br>git reset HEAD filename 可以把add到缓存区的文件回退到工作区，也就是把add filename这个过程给回退了，这并不会修改文件的内容，<br>只是把缓存区的某个文件变成和HEAD这个当前版本相同，也就是说如果你多次add，这会回退到第一次add的过程，和上面的操作一样，也可以不带上文件名来查看哪些文件被添加到了缓存区；</p>
+<p>** git reset –hard head^ **<br>git reset –hard HEAD~【1，2，3，4，5…】这个是大家熟悉的本地版本的回退</p>
+<p>** 某分支上的修改迁移到另一分支 **<br>比如我们在分支a上开发新功能，此时有个紧急bug需要修改，然后切换到了分支b。bug修复完之后忘了切回之前的分支a，而是在分支b上面继续编写本应该是分支a的内容，<br>这样b分支存在了一部分a分支的代码，这个时候需要把这段代码迁移到a分支上，两个思路：</p>
+<p>1）如果还没有在b分支上commit的话(add的话没影响，在迁移后，就不会再当前分支的缓存中)。<br>直接切到a分支，此时会提示有没有被commit的代码，切到a分支后，就可以commit这段没有被commit的代码，也就是在b分支上编写的代码正确的被迁移到了a分支。</p>
+<p>2）如果已经commit了，可以这么来：git log找到你commit的分支号，然后直接切换到a分支，执行<code>git cherry-pick commit-id</code>，这个commit-id就是那个b分支错误commit的id，<br>这个命令就是把这个commit的修改拿到当前分支来，很简单粗暴而有效。再切换到b分支，使用<code>git revert commit-id</code>把这个错误的分支号移除。</p>
+<p>** revert reset cherry-pick **<br>git revert<br>当我们的某个分支中有了很多版本之后，形成了一条版本链，如果想去除这个线路中的某一版本，但是保留版本链中的其他所有修改，生成一个新的版本链，版本链中的HEAD就是revert最新生成的版本。所以revert是会生成新版本的指令。<br>可以这么想，链就像一个链条，是一环扣一环的，其中的一环就是一个版本，现在想去这个链条中的某一环（某个版本），<br>执行<code>git revert HEAD~2</code>，这个HEAD<del>2就是这个要删除的版本（链条中的一环），就会把这个环解开剔除，<br>把和这个剔除的环（版本）相邻的环连在一起，形成了一个新的链条（少了一环），<br>然后在链条的最后面添加一个新的没有任何修改的环（revert HEAD</del>2 这个新的commit版本）<br>整个过程就像剔除了中间某一个版本，最后加上了一个没有任何修改的新的版本。<br>需要注意的是，不要随意删除中间的版本，因为可能会存在依赖，最好是revert最新的版本，风险会小很多。</p>
+<p>git reset<br><code>git reset [--hard|soft|mixed|merge|keep] [&lt;commit&gt;或HEAD]</code>是比较常用的指令，其中比较重要的是mode，也就是 –hard、–soft、–mixed。。。比较常见的是–hard和–soft；</p>
+<p>–hard是指完全重设，会把回退到某版本之后的修改全部删除，</p>
+<p>–soft这是个回退解体，让版本库回退到某个版本，这个版本之后的修改全部存在缓存区，这个时候在commit的话，又会把会退的部分重新加载到最新版本中；</p>
+<p>git cherry-pick<br><code>git cherry-pick &lt;commit id&gt;</code>用于把另一个本地分支的commit修改应用到当前分支，也是解决之前遇到问题的关键，可以直接把其他的分支上的修改或者是某一个版本直接引过来，可能会存在冲突，这个时候就和正常的冲突一样的解决就好了。</p>
 
       
     </div>
@@ -1352,7 +1333,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">841k</span>
+  <span title="站点总字数">830k</span>
   
 
   
@@ -1363,7 +1344,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:44</span>
+  <span title="站点阅读时长">12:34</span>
   
 </div>
 
