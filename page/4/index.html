@@ -673,8 +673,11 @@
         
           
             <p>
-              概述通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。拿ATM机取款举例，ATM机如下图所示：
-同步队列是主要的排
+              概述
+通过之前的分析，深入了解了AbstractQueuedSynchronizer的内部结构和一些设计理念，知道了AbstractQueuedSynchronizer内部维护了一个同步状态和两个排队区，这两个排队区分别是同步队列和条件队列。
+拿ATM机取款举例，ATM机如下图所示：
+
+同步队列是主
               ...
             </p>
           <!--noindex-->
@@ -943,9 +946,13 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种在获取时会忽略中断;而第二种则是获取时响应中断;第三种是获取时，如果超时则立即返回。
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种在获取时会忽略中断;
+而第二种则是获取时响应中断;
+第三种是获取时，如果超时则立即返回。
 
-不响应线程中断获取锁//不响应
+不响应线程中断获取锁
+/
               ...
             </p>
           <!--noindex-->
@@ -1136,7 +1143,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">4k字</span>
+            <span class="post-count">4.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1214,7 +1221,9 @@
 
 
 
-这三种方式整体步骤大致是相同的，只有少部分不同的地方：第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;第二种方式则不同，如果当前
+这三种方式整体步骤大致是相同的，只有少部分不同的地方：
+第一种方式，如果当前线程在获取资源时被中断了，它会忽略这个中断，当获取资源返回后才对中断进行处理;
+第二种方式则不同，如果
               ...
             </p>
           <!--noindex-->
@@ -1474,7 +1483,8 @@
         
           
             <p>
-              AbstractQueuedSynchronizer是做什么的java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了AbstractQ
+              AbstractQueuedSynchronizer是做什么的
+java.util.concurrent这个包下有很多类，比如ReentrantLock、CountDownLatch、CyclicBarrrier、Semaphore等，它们的实现中都有一个内部类Sync，这个类继承了Abstract
               ...
             </p>
           <!--noindex-->
@@ -1734,10 +1744,12 @@
         
           
             <p>
-              起源相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+              起源
+相信使用Mybatis的小伙们一定经常编写类似如下的代码：
+
 可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。先看下警告信息：
 
-Spring team recommends: “Always use constructor based 
+Spring team recommends: &quot;Always use constructor
               ...
             </p>
           <!--noindex-->
@@ -1921,7 +1933,7 @@ Spring team recommends: “Always use constructor based
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">363字</span>
+            <span class="post-count">364字</span>
           </span>
 		  
           <span class="post-time">
@@ -1990,8 +2002,11 @@ Spring team recommends: “Always use constructor based
         
           
             <p>
-              概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。
-修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下
+              概述
+当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，
+或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。
+修改GitHub语言
+1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输
               ...
             </p>
           <!--noindex-->
@@ -2175,7 +2190,7 @@ Spring team recommends: “Always use constructor based
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">424字</span>
+            <span class="post-count">425字</span>
           </span>
 		  
           <span class="post-time">
@@ -2244,12 +2259,18 @@ Spring team recommends: “Always use constructor based
         
           
             <p>
-              服务器状态分析查看CPU的信息
+              服务器状态分析
+查看CPU的信息
+
 查看物理CPU个数
+
 查看每个物理CPU的核数
-逻辑CPU的个数逻辑CPU = 物理CPU个数*核数
+
+逻辑CPU的个数
+逻辑CPU = 物理CPU个数*核数
 
 查看内存使用情况
+
 
 total：内存总数
 
@@ -2263,9 +2284,7 @@ free：空闲内存数
 shared：多进程共享内存数
 
 
-buffers：缓冲内存数
-
-
+buffers：缓
               ...
             </p>
           <!--noindex-->
@@ -2477,7 +2496,7 @@ buffers：缓冲内存数
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.4k</span>
+                <span title="本文字数">5.3k</span>
               
 
               
@@ -2519,10 +2538,11 @@ buffers：缓冲内存数
           
             <p>
               数据库命名规范
+
 所有数据库对象名称必须使用小写字母并用下划线分割。
 所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）。
 数据库对象的命名要能做到见名识意，并且最后不要超过32 个字符。
-临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必须
+临时库表必须以 tmp_ 为前缀并以日期为后缀，备份表必
               ...
             </p>
           <!--noindex-->
@@ -2734,7 +2754,7 @@ buffers：缓冲内存数
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.3k</span>
+                <span title="本文字数">5.2k</span>
               
 
               
@@ -2775,7 +2795,8 @@ buffers：缓冲内存数
         
           
             <p>
-              Java heap space当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处理
+              Java heap space
+当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 java.lang.OutOfMemoryError:Javaheap space 错误（根据实际生产经验，可以对程序日志中的 OutOfMemoryError 配置关键字告警，一经发现，立即处
               ...
             </p>
           <!--noindex-->
@@ -2994,7 +3015,7 @@ buffers：缓冲内存数
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -3008,7 +3029,7 @@ buffers：缓冲内存数
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -3036,8 +3057,10 @@ buffers：缓冲内存数
           
             <p>
               Java里面所有的不变的属性需要用final修饰吗
-答：没必要。你可以实现相同的功能通过以下操作：设为非final的private 变量，且只有在构造函数中才能修改。不设set方法，如果是一个可变对象，不要泄露任何指向这个对象的引用。
-设置一个引用变量为final 只能确保这个变量不会被赋予一个不同
+
+答：没必要。你可以实现相同的功能通过以下操作：
+设为非final的private 变量，且只有在构造函数中才能修改。不设set方法，如果是一个可变对象，不要泄露任何指向这个对象的引用。
+设置一个引用变量为final 只能确保这个变量不会被赋予一个
               ...
             </p>
           <!--noindex-->
@@ -3604,7 +3627,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">830k</span>
+  <span title="站点总字数">844k</span>
   
 
   
@@ -3615,7 +3638,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">12:35</span>
+  <span title="站点阅读时长">12:47</span>
   
 </div>
 
