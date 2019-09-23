@@ -162,16 +162,18 @@
 
 
 
-  <meta name="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王洪博&#39;s blog">
-<meta property="og:url" content="http://whb1990.github.io/tags/Java/page/5/index.html">
+  <meta name="description" content="概述从Java 1.5开始，开始提供了Callable和Future，通过它们可以在任务执行完毕之后得到任务执行结果。 对比Runnable和Callbale Runnable是在java.lang.Runnable包下面，没有返回值，而Callable是在java.util.concurrent包下面（说明Callable是为并发编程做准备的）可以有返回值。  Callable不能使用Threa">
+<meta name="keywords" content="Java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程-12之-Callable、Future、FutureTask">
+<meta property="og:url" content="http://whb1990.github.io/posts/75995567.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta property="og:description" content="概述从Java 1.5开始，开始提供了Callable和Future，通过它们可以在任务执行完毕之后得到任务执行结果。 对比Runnable和Callbale Runnable是在java.lang.Runnable包下面，没有返回值，而Callable是在java.util.concurrent包下面（说明Callable是为并发编程做准备的）可以有返回值。  Callable不能使用Threa">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-23T06:05:05.973Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王洪博&#39;s blog">
-<meta name="twitter:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta name="twitter:title" content="Java多线程-12之-Callable、Future、FutureTask">
+<meta name="twitter:description" content="概述从Java 1.5开始，开始提供了Callable和Future，通过它们可以在任务执行完毕之后得到任务执行结果。 对比Runnable和Callbale Runnable是在java.lang.Runnable包下面，没有返回值，而Callable是在java.util.concurrent包下面（说明Callable是为并发编程做准备的）可以有返回值。  Callable不能使用Threa">
 
 
 
@@ -181,7 +183,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/tags/Java/page/5/">
+  <link rel="canonical" href="http://whb1990.github.io/posts/75995567">
 
 
 
@@ -191,7 +193,7 @@
   };
 </script>
 
-  <title>标签: Java | 王洪博's blog</title>
+  <title>Java多线程-12之-Callable、Future、FutureTask | 王洪博's blog</title>
   
 
 
@@ -238,7 +240,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 	<!--Fork me on github-->
 	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -316,7 +318,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -462,347 +464,438 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Java<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-08T07:36:55Z" content="2018-07-08">
-          07-08
-        </time>
-      </div>
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/75995567.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/posts/d4946f29.html" itemprop="url">
-            
-              <span itemprop="name">Java内存模型-基础学习</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java多线程-12之-Callable、Future、FutureTask
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 15:47:48" itemprop="dateCreated datePublished" datetime="2018-08-14T15:47:48Z">2018-08-14</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/75995567.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/75995567.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/75995567.html" class="leancloud_visitors" data-flag-title="Java多线程-12之-Callable、Future、FutureTask">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.3k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  5分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-07T14:21:59Z" content="2018-07-07">
-          07-07
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/c0fad076.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-07之-线程休眠</span>
-            
-          </a>
-        
-      </h2>
-
       
 
-    </header>
-  </article>
-
-
       
-        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>从Java 1.5开始，开始提供了<code>Callable</code>和<code>Future</code>，通过它们可以在任务执行完毕之后得到任务执行结果。</p>
+<h1 id="对比Runnable和Callbale"><a href="#对比Runnable和Callbale" class="headerlink" title="对比Runnable和Callbale"></a>对比Runnable和Callbale</h1><ol>
+<li><p><code>Runnable</code>是在<code>java.lang.Runnable</code>包下面，没有返回值，而<code>Callable</code>是在<code>java.util.concurrent</code>包下面（说明<code>Callable</code>是为并发编程做准备的）可以有返回值。</p>
+</li>
+<li><p><code>Callable</code>不能使用<code>Thread</code>来直接执行，一般情况下面使用<code>ExecutorService</code>中的<code>submit</code>方法类执行，<code>Runnable</code>使用<code>ExecutorService</code>的<code>execute</code>来执行。</p>
+</li>
+<li><p><code>Runnable</code>接口里面有一个<code>run()</code>方法，无返回值；<code>Callable</code>接口里面有一个<code>call()</code>，有返回值，可以抛出异常。</p>
+</li>
+</ol>
+<h1 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h1><p><code>Future</code>就是对于具体的<code>Runnable</code>或者<code>Callable</code>任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。</p>
+<p>在<code>Future</code>接口中声明了5个方法，依次解释每个方法的作用：</p>
+<blockquote>
+<ul>
+<li><code>cancel</code>方法用来取消任务，如果取消任务成功则返回true，如果取消任务失败则返回false。参数mayInterruptIfRunning表示是否允许取消正在执行却没有执行完毕的任务，如果设置true，则表示可以取消正在执行过程中的任务。如果任务已经完成，则无论mayInterruptIfRunning为true还是false，此方法肯定返回false，即如果取消已经完成的任务会返回false；如果任务正在执行，若mayInterruptIfRunning设置为true，则返回true，若mayInterruptIfRunning设置为false，则返回false；如果任务还没有执行，则无论mayInterruptIfRunning为true还是false，肯定返回true。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>isCancelled</code>方法表示任务是否被取消成功，如果在任务正常完成前被取消成功，则返回 true。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>isDone</code>方法表示任务是否已经完成，若任务完成，则返回true；</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>get()</code>方法用来获取执行结果，这个方法会产生阻塞，会一直等到任务执行完毕才返回；</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>get(long timeout, TimeUnit unit)</code>用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null。</li>
+</ul>
+</blockquote>
+<hr>
+<p>也就是说Future提供了三种功能：</p>
+<p>1）判断任务是否完成；</p>
+<p>2）能够中断任务；</p>
+<p>3）能够获取任务执行结果。</p>
+<p>因为Future只是一个接口，所以是无法直接用来创建对象使用的，因此就有了FutureTask。</p>
+<h1 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h1><p>先来看一下FutureTask的实现：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FutureTask</span>&lt;<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">RunnableFuture</span>&lt;<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-05T19:07:42Z" content="2018-07-05">
-          07-05
-        </time>
-      </div>
+<p>FutureTask类实现了RunnableFuture接口，看一下RunnableFuture接口的实现：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RunnableFuture</span>&lt;<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">Runnable</span>, <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/89a20157.html" itemprop="url">
-            
-              <span itemprop="name">设计模式-工厂方法模式</span>
-            
-          </a>
-        
-      </h2>
+<p>可以看出RunnableFuture继承了Runnable接口和Future接口，而FutureTask实现了RunnableFuture接口。所以它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值。</p>
+<p>FutureTask提供了2个构造器：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FutureTask</span><span class="params">(Callable&lt;V&gt; callable)</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FutureTask</span><span class="params">(Runnable runnable, V result)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-      
+<p>事实上，FutureTask是Future接口的一个唯一实现类。</p>
+<h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h1><h2 id="使用Callable-Future获取执行结果"><a href="#使用Callable-Future获取执行结果" class="headerlink" title="使用Callable+Future获取执行结果"></a>使用Callable+Future获取执行结果</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main.java.com.study.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: whb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 使用Callable+Future获取执行结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCallableFuture</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">        Task task = <span class="keyword">new</span> Task();</span><br><span class="line">        Future&lt;Integer&gt; result = executor.submit(task);</span><br><span class="line">        executor.shutdown();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"主线程在执行任务"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"task运行结果"</span> + result.get());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"所有任务执行完毕"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"子线程在进行计算"</span>);</span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-    </header>
-  </article>
+<p>执行结果：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子线程在进行计算</span><br><span class="line">主线程在执行任务</span><br><span class="line">task运行结果<span class="number">4950</span></span><br><span class="line">所有任务执行完毕</span><br></pre></td></tr></table></figure></div>
 
+<h2 id="使用Callable-FutureTask获取执行结果"><a href="#使用Callable-FutureTask获取执行结果" class="headerlink" title="使用Callable+FutureTask获取执行结果"></a>使用Callable+FutureTask获取执行结果</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main.java.com.study.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: whb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 使用Callable+FutureTask获取执行结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCallableFutureTask</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//第一种方式</span></span><br><span class="line">        ExecutorService executor = Executors.newCachedThreadPool();</span><br><span class="line">        Task2 task = <span class="keyword">new</span> Task2();</span><br><span class="line">        FutureTask&lt;Integer&gt; futureTask = <span class="keyword">new</span> FutureTask&lt;Integer&gt;(task);</span><br><span class="line">        executor.submit(futureTask);</span><br><span class="line">        executor.shutdown();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//第二种方式，注意这种方式和第一种方式效果是类似的，只不过一个使用的是ExecutorService，一个使用的是Thread</span></span><br><span class="line">        <span class="comment">/*Task task = new Task();</span></span><br><span class="line"><span class="comment">        FutureTask&lt;Integer&gt; futureTask = new FutureTask&lt;Integer&gt;(task);</span></span><br><span class="line"><span class="comment">        Thread thread = new Thread(futureTask);</span></span><br><span class="line"><span class="comment">        thread.start();*/</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"主线程在执行任务"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"task运行结果"</span> + futureTask.get());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"所有任务执行完毕"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task2</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"子线程在进行计算"</span>);</span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">            sum += i;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-      
-        
+<p>执行结果：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子线程在进行计算</span><br><span class="line">主线程在执行任务</span><br><span class="line">task运行结果<span class="number">4950</span></span><br><span class="line">所有任务执行完毕</span><br></pre></td></tr></table></figure></div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-03T15:07:29Z" content="2018-07-03">
-          07-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/aac06fee.html" itemprop="url">
-            
-              <span itemprop="name">设计模式-简单工厂模式</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-02T14:09:00Z" content="2018-07-02">
-          07-02
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/a8d456e8.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-06之-线程让步</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-01T01:33:24Z" content="2018-07-01">
-          07-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/9d531ce3.html" itemprop="url">
-            
-              <span itemprop="name">排序算法 - 梳排序</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-30T23:52:21Z" content="2018-06-30">
-          06-30
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/d703cb77.html" itemprop="url">
-            
-              <span itemprop="name">排序算法 - 地精排序</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-29T23:19:45Z" content="2018-06-29">
-          06-29
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/6d9204ec.html" itemprop="url">
-            
-              <span itemprop="name">排序算法 - 鸡尾酒排序</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-29T15:28:50Z" content="2018-06-29">
-          06-29
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/41e434a7.html" itemprop="url">
-            
-              <span itemprop="name">排序算法 - 桶排序</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-29T11:39:53Z" content="2018-06-29">
-          06-29
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/f777650b.html" itemprop="url">
-            
-              <span itemprop="name">Java多线程-05之-线程等待与唤醒</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
+<blockquote>
+<p>如果为了可取消性而使用 Future 但又不提供可用的结果，则可以声明 Future&lt;?&gt; 形式类型、并返回 null 作为底层任务的结果。</p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/75995567.html">Java多线程-12之-Callable、Future、FutureTask</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2018年08月14日 - 15:08</p>
+  <p><span>最后更新:</span>2019年09月23日 - 06:09</p>
+  <p><span>原始链接:</span><a href="/posts/75995567.html" title="Java多线程-12之-Callable、Future、FutureTask">http://whb1990.github.io/posts/75995567.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/75995567.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>▄︻┻═┳一如果你喜欢这篇文章，请点击下方"打赏"按钮请我喝杯 ☕</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-envira"></i> Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"><i class="fa fa-envira"></i> 多线程</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+		    <div style="color: rgba(255,100,97,1); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/4189fc6.html" rel="next" title="Java多线程-11之-生产者消费者模型">
+                <i class="fa fa-chevron-left"></i> Java多线程-11之-生产者消费者模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/cad2f756.html" rel="prev" title="Java - CompletableFuture">
+                Java - CompletableFuture <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
+
+  </div>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/Java/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/tags/Java/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Java/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/tags/Java/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Java/page/8/">8</a><a class="extend next" rel="next" href="/tags/Java/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -822,8 +915,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1275,6 +1377,23 @@ var binft = function (r) {
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对比Runnable和Callbale"><span class="nav-number">2.</span> <span class="nav-text">对比Runnable和Callbale</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Future"><span class="nav-number">3.</span> <span class="nav-text">Future</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FutureTask"><span class="nav-number">4.</span> <span class="nav-text">FutureTask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用示例"><span class="nav-number">5.</span> <span class="nav-text">使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Callable-Future获取执行结果"><span class="nav-number">5.1.</span> <span class="nav-text">使用Callable+Future获取执行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Callable-FutureTask获取执行结果"><span class="nav-number">5.2.</span> <span class="nav-text">使用Callable+FutureTask获取执行结果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1474,6 +1593,10 @@ var binft = function (r) {
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1528,6 +1651,8 @@ var binft = function (r) {
 
 
 
+
+  
 
 
   
@@ -1879,6 +2004,25 @@ var binft = function (r) {
   
 
   
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20604,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
 
   
 
