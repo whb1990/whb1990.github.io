@@ -597,7 +597,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2k字</span>
+            <span class="post-count">2.1k字</span>
           </span>
 		  
           <span class="post-time">
@@ -625,7 +625,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">3.8k</span>
               
 
               
@@ -666,8 +666,9 @@
         
           
             <p>
-              分支游标master的探秘先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
-$ touch new-commit.txt $ git add new-commit.txt
+              分支游标master的探秘
+先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
+$ touch new-commit.txt $ git add new-commit.tx
               ...
             </p>
           <!--noindex-->
@@ -920,13 +921,15 @@ $ touch new-commit.txt $ git add new-commit.txt
         
           
             <p>
-              Git对象库探秘通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
+              Git对象库探秘
+通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
 $ git log -l --pretty=raw
-
 
 一个提交中居然包含了三个SHA1哈希值表示的对象ID。
 
-commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
+
+commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
+这是本次提交的唯
               ...
             </p>
           <!--noindex-->
@@ -1138,7 +1141,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.7k</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -1182,8 +1185,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
               首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。
 $ git log --stat
 
-
-通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所
+通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以
               ...
             </p>
           <!--noindex-->
@@ -1436,9 +1438,9 @@ $ git log --stat
         
           
             <p>
-              创建版本库及第一次提交首先看一下当前Git的版本
+              创建版本库及第一次提交
+首先看一下当前Git的版本
 $ git --version
-
 
 在开始Git之前，我们需要设置一下Git的环境变量，这个设置是一次性的工作。即这些设置会在全局文件（用户主目录的 .gitconfig）或系统文件（/etc/gitconfig）中做永久记录。
 
@@ -1654,7 +1656,7 @@ $ git --version
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -1695,9 +1697,9 @@ $ git --version
         
           
             <p>
-              HEAD的重置即检出HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
+              HEAD的重置即检出
+HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
 $ cat .git/HEAD
-
 
 可以看出HEAD指向了分支master，此时执行git branch会看到当前处于master分支。
 $ g
@@ -1884,7 +1886,7 @@ $ g
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">627字</span>
+            <span class="post-count">634字</span>
           </span>
 		  
           <span class="post-time">
@@ -2168,7 +2170,7 @@ Linux
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.4k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -2210,22 +2212,19 @@ Linux
           
             <p>
               现场版本控制
-现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。
+
+现场版本库创建。
+直接在需要版本控制的目录下执行Git版本库初始化命令。
 
 git init
-
 
 添加文件并提交
 
 git add -Agit commit -m &quot;本次提交的内容描述&quot;
 
+为初始提交建立一个里程碑：&quot;v1&quot;
 
-为初始提交建立一个里程碑：”v1”
-
-git tag v1
-
-
-然后开始在工
+git tag v
               ...
             </p>
           <!--noindex-->
@@ -2416,7 +2415,7 @@ git tag v1
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.7k字</span>
+            <span class="post-count">1.9k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2444,7 +2443,7 @@ git tag v1
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -2458,7 +2457,7 @@ git tag v1
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -2485,9 +2484,11 @@ git tag v1
         
           
             <p>
-              进程概述进程是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。
-在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。 
-一个进程就
+              进程
+概述
+进程是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。
+在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。
+一个进程
               ...
             </p>
           <!--noindex-->
@@ -2740,7 +2741,8 @@ git tag v1
         
           
             <p>
-              千里马                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_    
+              千里马
+                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_   
               ...
             </p>
           <!--noindex-->
@@ -2993,9 +2995,10 @@ git tag v1
         
           
             <p>
-              反向代理反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
+              反向代理
+反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
 下面贴上一段简单的实现反向代理的代码：
-server &#123;  listen 80;  serv
+server &#123;  listen 80;  ser
               ...
             </p>
           <!--noindex-->
@@ -3566,7 +3569,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">904k</span>
+  <span title="站点总字数">922k</span>
   
 
   
@@ -3577,7 +3580,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">13:42</span>
+  <span title="站点阅读时长">13:58</span>
   
 </div>
 
