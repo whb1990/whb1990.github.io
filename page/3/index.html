@@ -666,26 +666,20 @@
         
           
             <p>
-              概述
-Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
-
+              概述Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
 
 String（字符类型）
 
-
 Hash（散列类型）
-
 
 List（列表类型）
 
-
 Set（集合类型）
-
 
 SortedSet（有序集合类型，简称zset）
 
 
-注意：在redis中的命令语句中
+注意：在redis中的命令语句中，命令是忽略
               ...
             </p>
           <!--noindex-->
@@ -945,11 +939,8 @@ SortedSet（有序集合类型，简称zset）
         
           
             <p>
-              问题
-使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20
-连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
-解决
-经过反复测试，发现问题所在，原来是连接池参数&lt;prope
+              问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
+解决经过反复测试，发现问题所在，原来是连接池参数&lt;property
               ...
             </p>
           <!--noindex-->
@@ -1205,8 +1196,9 @@ SortedSet（有序集合类型，简称zset）
               在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
 定义接口：
 UserCouponBo getUserCouponInfoById(Long userCouponId);
+
 然后对应的sql的xml如下：
-&lt;select id="selectUserCoup
+&lt;select id="selectUserCou
               ...
             </p>
           <!--noindex-->
@@ -1466,12 +1458,10 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              概述
-ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
+              概述ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
 
 “读取锁”用于只读操作，它是“共享锁”，能同时被多个线程获取。
-“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。
-&lt;font
+“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。注意：不能同时存在读
               ...
             </p>
           <!--noindex-->
@@ -1724,18 +1714,12 @@ ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 —
         
           
             <p>
-              概述
-Spring中的注解大概可以分为两类：
+              概述Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：
-@Required,
-@Autowired,
-@PostConstruct,
-@PreDestory,
-还
+Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
               ...
             </p>
           <!--noindex-->
@@ -1995,8 +1979,7 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等
+              概述在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等待
               ...
             </p>
           <!--noindex-->
@@ -2256,10 +2239,8 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。
-方法列表
-// 返回提供给最近一次尚未解除阻塞的 park 方法调用的 blocker 对象，如果该调用不受阻塞，则返回 null。static Object getBlocker(Thread t)// 为了线程调度，禁用当
+              概述LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。 
+方法列表// 返回提供给最近一次尚未解除阻塞的 park 方法调用的 blocker 对象，如果该调用不受阻塞，则返回 null。static Object getBlocker(Thread t)// 为了线程调度，禁用当前
               ...
             </p>
           <!--noindex-->
@@ -2519,10 +2500,7 @@ LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。
         
           
             <p>
-              概述
-CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。
-它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。
-另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDo
+              概述CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦截一个或多个线程使其在某个条件成熟后再执行。它的内部提供了一个计数器，在构造闭锁时必须指定计数器的初始值，且计数器的初始值必须大于0。另外它还提供了一个countDown方法来操作计数器的值，每调用一次countDown方
               ...
             </p>
           <!--noindex-->
@@ -2782,9 +2760,7 @@ CountDownLatch(闭锁)是一个很有用的工具类，利用它我们可以拦�
         
           
             <p>
-              概述
-Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。
-Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下
+              概述Semaphore(信号量)是AQS共享模式的一个应用，可以允许多个线程同时对共享资源进行操作，并且可以有效的控制并发数，利用它可以很好的实现流量控制。Semaphore提供了一个许可证的概念，可以把这个许可证看作车票，只有成功获取车票的人才能够上车，并且车票是有数量的，不可能毫无限制的发下去，
               ...
             </p>
           <!--noindex-->
@@ -3044,8 +3020,7 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
         
           
             <p>
-              概述
-现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBa
+              概述现实生活中经常会遇到这样的情景，在进行某个活动前需要等待人全部都齐了才开始。例如吃饭时要等全家人都上座了才动筷子，旅游时要等全部人都到齐了才出发，比赛时要等运动员都上场后才开始。在J.U.C包中提供了一个同步工具类能够很好的模拟这类场景，它就是CyclicBarrier类。利用CyclicBar
               ...
             </p>
           <!--noindex-->
@@ -3154,7 +3129,7 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3249,7 +3224,9 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3336,7 +3313,9 @@ Semaphore提供了一个许可证的概念，可以把这个许可证看作车�
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3612,7 +3591,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">909k</span>
+  <span title="站点总字数">904k</span>
   
 
   
@@ -3623,7 +3602,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">13:47</span>
+  <span title="站点阅读时长">13:42</span>
   
 </div>
 

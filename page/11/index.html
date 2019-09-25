@@ -483,6 +483,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/6d67519e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/6d67519e.html" class="post-title-link" itemprop="url">设计模式--单例模式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-13 21:22:58" itemprop="dateCreated datePublished" datetime="2018-06-13T21:22:58Z">2018-06-13</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/6d67519e.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6d67519e.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/6d67519e.html" class="leancloud_visitors" data-flag-title="设计模式--单例模式">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">2.4k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  10分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              单例模式介绍** 意图 **：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+** 主要解决 **：一个全局使用的类频繁地创建与销毁。
+** 何时使用 **：当您想控制实例数目，节省系统资源的时候。
+** 如何解决 **：判断系统是否已经有这个单例，如果有则返回，如果没有则创建。
+** 关键
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/6d67519e.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/94971cbd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -673,12 +937,10 @@
         
           
             <p>
-              基本思想
-先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。希尔排序，也称递减增量排序算法，是插入排序的一种高速而稳定的改进版本。
+              基本思想先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。希尔排序，也称递减增量排序算法，是插入排序的一种高速而稳定的改进版本。
 操作方法
-
 选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；
-按
+按增量
               ...
             </p>
           <!--noindex-->
@@ -938,12 +1200,9 @@
         
           
             <p>
-              基本思想
-将每个数用珠子表示，例如：数字5就是5个珠子。用珠子表示好每一个数后，让所有的珠子自由下落。排序完成。
-
+              基本思想将每个数用珠子表示，例如：数字5就是5个珠子。用珠子表示好每一个数后，让所有的珠子自由下落。排序完成。
 上图中的三个珠就表示数字3,两个珠表示数字2,这个OK了继续,这里的3和2都叫bead。
-
-上图(a)中有两个数字,4和3,分别串在四条线上,于是数字4的最后一个珠子下落,因为它下边是
+上图(a)中有两个数字,4和3,分别串在四条线上,于是数字4的最后一个珠子下落,因为它下边是空的,
               ...
             </p>
           <!--noindex-->
@@ -1203,11 +1462,8 @@
         
           
             <p>
-              基本思想
-在要排序的一组数中，选出最小（或者最大）的一个数与第1个位置的数交换；然后在剩下的数当中再找最小（或者最大）的与第2个位置的数交换，依次类推，直到第n-1个元素（倒数第二个数）和第n个元素（最后一个数）比较为止。
-操作方法
-第一趟，从n 个记录中找出关键码最小的记录与第一个记录交换；
-第二
+              基本思想在要排序的一组数中，选出最小（或者最大）的一个数与第1个位置的数交换；然后在剩下的数当中再找最小（或者最大）的与第2个位置的数交换，依次类推，直到第n-1个元素（倒数第二个数）和第n个元素（最后一个数）比较为止。
+操作方法第一趟，从n 个记录中找出关键码最小的记录与第一个记录交换；第二趟，从
               ...
             </p>
           <!--noindex-->
@@ -1467,13 +1723,11 @@
         
           
             <p>
-              基本思想
-将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
+              基本思想将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
 操作方法
-
 从第一个元素开始，该元素可以认为已经被排序
 取出下一个元素，在已经排序的元素序列中从后向前扫描
-如果该元
+如果该元素（
               ...
             </p>
           <!--noindex-->
@@ -1733,9 +1987,8 @@
         
           
             <p>
-              设计模式简介
-设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
-设计模式是一套被反复使用的、多数人知晓的、经
+              设计模式简介设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。
+设计模式是一套被反复使用的、多数人知晓的、经过
               ...
             </p>
           <!--noindex-->
@@ -1926,7 +2179,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">639字</span>
+            <span class="post-count">598字</span>
           </span>
 		  
           <span class="post-time">
@@ -1954,7 +2207,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -1995,10 +2248,9 @@
         
           
             <p>
-              start()和run()方法的区别
-start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
+              start()和run()方法的区别start(): 它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。
 run(): run()就和普通的成员方法一样，可以被重复调用。单独调用run()的话，会在当前线程中执行run()，而并不会启动新线程！
-下面以代码来
+下面以代码来进
               ...
             </p>
           <!--noindex-->
@@ -2251,9 +2503,7 @@ run(): run()就和普通的成员方法一样，可以被重复调用。单独�
         
           
             <p>
-              ** gti checkout -- filename **
-git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.
-可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这
+              ** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对
               ...
             </p>
           <!--noindex-->
@@ -2506,10 +2756,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
         
           
             <p>
-              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常
-
-会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。
-那么如何从一个分支合并特定的文件或者Commit
+              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另
               ...
             </p>
           <!--noindex-->
@@ -2700,7 +2947,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">849字</span>
+            <span class="post-count">798字</span>
           </span>
 		  
           <span class="post-time">
@@ -2728,7 +2975,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.4k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -2771,278 +3018,20 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
             <p>
               实现多线程的几种方式
 
-
 继承Thread类
 实现Runnable接口
 通过Callable和Future
 通过线程池
 
 
-Thread和Runnable简介
-Runnable
-Runnable是一个接口库，该接口只包含了一个run()方法，定义如下：
-public interface Runnab
+Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：
+public interface Runnable 
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/posts/3868ed28.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/b9f23f09.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/b9f23f09.html" class="post-title-link" itemprop="url">Git学习之~重置</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-25 19:50:55" itemprop="dateCreated datePublished" datetime="2018-05-25T19:50:55Z">2018-05-25</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/b9f23f09.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b9f23f09.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/posts/b9f23f09.html" class="leancloud_visitors" data-flag-title="Git学习之~重置">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.1k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  7分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              分支游标master的探秘
-先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
-$ touch new-commit.txt $ git add new-commit.tx
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/b9f23f09.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3145,7 +3134,7 @@ $ touch new-commit.txt $ git add new-commit.tx
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3240,7 +3229,9 @@ $ touch new-commit.txt $ git add new-commit.tx
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3327,7 +3318,9 @@ $ touch new-commit.txt $ git add new-commit.tx
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3603,7 +3596,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">909k</span>
+  <span title="站点总字数">904k</span>
   
 
   
@@ -3614,7 +3607,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">13:47</span>
+  <span title="站点阅读时长">13:42</span>
   
 </div>
 
