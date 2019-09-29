@@ -483,6 +483,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/7335ce5b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/7335ce5b.html" class="post-title-link" itemprop="url">Java多线程-01之-基本概念</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-21 20:30:12" itemprop="dateCreated datePublished" datetime="2018-05-21T20:30:12Z">2018-05-21</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/7335ce5b.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7335ce5b.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/7335ce5b.html" class="leancloud_visitors" data-flag-title="Java多线程-01之-基本概念">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.9k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  6分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              进程
+概述
+进程是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。
+在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。
+一个进程
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/7335ce5b.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/74450131.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,7 +930,8 @@
         
           
             <p>
-              千里马                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_    
+              千里马
+                           _(\_/)                          ,((((^`\                        ((((  (6 \                       ,((((( ,    \  ,,,_   
               ...
             </p>
           <!--noindex-->
@@ -919,9 +1184,10 @@
         
           
             <p>
-              反向代理反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
+              反向代理
+反向代理：简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。
 下面贴上一段简单的实现反向代理的代码：
-server &#123;  listen 80;  serv
+server &#123;  listen 80;  ser
               ...
             </p>
           <!--noindex-->
@@ -1174,13 +1440,18 @@ server &#123;  listen 80;  serv
         
           
             <p>
-              定义对于同一个类型的不同实例对象，同一个行为具备不同的表现形式。
+              定义
+对于同一个类型的不同实例对象，同一个行为具备不同的表现形式。
 作用
+
 消除同一类型之间的耦合关系；
 使得不同对象对于同一行为具备多种表现形式；
 
-原理变量的静态类型 &amp; 动态类型
-变量的静态类型 = 引用类型 = 编译时变量 ：不会被改变、在编译器可知变量的动态类型 = 实例对象类型 = 
+原理
+变量的静态类型 &amp; 动态类型
+
+变量的静态类型 = 引用类型 = 编译时变量 ：不会被改变、在编译器可知
+变量的动态类型 = 实例对象
               ...
             </p>
           <!--noindex-->
@@ -1434,7 +1705,8 @@ server &#123;  listen 80;  serv
           
             <p>
               快速提取某一文件夹下所有文件名称
-            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成list
+
+            在需要获取文件名的文件夹中新建一个txt格式的记事本文件。在记事本文件中输入：DIR . /B &gt;LIST.TXT将此记事本文件后辍名，由txt改为bat。会弹出重命名对话框，单击“是”。双击文件“新建文本文档.bat”即可生成lis
               ...
             </p>
           <!--noindex-->
@@ -1625,7 +1897,7 @@ server &#123;  listen 80;  serv
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">730字</span>
+            <span class="post-count">722字</span>
           </span>
 		  
           <span class="post-time">
@@ -1694,10 +1966,12 @@ server &#123;  listen 80;  serv
         
           
             <p>
-              CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下：
+              CONCAT()函数
+CONCAT（）函数用于将多个字符串连接成一个字符串。
+使用数据表sys_user作为示例，sql如下：
 SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
 返回结果如下：
-+----+--------+| id | n
++----+--------+| id |
               ...
             </p>
           <!--noindex-->
@@ -1909,7 +2183,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.6k</span>
+                <span title="本文字数">8.8k</span>
               
 
               
@@ -1950,9 +2224,11 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
         
           
             <p>
-              虚拟机安装linux提示intel VT-x处于禁用状态问题描述我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
+              虚拟机安装linux提示intel VT-x处于禁用状态
+问题描述
+我们在第一次使用虚拟机启动linux的时候经常会碰到下面这个报错，如下：
 
-            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT-x
+            已将该虚拟机配置为使用 64 位客户机操作系统。但是，无法执行 64 位操作。此主机支持 Intel VT-x，但 Intel VT
               ...
             </p>
           <!--noindex-->
@@ -2143,7 +2419,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.6k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -2171,7 +2447,7 @@ SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1;
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.6k</span>
+                <span title="本文字数">4.7k</span>
               
 
               
@@ -2466,8 +2742,9 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
         
           
             <p>
-              什么是异常异常本质上是程序上的错误，这个错误包括程序逻辑错误和系统错误。错误在程序中又有运行时异常和编译时异常。
-编译异常在编译期间出错有编译器帮助错，然而运行期间的错误编译器则鞭长莫及了，并且运行期间的错误往往是难以预料的，但是如果不处理这些异常则会直接导致程序崩溃。因此在运行期间出现错误应该如何
+              什么是异常
+异常本质上是程序上的错误，这个错误包括程序逻辑错误和系统错误。错误在程序中又有运行时异常和编译时异常。
+编译异常在编译期间出错有编译器帮助错，然而运行期间的错误编译器则鞭长莫及了，并且运行期间的错误往往是难以预料的，但是如果不处理这些异常则会直接导致程序崩溃。因此在运行期间出现错误应该如
               ...
             </p>
           <!--noindex-->
@@ -2651,7 +2928,7 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">690字</span>
+            <span class="post-count">771字</span>
           </span>
 		  
           <span class="post-time">
@@ -2679,7 +2956,7 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -2693,7 +2970,7 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -2720,275 +2997,19 @@ public String gets1() &#123; return "" + System.currentTimeMillis();&#125;public
         
           
             <p>
-              添加支持Hexo 默认是不支持流程图的 Markdown 语法的，需要添加支持：
+              添加支持
+Hexo 默认是不支持流程图的 Markdown 语法的，需要添加支持：
 npm install --save hexo-filter-flowchart
-
-演示一个简单的流程图语法如下：
-···flow         #由于渲染问题，请自行将 · 替换为 `st=&gt;start: 开
+演示
+一个简单的流程图
+语法如下：
+···flow         #由于渲染问题，请自行将 · 替换为 `st=&gt;start:
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/posts/711ce00.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/43883629.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/43883629.html" class="post-title-link" itemprop="url">Markdown语法糖</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-27 16:26:21" itemprop="dateCreated datePublished" datetime="2018-02-27T16:26:21Z">2018-02-27</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/43883629.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/43883629.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/posts/43883629.html" class="leancloud_visitors" data-flag-title="Markdown语法糖">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.9k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  11分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">7.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              前言Markdown 是一种轻量级的标记语言，其用简单的标记语法便可达到排版的目的，可以使我们更加专注于内容的编写，而不需过多关注排版。本文主要整理了 Markdown 中的常用的标记语法，以便自己与他人以后查用。
-优点
-纯文本，所以兼容性极强，可以用所有文本编辑器打开。
-
-
-让你专注于文字而不是排
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/43883629.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3091,7 +3112,7 @@ npm install --save hexo-filter-flowchart
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">132</span>
+                    <span class="site-state-item-count">133</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3557,7 +3578,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">967k</span>
+  <span title="站点总字数">980k</span>
   
 
   
@@ -3568,7 +3589,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">14:39</span>
+  <span title="站点阅读时长">14:51</span>
   
 </div>
 
