@@ -666,9 +666,7 @@
         
           
             <p>
-              ** gti checkout -- filename **
-git checkout -- filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.
-可以使用 git checkout -- 不加文件名来查看当前工作区修改了哪些文件，这
+              ** gti checkout – filename **git checkout – filename 可以把工作区的某个文件的修改撤回到上一次add或者commit的状态，不过filename不能省略.可以使用 git checkout – 不加文件名来查看当前工作区修改了哪些文件，这个只是针对
               ...
             </p>
           <!--noindex-->
@@ -921,10 +919,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
         
           
             <p>
-              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常
-
-会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。
-那么如何从一个分支合并特定的文件或者Commit
+              刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另
               ...
             </p>
           <!--noindex-->
@@ -1115,7 +1110,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">849字</span>
+            <span class="post-count">798字</span>
           </span>
 		  
           <span class="post-time">
@@ -1143,7 +1138,7 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.4k</span>
+                <span title="本文字数">3.2k</span>
               
 
               
@@ -1186,17 +1181,14 @@ git checkout -- filename 可以把工作区的某个文件的修改撤回到上�
             <p>
               实现多线程的几种方式
 
-
 继承Thread类
 实现Runnable接口
 通过Callable和Future
 通过线程池
 
 
-Thread和Runnable简介
-Runnable
-Runnable是一个接口库，该接口只包含了一个run()方法，定义如下：
-public interface Runnab
+Thread和Runnable简介RunnableRunnable是一个接口库，该接口只包含了一个run()方法，定义如下：
+public interface Runnable 
               ...
             </p>
           <!--noindex-->
@@ -1380,7 +1372,7 @@ public interface Runnab
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.1k字</span>
+            <span class="post-count">2k字</span>
           </span>
 		  
           <span class="post-time">
@@ -1408,7 +1400,7 @@ public interface Runnab
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -1449,9 +1441,8 @@ public interface Runnab
         
           
             <p>
-              分支游标master的探秘
-先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
-$ touch new-commit.txt $ git add new-commit.tx
+              分支游标master的探秘先来看看当有新的提交发生时，文件.git/refs/heads/master的内容如何改变。首先在工作区创建一个新文件，姑且叫做new-commit.txt，然后提交到版本库中。
+$ touch new-commit.txt $ git add new-commit.txt
               ...
             </p>
           <!--noindex-->
@@ -1704,15 +1695,13 @@ $ touch new-commit.txt $ git add new-commit.tx
         
           
             <p>
-              Git对象库探秘
-通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
+              Git对象库探秘通过查看日志的详尽输出，会看到非常多的SHA1哈希值。
 $ git log -l --pretty=raw
+
 
 一个提交中居然包含了三个SHA1哈希值表示的对象ID。
 
-
-commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
-这是本次提交的唯
+commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31这是本次提交的唯一标
               ...
             </p>
           <!--noindex-->
@@ -1924,7 +1913,7 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.8k</span>
+                <span title="本文字数">6.7k</span>
               
 
               
@@ -1968,7 +1957,8 @@ commit a67c6fdd0a0e809340944432a3bf7d78e7e10f31
               首先看一下git-demo的提交日志，使用git log查看提交日志（附加--stat参数可以看到每次提交的文件变更统计）。
 $ git log --stat
 
-通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所以
+
+通过日志可以看到第一次提交对文件welcome.txt有一行的变更，而第二次提交因为使用了--allow-empty参数进行的空提交，所
               ...
             </p>
           <!--noindex-->
@@ -2221,9 +2211,9 @@ $ git log --stat
         
           
             <p>
-              创建版本库及第一次提交
-首先看一下当前Git的版本
+              创建版本库及第一次提交首先看一下当前Git的版本
 $ git --version
+
 
 在开始Git之前，我们需要设置一下Git的环境变量，这个设置是一次性的工作。即这些设置会在全局文件（用户主目录的 .gitconfig）或系统文件（/etc/gitconfig）中做永久记录。
 
@@ -2439,7 +2429,7 @@ $ git --version
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -2480,9 +2470,9 @@ $ git --version
         
           
             <p>
-              HEAD的重置即检出
-HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
+              HEAD的重置即检出HEAD可以理解为“头指针”，是当前工作区的“基础版本”，当执行提交时，HEAD指向的提交作为新提交的父提交。看看当前HEAD的指向。
 $ cat .git/HEAD
+
 
 可以看出HEAD指向了分支master，此时执行git branch会看到当前处于master分支。
 $ g
@@ -2669,7 +2659,7 @@ $ g
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">634字</span>
+            <span class="post-count">627字</span>
           </span>
 		  
           <span class="post-time">
@@ -2953,7 +2943,7 @@ Linux
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -2995,19 +2985,22 @@ Linux
           
             <p>
               现场版本控制
-
-现场版本库创建。
-直接在需要版本控制的目录下执行Git版本库初始化命令。
+现场版本库创建。直接在需要版本控制的目录下执行Git版本库初始化命令。
 
 git init
+
 
 添加文件并提交
 
 git add -Agit commit -m &quot;本次提交的内容描述&quot;
 
-为初始提交建立一个里程碑：&quot;v1&quot;
 
-git tag v
+为初始提交建立一个里程碑：”v1”
+
+git tag v1
+
+
+然后开始在工
               ...
             </p>
           <!--noindex-->
@@ -3582,7 +3575,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">990k</span>
+  <span title="站点总字数">977k</span>
   
 
   
@@ -3593,7 +3586,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:01</span>
+  <span title="站点阅读时长">14:48</span>
   
 </div>
 
