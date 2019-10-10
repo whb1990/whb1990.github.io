@@ -1189,7 +1189,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:21</span>
+  <span title="站点阅读时长">15:09</span>
   
 </div>
 
@@ -1801,18 +1801,27 @@ var binft = function (r) {
   <!--看板娘-->
   <script src="/live2d-widget/autoload.js"></script>
   <script>
-    <!--禁止鼠标右键-->
-    document.oncontextmenu = function(){
-      return false;
-    }
-	<!--禁止F12-->
-    window.onload = function(){
-		document.onkeydown = function(event){
-			var ev = event || window.event || arguments.callee.caller.arguments[0];
-			//123 代表F12键
-			if(event.keyCode = 123){
+	window.onload = function(){
+		//屏蔽键盘事件
+		document.onkeydown = function (){
+			var e = window.event || arguments[0];
+			//F12
+			if(e.keyCode == 123){
+				return false;
+			//Ctrl+Shift+I
+			}else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+				return false;
+			//Shift+F10
+			}else if((e.shiftKey) && (e.keyCode == 121)){
+				return false;
+			//Ctrl+U
+			}else if((e.ctrlKey) && (e.keyCode == 85)){
 				return false;
 			}
+		};
+		//屏蔽鼠标右键
+		document.oncontextmenu = function (){
+			return false;
 		}
 	}
   </script>
