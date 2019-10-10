@@ -242,9 +242,9 @@
 
   <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
-	<!--Fork me on github-->
-	<a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-	
+  <!--Fork me on github-->
+  <a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">1.2k字</span>
           </span>
 		  
           <span class="post-time">
@@ -675,21 +675,39 @@
 <p>一个<code>ZooKeeper</code>集群同一时刻只会有一个<code>Leader</code>，其他都是<code>Follower</code>或<code>Observer</code>。</p>
 <p><code>ZooKeeper</code>配置很简单，每个节点的配置文件(<code>zoo.cfg</code>)都是一样的，只有<code>myid</code>文件不一样。<code>myid</code>的值必须是<code>zoo.cfg</code>中<code>server.{数值}</code>的{数值}部分。</p>
 <p><code>zoo.cfg</code>文件内容示例：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">maxClientCnxns=0</span><br><span class="line"># The number of milliseconds of each tick</span><br><span class="line">tickTime=2000</span><br><span class="line"># The number of ticks that the initial</span><br><span class="line"># synchronization phase can take</span><br><span class="line">initLimit=10</span><br><span class="line"># The number of ticks that can pass between</span><br><span class="line"># sending a request and getting an acknowledgement</span><br><span class="line">syncLimit=5</span><br><span class="line"># the directory where the snapshot is stored.</span><br><span class="line">dataDir=/var/lib/zookeeper/data</span><br><span class="line"># the port at which the clients will connect</span><br><span class="line">clientPort=2181</span><br><span class="line"># the directory where the transaction logs are stored.</span><br><span class="line">dataLogDir=/var/lib/zookeeper/logs</span><br><span class="line">server.1=192.168.20.101:2888:3888</span><br><span class="line">server.2=192.168.20.102:2888:3888</span><br><span class="line">server.3=192.168.20.103:2888:3888</span><br><span class="line">server.4=192.168.20.104:2888:3888</span><br><span class="line">server.5=192.168.20.105:2888:3888</span><br><span class="line">minSessionTimeout=4000</span><br><span class="line">maxSessionTimeout=100000</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">maxClientCnxns=0</span><br><span class="line"># The number of milliseconds of each tick</span><br><span class="line">tickTime=2000</span><br><span class="line"># The number of ticks that the initial</span><br><span class="line"># synchronization phase can take</span><br><span class="line">initLimit=10</span><br><span class="line"># The number of ticks that can pass between</span><br><span class="line"># sending a request and getting an acknowledgement</span><br><span class="line">syncLimit=5</span><br><span class="line"># the directory where the snapshot is stored.</span><br><span class="line">dataDir=/var/lib/zookeeper/data</span><br><span class="line"># the port at which the clients will connect</span><br><span class="line">clientPort=2181</span><br><span class="line"># the directory where the transaction logs are stored.</span><br><span class="line">dataLogDir=/var/lib/zookeeper/logs</span><br><span class="line">server.1=192.168.20.101:2888:3888</span><br><span class="line">server.2=192.168.20.102:2888:3888</span><br><span class="line">server.3=192.168.20.103:2888:3888</span><br><span class="line">server.4=192.168.20.104:2888:3888</span><br><span class="line">server.5=192.168.20.105:2888:3888</span><br><span class="line">minSessionTimeout=4000</span><br><span class="line">maxSessionTimeout=100000</span><br></pre></td></tr></tbody></table></figure></div>
 
 <p>在装有<code>ZooKeeper</code>的机器的终端执行 <code>zookeeper-server status</code> 可以看当前节点的<code>ZooKeeper</code>是什么角色（<code>Leader</code> or <code>Follower</code>）。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@node-20-103 ~]# zookeeper-server status</span><br><span class="line">JMX enabled by default</span><br><span class="line">Using config: /etc/zookeeper/conf/zoo.cfg</span><br><span class="line">Mode: follower</span><br><span class="line">[root@node-20-104 ~]# zookeeper-server status</span><br><span class="line">JMX enabled by default</span><br><span class="line">Using config: /etc/zookeeper/conf/zoo.cfg</span><br><span class="line">Mode: leader</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@node-20-103 ~]# zookeeper-server status</span><br><span class="line">JMX enabled by default</span><br><span class="line">Using config: /etc/zookeeper/conf/zoo.cfg</span><br><span class="line">Mode: follower</span><br><span class="line">[root@node-20-104 ~]# zookeeper-server status</span><br><span class="line">JMX enabled by default</span><br><span class="line">Using config: /etc/zookeeper/conf/zoo.cfg</span><br><span class="line">Mode: leader</span><br></pre></td></tr></tbody></table></figure></div>
 
 <blockquote>
 <p>如上，node-20-104是Leader，node-20-103是follower。</p>
 </blockquote>
 <p><code>ZooKeeper</code>默认只有<code>Leader</code>和<code>Follower</code>两种角色，没有<code>Observer</code>角色。<br>为了使用<code>Observer</code>模式，在任何想变成<code>Observer</code>的节点的配置文件中加入：<code>peerType=observer</code></p>
 <p>并在所有<code>server</code>的配置文件中，配置成<code>observer</code>模式的<code>server</code>的那行配置追加<code>:observer</code>，例如：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.1:localhost:2888:3888:observer</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.1:localhost:2888:3888:observer</span><br></pre></td></tr></tbody></table></figure></div>
 
 <p><code>ZooKeeper</code>集群的所有机器通过一个<code>Leader选举</code>过程来选定一台被称为『<code>Leader</code>』的机器，<code>Leader</code>服务器为客户端提供读和写服务。<br><code>Follower</code>和<code>Observer</code>都能提供读服务，不能提供写服务。两者唯一的区别在于，<code>Observer</code>机器不参与<code>Leader</code>选举过程，也不参与写操作的『过半写成功』策略，因此<code>Observer</code>可以在不影响写性能的情况下提升集群的读性能。</p>
 <h1 id="会话Session"><a href="#会话Session" class="headerlink" title="会话Session"></a>会话Session</h1><p>在ZooKeeper中，一个客户端连接是指客户端和ZooKeeper服务器之间的TCP长连接。ZooKeeper对外的服务端口默认是2181，客户端启动时，首先会与服务器建立一个TCP连接，从第一次连接建立开始，客户端会话的生命周期也开始了，通过这个连接，客户端能够通过心跳检测和服务器保持有效的会话，也能够向ZooKeeper服务器发送请求并接受响应，同时还能通过该连接接收来自服务器的Watch事件通知。Session的SessionTimeout值用来设置一个客户端会话的超时时间。当由于服务器压力太大、网络故障或是客户端主动断开连接等各种原因导致客户端连接断开时，只要在SessionTimeout规定的时间内能够重新连接上集群中任意一台服务器，那么之前创建的会话仍然有效。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -2037,5 +2055,20 @@ var binft = function (r) {
   <!--<script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=583woq4kjd9&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>-->
   <!--看板娘-->
   <script src="/live2d-widget/autoload.js"></script>
+  <script>
+    document.oncontextmenu = function(){
+      return false;
+    }
+    window.onload = function(){
+		document.onkeydown = function(event){
+			var ev = event || window.event || arguments.callee.caller.arguments[0];
+			//123 代表F12键
+			if(event.keyCode = 123){
+				return false;
+			}
+		}
+	}
+  </script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
