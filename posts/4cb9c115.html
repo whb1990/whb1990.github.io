@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="前言相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。 那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？ 如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-11T06:51:03.006Z">
+<meta property="og:updated_time" content="2019-11-11T06:59:43.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP协议中的长短连接和长短轮询">
 <meta name="twitter:description" content="前言相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。 那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？ 如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都">
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">952字</span>
+            <span class="post-count">1.3k字</span>
           </span>
 		  
           <span class="post-time">
@@ -606,7 +606,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
+            <span class="post-count">  4分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.2k</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -638,7 +638,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -671,7 +671,18 @@
 <p>比如你请求博客的一个网页，这个网页里肯定还包含了CSS、JS等等一系列资源，如果是短连接（也就是每次都要重新建立TCP连接）的话，那你每打开一个网页，基本要建立几个甚至几十个TCP连接，这浪费了很多资源。</p>
 <p>但如果是长连接的话，那么这么多次HTTP请求（这些请求包括请求网页内容，CSS文件，JS文件，图片等等），其实使用的都是一个TCP连接，很显然是可以节省很多消耗的。</p>
 <p>最后长连接并不是永久连接的。如果一段时间内（具体的时间长短，是可以在header当中进行设置的，也就是所谓的超时时间），这个连接没有HTTP请求发出的话，那么这个长连接就会被断掉。</p>
-<h1 id="长短轮询"><a href="#长短轮询" class="headerlink" title="长短轮询"></a>长短轮询</h1><script>
+<h1 id="长短轮询"><a href="#长短轮询" class="headerlink" title="长短轮询"></a>长短轮询</h1><h2 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>http长轮询是server端收到请求后如果有数据，立刻响应请求；</p>
+<p>如果没有数据就会停留一段时间，这段时间内，如果 server 请求的数据到达（如查询数据库或数据的逻辑处理完成），就会立刻响应；</p>
+<p>如果这段时间过后，还没有数据到达，则以空数据的形式响应http请求；</p>
+<p>若浏览器收到的数据为空，会再次发送同样的http请求到server；</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>server 没有数据到达时，http连接会停留一段时间，这会造成服务器资源浪费。</p>
+<h2 id="短轮询"><a href="#短轮询" class="headerlink" title="短轮询"></a>短轮询</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>http 短轮询是 server 收到请求不管是否有数据到达都直接响应http请求；</p>
+<p>如果浏览器收到的数据为空，则隔一段时间，浏览器又会发送相同的http请求到server 以获取数据响应；</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>消息交互的实时性较低（server端到浏览器端的数据反馈效率低）。</p>
+<h2 id="长短轮询的异同"><a href="#长短轮询的异同" class="headerlink" title="长短轮询的异同"></a>长短轮询的异同</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>当server 的数据不可达时，基于http长轮询和短轮询 的http请求，都会停留一段时间。</p>
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><p>http长轮询是在服务器端的停留；而http 短轮询是在浏览器端的停留。</p>
+<h3 id="性能总结"><a href="#性能总结" class="headerlink" title="性能总结"></a>性能总结</h3><p>不管是长轮询还是短轮询，都不太适用于客户端数量太多的情况，因为每个服务器所能承载的TCP连接数是有上限的，这种轮询很容易把连接数顶满。</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1353,7 +1364,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短连接"><span class="nav-number">2.</span> <span class="nav-text">长短连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#疑问解答"><span class="nav-number">2.1.</span> <span class="nav-text">疑问解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是不是只要设置Connection为keep-alive就算是长连接了？"><span class="nav-number">2.1.1.</span> <span class="nav-text">是不是只要设置Connection为keep-alive就算是长连接了？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平时用的是不是长连接？"><span class="nav-number">2.1.2.</span> <span class="nav-text">平时用的是不是长连接？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？"><span class="nav-number">2.1.3.</span> <span class="nav-text">普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短轮询"><span class="nav-number">3.</span> <span class="nav-text">长短轮询</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短连接"><span class="nav-number">2.</span> <span class="nav-text">长短连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#疑问解答"><span class="nav-number">2.1.</span> <span class="nav-text">疑问解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是不是只要设置Connection为keep-alive就算是长连接了？"><span class="nav-number">2.1.1.</span> <span class="nav-text">是不是只要设置Connection为keep-alive就算是长连接了？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平时用的是不是长连接？"><span class="nav-number">2.1.2.</span> <span class="nav-text">平时用的是不是长连接？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？"><span class="nav-number">2.1.3.</span> <span class="nav-text">普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短轮询"><span class="nav-number">3.</span> <span class="nav-text">长短轮询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#长轮询"><span class="nav-number">3.1.</span> <span class="nav-text">长轮询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">3.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#短轮询"><span class="nav-number">3.2.</span> <span class="nav-text">短轮询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长短轮询的异同"><span class="nav-number">3.3.</span> <span class="nav-text">长短轮询的异同</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">3.3.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">3.3.2.</span> <span class="nav-text">不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能总结"><span class="nav-number">3.3.3.</span> <span class="nav-text">性能总结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
