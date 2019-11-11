@@ -162,16 +162,18 @@
 
 
 
-  <meta name="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王洪博&#39;s blog">
-<meta property="og:url" content="http://whb1990.github.io/archives/page/4/index.html">
+  <meta name="description" content="前言相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。 那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？ 如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都">
+<meta name="keywords" content="计算机基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议中的长短连接和长短轮询">
+<meta property="og:url" content="http://whb1990.github.io/posts/4cb9c115.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta property="og:description" content="前言相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。 那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？ 如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-11T06:51:03.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王洪博&#39;s blog">
-<meta name="twitter:description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+<meta name="twitter:title" content="HTTP协议中的长短连接和长短轮询">
+<meta name="twitter:description" content="前言相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。 那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？ 如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都">
 
 
 
@@ -181,7 +183,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/archives/page/4/">
+  <link rel="canonical" href="http://whb1990.github.io/posts/4cb9c115">
 
 
 
@@ -191,7 +193,7 @@
   };
 </script>
 
-  <title>归档 | 王洪博's blog</title>
+  <title>HTTP协议中的长短连接和长短轮询 | 王洪博's blog</title>
   
 
 
@@ -238,7 +240,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
   <!--Fork me on github-->
   <a href="https://github.com/whb1990/whb1990.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -350,7 +352,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -462,448 +464,390 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/4cb9c115.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">HTTP协议中的长短连接和长短轮询
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-11 14:31:05" itemprop="dateCreated datePublished" datetime="2019-11-11T14:31:05Z">2019-11-11</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机基础/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
           
-        非常好! 目前共计 137 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/4cb9c115.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4cb9c115.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+
+          
+          
+            <span id="/posts/4cb9c115.html" class="leancloud_visitors" data-flag-title="HTTP协议中的长短连接和长短轮询">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">952字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  3分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>相信很多人在看HTTP协议相关的文章时，都能看到这么一句话：HTTP1.0协议不支持长连接，从HTTP1.1协议以后，连接默认都是长连接。</p>
+<p>那怎样算是把HTTP变成长连接？是不是只要设置Connection为keep-alive就可以了？</p>
+<p>如果是的话，都说HTTP1.1默认是长连接，而观察平时开发的Web应用的HTTP头部，Connection也确实是keep-alive，那就是说我们大部分都是用的长连接，但是长连接不是一般用于交互比较频繁的应用吗？像普通的Web应用，比如个人博客这种，长连接有什么用？</p>
+<p>如果有用那用处到底是什么，我们又不是客户端与服务器交互频繁的那种应用（毕竟你打开网页肯定要半天才打开另外一个吧），如果没用的话，那到底应不应该把Connection为keep-alive这个header值给改掉，从而改成短连接？</p>
+<h1 id="长短连接"><a href="#长短连接" class="headerlink" title="长短连接"></a>长短连接</h1><p>HTTP协议没有长短连接一说，HTTP协议是基于请求/响应模式的，因此只要服务端给了响应，本次HTTP连接就结束了，或者更准确的说，是本次HTTP请求就结束了，根本没有长连接这一说。那么自然也就没有短连接这一说了。</p>
+<p>之所以说HTTP分为长连接和短连接，其实本质上是说的TCP连接。TCP连接是一个双向的通道，它是可以保持一段时间不关闭的，因此TCP连接才有真正的长连接和短连接这一说。</p>
+<p>HTTP协议说到底是应用层的协议，而TCP才是真正的传输层协议，只有负责传输的这一层才需要建立连接。</p>
+<h2 id="疑问解答"><a href="#疑问解答" class="headerlink" title="疑问解答"></a>疑问解答</h2><h3 id="是不是只要设置Connection为keep-alive就算是长连接了？"><a href="#是不是只要设置Connection为keep-alive就算是长连接了？" class="headerlink" title="是不是只要设置Connection为keep-alive就算是长连接了？"></a>是不是只要设置Connection为keep-alive就算是长连接了？</h3><p>当然是的，但要服务器和客户端都设置。</p>
+<h3 id="平时用的是不是长连接？"><a href="#平时用的是不是长连接？" class="headerlink" title="平时用的是不是长连接？"></a>平时用的是不是长连接？</h3><p>这个也毫无疑问是的。（现在用的基本上都是HTTP1.1协议，基本上Connection都是keep-alive。而且HTTP协议文档上也提到了，HTTP1.1默认是长连接，也就是默认Connection的值就是keep-alive）。</p>
+<h3 id="普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？"><a href="#普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？" class="headerlink" title="普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？"></a>普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？</h3><p>刚才已经说了长连接是指的TCP连接，长连接的目的也是为了复用（复用TCP连接）。在长连接情况下，多个HTTP请求可以复用同一个TCP连接，这就节省了很多TCP连接建立和断开的消耗。</p>
+<p>比如你请求博客的一个网页，这个网页里肯定还包含了CSS、JS等等一系列资源，如果是短连接（也就是每次都要重新建立TCP连接）的话，那你每打开一个网页，基本要建立几个甚至几十个TCP连接，这浪费了很多资源。</p>
+<p>但如果是长连接的话，那么这么多次HTTP请求（这些请求包括请求网页内容，CSS文件，JS文件，图片等等），其实使用的都是一个TCP连接，很显然是可以节省很多消耗的。</p>
+<p>最后长连接并不是永久连接的。如果一段时间内（具体的时间长短，是可以在header当中进行设置的，也就是所谓的超时时间），这个连接没有HTTP请求发出的话，那么这个长连接就会被断掉。</p>
+<h1 id="长短轮询"><a href="#长短轮询" class="headerlink" title="长短轮询"></a>长短轮询</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/4cb9c115.html">HTTP协议中的长短连接和长短轮询</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年11月11日 - 14:11</p>
+  <p><span>最后更新:</span>2019年11月11日 - 06:11</p>
+  <p><span>原始链接:</span><a href="/posts/4cb9c115.html" title="HTTP协议中的长短连接和长短轮询">http://whb1990.github.io/posts/4cb9c115.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/4cb9c115.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>▄︻┻═┳一如果你喜欢这篇文章，请点击下方"打赏"按钮请我喝杯 ☕</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机基础/" rel="tag"><i class="fa fa-envira"></i> 计算机基础</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+		    <div style="color: rgba(255,100,97,1); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
           </div>
         
-        
 
         
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T15:20:40Z" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/posts/b29432a8.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-ReentrantReadWriteLock</span>
-            
-          </a>
-        
-      </h2>
-
+        </div>
+      
       
 
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-09T11:44:23Z" content="2019-03-09">
-          03-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/f989cad5.html" itemprop="url">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span itemprop="name">深入理解Spring中的注解</span>
+              <a href="/posts/aea42d14.html" rel="next" title="Dubbo接口测试工具">
+                <i class="fa fa-chevron-left"></i> Dubbo接口测试工具
+              </a>
             
-          </a>
-        
-      </h2>
+          </div>
 
-      
+          <span class="post-nav-divider"></span>
 
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-08T14:59:12Z" content="2019-03-08">
-          03-08
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/fd3ef277.html" itemprop="url">
+          <div class="post-nav-prev post-nav-item">
             
-              <span itemprop="name">Java并发-ReentrantLock</span>
-            
-          </a>
-        
-      </h2>
-
+          </div>
+        </div>
       
 
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-04T11:44:08Z" content="2019-03-04">
-          03-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/2c562869.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-LockSupport</span>
-            
-          </a>
-        
-      </h2>
-
       
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-02T16:59:13Z" content="2019-03-02">
-          03-02
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/bbc8910e.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-CountDownLatch</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-01T09:20:23Z" content="2019-03-01">
-          03-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/44092bd5.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-Semaphore</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-21T17:30:42Z" content="2019-02-21">
-          02-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/3a683baa.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-CyclicBarrier</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-17T00:00:00Z" content="2019-02-17">
-          02-17
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/4a17b156.html" itemprop="url">
-            
-              <span itemprop="name">Hello World</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-05T09:23:11Z" content="2019-02-05">
-          02-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/68b8bf54.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-AQS源码分析之条件队列</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-	
-	  <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-30T15:50:57Z" content="2019-01-30">
-          01-30
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/posts/f8b27f2e.html" itemprop="url">
-            
-              <span itemprop="name">Java并发-AQS源码分析之独占模式</span>
-            
-          </a>
-        
-      </h2>
-
-      
-
-    </header>
-  </article>
-
-
-
-      
-
-    </div>
+    </footer>
   </div>
   
   
   
+  </article>
 
+
+  </div>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><a class="extend next" rel="next" href="/archives/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -923,8 +867,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1390,6 +1343,23 @@ var binft = function (r) {
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短连接"><span class="nav-number">2.</span> <span class="nav-text">长短连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#疑问解答"><span class="nav-number">2.1.</span> <span class="nav-text">疑问解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是不是只要设置Connection为keep-alive就算是长连接了？"><span class="nav-number">2.1.1.</span> <span class="nav-text">是不是只要设置Connection为keep-alive就算是长连接了？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平时用的是不是长连接？"><span class="nav-number">2.1.2.</span> <span class="nav-text">平时用的是不是长连接？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？"><span class="nav-number">2.1.3.</span> <span class="nav-text">普通的Web应用（比如个人博客）用长连接有啥好处？需不需要关掉长连接而使用短连接？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短轮询"><span class="nav-number">3.</span> <span class="nav-text">长短轮询</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1589,6 +1559,10 @@ var binft = function (r) {
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1643,6 +1617,8 @@ var binft = function (r) {
 
 
 
+
+  
 
 
   
@@ -1994,6 +1970,25 @@ var binft = function (r) {
   
 
   
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20604,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
 
   
 
