@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常  会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。 那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit 首先，用git log或sour">
+  <meta name="description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit首先，用git log或sourcetr">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习之~合并指定文件或Commits到另一分支">
 <meta property="og:url" content="http://whb1990.github.io/posts/5040fe16.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常  会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。 那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit 首先，用git log或sour">
+<meta property="og:description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit首先，用git log或sourcetr">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T02:25:02.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习之~合并指定文件或Commits到另一分支">
-<meta name="twitter:description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常  会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。 那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit 首先，用git log或sour">
+<meta name="twitter:description" content="刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。  合并某个分支上的单个commit首先，用git log或sourcetr">
 
 
 
@@ -658,43 +658,37 @@
       
 
       
-        <pre><code>刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常
-</code></pre>
-<p>会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。
-那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。</p>
+        <pre><code>刚使用git进行版本管理的时候，由于成员间的代码有的需要上线，有的不需要上线，如果直接merge，经常</code></pre><p>会把别人不需要上线的代码合并的master，导致问题从生。所以，最稳妥的是只合并你需要的那些commits，不需要的commits就不合并进去。<br>那么如何从一个分支合并特定的文件或者Commits到另一个分支这个问题急待解。</p>
 <ol>
-<li>合并某个分支上的单个commit
-首先，用git log或sourcetree工具查看你想选择哪些commits进行合并，例如：</li>
+<li>合并某个分支上的单个commit<br>首先，用git log或sourcetree工具查看你想选择哪些commits进行合并，例如：</li>
 </ol>
-<p>比如dev-w 分支上的commit 2aeefdacad6ed1586a1e035fb8860f11533db23c 非常重要，它含有一个紧急bug的修复或是其他内容。无论什么原因，
-你现在只需要将 2aeefdacad6ed1586a1e035fb8860f11533db23c 合并到master，而不合并dev-w上的其他commits，所以我们用git cherry-pick命令来做：</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master  </span><br><span class="line"></span><br><span class="line">git cherry-pick 2aeefdacad6ed1586a1e035fb8860f11533db23c</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<p>这样 2aeefdacad6ed1586a1e035fb8860f11533db23c 就被合并到master分支，并在master中添加了commit（作为一个新的commit）。
-cherry-pick 和merge比较类似，如果git不能合并代码改动（比如遇到合并冲突），git需要你自己来解决冲突并手动添加commit。</p>
+<p>比如dev-w 分支上的commit 2aeefdacad6ed1586a1e035fb8860f11533db23c 非常重要，它含有一个紧急bug的修复或是其他内容。无论什么原因，<br>你现在只需要将 2aeefdacad6ed1586a1e035fb8860f11533db23c 合并到master，而不合并dev-w上的其他commits，所以我们用git cherry-pick命令来做：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master  </span><br><span class="line"></span><br><span class="line">git cherry-pick 2aeefdacad6ed1586a1e035fb8860f11533db23c</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>这样 2aeefdacad6ed1586a1e035fb8860f11533db23c 就被合并到master分支，并在master中添加了commit（作为一个新的commit）。<br>cherry-pick 和merge比较类似，如果git不能合并代码改动（比如遇到合并冲突），git需要你自己来解决冲突并手动添加commit。</p>
 <p>这里git cherry-pick每次合并过来会显示文件冲突(其实并没有代码冲突部分，只需手动解决既可)</p>
 <ol start="2">
-<li>合并某个分支上的一系列commits
-在一些特定情况下，合并单个commit并不够，你需要合并一系列相连的commits。这种情况下就不要使用cherry-pick了，rebase 更适合。
-假设你需要合并dev-w分支的commit 76cada ~62ecb3 到master分支。</li>
+<li>合并某个分支上的一系列commits<br>在一些特定情况下，合并单个commit并不够，你需要合并一系列相连的commits。这种情况下就不要使用cherry-pick了，rebase 更适合。<br>假设你需要合并dev-w分支的commit 76cada ~62ecb3 到master分支。</li>
 </ol>
 <p>首先需要基于dev-w创建一个新的分支，并指明新分支的最后一个commit：</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev-w </span><br><span class="line">git checkout -b newbranch 62ecb3</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev-w </span><br><span class="line">git checkout -b newbranch 62ecb3</span><br></pre></td></tr></tbody></table></figure></div>
+
 <p>然后，rebase这个新分支的commit到master（–ontomaster）。76cada^ 指明你想从哪个特定的commit开始。</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --ontomaster 76cada^</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --ontomaster 76cada^</span><br></pre></td></tr></tbody></table></figure></div>
+
 <p>得到的结果就是dev-w分支的commit 76cada ~ 62ecb3 都被合并到了master分支。</p>
 <p>另外如果只想将dev-w分支的某个文件Test.java合并到master分支上。</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev-w</span><br><span class="line">git checkout --patch master Test.java</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<p>第一个命令： 切换到dev-w分支；
-第二个命令：合并master分支上Test.java文件到dev-w分支上，将master分支上 Test.java 文件追加补丁到dev-w分支上 Test.java文件。你可以接受或者拒绝补丁内容。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev-w</span><br><span class="line">git checkout --patch master Test.java</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>第一个命令： 切换到dev-w分支；<br>第二个命令：合并master分支上Test.java文件到dev-w分支上，将master分支上 Test.java 文件追加补丁到dev-w分支上 Test.java文件。你可以接受或者拒绝补丁内容。</p>
 <p>如果只是简单的将dev-w分支的文件Test.java copy到master分支上；</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git checkout dev-w Test.java</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<p>分支test上有一个文件A，你在test1分支上， 此时如果想用test分支上的A文件替换test1分支上的文件的话，
-可以使用git checkout test1, 然后git checkout test – A</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git checkout dev-w Test.java</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>分支test上有一个文件A，你在test1分支上， 此时如果想用test分支上的A文件替换test1分支上的文件的话，<br>可以使用git checkout test1, 然后git checkout test – A</p>
 <p>在feature分支commit</p>
 <p>切换至release分支</p>
 <p>从feature分支检出相应文件</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#branch feature</span><br><span class="line">git commit -a -m "msg"</span><br><span class="line">git checkout release</span><br><span class="line">#branch release</span><br><span class="line">git checkout feature file-01</span><br><span class="line">git checkout feature file-x</span><br><span class="line">...</span><br><span class="line">git commit -a -m "msg"</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<script>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#branch feature</span><br><span class="line">git commit -a -m "msg"</span><br><span class="line">git checkout release</span><br><span class="line">#branch release</span><br><span class="line">git checkout feature file-01</span><br><span class="line">git checkout feature file-x</span><br><span class="line">...</span><br><span class="line">git commit -a -m "msg"</span><br></pre></td></tr></tbody></table></figure></div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1401,7 +1395,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:33</span>
+  <span title="站点阅读时长">15:20</span>
   
 </div>
 

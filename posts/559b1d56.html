@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="概述 当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索， 或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言 1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html li">
+  <meta name="description" content="概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html lingu">
 <meta name="keywords" content="GitHub">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改GitHub项目语言显示问题">
 <meta property="og:url" content="http://whb1990.github.io/posts/559b1d56.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="概述 当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索， 或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言 1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html li">
+<meta property="og:description" content="概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html lingu">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T02:25:02.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改GitHub项目语言显示问题">
-<meta name="twitter:description" content="概述 当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索， 或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言 1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html li">
+<meta name="twitter:description" content="概述当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。 修改GitHub语言1、在本地项目中或者GitHub项目中新建一个 .gitattributes的文件，输入以下内容： 12345*.yml linguist-language=Java *.html lingu">
 
 
 
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">416字</span>
+            <span class="post-count">415字</span>
           </span>
 		  
           <span class="post-time">
@@ -658,20 +658,12 @@
       
 
       
-        <h2>概述</h2>
-<p>当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，
-或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。</p>
-<h2>修改GitHub语言</h2>
-<p>1、在本地项目中或者GitHub项目中新建一个 <code>.gitattributes</code>的文件，输入以下内容：</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*.yml linguist-language=Java </span><br><span class="line">*.html linguist-language=Java </span><br><span class="line">*.js linguist-language=Java </span><br><span class="line">*.xml linguist-language=Java</span><br><span class="line">*.css linguist-language=Java</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<p>需要说明的是，假如我们的项目中有很多的诸如<code>.html</code>、<code>.js</code>等文件，在GitHub上会显示为<code>HTML</code>、<code>JavaScript</code>，
-所以<code>.gitattributes</code>文件内容的意思就是将忽略<code>.xx</code>什么什么文件，然后将其语言更改为<code>Java</code>，如果你的项目
-是其他语言，诸如<code>C++</code>等就将<code>Java</code>修改为<code>C++</code>等。
-当然了，这样修改也许还不能将你的项目语言修改成功，所以你需要去查询你项目中所有尽可能的后缀名文件
-影响语言的情况考虑，要根据GitHub给你当前项目设定的是什么语言，就从什么语言去考虑就好了。
-所以在<code>.gitattributes</code>文件中添加多一些属性就解决了。如下：</p>
-<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*.md linguist-language=Java </span><br><span class="line">*.yml linguist-language=Java </span><br><span class="line">*.html linguist-language=Java </span><br><span class="line">*.js linguist-language=Java </span><br><span class="line">*.xml linguist-language=Java</span><br><span class="line">*.css linguist-language=Java </span><br><span class="line">*.sql linguist-language=Java</span><br><span class="line">*.uml linguist-language=Java </span><br><span class="line">*.cmd linguist-language=Java</span><br></pre></td></tr></tbody></table></figure></div><p></p>
-<script>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>当我们上传项目到GitHub上，有时候项目显示的语言并非是我们自己项目所示的语言，这就导致我们在快速检索，<br>或者外部访问者访问时不能够搜索到我们的项目，所以，此时就很有必要修改下语言。</p>
+<h2 id="修改GitHub语言"><a href="#修改GitHub语言" class="headerlink" title="修改GitHub语言"></a>修改GitHub语言</h2><p>1、在本地项目中或者GitHub项目中新建一个 <code>.gitattributes</code>的文件，输入以下内容：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*.yml linguist-language=Java </span><br><span class="line">*.html linguist-language=Java </span><br><span class="line">*.js linguist-language=Java </span><br><span class="line">*.xml linguist-language=Java</span><br><span class="line">*.css linguist-language=Java</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>需要说明的是，假如我们的项目中有很多的诸如<code>.html</code>、<code>.js</code>等文件，在GitHub上会显示为<code>HTML</code>、<code>JavaScript</code>，<br>所以<code>.gitattributes</code>文件内容的意思就是将忽略<code>.xx</code>什么什么文件，然后将其语言更改为<code>Java</code>，如果你的项目<br>是其他语言，诸如<code>C++</code>等就将<code>Java</code>修改为<code>C++</code>等。<br>当然了，这样修改也许还不能将你的项目语言修改成功，所以你需要去查询你项目中所有尽可能的后缀名文件<br>影响语言的情况考虑，要根据GitHub给你当前项目设定的是什么语言，就从什么语言去考虑就好了。<br>所以在<code>.gitattributes</code>文件中添加多一些属性就解决了。如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*.md linguist-language=Java </span><br><span class="line">*.yml linguist-language=Java </span><br><span class="line">*.html linguist-language=Java </span><br><span class="line">*.js linguist-language=Java </span><br><span class="line">*.xml linguist-language=Java</span><br><span class="line">*.css linguist-language=Java </span><br><span class="line">*.sql linguist-language=Java</span><br><span class="line">*.uml linguist-language=Java </span><br><span class="line">*.cmd linguist-language=Java</span><br></pre></td></tr></tbody></table></figure></div><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1357,7 +1349,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">修改GitHub语言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改GitHub语言"><span class="nav-number">2.</span> <span class="nav-text">修改GitHub语言</span></a></li></ol></div>
             
 
           </div>
@@ -1404,7 +1396,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:33</span>
+  <span title="站点阅读时长">15:20</span>
   
 </div>
 
