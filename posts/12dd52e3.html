@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
+  <meta name="description" content="前言 多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点              分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即">
 <meta name="keywords" content="分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式学习-分布式锁">
 <meta property="og:url" content="http://whb1990.github.io/posts/12dd52e3.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
+<meta property="og:description" content="前言 多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点              分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T03:51:09.175Z">
+<meta property="og:updated_time" content="2019-11-14T03:59:49.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式学习-分布式锁">
-<meta name="twitter:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
+<meta name="twitter:description" content="前言 多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点              分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即">
 
 
 
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.3k字</span>
+            <span class="post-count">1.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -606,7 +606,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  4分钟</span>
+            <span class="post-count">  6分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">3.6k</span>
               
 
               
@@ -638,7 +638,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -658,66 +658,52 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。</p>
-<h1 id="分布式锁的特点"><a href="#分布式锁的特点" class="headerlink" title="分布式锁的特点"></a>分布式锁的特点</h1><div class="note warning no-icon">
-            <p>分布式锁一般要有以下特点：</p><ul><li>排他性：任意时刻，只能有一个client能获取到锁；</li><li>容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；</li><li>避免死锁：分布式锁一定能得到释放，即使client在释放之前崩溃或者网络不可达而没有主动解锁，也能保证后续client能加锁。<br>除了以上特点之外，分布式锁最好也能满足可重入、高性能、阻塞锁特性（AQS这种，能够及时从阻塞状态唤醒）等。</li></ul>
-          </div>
-
-<h1 id="分布式锁方案"><a href="#分布式锁方案" class="headerlink" title="分布式锁方案"></a>分布式锁方案</h1><div class="note success no-icon">
+        <h1>前言</h1>
+<p>多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。</p>
+<h1>分布式锁的特点</h1>
+<p></p><div class="note warning no-icon">
+            <p>分布式锁一般要有以下特点：</p><ul><li>排他性：任意时刻，只能有一个client能获取到锁；</li><li>容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；</li><li>避免死锁：分布式锁一定能得到释放，即使client在释放之前崩溃或者网络不可达而没有主动解锁，也能保证后续client能加锁。除了以上特点之外，分布式锁最好也能满足可重入、高性能、阻塞锁特性（AQS这种，能够及时从阻塞状态唤醒）等。</li></ul>
+          </div><p></p>
+<h1>分布式锁方案</h1>
+<p></p><div class="note success no-icon">
             <p>分布式锁一般有三种实现方式：</p><ol><li>基于数据库的分布式锁；</li><li>基于Redis的分布式锁；</li><li>基于ZooKeeper的分布式锁</li></ol>
-          </div>
-
-<h2 id="基于数据的分布式锁"><a href="#基于数据的分布式锁" class="headerlink" title="基于数据的分布式锁"></a>基于数据的分布式锁</h2><p>在数据库新建一张表用于控制并发控制，表结构可以如下所示：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`lock_table`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'主键'</span>,</span><br><span class="line">  <span class="string">`key_id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'分布式key'</span>,</span><br><span class="line">  <span class="string">`memo`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'可记录操作内容'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">kEY</span> (<span class="string">`id`</span>,<span class="string">'key_id'</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`key_id`</span> (<span class="string">`key_id`</span>) <span class="keyword">USING</span> BETREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></tbody></table></figure></div>
-
+          </div><p></p>
+<h2>基于数据库的分布式锁</h2>
+<p>在数据库新建一张表用于控制并发控制，表结构可以如下所示：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`lock_table`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'主键'</span>,</span><br><span class="line">  <span class="string">`key_id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'分布式key'</span>,</span><br><span class="line">  <span class="string">`memo`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'可记录操作内容'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">kEY</span> (<span class="string">`id`</span>,<span class="string">'key_id'</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`key_id`</span> (<span class="string">`key_id`</span>) <span class="keyword">USING</span> BETREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></tbody></table></figure></div><p></p>
 <p><code>key_id</code>作为分布式key用来并发控制，<code>memo</code>可用来记录一些操作内容（比如memo可用来支持重入特性，标记下当前加锁的client和加锁次数）。</p>
 <p>将<code>key_id</code>设置为唯一索引，保证了针对同一个<code>key_id</code>只有一个加锁（数据插入）能成功。此时lock和unlock伪代码如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def <span class="keyword">lock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">insert</span> <span class="keyword">into</span> lock_table(key_id, memo, update_time) <span class="keyword">values</span> (key_id, memo, <span class="keyword">NOW</span>())</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">result</span> == <span class="literal">true</span> :</span><br><span class="line">	   <span class="keyword">return</span> <span class="literal">true</span> </span><br><span class="line">	<span class="keyword">else</span> : </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>	</span><br><span class="line">		</span><br><span class="line"><span class="keyword">def</span> <span class="keyword">unlock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> key_id = <span class="string">'key_id'</span> <span class="keyword">and</span> momo = <span class="string">'memo'</span></span><br></pre></td></tr></tbody></table></figure></div>
-
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def <span class="keyword">lock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">insert</span> <span class="keyword">into</span> lock_table(key_id, memo, update_time) <span class="keyword">values</span> (key_id, memo, <span class="keyword">NOW</span>())</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">result</span> == <span class="literal">true</span> :</span><br><span class="line">	   <span class="keyword">return</span> <span class="literal">true</span> </span><br><span class="line">	<span class="keyword">else</span> : </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>	</span><br><span class="line">		</span><br><span class="line"><span class="keyword">def</span> <span class="keyword">unlock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> key_id = <span class="string">'key_id'</span> <span class="keyword">and</span> momo = <span class="string">'memo'</span></span><br></pre></td></tr></tbody></table></figure></div><p></p>
 <p>注意，伪代码中的lock操作是非阻塞锁，也就是tryLock，如果想实现阻塞（或者阻塞超时）加锁，只需要反复执行lock伪代码直到加锁成功为止即可。</p>
 <p>基于DB的分布式锁其实有一个问题，那就是如果加锁成功后，client端宕机或者由于网络原因导致没有解锁，那么其他client就无法对该key_id进行加锁并且无法释放了。为了能够让锁失效，需要在应用层加上定时任务，去删除过期还未解锁的记录，比如删除2分钟前未解锁的伪代码如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def clear_timeout_lock : </span><br><span class="line">    exec sql: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> update_time &lt; <span class="keyword">ADDTIME</span>(<span class="keyword">NOW</span>(), <span class="string">'-00:02:00'</span>)</span><br></pre></td></tr></tbody></table></figure></div>
-
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def clear_timeout_lock : </span><br><span class="line">    exec sql: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> update_time &lt; <span class="keyword">ADDTIME</span>(<span class="keyword">NOW</span>(), <span class="string">'-00:02:00'</span>)</span><br></pre></td></tr></tbody></table></figure></div><p></p>
 <p>因为单实例DB的TPS一般为几百，所以基于DB的分布式性能上限一般也是1k以下，一般在并发量不大的场景下该分布式锁是满足需求的，不会出现性能问题。</p>
 <p>不过DB作为分布式锁服务需要考虑单点问题，对于分布式系统来说是不允许出现单点的，一般通过数据库的同步复制，以及使用vip切换Master就能解决这个问题。</p>
 <p>以上DB分布式锁是通过<code>insert</code>来实现的，如果加锁的数据已经在数据库中存在，那么用<code>select xxx where key_id = xxx for udpate</code>方式来做也是可以的。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><div class="note danger no-icon">
-            <p>1、这把锁强依赖数据库的可用性，数据库是一个单点，一旦数据库挂掉，会导致业务系统不可用。<br>2、这把锁没有失效时间，一旦解锁操作失败，就会导致锁记录一直在数据库中，其他线程无法再获得到锁。<br>3、这把锁只能是非阻塞的，因为数据的insert操作，一旦插入失败就会直接报错。没有获得锁的线程并不会进入排队队列，要想再次获得锁就要再次触发获得锁操作。<br>4、这把锁是非重入的，同一个线程在没有释放锁之前无法再次获得该锁。因为数据中库数据已经存在了。</p>
-          </div>
-
-<h3 id="缺陷解决方案"><a href="#缺陷解决方案" class="headerlink" title="缺陷解决方案"></a>缺陷解决方案</h3><div class="note warning no-icon">
-            <ol><li><p>数据库是单点？<br>搞两个数据库，数据实现双向同步。一旦挂掉快速切换到备库上。</p></li><li><p>没有失效时间？<br>只要做一个定时任务，每隔一定时间把数据库中的超时数据清理一遍。</p></li><li><p>非阻塞的？<br>搞一个while循环，直到insert成功再返回成功。</p></li><li><p>非重入的？<br>在数据库表中加个字段，记录当前获得锁的机器的主机信息和线程信息，那么下次再获取锁的时候先查询数据库，如果当前机器的主机信息和线程信息在数据库可以查到的话，直接把锁分配给他就可以了。</p></li></ol>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h3>缺点</h3>
+<p></p><div class="note danger no-icon">
+            <p>1、这把锁强依赖数据库的可用性，数据库是一个单点，一旦数据库挂掉，会导致业务系统不可用。2、这把锁没有失效时间，一旦解锁操作失败，就会导致锁记录一直在数据库中，其他线程无法再获得到锁。3、这把锁只能是非阻塞的，因为数据的insert操作，一旦插入失败就会直接报错。没有获得锁的线程并不会进入排队队列，要想再次获得锁就要再次触发获得锁操作。4、这把锁是非重入的，同一个线程在没有释放锁之前无法再次获得该锁。因为数据中库数据已经存在了。</p>
+          </div><p></p>
+<h3>缺陷解决方案</h3>
+<p></p><div class="note warning no-icon">
+            <ol><li><p>数据库是单点？搞两个数据库，数据实现双向同步。一旦挂掉快速切换到备库上。</p></li><li><p>没有失效时间？只要做一个定时任务，每隔一定时间把数据库中的超时数据清理一遍。</p></li><li><p>非阻塞的？搞一个while循环，直到insert成功再返回成功。</p></li><li><p>非重入的？在数据库表中加个字段，记录当前获得锁的机器的主机信息和线程信息，那么下次再获取锁的时候先查询数据库，如果当前机器的主机信息和线程信息在数据库可以查到的话，直接把锁分配给他就可以了。</p></li></ol>
+          </div><p></p>
+<h2>基于Redis的分布式锁</h2>
+<h3>原理</h3>
+<p>基于redis的锁是通过以下命令对资源进行加锁：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set key_id key_value NX PX expireTime</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<p>其中，<code>set nx</code>命令只会在<code>key</code>不存在时给key进行赋值，<code>px</code>用来设置key过期时间，<code>key_value</code>一般是随机值，用来保证释放锁的安全性（释放时会判断是否是之前设置过的随机值，只有是才释放锁）。由于资源设置了过期时间，一定时间后锁会自动释放。</p>
+<p><code>set nx</code>保证并发加锁时只有一个client能设置成功（redis内部是单线程，并且数据存在内存中，也就是说redis内部执行命令是不会有多线程同步问题的）。</p>
+<h3>Java实现</h3>
+<h4>maven依赖</h4>
+<p>首先通过Maven引入Jedis开源组件，在pom.xml文件加入下面的代码：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<h4>加锁代码</h4>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisLock</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOCK_SUCCESS = <span class="string">"OK"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_IF_NOT_EXIST = <span class="string">"NX"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_WITH_EXPIRE_TIME = <span class="string">"PX"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 尝试获取分布式锁</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jedis Redis客户端</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lockKey 锁</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> requestId 请求标识</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> expireTime 超期时间</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否获取成功</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">tryGetDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>{</span><br><span class="line"></span><br><span class="line">        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (LOCK_SUCCESS.equals(result)) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<p>从上面的代码可以看到，加锁的核心代码只有一行：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jedis.set(String key, String value, String nxxx, String expx, <span class="keyword">int</span> time)</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<p>这个set()方法一共有五个形参：</p>
+<h2>基于ZooKeeper的分布式锁</h2>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1400,7 +1386,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁的特点"><span class="nav-number">2.</span> <span class="nav-text">分布式锁的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁方案"><span class="nav-number">3.</span> <span class="nav-text">分布式锁方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据的分布式锁"><span class="nav-number">3.1.</span> <span class="nav-text">基于数据的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺陷解决方案"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺陷解决方案</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">分布式锁的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">分布式锁方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">基于数据库的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺陷解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">基于Redis的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.</span> <span class="nav-text">Java实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">maven依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">加锁代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">基于ZooKeeper的分布式锁</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1447,7 +1433,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:22</span>
+  <span title="站点阅读时长">15:36</span>
   
 </div>
 
