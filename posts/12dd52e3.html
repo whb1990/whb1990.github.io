@@ -162,17 +162,18 @@
 
 
 
-  <meta name="description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://whb1990.github.io/tags/index.html">
+  <meta name="description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
+<meta name="keywords" content="分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式学习-分布式锁">
+<meta property="og:url" content="http://whb1990.github.io/posts/12dd52e3.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
+<meta property="og:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T02:38:06.725Z">
+<meta property="og:updated_time" content="2019-11-14T03:51:09.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
+<meta name="twitter:title" content="分布式学习-分布式锁">
+<meta name="twitter:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
 
 
 
@@ -182,7 +183,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/tags/">
+  <link rel="canonical" href="http://whb1990.github.io/posts/12dd52e3">
 
 
 
@@ -192,7 +193,7 @@
   };
 </script>
 
-  <title>tags | 王洪博's blog</title>
+  <title>分布式学习-分布式锁 | 王洪博's blog</title>
   
 
 
@@ -317,7 +318,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -463,247 +464,437 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/12dd52e3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">tags
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
+          <h1 class="post-title" itemprop="name headline">分布式学习-分布式锁
+
               
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                
-                  
-                
+                <span class="post-meta-item-text">发表于</span>
               
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
+
               
                 
-                  
+              
+
+              <time title="创建时间：2019-11-14 11:32:02" itemprop="dateCreated datePublished" datetime="2019-11-14T11:32:02Z">2019-11-14</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
                 
               
-                
-                  
-                
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
               
-                
-                  
-                
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/12dd52e3.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/12dd52e3.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/12dd52e3.html" class="leancloud_visitors" data-flag-title="分布式学习-分布式锁">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
               
-                
-                  
-                
+                <span class="post-meta-item-text">热度：</span>
               
-                
-                  
-                
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.3k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  4分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
               
-                
-                  
-                
+
               
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
                 
-                  
+                  <span class="post-meta-item-text">本文字数：</span>
                 
+                <span title="本文字数">2.2k</span>
               
-                
-                  
-                
+
               
-                
-                  
-                
+                <span class="post-meta-divider">|</span>
               
-                
-                  
-                
+			
               
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
                 
-                  
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              目前共计 38 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              
-                <a href="/tags/DevOps/" style="font-size: 13px; color: #9733ee">DevOps</a> <a href="/tags/Dubbo/" style="font-size: 13px; color: #9733ee">Dubbo</a> <a href="/tags/Git/" style="font-size: 24.45px; color: #d94674">Git</a> <a href="/tags/GitHub/" style="font-size: 14.64px; color: #a036dd">GitHub</a> <a href="/tags/Hexo/" style="font-size: 19.55px; color: #bd3ea9">Hexo</a> <a href="/tags/Html/" style="font-size: 13px; color: #9733ee">Html</a> <a href="/tags/IDEA/" style="font-size: 14.64px; color: #a036dd">IDEA</a> <a href="/tags/J-U-C/" style="font-size: 24.45px; color: #d94674">J.U.C</a> <a href="/tags/JMM/" style="font-size: 22.82px; color: #d04386">JMM</a> <a href="/tags/JVM/" style="font-size: 14.64px; color: #a036dd">JVM</a> <a href="/tags/Java/" style="font-size: 31px; color: #ff512f">Java</a> <a href="/tags/Js/" style="font-size: 13px; color: #9733ee">Js</a> <a href="/tags/Linux/" style="font-size: 17.91px; color: #b33bba">Linux</a> <a href="/tags/Markdown/" style="font-size: 17.91px; color: #b33bba">Markdown</a> <a href="/tags/MySQL/" style="font-size: 19.55px; color: #bd3ea9">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 14.64px; color: #a036dd">Mybatis</a> <a href="/tags/NIO/" style="font-size: 14.64px; color: #a036dd">NIO</a> <a href="/tags/Nginx/" style="font-size: 13px; color: #9733ee">Nginx</a> <a href="/tags/RPC/" style="font-size: 16.27px; color: #aa38cb">RPC</a> <a href="/tags/Redis/" style="font-size: 16.27px; color: #aa38cb">Redis</a> <a href="/tags/Spring/" style="font-size: 14.64px; color: #a036dd">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 13px; color: #9733ee">SpringBoot</a> <a href="/tags/Windows/" style="font-size: 13px; color: #9733ee">Windows</a> <a href="/tags/Zookeeper/" style="font-size: 13px; color: #9733ee">Zookeeper</a> <a href="/tags/druid/" style="font-size: 13px; color: #9733ee">druid</a> <a href="/tags/mysql/" style="font-size: 13px; color: #9733ee">mysql</a> <a href="/tags/redis/" style="font-size: 13px; color: #9733ee">redis</a> <a href="/tags/分布式/" style="font-size: 22.82px; color: #d04386">分布式</a> <a href="/tags/多线程/" style="font-size: 26.09px; color: #e34963">多线程</a> <a href="/tags/插件/" style="font-size: 13px; color: #9733ee">插件</a> <a href="/tags/数据库/" style="font-size: 21.18px; color: #c64197">数据库</a> <a href="/tags/算法/" style="font-size: 29.36px; color: #f64e40">算法</a> <a href="/tags/缓存/" style="font-size: 13px; color: #9733ee">缓存</a> <a href="/tags/计算机基础/" style="font-size: 14.64px; color: #a036dd">计算机基础</a> <a href="/tags/设计模式/" style="font-size: 27.73px; color: #ec4c52">设计模式</a> <a href="/tags/负载均衡/" style="font-size: 13px; color: #9733ee">负载均衡</a> <a href="/tags/面试题/" style="font-size: 16.27px; color: #aa38cb">面试题</a> <a href="/tags/高可用/" style="font-size: 13px; color: #9733ee">高可用</a>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。</p>
+<h1 id="分布式锁的特点"><a href="#分布式锁的特点" class="headerlink" title="分布式锁的特点"></a>分布式锁的特点</h1><div class="note warning no-icon">
+            <p>分布式锁一般要有以下特点：</p><ul><li>排他性：任意时刻，只能有一个client能获取到锁；</li><li>容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；</li><li>避免死锁：分布式锁一定能得到释放，即使client在释放之前崩溃或者网络不可达而没有主动解锁，也能保证后续client能加锁。<br>除了以上特点之外，分布式锁最好也能满足可重入、高性能、阻塞锁特性（AQS这种，能够及时从阻塞状态唤醒）等。</li></ul>
           </div>
-        
-      </div>
-      
-      
+
+<h1 id="分布式锁方案"><a href="#分布式锁方案" class="headerlink" title="分布式锁方案"></a>分布式锁方案</h1><div class="note success no-icon">
+            <p>分布式锁一般有三种实现方式：</p><ol><li>基于数据库的分布式锁；</li><li>基于Redis的分布式锁；</li><li>基于ZooKeeper的分布式锁</li></ol>
+          </div>
+
+<h2 id="基于数据的分布式锁"><a href="#基于数据的分布式锁" class="headerlink" title="基于数据的分布式锁"></a>基于数据的分布式锁</h2><p>在数据库新建一张表用于控制并发控制，表结构可以如下所示：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`lock_table`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'主键'</span>,</span><br><span class="line">  <span class="string">`key_id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'分布式key'</span>,</span><br><span class="line">  <span class="string">`memo`</span> <span class="built_in">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'可记录操作内容'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">kEY</span> (<span class="string">`id`</span>,<span class="string">'key_id'</span>),</span><br><span class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`key_id`</span> (<span class="string">`key_id`</span>) <span class="keyword">USING</span> BETREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p><code>key_id</code>作为分布式key用来并发控制，<code>memo</code>可用来记录一些操作内容（比如memo可用来支持重入特性，标记下当前加锁的client和加锁次数）。</p>
+<p>将<code>key_id</code>设置为唯一索引，保证了针对同一个<code>key_id</code>只有一个加锁（数据插入）能成功。此时lock和unlock伪代码如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def <span class="keyword">lock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">insert</span> <span class="keyword">into</span> lock_table(key_id, memo, update_time) <span class="keyword">values</span> (key_id, memo, <span class="keyword">NOW</span>())</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">result</span> == <span class="literal">true</span> :</span><br><span class="line">	   <span class="keyword">return</span> <span class="literal">true</span> </span><br><span class="line">	<span class="keyword">else</span> : </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>	</span><br><span class="line">		</span><br><span class="line"><span class="keyword">def</span> <span class="keyword">unlock</span> : </span><br><span class="line">    exec <span class="keyword">sql</span>: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> key_id = <span class="string">'key_id'</span> <span class="keyword">and</span> momo = <span class="string">'memo'</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>注意，伪代码中的lock操作是非阻塞锁，也就是tryLock，如果想实现阻塞（或者阻塞超时）加锁，只需要反复执行lock伪代码直到加锁成功为止即可。</p>
+<p>基于DB的分布式锁其实有一个问题，那就是如果加锁成功后，client端宕机或者由于网络原因导致没有解锁，那么其他client就无法对该key_id进行加锁并且无法释放了。为了能够让锁失效，需要在应用层加上定时任务，去删除过期还未解锁的记录，比如删除2分钟前未解锁的伪代码如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SQL"><figure class="iseeu highlight /sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def clear_timeout_lock : </span><br><span class="line">    exec sql: <span class="keyword">delete</span> <span class="keyword">from</span> lock_table <span class="keyword">where</span> update_time &lt; <span class="keyword">ADDTIME</span>(<span class="keyword">NOW</span>(), <span class="string">'-00:02:00'</span>)</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>因为单实例DB的TPS一般为几百，所以基于DB的分布式性能上限一般也是1k以下，一般在并发量不大的场景下该分布式锁是满足需求的，不会出现性能问题。</p>
+<p>不过DB作为分布式锁服务需要考虑单点问题，对于分布式系统来说是不允许出现单点的，一般通过数据库的同步复制，以及使用vip切换Master就能解决这个问题。</p>
+<p>以上DB分布式锁是通过<code>insert</code>来实现的，如果加锁的数据已经在数据库中存在，那么用<code>select xxx where key_id = xxx for udpate</code>方式来做也是可以的。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><div class="note danger no-icon">
+            <p>1、这把锁强依赖数据库的可用性，数据库是一个单点，一旦数据库挂掉，会导致业务系统不可用。<br>2、这把锁没有失效时间，一旦解锁操作失败，就会导致锁记录一直在数据库中，其他线程无法再获得到锁。<br>3、这把锁只能是非阻塞的，因为数据的insert操作，一旦插入失败就会直接报错。没有获得锁的线程并不会进入排队队列，要想再次获得锁就要再次触发获得锁操作。<br>4、这把锁是非重入的，同一个线程在没有释放锁之前无法再次获得该锁。因为数据中库数据已经存在了。</p>
+          </div>
+
+<h3 id="缺陷解决方案"><a href="#缺陷解决方案" class="headerlink" title="缺陷解决方案"></a>缺陷解决方案</h3><div class="note warning no-icon">
+            <ol><li><p>数据库是单点？<br>搞两个数据库，数据实现双向同步。一旦挂掉快速切换到备库上。</p></li><li><p>没有失效时间？<br>只要做一个定时任务，每隔一定时间把数据库中的超时数据清理一遍。</p></li><li><p>非阻塞的？<br>搞一个while循环，直到insert成功再返回成功。</p></li><li><p>非重入的？<br>在数据库表中加个字段，记录当前获得锁的机器的主机信息和线程信息，那么下次再获取锁的时候先查询数据库，如果当前机器的主机信息和线程信息在数据库可以查到的话，直接把锁分配给他就可以了。</p></li></ol>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
-    
-
-
 
     
+
     
     
+    
+    
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/12dd52e3.html">分布式学习-分布式锁</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
+  <p><span>发布时间:</span>2019年11月14日 - 11:11</p>
+  <p><span>最后更新:</span>2019年11月14日 - 03:11</p>
+  <p><span>原始链接:</span><a href="/posts/12dd52e3.html" title="分布式学习-分布式锁">http://whb1990.github.io/posts/12dd52e3.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/12dd52e3.html" aria-label="复制成功！"></i></span>
+  </p>
+  <!--
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+  --> 
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>▄︻┻═┳一如果你喜欢这篇文章，请点击下方"打赏"按钮请我喝杯 ☕</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="王洪博 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="王洪博 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
   </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-envira"></i> 分布式</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+		    <div style="color: rgba(255,100,97,1); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/4cb9c115.html" rel="next" title="HTTP协议中的长短连接和长短轮询">
+                <i class="fa fa-chevron-left"></i> HTTP协议中的长短连接和长短轮询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -723,8 +914,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1190,6 +1390,23 @@ var binft = function (r) {
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁的特点"><span class="nav-number">2.</span> <span class="nav-text">分布式锁的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁方案"><span class="nav-number">3.</span> <span class="nav-text">分布式锁方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据的分布式锁"><span class="nav-number">3.1.</span> <span class="nav-text">基于数据的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺陷解决方案"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺陷解决方案</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1447,6 +1664,8 @@ var binft = function (r) {
 
 
 
+
+  
 
 
   
@@ -1798,6 +2017,25 @@ var binft = function (r) {
   
 
   
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 20604,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
 
   
 
