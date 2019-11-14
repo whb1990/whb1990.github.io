@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="前言 多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点              分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T03:59:49.259Z">
+<meta property="og:updated_time" content="2019-11-14T06:30:42.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式学习-分布式锁">
 <meta name="twitter:description" content="前言 多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点              分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即">
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.7k字</span>
+            <span class="post-count">2.5k字</span>
           </span>
 		  
           <span class="post-time">
@@ -606,7 +606,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  6分钟</span>
+            <span class="post-count">  9分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">5.6k</span>
               
 
               
@@ -638,7 +638,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -703,6 +703,49 @@
 <p>从上面的代码可以看到，加锁的核心代码只有一行：</p>
 <p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jedis.set(String key, String value, String nxxx, String expx, <span class="keyword">int</span> time)</span><br></pre></td></tr></tbody></table></figure></div><p></p>
 <p>这个set()方法一共有五个形参：</p>
+<p></p><div class="note info no-icon">
+            <ol><li><p>key，使用key来当锁，因为key是唯一的。</p></li><li><p>value，传的是<code>requestId</code>，为什么有key作为锁了还要用到value？</p><p>原因是要保证锁的可靠性，分布式锁还要满足<code>解铃还须系铃人</code>，通过给value赋值为requestId，就知道这把锁是哪个请求加的了，在解锁的时候就可以有依据。</p><p><code>requestId</code>可以使用<code>UUID.randomUUID().toString()</code>方法生成。</p></li><li><p>nxxx，这个参数是<code>NX</code>，意思是<code>SET IF NOT EXIST</code>，即当key不存在时，进行set操作；若key已经存在，则不做任何操作；</p></li><li><p>expx，这个参数<code>PX</code>，意思是要给这个key加一个过期的设置，具体时间由第五个参数决定。</p></li><li><p>time，与第四个参数相呼应，代表key的过期时间。</p></li></ol>
+          </div><p></p>
+<p>总的来说，执行上面的set()方法就只会导致两种结果：</p>
+<ul>
+<li>当前没有锁（key不存在），那么就进行加锁操作，并对锁设置个有效期，同时value表示加锁的客户端。</li>
+<li>已有锁存在，不做任何操作。</li>
+</ul>
+<p>上面的加锁代码已经满足了分布式锁的排他性和避免死锁的特点。下面列几个错误示例：</p>
+<h5>错误示例1</h5>
+<p>比较常见的错误示例就是使用<code>jedis.setnx()</code>和<code>jedis.expire()</code>组合实现加锁，代码如下：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">wrongGetLock1</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>{</span><br><span class="line">    Long result = jedis.setnx(lockKey, requestId);</span><br><span class="line">    <span class="keyword">if</span> (result == <span class="number">1</span>) {</span><br><span class="line">        <span class="comment">// 若在这里程序突然崩溃，则无法设置过期时间，将发生死锁</span></span><br><span class="line">        jedis.expire(lockKey, expireTime);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<p>乍一看好像和前面的<code>set()</code>方法结果一样，然而由于这是两条Redis命令，不具有原子性，如果程序在执行完<code>setnx()</code>之后突然崩溃，导致锁没有设置过期时间。那么将会发生死锁。</p>
+<p>网上之所以有人这样实现，是因为低版本的jedis并不支持多参数的set()方法。</p>
+<h5>错误示例2</h5>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">wrongGetLock2</span><span class="params">(Jedis jedis, String lockKey, <span class="keyword">int</span> expireTime)</span> </span>{</span><br><span class="line">    <span class="keyword">long</span> expires = System.currentTimeMillis() + expireTime;</span><br><span class="line">    String expiresStr = String.valueOf(expires);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果当前锁不存在，返回加锁成功</span></span><br><span class="line">    <span class="keyword">if</span> (jedis.setnx(lockKey, expiresStr) == <span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果锁存在，获取锁的过期时间</span></span><br><span class="line">    String currentValueStr = jedis.get(lockKey);</span><br><span class="line">    <span class="keyword">if</span> (currentValueStr != <span class="keyword">null</span> &amp;&amp; Long.parseLong(currentValueStr) &lt; System.currentTimeMillis()) {</span><br><span class="line">        <span class="comment">// 锁已过期，获取上一个锁的过期时间，并设置现在锁的过期时间</span></span><br><span class="line">        String oldValueStr = jedis.getSet(lockKey, expiresStr);</span><br><span class="line">        <span class="keyword">if</span> (oldValueStr != <span class="keyword">null</span> &amp;&amp; oldValueStr.equals(currentValueStr)) {</span><br><span class="line">            <span class="comment">// 考虑多线程并发的情况，只有一个线程的设置值和当前值相同，它才有权利加锁</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 其他情况，一律返回加锁失败</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<p>这一种错误示例就比较难以发现问题，执行过程如下：</p>
+<ul>
+<li>
+<p>通过setnx()方法尝试加锁，如果当前锁不存在，返回加锁成功。</p>
+</li>
+<li>
+<p>如果锁已经存在则获取锁的过期时间，和当前时间比较，如果锁已经过期，则设置新的过期时间，返回加锁成功。</p>
+</li>
+</ul>
+<blockquote>
+<p>那么这段代码问题在哪里？</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>由于是客户端自己生成过期时间，所以需要强制要求分布式下每个客户端的时间必须同步。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>当锁过期的时候，如果多个客户端同时执行jedis.getSet()方法，那么虽然最终只有一个客户端可以加锁，但这个客户端的锁过期时间可能被其他客户端覆盖。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>锁不具备拥有者标识，即任何客户端都可以解锁。</li>
+</ol>
+</blockquote>
 <h2>基于ZooKeeper的分布式锁</h2>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -744,7 +787,7 @@
   <p><span>本文标题:</span><a href="/posts/12dd52e3.html">分布式学习-分布式锁</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年11月14日 - 11:11</p>
-  <p><span>最后更新:</span>2019年11月14日 - 03:11</p>
+  <p><span>最后更新:</span>2019年11月14日 - 06:11</p>
   <p><span>原始链接:</span><a href="/posts/12dd52e3.html" title="分布式学习-分布式锁">http://whb1990.github.io/posts/12dd52e3.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/12dd52e3.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1386,7 +1429,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">分布式锁的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">分布式锁方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">基于数据库的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺陷解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">基于Redis的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.</span> <span class="nav-text">Java实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">maven依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">加锁代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">基于ZooKeeper的分布式锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">分布式锁的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">分布式锁方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">基于数据库的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺陷解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">基于Redis的分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.</span> <span class="nav-text">Java实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">maven依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">加锁代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.2.1.</span> <span class="nav-text">错误示例1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">3.2.2.2.2.</span> <span class="nav-text">错误示例2</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">基于ZooKeeper的分布式锁</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1433,7 +1476,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:36</span>
+  <span title="站点阅读时长">15:38</span>
   
 </div>
 
