@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T07:58:56.646Z">
+<meta property="og:updated_time" content="2019-11-14T08:02:17.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式学习-分布式锁">
 <meta name="twitter:description" content="前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。 分布式锁的特点             分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁服务集群节点大部分存活，client就可以进行加锁解锁操作；避免死锁：分布式锁一定能得到释放，即使c">
@@ -788,6 +788,7 @@
 <p>使用分布式锁，安全性上和多线程（同一个进程内）加锁是没法比的，可能由于网络原因，分布式锁服务（因为超时或者认为client挂了）将加锁资源给删除了，如果client端继续操作共享资源，此时是有隐患的。</p>
 <p>因此，对于分布式锁，一个是要尽量提高分布式锁服务的可用性，另一个就是要部署同一内网，尽量降低网络问题发生几率。</p>
 <p>这样来看，貌似分布式锁服务不是“完美”的，那么该如何选择分布式锁呢？最好是结合自己的业务实际场景，来选择不同的分布式锁实现，一般来说，基于Redis的分布式锁服务应用较多。</p>
+<hr>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -828,7 +829,7 @@
   <p><span>本文标题:</span><a href="/posts/12dd52e3.html">分布式学习-分布式锁</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年08月24日 - 11:08</p>
-  <p><span>最后更新:</span>2019年11月14日 - 07:11</p>
+  <p><span>最后更新:</span>2019年11月14日 - 08:11</p>
   <p><span>原始链接:</span><a href="/posts/12dd52e3.html" title="分布式学习-分布式锁">http://whb1990.github.io/posts/12dd52e3.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/12dd52e3.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1021,7 +1022,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">139</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1521,7 +1522,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:35</span>
+  <span title="站点阅读时长">15:37</span>
   
 </div>
 
