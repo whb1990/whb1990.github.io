@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="BTree索引BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢前导模糊查询不能利用索引(like ‘%XX’或者like ‘%XX%’)，该类sql语">
+  <meta name="description" content="BTree索引 BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值 不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢 前导模糊查询不能利用索引(like &apos;%XX&apos;或者like &apos;%XX%&apos;)，该类s">
 <meta name="keywords" content="数据库,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL-索引结构">
 <meta property="og:url" content="http://whb1990.github.io/posts/3bf347e4.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="BTree索引BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢前导模糊查询不能利用索引(like ‘%XX’或者like ‘%XX%’)，该类sql语">
+<meta property="og:description" content="BTree索引 BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值 不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢 前导模糊查询不能利用索引(like &apos;%XX&apos;或者like &apos;%XX%&apos;)，该类s">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T10:26:13.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL-索引结构">
-<meta name="twitter:description" content="BTree索引BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢前导模糊查询不能利用索引(like ‘%XX’或者like ‘%XX%’)，该类sql语">
+<meta name="twitter:description" content="BTree索引 BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。 不适合： 单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值 不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢 前导模糊查询不能利用索引(like &apos;%XX&apos;或者like &apos;%XX%&apos;)，该类s">
 
 
 
@@ -603,7 +603,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">739字</span>
+            <span class="post-count">741字</span>
           </span>
 		  
           <span class="post-time">
@@ -665,19 +665,30 @@
       
 
       
-        <h1 id="BTree索引"><a href="#BTree索引" class="headerlink" title="BTree索引"></a>BTree索引</h1><p>BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。</p>
+        <h1>BTree索引</h1>
+<p>BTree（多路搜索树，并不是二叉的）是一种常见的数据结构。</p>
 <p>不适合：</p>
-<p>单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值<br>不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢<br>前导模糊查询不能利用索引(like ‘%XX’或者like ‘%XX%’)，该类sql语句导致索引失效</p>
-<h1 id="Hash散列索引"><a href="#Hash散列索引" class="headerlink" title="Hash散列索引"></a>Hash散列索引</h1><p>Hash散列索引是根据HASH算法来构建的索引。</p>
+<p>单列索引的列不能包含null的记录，复合索引的各个列不能包含同时为null的记录，否则会全表扫描；索引失效很多时候是因为这列有null，空值
+不适合键值较少的列（重复数据较多的列）；假如你建立了，会发生什么情况呢？查询反而会变慢
+前导模糊查询不能利用索引(like '%XX'或者like '%XX%')，该类sql语句导致索引失效</p>
+<h1>Hash散列索引</h1>
+<p>Hash散列索引是根据HASH算法来构建的索引。</p>
 <p>适合：</p>
 <p>精确查找非常快（包括= &lt;&gt; 和in），其检索效率非常高，索引的检索可以一次定位，不像BTree 索引需要从根节点到枝节点，所以 Hash 索引的查询效率要远高于 B-Tree 索引。</p>
 <p>不适合：</p>
-<p>不适合模糊查询和范围查询（包括like，&gt;，&lt;，between……and等），由于 Hash 索引比较的是进行 Hash 运算之后的 Hash 值，所以它只能用于等值的过滤，不能用于基于范围的过滤，因为经过相应的 Hash 算法处理之后的 Hash 值的大小关系，并不能保证和Hash运算前完全一样；<br>不适合排序，数据库无法利用索引的数据来提升排序性能，同样是因为Hash值的大小不确定；<br>复合索引不能利用部分索引字段查询，Hash 索引在计算 Hash 值的时候是组合索引键合并后再一起计算 Hash 值，而不是单独计算 Hash 值，所以通过组合索引的前面一个或几个索引键进行查询的时候，Hash 索引也无法被利用。<br>同样不适合键值较少的列（重复值较多的列）；</p>
-<h1 id="Bitmap位图索引"><a href="#Bitmap位图索引" class="headerlink" title="Bitmap位图索引"></a>Bitmap位图索引</h1><p>就是用位图表示的索引，对列的每个键值建立一个位图。相对于BTree索引，占用的空间非常小，创建和使用非常快。位图索引由于只存储键值的起止Rowid和位图,占用的空间非常少。</p>
+<p>不适合模糊查询和范围查询（包括like，&gt;，&lt;，between……and等），由于 Hash 索引比较的是进行 Hash 运算之后的 Hash 值，所以它只能用于等值的过滤，不能用于基于范围的过滤，因为经过相应的 Hash 算法处理之后的 Hash 值的大小关系，并不能保证和Hash运算前完全一样；
+不适合排序，数据库无法利用索引的数据来提升排序性能，同样是因为Hash值的大小不确定；
+复合索引不能利用部分索引字段查询，Hash 索引在计算 Hash 值的时候是组合索引键合并后再一起计算 Hash 值，而不是单独计算 Hash 值，所以通过组合索引的前面一个或几个索引键进行查询的时候，Hash 索引也无法被利用。
+同样不适合键值较少的列（重复值较多的列）；</p>
+<h1>Bitmap位图索引</h1>
+<p>就是用位图表示的索引，对列的每个键值建立一个位图。相对于BTree索引，占用的空间非常小，创建和使用非常快。位图索引由于只存储键值的起止Rowid和位图,占用的空间非常少。</p>
 <p>适合</p>
-<p>适合决策支持系统；<br>当select count(XX) 时,可以直接访问索引中一个位图就快速得出统计数据；<br>当根据键值做and，or或 in(x,y,..)查询时，直接用索引的位图进行或运算,快速得出结果行数据。</p>
+<p>适合决策支持系统；
+当select count(XX) 时,可以直接访问索引中一个位图就快速得出统计数据；
+当根据键值做and，or或 in(x,y,..)查询时，直接用索引的位图进行或运算,快速得出结果行数据。</p>
 <p>不适合</p>
-<p>不适合键值较多的列（重复值较少的列）；<br>不适合update、insert、delete频繁的列，代价很高。到底是什么代价呢？update,insert,delete的时候会锁住键值一样的行。</p>
+<p>不适合键值较多的列（重复值较少的列）；
+不适合update、insert、delete频繁的列，代价很高。到底是什么代价呢？update,insert,delete的时候会锁住键值一样的行。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -913,7 +924,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-count">141</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1366,7 +1377,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BTree索引"><span class="nav-number">1.</span> <span class="nav-text">BTree索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash散列索引"><span class="nav-number">2.</span> <span class="nav-text">Hash散列索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bitmap位图索引"><span class="nav-number">3.</span> <span class="nav-text">Bitmap位图索引</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">BTree索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Hash散列索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">Bitmap位图索引</span></a></li></ol></div>
             
 
           </div>
@@ -1402,7 +1413,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点总字数：</span>
   
-  <span title="站点总字数">1m</span>
+  <span title="站点总字数">1.1m</span>
   
 
   
@@ -1413,7 +1424,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">15:52</span>
+  <span title="站点阅读时长">16:07</span>
   
 </div>
 
