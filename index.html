@@ -483,6 +483,274 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/d89fe688.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/d89fe688.html" class="post-title-link" itemprop="url">面试案例-设计一个短连接服务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-18 18:07:36" itemprop="dateCreated datePublished" datetime="2019-11-18T18:07:36Z">2019-11-18</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/场景设计/" itemprop="url" rel="index"><span itemprop="name">场景设计</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/d89fe688.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d89fe688.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/d89fe688.html" class="leancloud_visitors" data-flag-title="面试案例-设计一个短连接服务">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">1.4k字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  4分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              背景
+你平时是否留意过一些垃圾短信中包含短链接？就像下面这样：
+
+为什么要选择这种短连接方式？用这种方式的好处是什么？怎么设计一个短连接生成服务呢？
+短URL的好处
+
+短：短信和许多平台(微博)有字数限制,太长的链接加进去都没有办法写正文了。
+好看：比起一大堆不知所以的参数,短链接更加简洁友好。
+方
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/d89fe688.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/67a89a08.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -667,7 +935,8 @@
           
             <p>
               ES写数据工作原理
-            客户端选择一个 node 发送请求过去，这个 node 就是 coordinating node（协调节点）。coordinating node 对 document 进行路由，将请求转发给对应的 node（所有的primary shard）。实际的 no
+
+            客户端选择一个 node 发送请求过去，这个 node 就是 coordinating node（协调节点）。coordinating node 对 document 进行路由，将请求转发给对应的 node（所有的primary shard）。实际的 n
               ...
             </p>
           <!--noindex-->
@@ -1182,9 +1451,11 @@
         
           
             <p>
-              前言大家都知道数据库事务的四大特性：ACID嘛，原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持久性(Durability)！
+              前言
+大家都知道数据库事务的四大特性：ACID嘛，原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持久性(Durability)！
 那么就以从A账户转账50元到B账户为例进行说明一下ACID的含义。
-原子性(Atomicity)原子性是指一个事务是一个不可
+原子性(Atomicity)
+原子性是指一个事务是一个
               ...
             </p>
           <!--noindex-->
@@ -1323,6 +1594,13 @@
 
                 
                 
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/场景设计/" itemprop="url" rel="index"><span itemprop="name">场景设计</span></a></span>
+
+                
+                
               
             </span>
           -->
@@ -1368,7 +1646,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">973字</span>
+            <span class="post-count">976字</span>
           </span>
 		  
           <span class="post-time">
@@ -1437,9 +1715,11 @@
         
           
             <p>
-              概述以PDD为例，PDD有数亿的用户，那么对于某个网页，怎么使用Redis来统计一个网站的用户访问数呢？
-使用Hash哈希是Redis的一种基础数据结构，Redis底层维护的是一个开散列，会把不同的key映射到哈希表上，如果是遇到关键字冲突，那么就会拉出一个链表出来。
-当一个用户访问的时候，如果用户
+              概述
+以PDD为例，PDD有数亿的用户，那么对于某个网页，怎么使用Redis来统计一个网站的用户访问数呢？
+使用Hash
+哈希是Redis的一种基础数据结构，Redis底层维护的是一个开散列，会把不同的key映射到哈希表上，如果是遇到关键字冲突，那么就会拉出一个链表出来。
+当一个用户访问的时候，如果
               ...
             </p>
           <!--noindex-->
@@ -1651,7 +1931,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">3.6k</span>
               
 
               
@@ -1692,11 +1972,11 @@
         
           
             <p>
-              前言曾经有这么一道经典面试题：从 URL 在浏览器被被输入到页面展现的过程中发生了什么？
+              前言
+曾经有这么一道经典面试题：从 URL 在浏览器被被输入到页面展现的过程中发生了什么？
 相信大多数童鞋都能回答出来，但是如果继续问：
 收到的 HTML 如果包含几十个图片标签，这些图片是以什么方式、什么顺序、建立了多少连接、使用什么协议被下载下来的呢？
 要搞懂这个问题，需要先解决下面五个问题：
-
 
               ...
             </p>
@@ -1950,9 +2230,11 @@
         
           
             <p>
-              需要 Map 的主键和取值时，应该迭代 entrySet()当循环中只需要 Map 的主键时，迭代 keySet() 是正确的。
+              需要 Map 的主键和取值时，应该迭代 entrySet()
+当循环中只需要 Map 的主键时，迭代 keySet() 是正确的。
 但是，当需要主键和取值时，迭代 entrySet() 才是更高效的做法，比先迭代 keySet() 后再去 get 取值性能更佳。
-反例Map&lt;String, St
+反例
+Map&lt;String, 
               ...
             </p>
           <!--noindex-->
@@ -2091,6 +2373,13 @@
 
                 
                 
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/面试题/场景设计/" itemprop="url" rel="index"><span itemprop="name">场景设计</span></a></span>
+
+                
+                
               
             </span>
           -->
@@ -2205,10 +2494,12 @@
         
           
             <p>
-              场景引入假如下单时，用分布式锁来防止库存超卖，但是是每秒上千订单的高并发场景，如何对分布式锁进行高并发优化来应对这个场景？
-库存超卖怎么产生的先看下如果不用分布式锁，所谓的电商库存超卖是啥意思？如下图：
+              场景引入
+假如下单时，用分布式锁来防止库存超卖，但是是每秒上千订单的高并发场景，如何对分布式锁进行高并发优化来应对这个场景？
+库存超卖怎么产生的
+先看下如果不用分布式锁，所谓的电商库存超卖是啥意思？如下图：
 
-假设订单系统部署两台机器上，不同的用户都要同时买10台iphone，分别发了一个请求给订单系统
+假设订单系统部署两台机器上，不同的用户都要同时买10台iphone，分别发了一个请求给订单
               ...
             </p>
           <!--noindex-->
@@ -2461,8 +2752,9 @@
         
           
             <p>
-              前言近几年随着微服务化项目的崛起，逐渐成为许多中大型分布式系统架构的主流方式，而RPC在这其中扮演着重要的角色。市面上流行的RPC框架如Dubbo、Thrift、Hession、gRPC等。
-本人所在的公司一直使用Dubbo，在使用Dubbo进行开发时，想要快速知道某些dubbo接口的响应结果，但不
+              前言
+近几年随着微服务化项目的崛起，逐渐成为许多中大型分布式系统架构的主流方式，而RPC在这其中扮演着重要的角色。市面上流行的RPC框架如Dubbo、Thrift、Hession、gRPC等。
+本人所在的公司一直使用Dubbo，在使用Dubbo进行开发时，想要快速知道某些dubbo接口的响应结果，但
               ...
             </p>
           <!--noindex-->
@@ -2715,269 +3007,15 @@
         
           
             <p>
-              前言在线上，我们可能经常会碰到程序卡死或者执行很慢等情况，这时我们迫切希望知道是代码哪里的问题，代码运行到了哪里，是哪一步很慢，是否进入了死循环，是否有代码出现了线程不安全的情况，是否有某些连接数或者打开的文件数太多等等问题。此时就需要通过分析案发时的线程堆栈信息，快速定位问题。
-要想快速分析、定位
+              前言
+在线上，我们可能经常会碰到程序卡死或者执行很慢等情况，这时我们迫切希望知道是代码哪里的问题，代码运行到了哪里，是哪一步很慢，是否进入了死循环，是否有代码出现了线程不安全的情况，是否有某些连接数或者打开的文件数太多等等问题。此时就需要通过分析案发时的线程堆栈信息，快速定位问题。
+要想快速分析、定
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/posts/4a0297a6.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/f9f2d4de.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/f9f2d4de.html" class="post-title-link" itemprop="url">Zookeeper知识点</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-26 18:01:45" itemprop="dateCreated datePublished" datetime="2019-09-26T18:01:45Z">2019-09-26</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/f9f2d4de.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/f9f2d4de.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/posts/f9f2d4de.html" class="leancloud_visitors" data-flag-title="Zookeeper知识点">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.2k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  4分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.6k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              简介ZooKeeper是一个典型的分布式数据一致性的解决方案。分布式应用程序可以基于它实现诸如 数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master选举、分布式锁和分布式队列等功能。ZooKeeper可以保证如下分布式一致性特性：
-
-顺序一致性：从同一个客户端发起的事务请求，
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/f9f2d4de.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3080,7 +3118,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">145</span>
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3185,7 +3223,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">44</span>
+                      
+                    
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3280,7 +3320,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3567,7 +3609,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:07</span>
+  <span title="站点阅读时长">16:21</span>
   
 </div>
 
