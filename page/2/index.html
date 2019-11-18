@@ -483,6 +483,267 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/81d4f14b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王洪博">
+      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王洪博's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/81d4f14b.html" class="post-title-link" itemprop="url">MySQL问题排查SQL</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		  <!--发布时间、更新时间-->
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 15:37:46" itemprop="dateCreated datePublished" datetime="2019-09-19T15:37:46Z">2019-09-19</time>
+            
+
+            
+          </span>
+		  
+          <!--分类-->
+          <!--
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+
+                
+                
+              
+            </span>
+          -->
+
+          <!--评论数-->
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/81d4f14b.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/81d4f14b.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/posts/81d4f14b.html" class="leancloud_visitors" data-flag-title="MySQL问题排查SQL">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				<span">℃</span"></span>
+            
+          
+		  
+		  <!--以下部分为：字数统计、阅读时长插入代码-->
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">字数统计:</span>
+            <span class="post-count">550字</span>
+          </span>
+		  
+          <span class="post-time">
+	        &nbsp; | &nbsp;
+            <span class="post-meta-item-icon">
+              <!--<i class="fa fa-calendar-o"></i>-->
+			  <i class="fa fa-clock-o"></i>
+            </span>
+            <span class="post-meta-item-text">阅读时长: &asymp;</span>
+            <span class="post-count">  2分钟</span>
+          </span>
+		 
+          <!--以上部分为：字数统计、阅读时长插入代码-->
+<!--
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+			
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+		
+          
+-->
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+	    <!--以下是添加摘要图片-->
+	    
+	    <!--以上是添加摘要图片-->
+		
+        
+          
+            <p>
+              查看当前应用连接，连接数突增排查
+select user,SUBSTRING_INDEX(host,':',1) as ip , count(*) as count,db from information_schema.processlist where host not in ('localhos
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/81d4f14b.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    
+	<div>
+      
+    </div>
+	
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/230bf701.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,9 +927,10 @@
         
           
             <p>
-              背景DevOps的出现有其必然性。在软件开发生命周期中，遇到了两次瓶颈。
+              背景
+DevOps的出现有其必然性。在软件开发生命周期中，遇到了两次瓶颈。
 第一次瓶颈是在需求阶段和开发阶段之间，针对不断变化的需求，对软件开发者提出了高要求，后来出现了敏捷方法论，强调适应需求、快速迭代、持续交付。
-第二个瓶颈是在开发阶段和构建部署阶段之间，大量完成的开发任务可能阻塞在部署阶段，影响
+第二个瓶颈是在开发阶段和构建部署阶段之间，大量完成的开发任务可能阻塞在部署阶段，影
               ...
             </p>
           <!--noindex-->
@@ -852,7 +1114,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">10.4k字</span>
+            <span class="post-count">10.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -862,7 +1124,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  36分钟</span>
+            <span class="post-count">  37分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -880,7 +1142,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">13k</span>
+                <span title="本文字数">15k</span>
               
 
               
@@ -894,7 +1156,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">12 分钟</span>
+                <span title="阅读时长">13 分钟</span>
               
             </div>
           
@@ -921,8 +1183,10 @@
         
           
             <p>
-              事务定义事务提供一种机制将一个活动涉及的所有操作纳入到一个不可分割的执行单元，组成事务的所有操作只有在所有操作均能正常执行的情况下方能提交，只要其中任一操作执行失败，都将导致整个事务的回滚。简单地说，事务提供一种“要么什么都不做，要么做全套（All or Nothing）”机制。
-数据库事务特性（A
+              事务定义
+事务提供一种机制将一个活动涉及的所有操作纳入到一个不可分割的执行单元，组成事务的所有操作只有在所有操作均能正常执行的情况下方能提交，只要其中任一操作执行失败，都将导致整个事务的回滚。简单地说，事务提供一种“要么什么都不做，要么做全套（All or Nothing）”机制。
+
+数据库事务特性
               ...
             </p>
           <!--noindex-->
@@ -1175,9 +1439,11 @@
         
           
             <p>
-              前言多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。
+              前言
+多线程情况下对共享资源的操作需要加锁，避免数据被写乱，在分布式系统中，这个问题也是存在的，此时就需要一个分布式锁服务。
 分布式锁的特点
-            分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布式锁
+
+            分布式锁一般要有以下特点：排他性：任意时刻，只能有一个client能获取到锁；容错性：分布式锁服务一般要满足AP，也就是说，只要分布
               ...
             </p>
           <!--noindex-->
@@ -1430,8 +1696,9 @@
         
           
             <p>
-              限流的作用由于API接口无法控制调用方的行为，因此当遇到瞬时请求量激增时，会导致接口占用过多服务器资源，使得其他请求响应速度降低或是超时，更有甚者可能导致服务器宕机。
-限流(Rate limiting)指对应用服务的请求进行限制，例如某一接口的请求限制为100个每秒,对超过限制的请求则进行快速失败或
+              限流的作用
+由于API接口无法控制调用方的行为，因此当遇到瞬时请求量激增时，会导致接口占用过多服务器资源，使得其他请求响应速度降低或是超时，更有甚者可能导致服务器宕机。
+限流(Rate limiting)指对应用服务的请求进行限制，例如某一接口的请求限制为100个每秒,对超过限制的请求则进行快速失败
               ...
             </p>
           <!--noindex-->
@@ -1643,7 +1910,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -1684,8 +1951,9 @@
         
           
             <p>
-              前言在使用Mybatis的时候，曾遇到过一个奇怪的问题，当使用&lt;if test="status != null and status != ''"&gt;判空操作时，如果status为0的时候，该判断条件的值为false，也就是说Mybatis此时把0作为null来进行判断的。
-遇到这个问题的
+              前言
+在使用Mybatis的时候，曾遇到过一个奇怪的问题，当使用&lt;if test="status != null and status != ''"&gt;判空操作时，如果status为0的时候，该判断条件的值为false，也就是说Mybatis此时把0作为null来进行判断的。
+遇到这个问题
               ...
             </p>
           <!--noindex-->
@@ -1938,9 +2206,10 @@
         
           
             <p>
-              什么是分布式系统唯一ID在复杂分布式系统中，往往需要对大量的数据和消息进行唯一标识。
+              什么是分布式系统唯一ID
+在复杂分布式系统中，往往需要对大量的数据和消息进行唯一标识。
 如在金融、电商、支付、等产品的系统中，数据日渐增长，对数据分库分表后需要有一个唯一ID来标识一条数据或消息，数据库的自增ID显然不能满足需求，此时一个能够生成全局唯一ID的系统是非常必要的。
-分布式系统唯一ID的特
+分布式系统唯一ID的
               ...
             </p>
           <!--noindex-->
@@ -2200,9 +2469,10 @@
         
           
             <p>
-              基石–PathPath 既可以表示一个目录，也可以表示一个文件，就像 File 那样——当然了，Path 就是用来取代 File 的。
+              基石--Path
+Path 既可以表示一个目录，也可以表示一个文件，就像 File 那样——当然了，Path 就是用来取代 File 的。
 
-            1）可以通过 Paths.get() 创建一个 Path 对象，此时 Path 并没有真正在物理磁盘上创建；参数既可以是一个文件名，也可以
+            1）可以通过 Paths.get() 创建一个 Path 对象，此时 Path 并没有真正在物理磁盘上创建；参数既可以是一个文件名，也
               ...
             </p>
           <!--noindex-->
@@ -2393,7 +2663,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">947字</span>
+            <span class="post-count">957字</span>
           </span>
 		  
           <span class="post-time">
@@ -2467,7 +2737,8 @@ https://github.com/
 我们使用git需要先安装git工具，这里给出下载地址，下载后一路直接安装即可：
 https://git-for-windows.github.io/
 
-进入Github首页，点击New reposit
+
+进入Github首页，点击New reposi
               ...
             </p>
           <!--noindex-->
@@ -2721,286 +2992,46 @@ https://git-for-windows.github.io/
           
             <p>
               Epsilon2.1
-Gantzert_Felixander
-haru
-miku
-ni-j
-nico
-nietzche
-nipsilon
-nito
-shizuku
-tsumiki
-wanko
-z16
-hibiki
-koharu
-haruto
-Unitychan
-tororo
-hijiki
 
-    
+Gantzert_Felixander
+
+haru
+
+miku
+
+ni-j
+
+nico
+
+nietzche
+
+nipsilon
+
+nito
+
+shizuku
+
+tsumiki
+
+wanko
+
+z16
+
+hibiki
+
+koharu
+
+haruto
+
+Unitychan
+
+to
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/posts/fcf4ee5f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    
-	<div>
-      
-    </div>
-	
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/223e2ff2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王洪博">
-      <meta itemprop="description" content="雄心不惧泥泞路，展翅翱翔九重天！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王洪博's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/223e2ff2.html" class="post-title-link" itemprop="url">分布式学习-Session丢失及解决</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-		  <!--发布时间、更新时间-->
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-27 10:53:54" itemprop="dateCreated datePublished" datetime="2019-05-27T10:53:54Z">2019-05-27</time>
-            
-
-            
-          </span>
-		  
-          <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
-
-          <!--评论数-->
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/223e2ff2.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/223e2ff2.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/posts/223e2ff2.html" class="leancloud_visitors" data-flag-title="分布式学习-Session丢失及解决">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">热度：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				<span">℃</span"></span>
-            
-          
-		  
-		  <!--以下部分为：字数统计、阅读时长插入代码-->
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">1.4k字</span>
-          </span>
-		  
-          <span class="post-time">
-	        &nbsp; | &nbsp;
-            <span class="post-meta-item-icon">
-              <!--<i class="fa fa-calendar-o"></i>-->
-			  <i class="fa fa-clock-o"></i>
-            </span>
-            <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  5分钟</span>
-          </span>
-		 
-          <!--以上部分为：字数统计、阅读时长插入代码-->
-<!--
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-			
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-		
-          
--->
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-	    <!--以下是添加摘要图片-->
-	    
-	    <!--以上是添加摘要图片-->
-		
-        
-          
-            <p>
-              什么是Session丢失Session是为了将同一个用户的多次访问在系统中被识别为“同一个用户”而产生的概念。除此之外，还可以基于它来减少重复往DB或者远程服务处获取与该用户相关的信息，以起到提升性能的作用。
-在做了负载均衡的场景中，如果选择的负载策略是hash策略，那么会使得Session产生一个
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/223e2ff2.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -3103,7 +3134,7 @@ hijiki
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">144</span>
+                    <span class="site-state-item-count">145</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3206,7 +3237,9 @@ hijiki
                     
                       
                     
-                    <span class="site-state-item-count">43</span>
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -3299,7 +3332,9 @@ hijiki
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -3586,7 +3621,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:02</span>
+  <span title="站点阅读时长">16:17</span>
   
 </div>
 
