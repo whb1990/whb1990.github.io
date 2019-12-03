@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="简介ZooKeeper是一个典型的分布式数据一致性的解决方案。分布式应用程序可以基于它实现诸如 数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master选举、分布式锁和分布式队列等功能。ZooKeeper可以保证如下分布式一致性特性：  顺序一致性：从同一个客户端发起的事务请求，最终将会严格按照其发起顺序被应用到ZooKeeper中。 原子性：所有事务请求的结果在集群中所有机器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-26T10:35:29.492Z">
+<meta property="og:updated_time" content="2019-12-03T05:27:04.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper知识点">
 <meta name="twitter:description" content="简介ZooKeeper是一个典型的分布式数据一致性的解决方案。分布式应用程序可以基于它实现诸如 数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master选举、分布式锁和分布式队列等功能。ZooKeeper可以保证如下分布式一致性特性：  顺序一致性：从同一个客户端发起的事务请求，最终将会严格按照其发起顺序被应用到ZooKeeper中。 原子性：所有事务请求的结果在集群中所有机器">
@@ -689,6 +689,8 @@
 
 <p><code>ZooKeeper</code>集群的所有机器通过一个<code>Leader选举</code>过程来选定一台被称为『<code>Leader</code>』的机器，<code>Leader</code>服务器为客户端提供读和写服务。<br><code>Follower</code>和<code>Observer</code>都能提供读服务，不能提供写服务。两者唯一的区别在于，<code>Observer</code>机器不参与<code>Leader</code>选举过程，也不参与写操作的『过半写成功』策略，因此<code>Observer</code>可以在不影响写性能的情况下提升集群的读性能。</p>
 <h1 id="会话Session"><a href="#会话Session" class="headerlink" title="会话Session"></a>会话Session</h1><p>在ZooKeeper中，一个客户端连接是指客户端和ZooKeeper服务器之间的TCP长连接。ZooKeeper对外的服务端口默认是2181，客户端启动时，首先会与服务器建立一个TCP连接，从第一次连接建立开始，客户端会话的生命周期也开始了，通过这个连接，客户端能够通过心跳检测和服务器保持有效的会话，也能够向ZooKeeper服务器发送请求并接受响应，同时还能通过该连接接收来自服务器的Watch事件通知。Session的SessionTimeout值用来设置一个客户端会话的超时时间。当由于服务器压力太大、网络故障或是客户端主动断开连接等各种原因导致客户端连接断开时，只要在SessionTimeout规定的时间内能够重新连接上集群中任意一台服务器，那么之前创建的会话仍然有效。</p>
+<hr>
+<p>内容待补充。。。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -729,7 +731,7 @@
   <p><span>本文标题:</span><a href="/posts/f9f2d4de.html">Zookeeper知识点</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年09月26日 - 18:09</p>
-  <p><span>最后更新:</span>2019年09月26日 - 10:09</p>
+  <p><span>最后更新:</span>2019年12月03日 - 05:12</p>
   <p><span>原始链接:</span><a href="/posts/f9f2d4de.html" title="Zookeeper知识点">http://whb1990.github.io/posts/f9f2d4de.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/f9f2d4de.html" aria-label="复制成功！"></i></span>
   </p>
