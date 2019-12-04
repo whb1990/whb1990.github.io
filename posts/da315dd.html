@@ -162,18 +162,17 @@
 
 
 
-  <meta name="description" content="sleep()介绍sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。 sleep()示例123456789101112131415161718192021222324252627282930313233pa">
-<meta name="keywords" content="Java,多线程">
+  <meta name="description" content="Redis 简介Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。 因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于缓存、事件发布或订阅、高速队列等场景。 该数据库使用ANSI C语言编写，支持网络，提供字符串、哈希、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java多线程-07之-线程休眠">
-<meta property="og:url" content="http://whb1990.github.io/posts/c0fad076.html">
+<meta property="og:title" content="Redis知识点汇总">
+<meta property="og:url" content="http://whb1990.github.io/posts/da315dd.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="sleep()介绍sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。 sleep()示例123456789101112131415161718192021222324252627282930313233pa">
+<meta property="og:description" content="Redis 简介Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。 因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于缓存、事件发布或订阅、高速队列等场景。 该数据库使用ANSI C语言编写，支持网络，提供字符串、哈希、">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T10:23:00.479Z">
+<meta property="og:updated_time" content="2019-12-04T07:52:32.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java多线程-07之-线程休眠">
-<meta name="twitter:description" content="sleep()介绍sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。 sleep()示例123456789101112131415161718192021222324252627282930313233pa">
+<meta name="twitter:title" content="Redis知识点汇总">
+<meta name="twitter:description" content="Redis 简介Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。 因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于缓存、事件发布或订阅、高速队列等场景。 该数据库使用ANSI C语言编写，支持网络，提供字符串、哈希、">
 
 
 
@@ -183,7 +182,7 @@
 
   
   
-  <link rel="canonical" href="http://whb1990.github.io/posts/c0fad076">
+  <link rel="canonical" href="http://whb1990.github.io/posts/da315dd">
 
 
 
@@ -193,7 +192,7 @@
   };
 </script>
 
-  <title>Java多线程-07之-线程休眠 | 王洪博's blog</title>
+  <title>Redis知识点汇总 | 王洪博's blog</title>
   
 
 
@@ -484,7 +483,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/c0fad076.html">
+    <link itemprop="mainEntityOfPage" href="http://whb1990.github.io/posts/da315dd.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王洪博">
@@ -501,7 +500,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java多线程-07之-线程休眠
+          <h1 class="post-title" itemprop="name headline">Redis知识点汇总
 
               
             
@@ -528,39 +527,14 @@
                 
               
 
-              <time title="创建时间：2018-07-07 14:21:59" itemprop="dateCreated datePublished" datetime="2018-07-07T14:21:59Z">2018-07-07</time>
+              <time title="创建时间：2019-12-04 12:38:29" itemprop="dateCreated datePublished" datetime="2019-12-04T12:38:29Z">2019-12-04</time>
             
 
             
           </span>
 		  
           <!--分类-->
-          <!--
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/多线程/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a></span>
-
-                
-                
-              
-            </span>
-          -->
+          <!---->
 
           <!--评论数-->
           
@@ -574,8 +548,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/posts/c0fad076.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c0fad076.html" itemprop="commentCount"></span>
+                <a href="/posts/da315dd.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/da315dd.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -583,7 +557,7 @@
 
           
           
-            <span id="/posts/c0fad076.html" class="leancloud_visitors" data-flag-title="Java多线程-07之-线程休眠">
+            <span id="/posts/da315dd.html" class="leancloud_visitors" data-flag-title="Redis知识点汇总">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -603,7 +577,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">689字</span>
+            <span class="post-count">8k字</span>
           </span>
 		  
           <span class="post-time">
@@ -613,7 +587,7 @@
 			  <i class="fa fa-clock-o"></i>
             </span>
             <span class="post-meta-item-text">阅读时长: &asymp;</span>
-            <span class="post-count">  3分钟</span>
+            <span class="post-count">  28分钟</span>
           </span>
 		 
           <!--以上部分为：字数统计、阅读时长插入代码-->
@@ -631,7 +605,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.9k</span>
+                <span title="本文字数">13k</span>
               
 
               
@@ -645,7 +619,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -665,22 +639,229 @@
       
 
       
-        <h1 id="sleep-介绍"><a href="#sleep-介绍" class="headerlink" title="sleep()介绍"></a>sleep()介绍</h1><p>sleep() 的作用是让当前线程休眠，即当前线程会从“运行状态”进入到“休眠(阻塞)状态”。sleep()会指定休眠时间，线程休眠的时间会大于/等于该休眠时间；在线程重新被唤醒时，它会由“阻塞状态”变成“就绪状态”，从而等待cpu的调度执行。</p>
-<h1 id="sleep-示例"><a href="#sleep-示例" class="headerlink" title="sleep()示例"></a>sleep()示例</h1><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main.java.com.study.thread.sleep;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: whb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 线程休眠测试</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SleepTest</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        ThreadA t1 = <span class="keyword">new</span> ThreadA(<span class="string">"t1"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadA</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ThreadA</span><span class="params">(String name)</span> </span>{</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</span><br><span class="line">                System.out.printf(<span class="string">"%s: %d\n"</span>, <span class="keyword">this</span>.getName(), i);</span><br><span class="line">                <span class="comment">// i能被4整除时，休眠100毫秒</span></span><br><span class="line">                <span class="keyword">if</span> (i % <span class="number">4</span> == <span class="number">0</span>) {</span><br><span class="line">                    Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
+        <h1 id="Redis-简介"><a href="#Redis-简介" class="headerlink" title="Redis 简介"></a>Redis 简介</h1><p>Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。</p>
+<p>因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。可用于缓存、事件发布或订阅、高速队列等场景。</p>
+<p>该数据库使用ANSI C语言编写，支持网络，提供字符串、哈希、列表、队列、集合结构直接存取，基于内存，可持久化。Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动分区（Cluster）提供高可用性（high availability）。</p>
+<p><code>在项目中使用 Redis，主要考虑两个角度：性能和并发。</code></p>
+<h1 id="Redis-的线程模型"><a href="#Redis-的线程模型" class="headerlink" title="Redis 的线程模型"></a>Redis 的线程模型</h1><h2 id="文件事件处理器"><a href="#文件事件处理器" class="headerlink" title="文件事件处理器"></a>文件事件处理器</h2><p>redis基于<code>reactor模式</code>开发了网络事件处理器，这个处理器叫做<code>文件事件处理器(file event handler)</code>。</p>
+<p>这个文件事件处理器是单线程的，所以redis才叫做单线程模型，采用IO多路复用机制同时监听多个socket，根据socket上的事件来选择对应的事件处理器来处理这个事件。</p>
+<p>如果被监听的socket准备好执行accept、read、write、close等操作的时候，跟操作对应的文件事件就会产生，这个时候文件事件处理器就会调用之前关联好的事件处理器来处理这个事件。</p>
+<p>文件事件处理器是单线程模式运行的，但是通过IO多路复用机制监听多个socket，可以实现高性能的网络通信模型，又可以跟内部其他单线程的模块进行对接，保证了redis内部的线程模型的简单性。</p>
+<p>文件事件处理器的结构包含4个部分：</p>
+<ul>
+<li>多个socket</li>
+<li>IO多路复用程序</li>
+<li>文件事件分派器</li>
+<li>事件处理器（命令请求处理器、命令回复处理器、连接应答处理器，等等）</li>
+</ul>
+<p>多个socket可能并发的产生不同的操作，每个操作对应不同的文件事件，IO多路复用程序会监听多个socket，然后将socket放入一个队列中排队，每次从队列中取出一个socket给事件分派器，事件分派器把socket给对应的事件处理器。</p>
+<p>一个socket的事件处理完之后，IO多路复用程序才会将队列中的下一个socket给事件分派器。文件事件分派器会根据每个socket当前产生的事件，来选择对应的事件处理器来处理。</p>
+<h2 id="文件事件"><a href="#文件事件" class="headerlink" title="文件事件"></a>文件事件</h2><div class="note primary no-icon">
+            <ul><li><p>当socket变得可读时（比如客户端对redis执行write操作，或者close操作），或者有新的可以应答的sccket出现时（客户端对redis执行connect操作），socket就会产生一个<code>AE_READABLE</code>事件。</p></li><li><p>当socket变得可写的时候（客户端对redis执行read操作），socket会产生一个<code>AE_WRITABLE</code>事件。</p></li><li><p>IO多路复用程序可以同时监听<code>AE_REABLE</code>和<code>AE_WRITABLE</code>两种事件，要是一个socket同时产生了AE_READABLE和AE_WRITABLE两种事件，那么文件事件分派器优先处理AE_REABLE事件，然后才是AE_WRITABLE事件。</p></li></ul>
+          </div>
 
-<p><span id="inline-blue"> 运行结果： </span></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">t1: <span class="number">0</span></span><br><span class="line">t1: <span class="number">1</span></span><br><span class="line">t1: <span class="number">2</span></span><br><span class="line">t1: <span class="number">3</span></span><br><span class="line">t1: <span class="number">4</span></span><br><span class="line">t1: <span class="number">5</span></span><br><span class="line">t1: <span class="number">6</span></span><br><span class="line">t1: <span class="number">7</span></span><br><span class="line">t1: <span class="number">8</span></span><br><span class="line">t1: <span class="number">9</span></span><br></pre></td></tr></tbody></table></figure></div>
+<h2 id="文件事件处理器-1"><a href="#文件事件处理器-1" class="headerlink" title="文件事件处理器"></a>文件事件处理器</h2><div class="note info no-icon">
+            <ul><li>如果是客户端要连接redis，那么会为socket关联连接应答处理器。</li><li>如果是客户端要写数据到redis，那么会为socket关联命令请求处理器。</li><li>如果是客户端要从redis读数据，那么会为socket关联命令回复处理器。</li></ul>
+          </div>
 
-<p><span id="inline-purple"> 结果说明： </span><br>程序比较简单，在主线程main中启动线程t1。t1启动之后，当t1中的计算i能被4整除时，t1会通过Thread.sleep(100)休眠100毫秒。</p>
-<h1 id="sleep-与-wait-的比较"><a href="#sleep-与-wait-的比较" class="headerlink" title="sleep() 与 wait()的比较"></a>sleep() 与 wait()的比较</h1><p>wait()的作用是让当前线程由“运行状态”进入“等待(阻塞)状态”的同时，也会释放同步锁。而sleep()的作用是也是让当前线程由“运行状态”进入到“休眠(阻塞)状态”。但是，wait()会释放对象的同步锁，而sleep()则不会释放锁。</p>
-<p>下面通过示例演示sleep()是不会释放锁的。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main.java.com.study.thread.sleep;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: whb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: wait()的作用是让当前线程由“运行状态”进入“等待(阻塞)状态”的同时，也会释放同步锁。而sleep()的作用是也是让当前线程由“运行状态”进入到“休眠(阻塞)状态”。</span></span><br><span class="line"><span class="comment"> * 但是，wait()会释放对象的同步锁，而sleep()则不会释放锁。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SleepLockTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Object obj = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        ThreadA t1 = <span class="keyword">new</span> ThreadA(<span class="string">"t1"</span>);</span><br><span class="line">        ThreadA t2 = <span class="keyword">new</span> ThreadA(<span class="string">"t2"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadA</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ThreadA</span><span class="params">(String name)</span> </span>{</span><br><span class="line">            <span class="keyword">super</span>(name);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="comment">// 获取obj对象的同步锁</span></span><br><span class="line">            <span class="keyword">synchronized</span> (obj) {</span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</span><br><span class="line">                        System.out.printf(<span class="string">"%s: %d\n"</span>, <span class="keyword">this</span>.getName(), i);</span><br><span class="line">                        <span class="comment">// i能被4整除时，休眠100毫秒</span></span><br><span class="line">                        <span class="keyword">if</span> (i % <span class="number">4</span> == <span class="number">0</span>) {</span><br><span class="line">                            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></div>
+<h2 id="客户端与Redis通信的一次流程"><a href="#客户端与Redis通信的一次流程" class="headerlink" title="客户端与Redis通信的一次流程"></a>客户端与Redis通信的一次流程</h2><p>![客户端与redis通信的一次流程][link1]</p>
+<div class="note success">
+            <ol><li><p>redis 服务端进程初始化的时候，会将 server socket 的 AE_READABLE 事件与连接应答处理器关联。</p></li><li><p>客户端 socket01 向 redis 进程的 server socket 请求建立连接，此时 server socket 会产生一个 AE_READABLE 事件，IO 多路复用程序监听到 server socket 产生的事件后，将该 socket 压入队列中。文件事件分派器从队列中获取 socket，交给连接应答处理器。连接应答处理器会创建一个能与客户端通信的 socket01，并将该 socket01 的 AE_READABLE 事件与命令请求处理器关联。</p></li><li><p>假设此时客户端发送了一个 set key value 请求，此时 redis 中的 socket01 会产生 AE_READABLE 事件，IO 多路复用程序将 socket01 压入队列，此时事件分派器从队列中获取到 socket01 产生的 AE_READABLE 事件，由于前面 socket01 的 AE_READABLE 事件已经与命令请求处理器关联，因此事件分派器将事件交给命令请求处理器来处理。命令请求处理器读取 socket01 的 key value 并在自己内存中完成 key value 的设置。操作完成后，它会将 socket01 的 AE_WRITABLE 事件与命令回复处理器关联。</p></li><li><p>如果此时客户端准备好接收返回结果了，那么 redis 中的 socket01 会产生一个 AE_WRITABLE 事件，同样压入队列中，事件分派器找到相关联的命令回复处理器，由命令回复处理器对 socket01 输入本次操作的一个结果，比如 ok，之后解除 socket01 的 AE_WRITABLE 事件与命令回复处理器的关联。</p></li></ol>
+          </div>
 
-<p><span id="inline-blue"> 运行结果： </span></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">t1: <span class="number">0</span></span><br><span class="line">t1: <span class="number">1</span></span><br><span class="line">t1: <span class="number">2</span></span><br><span class="line">t1: <span class="number">3</span></span><br><span class="line">t1: <span class="number">4</span></span><br><span class="line">t1: <span class="number">5</span></span><br><span class="line">t1: <span class="number">6</span></span><br><span class="line">t1: <span class="number">7</span></span><br><span class="line">t1: <span class="number">8</span></span><br><span class="line">t1: <span class="number">9</span></span><br><span class="line">t2: <span class="number">0</span></span><br><span class="line">t2: <span class="number">1</span></span><br><span class="line">t2: <span class="number">2</span></span><br><span class="line">t2: <span class="number">3</span></span><br><span class="line">t2: <span class="number">4</span></span><br><span class="line">t2: <span class="number">5</span></span><br><span class="line">t2: <span class="number">6</span></span><br><span class="line">t2: <span class="number">7</span></span><br><span class="line">t2: <span class="number">8</span></span><br><span class="line">t2: <span class="number">9</span></span><br></pre></td></tr></tbody></table></figure></div>
+<h2 id="为啥-Redis-单线程模型也能效率这么高"><a href="#为啥-Redis-单线程模型也能效率这么高" class="headerlink" title="为啥 Redis 单线程模型也能效率这么高"></a>为啥 Redis 单线程模型也能效率这么高</h2><div class="note warning no-icon">
+            <ul><li>纯内存操作。</li><li>核心是基于非阻塞的 IO 多路复用机制。</li><li>C 语言实现，一般来说，C 语言实现的程序“距离”操作系统更近，执行速度相对会更快。</li><li>单线程反而避免了多线程的频繁上下文切换问题，预防了多线程可能产生的竞争问题。</li></ul>
+          </div>
 
-<p><span id="inline-purple"> 结果说明： </span><br>主线程main中启动了两个线程t1和t2。t1和t2在run()会引用同一个对象的同步锁，即synchronized(obj)。在t1运行过程中，虽然它会调用Thread.sleep(100)；但是，t2是不会获取cpu执行权的。因为，t1并没有释放“obj所持有的同步锁”！</p>
-<script>
+<h1 id="Redis-过期策略"><a href="#Redis-过期策略" class="headerlink" title="Redis 过期策略"></a>Redis 过期策略</h1><p>使用Redis常见的有两个问题：</p>
+<ul>
+<li>往 redis 写入的数据怎么没了？</li>
+<li>数据明明过期了，怎么还占用着内存？</li>
+</ul>
+<p>这是由 redis 的过期策略来决定。redis 有两种过期策略：定期删除+惰性删除。</p>
+<div class="note danger no-icon">
+            <ul><li>:label: 定期删除：redis默认是每隔 100ms 就随机抽取一些设置了过期时间的key，检查其是否过期，如果过期就删除。注意这里是随机抽取的。为什么要随机呢？假如 redis 存了几十万个 key ，每隔100ms就遍历所有的设置过期时间的 key 的话，就会给 CPU 带来很大的负载！（引申一点，像zookeeper、eureka做注册中心检查数据过期就是遍历所有数据，HDFS检查文件契约是否过期是通过treeset结构）</li><li>:label: 惰性删除：定期删除可能会导致很多过期 key 到了时间并没有被删除掉。所以就有了惰性删除。假如过期的 key 靠定期删除没有被删除掉，还停留在内存里，除非你的系统去查一下那个 key，才会被redis给删除掉。这就是所谓的惰性删除，也是够懒的！</li></ul>
+          </div>
+
+<p>但这还是有问题的，如果定期删除漏掉了很多过期 key，然后也没及时去查，也就没走惰性删除，此时会怎么样？如果大量过期 key 堆积在内存里，导致 redis 内存块耗尽了，咋整？</p>
+<p>答案是：<code>走内存淘汰机制。</code></p>
+<h1 id="Redis-内存淘汰机制"><a href="#Redis-内存淘汰机制" class="headerlink" title="Redis 内存淘汰机制"></a>Redis 内存淘汰机制</h1><p>redis 提供 8种数据淘汰策略：</p>
+<ol>
+<li>no-enviction：默认的策略，禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错（DEL请求和部分特殊请求除外）。</li>
+<li>allkeys-lru：当内存不足以容纳新写入数据时，在键空间(<code>server.db[i].dict</code>)中，移除最近最少使用的 key（这个是最常用的）。</li>
+<li>allkeys-random：当内存不足以容纳新写入数据时，在键空间(<code>server.db[i].dict</code>)中，随机移除某个 key(这个一般没人用，为啥要随机，肯定是把最近最少使用的 key 给淘汰)。</li>
+<li>volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间(<code>server.db[i].expires</code>)中，移除最近最少使用的 key（这个一般不太合适）。</li>
+<li>volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间(<code>server.db[i].expires</code>)中，随机移除某个 key。</li>
+<li>volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间(<code>server.db[i].expires</code>)中，有更早过期时间的 key 优先移除。</li>
+<li>volatile-lfu：在设置了过期时间的key中使用LFU算法淘汰key(Redis4.0新增)。</li>
+<li>allkeys-lfu：在所有key中使用LFU算法淘汰淘汰和数据（Redis4.0新增）。</li>
+</ol>
+<p>:exclamation: <code>redis淘汰数据时还会同步到aof。</code></p>
+<h2 id="LRU算法"><a href="#LRU算法" class="headerlink" title="LRU算法"></a>LRU算法</h2><p><code>LRU(Least Recently Used)</code>，即最近最少使用，是一种缓存置换算法。其核心思想是：如果一个数据在最近一段时间没有被用到，那么将来被使用到的可能性也很小，所以就可以被淘汰掉。</p>
+<h3 id="LRU在Redis中的实现"><a href="#LRU在Redis中的实现" class="headerlink" title="LRU在Redis中的实现"></a>LRU在Redis中的实现</h3><p>Redis使用的是<code>近似LRU算法</code>，它跟常规的LRU算法还不太一样。</p>
+<p><code>近似LRU算法</code>通过随机采样法淘汰数据，每次随机出5（默认）个key，从里面淘汰掉最近最少使用的key。</p>
+<p>可以通过<code>maxmemory-samples</code>参数修改采样数量：例：<code>maxmemory-samples 10</code>，<code>maxmenory-samples</code>配置的越大，淘汰的结果越接近于严格的LRU算法。</p>
+<p>Redis为了实现近似LRU算法，给每个key增加了一个额外增加了一个24bit的字段，用来存储该key最后一次被访问的时间。</p>
+<h3 id="Redis3-0对近似LRU的优化"><a href="#Redis3-0对近似LRU的优化" class="headerlink" title="Redis3.0对近似LRU的优化"></a>Redis3.0对近似LRU的优化</h3><p>Redis3.0对近似LRU算法进行了一些优化。新算法会维护一个候选池（大小为16），池中的数据根据访问时间进行排序，第一次随机选取的key都会放入池中，随后每次随机选取的key只有在访问时间小于池中最小的时间才会放入池中，直到候选池被放满。</p>
+<p>当放满后，如果有新的key需要放入，则将池中最后访问时间最大（最近被访问）的移除。</p>
+<p>当需要淘汰的时候，则直接从池中选取最近访问时间最小（最久没被访问）的key淘汰掉就行。</p>
+<h2 id="LFU算法"><a href="#LFU算法" class="headerlink" title="LFU算法"></a>LFU算法</h2><p>LFU算法是Redis4.0里面新加的一种淘汰策略。它的全称是<code>Least Frequently Used</code>。</p>
+<p>核心思想是根据key的最近被访问的频率进行淘汰，很少被访问的优先被淘汰，被访问的多的则被留下来。</p>
+<p>LFU算法能更好的表示一个key被访问的热度。假如使用LRU算法，一个key很久没有被访问到，只是刚刚被访问了一次，那么它就被认为是热点数据，不会被淘汰，而有些key之前访问频率很高，一段时间没有被访问，但将来是很有可能再被访问到的则被淘汰了。</p>
+<p>如果使用LFU算法则不会出现这种情况，因为使用一次并不会使一个key成为热点数据。</p>
+<h1 id="Redis-持久化机制"><a href="#Redis-持久化机制" class="headerlink" title="Redis 持久化机制"></a>Redis 持久化机制</h1><p>Redis有两种持久化方式，一种持久化方式叫快照(snapshotting，RDB)，另一种方式是只追加文件(append-only file，AOF)。</p>
+<h2 id="快照-snapshotting-持久化-RDB"><a href="#快照-snapshotting-持久化-RDB" class="headerlink" title="快照(snapshotting)持久化(RDB)"></a>快照(snapshotting)持久化(RDB)</h2><p>Redis 可以通过创建快照来获得存储在内存里面的数据在某个时间点上的副本。</p>
+<p>Redis 创建快照之后，可以对快照进行备份，可以将快照复制到其他服务器从而创建具有相同数据的服务器副本(Redis 主从结构，主要用来提高 Redis 性能)，还可以将快照留在原地以便重启服务器的时候使用。</p>
+<div class="note info">
+            <p>Redis会单独<code>fork()</code>一个子进程，将当前父进程的数据库数据复制到子进程的内存中，然后由子进程写入到临时文件中，持久化的过程结束了，再用这个临时文件替换上次的快照文件，然后子进程退出，内存释放。</p>
+          </div>
+
+<div class="note warning">
+            <p>需要注意的是，每次快照持久化都会将主进程的数据库数据复制一遍，导致内存开销加倍，若此时内存不足，则会阻塞服务器运行，直到复制结束释放内存；<br>都会将内存数据完整写入磁盘一次，所以如果数据量大的话，而且写操作频繁，必然会引起大量的磁盘I/O操作，严重影响性能，并且最后一次持久化后的数据可能会丢失；</p>
+          </div>
+
+<p>快照持久化是 Redis 默认采用的持久化方式，在 Redis.conf 配置文件中默认有此下配置：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">save</span> <span class="number">900</span> <span class="number">1</span> <span class="comment">#在900秒(15分钟)之后，如果至少有1个key发生变化，Redis就会自动触发BGSAVE命令创建快照。 </span></span><br><span class="line"> </span><br><span class="line"><span class="string">save</span> <span class="number">300</span> <span class="number">10</span> <span class="comment">#在300秒(5分钟)之后，如果至少有10个key发生变化，Redis就会自动触发BGSAVE命令创建快照。 </span></span><br><span class="line"> </span><br><span class="line"><span class="string">save</span> <span class="number">60</span> <span class="number">10000</span> <span class="comment">#在60秒(1分钟)之后，如果至少有10000个key发生变化，Redis就会自动触发BGSAVE命令创建快照。</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<div class="note success no-icon">
+            <p>优点：</p><ol><li>只有一个文件dump.rdb，方便持久化。</li><li>容灾性好，一个文件可以保存到安全的磁盘。</li><li>性能最大化，fork子进程执行磁盘IO操作来完成持久化，让主进程继续处理命令，所以是IO最大化。</li><li>相对于 AOF 持久化机制来说，直接基于 RDB 数据文件来重启和恢复 redis 进程，更加快速。</li></ol>
+          </div>
+
+<div class="note danger no-icon">
+            <p>缺点：</p><ol><li>如果想要在 redis 故障时，尽可能少的丢失数据，RDB 没有 AOF 好。通过配置save参数来达到定时的写快照，比如 每900 秒有1个键被修改就进行一次快照，每300秒至少有10个键被修改进行快照，每60秒有至少10000个键被修改进行记录。所以如果当服务器还在等待写快照时出现了宕机，那么将会丢失数据。</li><li>RDB 每次在 fork 子进程来执行 RDB 快照数据文件生成的时候，如果数据文件特别大，可能会导致对客户端提供的服务暂停数毫秒，或者甚至数秒。</li></ol>
+          </div>
+
+<h2 id="AOF-append-only-file-持久化"><a href="#AOF-append-only-file-持久化" class="headerlink" title="AOF(append-only file)持久化"></a>AOF(append-only file)持久化</h2><p>与快照持久化相比，AOF 持久化的实时性更好，因此已成为主流的持久化方案。</p>
+<p>以日志的形式记录每个写操作（读操作不记录），只需追加文件但不可以改写文件，Redis启动时会根据日志从头到尾全部执行一遍以完成数据的恢复工作。包括flushDB也会执行。</p>
+<p>默认情况下 Redis 没有开启 AOF(append only file)方式的持久化，可以通过 appendonly 参数开启：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">appendonly</span> <span class="literal">yes</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>开启 AOF 持久化后每执行一条会更改 Redis 中的数据的命令，Redis 就会将该命令写入硬盘中的 AOF 文件。</p>
+<p>AOF 文件的保存位置和 RDB 文件的位置相同，都是通过 dir 参数设置的，默认的文件名是 appendonly.aof。</p>
+<p>在 Redis 的配置文件中存在三种不同的 AOF 持久化方式，它们分别是：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">appendfsync</span> <span class="string">always</span> <span class="comment">#每次有数据修改发生时都会写入AOF文件,这样会严重降低Redis的速度 </span></span><br><span class="line"><span class="string">appendfsync</span> <span class="string">everysec</span> <span class="comment">#每秒钟同步一次，显示地将多个写命令同步到硬盘 </span></span><br><span class="line"><span class="string">appendfsync</span> <span class="literal">no</span> <span class="comment">#让操作系统决定何时进行同步</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>为了兼顾数据和写入性能，用户可以考虑 <code>appendfsync everysec</code> 选项 ，让 Redis 每秒同步一次 AOF 文件，Redis 性能几乎没受到任何影响。</p>
+<p>而且这样即使出现系统崩溃，用户最多只会丢失一秒之内产生的数据。当硬盘忙于执行写入操作的时候，Redis 还会优雅的放慢自己的速度以便适应硬盘的最大写入速度。</p>
+<div class="note success no-icon">
+            <p>优点：</p><ol><li>AOF 可以更好的保护数据不丢失，AOF持久化可以配置appendfsync属性，有always，每进行一次命令操作就记录到aof文件中一次；everySec，就是每秒内进行一次文件的写操作；no就是不进行aof文件的写操作。</li><li>AOF日志文件以<code>append-only</code>模式写入，所以没有任何磁盘寻址的开销，写入性能非常高，而且文件不容易破损，即使文件尾部破损，也很容易修复，可以通过<code>Redis-check-aof</code>工具解决数据一致性问题。</li><li>AOF机制的rewrite模式，用来将过大的aof文件缩小，实现原理是将所有的set 通过一句set 命令总结，所有的SADD命令用总结为一句，这样每种命令都概括为一句来执行，就可以减少aof文件的大小了。（注意，在重写的过程中，是创建子进程来完成重写操作，主进程每个命令都会在AOF缓冲区和AOF重写缓冲区进行保存，这样旧版aof文件可以实现数据最新，当更新完后将重写缓冲区中的数据写入新的aof文件中然后就可以将新的文件替换掉旧版的文件。默认触发是当aof文件大小是上次重写后大小的一倍且文件大于64M时触发。)</li><li>AOF 日志文件的命令通过非常可读的方式进行记录，这个特性非常适合做灾难性的误删除的紧急恢复。比如不小心用 flushall 命令清空了所有数据，只要这个时候后台 rewrite 还没有发生，那么就可以立即拷贝 AOF 文件，将最后一条 flushall 命令给删了，然后再将该 AOF 文件放回去，就可以通过恢复机制，自动恢复所有数据。</li></ol>
+          </div>
+
+<div class="note danger no-icon">
+            <p>缺点：</p><ol><li>对于同一份数据来说，AOF 日志文件通常比 RDB 数据快照文件更大。</li><li>数据集大的时候，比rdb启动效率低。</li><li>AOF 开启后，支持的写 QPS 会比 RDB 支持的写 QPS 低，因为 AOF 一般会配置成每秒 fsync 一次日志文件，当然，每秒一次 fsync，性能也还是很高的。（如果实时写入，那么 QPS 会大降，redis 性能会大大降低）</li></ol>
+          </div>
+
+<h2 id="RDB-和-AOF-如何选择"><a href="#RDB-和-AOF-如何选择" class="headerlink" title="RDB 和 AOF 如何选择"></a>RDB 和 AOF 如何选择</h2><ul>
+<li>不要仅仅使用 RDB，因为那会导致丢失很多数据；</li>
+<li>也不要仅仅使用 AOF，因为那样有两个问题：第一，通过 AOF 做冷备，没有 RDB 做冷备来的恢复速度更快；第二，RDB 每次简单粗暴生成数据快照，更加健壮，可以避免 AOF 这种复杂的备份和恢复机制的 bug；</li>
+<li>redis 支持同时开启开启两种持久化方式，可以综合使用 AOF 和 RDB 两种持久化机制，用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</li>
+</ul>
+<h2 id="Redis-4-0-对于持久化机制的优化"><a href="#Redis-4-0-对于持久化机制的优化" class="headerlink" title="Redis 4.0 对于持久化机制的优化"></a>Redis 4.0 对于持久化机制的优化</h2><p>Redis 4.0 开始支持 RDB 和 AOF 的混合持久化(默认关闭，可以通过配置项 <code>aof-use-rdb-preamble</code> 开启)。</p>
+<p>如果把混合持久化打开，AOF 重写的时候就直接把 RDB 的内容写到 AOF 文件开头。</p>
+<p>这样做的好处是可以结合 RDB 和 AOF 的优点, 快速加载同时避免丢失过多的数据。</p>
+<p>当然缺点也是有的，AOF 里面的 RDB 部分是压缩格式不再是 AOF 格式，可读性较差。</p>
+<h1 id="Redis-Master-Slave"><a href="#Redis-Master-Slave" class="headerlink" title="Redis Master-Slave"></a>Redis Master-Slave</h1><p>主从(master-slave)架构，一主多从，主负责写，并且将数据复制到其它的 slave 节点，从节点负责读。所有的读请求全部走从节点。这样也可以很轻松实现水平扩容，支撑读高并发。<br>![master-slave][link2]</p>
+<h2 id="redis-replication-的核心机制"><a href="#redis-replication-的核心机制" class="headerlink" title="redis replication 的核心机制"></a>redis replication 的核心机制</h2><div class="note success no-icon">
+            <ul><li>redis 采用异步方式复制数据到 slave 节点，不过 redis2.8 开始，slave node 会周期性地确认自己每次复制的数据量；</li><li>一个 master node 是可以配置多个 slave node 的；</li><li>slave node 也可以连接其他的 slave node；</li><li>slave node 做复制的时候，不会 block master node 的正常工作；</li><li>slave node 在做复制的时候，也不会 block 对自己的查询操作，它会用旧的数据集来提供服务；但是复制完成的时候，需要删除旧数据集，加载新数据集，这个时候就会暂停对外服务了；</li><li>slave node 主要用来进行横向扩容，做读写分离，扩容的 slave node 可以提高读的吞吐量。</li></ul>
+          </div>
+
+<div class="note warning">
+            <p>注意，如果采用了主从架构，那么建议必须开启 master node 的持久化，不建议用 slave node 作为 master node 的数据热备，因为如果未开启或关闭了 master 的持久化，可能在 master 宕机重启的时候数据是空的，然后可能一经过复制， slave node 的数据也丢了。</p><p>另外，master 的各种备份方案也需要做。万一本地的所有文件丢失了，从备份中挑选一份 rdb 去恢复 master，这样才能确保启动的时候是有数据的。即使采用了哨兵模式的高可用机制，slave node 可以自动接管 master node，但也可能 sentinel 还没检测到 master failure，master node 就自动重启了，还是可能导致上面所有的 slave node 数据被清空。</p>
+          </div>
+
+<h2 id="redis-主从复制的核心原理"><a href="#redis-主从复制的核心原理" class="headerlink" title="redis 主从复制的核心原理"></a>redis 主从复制的核心原理</h2><p>当启动一个 slave node 的时候，它会发送一个 <code>PSYNC</code> 命令给 master node。</p>
+<p>如果 slave node 初次连接到 master node，那么会触发一次 <code>full resynchronization</code> 全量复制。</p>
+<p>此时 master 会启动一个后台线程，开始生成一份 RDB 快照文件，同时还会将从客户端新收到的所有写命令缓存在内存中。</p>
+<p>RDB 文件生成完毕后，master 会将这个 RDB 发送给 slave，slave 会先写入本地磁盘，然后再从本地磁盘加载到内存中，接着 master 会将内存中缓存的写命令发送到 slave，slave 也会同步这些数据。</p>
+<p>slave node 如果跟 master node 有网络故障，断开了连接，会自动重连，master如果发现有多个slave node都来重新连接，仅仅会启动一个rdb save操作，用一份数据服务所有slave node。</p>
+<p>![主从复制][link3]</p>
+<h3 id="主从复制的断点续传"><a href="#主从复制的断点续传" class="headerlink" title="主从复制的断点续传"></a>主从复制的断点续传</h3><p>从 redis2.8 开始，就支持主从复制的断点续传，如果主从复制过程中，网络连接断掉了，那么可以接着上次复制的地方，继续复制下去，而不是从头开始复制一份。</p>
+<p>master node 会在内存中维护一个 <code>backlog</code>，master 和 slave 都会保存一个 <code>replica offset</code> 还有一个 <code>master run id</code>，offset 就是保存在 backlog 中的。</p>
+<p>如果 master 和 slave 网络连接断掉了，slave 会让 master 从上次 replica offset 开始继续复制，如果没有找到对应的 offset，那么就会执行一次 resynchronization。</p>
+<h3 id="过期-key-处理"><a href="#过期-key-处理" class="headerlink" title="过期 key 处理"></a>过期 key 处理</h3><p>slave 不会过期 key，只会等待 master 过期 key。如果 master 过期了一个 key，或者通过 LRU 淘汰了一个 key，那么会模拟一条 del 命令发送给 slave。</p>
+<h2 id="复制的完整流程"><a href="#复制的完整流程" class="headerlink" title="复制的完整流程"></a>复制的完整流程</h2><ol>
+<li><p>slave node 启动时，会在自己本地保存 master node 的信息，包括 master node 的host和ip（<code>redis.conf</code>里面的<code>slaveof</code>配置的），但是复制流程没开始。</p>
+</li>
+<li><p>slave node 内部有个定时任务，每秒检查是否有新的 master node 要连接和复制，如果发现，就跟 master node 建立 socket 网络连接。</p>
+</li>
+<li><p>slave node 发送 ping 命令给 master node。</p>
+</li>
+<li><p>如果 master 设置了 requirepass，那么 slave node 必须发送 masterauth 的口令过去进行认证。</p>
+</li>
+<li><p>master node 第一次执行全量复制，将所有数据发给 slave node。</p>
+</li>
+<li><p>master node 后续持续将写命令，异步复制给 slave node。</p>
+</li>
+</ol>
+<p>![主从复制完整流程][link4]</p>
+<h3 id="全量复制"><a href="#全量复制" class="headerlink" title="全量复制"></a>全量复制</h3><ul>
+<li><p>master 执行 bgsave ，在本地生成一份 rdb 快照文件。</p>
+</li>
+<li><p>master node 将 rdb 快照文件发送给 slave node，如果 rdb 复制时间超过 60秒（repl-timeout），那么 slave node 就会认为复制失败，可以适当调大这个参数(对于千兆网卡的机器，一般每秒传输 100MB，6G 文件，很可能超过 60s)</p>
+</li>
+<li><p>master node 在生成 rdb 时，会将所有新的写命令缓存在内存中，在 slave node 保存了 rdb 之后，再将新的写命令复制给 slave node。</p>
+</li>
+<li><p><code>client-output-buffer-limit slave 256MB 64MB 60</code> 如果在复制期间，内存缓冲区持续消耗超过 64MB，或者一次性超过 256MB，那么停止复制，复制失败。</p>
+</li>
+<li><p>slave node 接收到 rdb 之后，清空自己的旧数据，然后重新加载 rdb 到自己的内存中，同时基于旧的数据版本对外提供服务。</p>
+</li>
+<li><p>如果 slave node 开启了 AOF，那么会立即执行 BGREWRITEAOF，重写 AOF。</p>
+</li>
+</ul>
+<p>rdb生成、rdb通过网络拷贝、slave旧数据的清理、slave aof rewrite，很耗费时间，如果复制的数据量在4G~6G之间，那么很可能全量复制时间消耗到1分半到2分钟。</p>
+<h3 id="增量复制"><a href="#增量复制" class="headerlink" title="增量复制"></a>增量复制</h3><ul>
+<li><p>如果全量复制过程中，master-slave 网络连接断掉，那么 slave 重新连接 master 时，会触发增量复制。</p>
+</li>
+<li><p>master 直接从自己的 backlog 中获取部分丢失的数据，发送给 slave node，默认 backlog 就是 1MB。</p>
+</li>
+<li><p>master 就是根据 slave 发送的 psync 中的 offset 来从 backlog 中获取数据的。</p>
+</li>
+</ul>
+<h3 id="heartbeat"><a href="#heartbeat" class="headerlink" title="heartbeat"></a>heartbeat</h3><p>主从节点互相都会发送 heartbeat 信息。master 默认每隔 10秒 发送一次 heartbeat，slave node 每隔 1秒 发送一个 heartbeat。</p>
+<h3 id="异步复制"><a href="#异步复制" class="headerlink" title="异步复制"></a>异步复制</h3><p>master 每次接收到写命令之后，先在内部写入数据，然后异步发送给 slave node。</p>
+<h1 id="Redis-Sentinel"><a href="#Redis-Sentinel" class="headerlink" title="Redis Sentinel"></a>Redis Sentinel</h1><h2 id="哨兵介绍"><a href="#哨兵介绍" class="headerlink" title="哨兵介绍"></a>哨兵介绍</h2><p>Redis 官方文档对于哨兵功能的描述：</p>
+<ul>
+<li>集群监控（Monitoring）：哨兵会不断地检查主节点和从节点是否运作正常。</li>
+<li>消息通知（Notification）：如果某个 redis 实例有故障，那么哨兵负责发送消息作为报警通知给管理员。故障转移后将故障转移的结果发送给客户端。</li>
+<li>自动故障转移（Automatic failover）：当主节点不能正常工作时，哨兵会开始自动故障转移操作，它会将失效主节点的其中一个从节点升级为新的主节点，并让其他从节点改为复制新的主节点。</li>
+<li>配置提供者（Configuration provider）：客户端在初始化时，通过连接哨兵来获得当前 Redis 服务的主节点地址。如果故障转移发生了，通知 client 客户端新的 master 地址。</li>
+</ul>
+<p>哨兵系统中的主从节点，与普通的主从节点并没有什么区别，故障发现和转移是由哨兵来控制和完成的。</p>
+<ul>
+<li>哨兵节点本质上是 Redis 节点。</li>
+<li>每个哨兵节点，只需要配置监控主节点，便可以自动发现其他的哨兵节点和从节点。</li>
+<li>在哨兵节点启动和故障转移阶段，各个节点的配置文件会被重写(config rewrite)。</li>
+</ul>
+<h2 id="哨兵的核心知识"><a href="#哨兵的核心知识" class="headerlink" title="哨兵的核心知识"></a>哨兵的核心知识</h2><ul>
+<li>哨兵至少需要 3 个实例，来保证自己的健壮性。</li>
+<li>哨兵 + redis 主从的部署架构，是不保证数据零丢失的，只能保证 redis 集群的高可用性。</li>
+</ul>
+<p>哨兵集群必须部署 2 个以上节点，如果哨兵集群仅仅部署了 2 个哨兵实例，quorum = 1。</p>
+<p>+—-+         +—-+<br>| M1 |———| R1 |<br>| S1 |         | S2 |<br>+—-+         +—-+<br>配置 quorum = 1，如果 master 宕机， s1 和 s2 中只要有 1 个哨兵认为 master 宕机了，就可以进行切换，同时 s1 和 s2 会选举出一个哨兵来执行故障转移。但是同时这个时候，需要 majority，也就是大多数哨兵都是运行的。</p>
+<p>2 个哨兵，majority = 2<br>3 个哨兵，majority = 2<br>4 个哨兵，majority = 2<br>5 个哨兵，majority = 3<br>…</p>
+<p>如果此时仅仅是 M1 进程宕机了，哨兵 s1 正常运行，那么故障转移是 OK 的。但是如果是整个 M1 和 S1 运行的机器宕机了，那么哨兵只有 1 个，此时就没有 majority 来允许执行故障转移，虽然另外一台机器上还有一个 R1，但是故障转移不会执行。</p>
+<p>经典的 3 节点哨兵集群是这样的：</p>
+<pre><code>+----+
+| M1 |
+| S1 |
++----+
+   |</code></pre><p>+—-+    |    +—-+<br>| R2 |—-+—-| R3 |<br>| S2 |         | S3 |<br>+—-+         +—-+<br>配置 quorum=2，如果 M1 所在机器宕机了，那么三个哨兵还剩下 2 个，S2 和 S3 可以一致认为 master 宕机了，然后选举出一个来执行故障转移，同时 3 个哨兵的 majority 是 2，所以还剩下的 2 个哨兵运行着，就可以允许执行故障转移。</p>
+<h2 id="redis-哨兵主备切换的数据丢失问题"><a href="#redis-哨兵主备切换的数据丢失问题" class="headerlink" title="redis 哨兵主备切换的数据丢失问题"></a>redis 哨兵主备切换的数据丢失问题</h2><h3 id="异步复制导致的数据丢失"><a href="#异步复制导致的数据丢失" class="headerlink" title="异步复制导致的数据丢失"></a>异步复制导致的数据丢失</h3><p>因为 master-&gt;slave 的复制是异步的，所以可能有部分数据还没复制到 slave，master 就宕机了，此时这部分数据就丢失了。</p>
+<p>![异步复制导致数据丢失][link5]</p>
+<h3 id="脑裂导致的数据丢失"><a href="#脑裂导致的数据丢失" class="headerlink" title="脑裂导致的数据丢失"></a>脑裂导致的数据丢失</h3><p>假如某个 master 所在机器突然脱离了正常的网络，跟其他 slave 机器不能连接，但是实际上 master 还运行着。此时哨兵可能就会认为 master 宕机了，然后开启选举，将其他 slave 切换成了 master。这个时集群里就会有两个 master ，也就是所谓的脑裂。</p>
+<p>此时虽然某个 slave 被切换成了 master，但是可能 client 还没来得及切换到新的 master，还继续向旧 master 写数据。因此旧 master 再次恢复的时候，会被作为一个 slave 挂到新的 master 上去，自己的数据会清空，重新从新的 master 复制数据。而新的 master 并没有后来 client 写入的数据，因此，这部分数据也就丢失了。</p>
+<p>![脑裂导致的数据丢失][link6]</p>
+<h3 id="异步复制和脑裂导致的数据丢失解决方案"><a href="#异步复制和脑裂导致的数据丢失解决方案" class="headerlink" title="异步复制和脑裂导致的数据丢失解决方案"></a>异步复制和脑裂导致的数据丢失解决方案</h3><p>进行如下配置：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">min-slaves-to-write</span> <span class="number">1</span></span><br><span class="line"><span class="string">min-slaves-max-lag</span> <span class="number">10</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>上面的配置表示，要求至少有 1 个 slave，数据复制和同步的延迟不能超过 10 秒。</p>
+<p>如果说一旦所有的 slave数据复制和同步的延迟都超过了 10 秒钟，那么这个时候，master 就不会再接收任何请求了。</p>
+<p>上面两个配置可以减少异步复制和脑裂导致的数据丢失</p>
+<p>（1）减少异步复制的数据丢失</p>
+<p>有了min-slaves-max-lag这个配置，就可以确保说，一旦slave复制数据和ack延时太长，就认为可能master宕机后损失的数据太多了，那么就拒绝写请求，这样可以把master宕机时由于部分数据未同步到slave导致的数据丢失降低的可控范围内。</p>
+<p>（2）减少脑裂的数据丢失</p>
+<p>如果一个master出现了脑裂，跟其他slave丢了连接，那么上面两个配置可以确保说，如果不能继续给指定数量的slave发送数据，而且slave超过10秒没有给自己ack消息，那么就直接拒绝客户端的写请求，这样脑裂后的旧master就不会接受client的新数据，因此在脑裂场景下，最多就丢失 10 秒的数据。</p>
+<h3 id="sdown和odown"><a href="#sdown和odown" class="headerlink" title="sdown和odown"></a>sdown和odown</h3><h1 id="Redis-Cluster"><a href="#Redis-Cluster" class="headerlink" title="Redis Cluster"></a>Redis Cluster</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -717,12 +898,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/posts/c0fad076.html">Java多线程-07之-线程休眠</a></p>
+  <p><span>本文标题:</span><a href="/posts/da315dd.html">Redis知识点汇总</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
-  <p><span>发布时间:</span>2018年07月07日 - 14:07</p>
-  <p><span>最后更新:</span>2019年09月12日 - 10:09</p>
-  <p><span>原始链接:</span><a href="/posts/c0fad076.html" title="Java多线程-07之-线程休眠">http://whb1990.github.io/posts/c0fad076.html</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/c0fad076.html" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年12月04日 - 12:12</p>
+  <p><span>最后更新:</span>2019年12月04日 - 07:12</p>
+  <p><span>原始链接:</span><a href="/posts/da315dd.html" title="Redis知识点汇总">http://whb1990.github.io/posts/da315dd.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/da315dd.html" aria-label="复制成功！"></i></span>
   </p>
   <!--
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
@@ -790,14 +971,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"><i class="fa fa-envira"></i> Java</a>
-          
-            <a href="/tags/多线程/" rel="tag"><i class="fa fa-envira"></i> 多线程</a>
-          
-        </div>
-      
 
       
       
@@ -820,8 +993,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/89a20157.html" rel="next" title="设计模式-工厂方法模式">
-                <i class="fa fa-chevron-left"></i> 设计模式-工厂方法模式
+              <a href="/posts/96e942a5.html" rel="next" title="通过一个故事白话Java锁">
+                <i class="fa fa-chevron-left"></i> 通过一个故事白话Java锁
               </a>
             
           </div>
@@ -829,10 +1002,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/d4946f29.html" rel="prev" title="Java内存模型-基础学习">
-                Java内存模型-基础学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1380,7 +1549,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sleep-介绍"><span class="nav-number">1.</span> <span class="nav-text">sleep()介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sleep-示例"><span class="nav-number">2.</span> <span class="nav-text">sleep()示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sleep-与-wait-的比较"><span class="nav-number">3.</span> <span class="nav-text">sleep() 与 wait()的比较</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-简介"><span class="nav-number">1.</span> <span class="nav-text">Redis 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-的线程模型"><span class="nav-number">2.</span> <span class="nav-text">Redis 的线程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件事件处理器"><span class="nav-number">2.1.</span> <span class="nav-text">文件事件处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件事件"><span class="nav-number">2.2.</span> <span class="nav-text">文件事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件事件处理器-1"><span class="nav-number">2.3.</span> <span class="nav-text">文件事件处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端与Redis通信的一次流程"><span class="nav-number">2.4.</span> <span class="nav-text">客户端与Redis通信的一次流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为啥-Redis-单线程模型也能效率这么高"><span class="nav-number">2.5.</span> <span class="nav-text">为啥 Redis 单线程模型也能效率这么高</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-过期策略"><span class="nav-number">3.</span> <span class="nav-text">Redis 过期策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-内存淘汰机制"><span class="nav-number">4.</span> <span class="nav-text">Redis 内存淘汰机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU算法"><span class="nav-number">4.1.</span> <span class="nav-text">LRU算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LRU在Redis中的实现"><span class="nav-number">4.1.1.</span> <span class="nav-text">LRU在Redis中的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis3-0对近似LRU的优化"><span class="nav-number">4.1.2.</span> <span class="nav-text">Redis3.0对近似LRU的优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LFU算法"><span class="nav-number">4.2.</span> <span class="nav-text">LFU算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-持久化机制"><span class="nav-number">5.</span> <span class="nav-text">Redis 持久化机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快照-snapshotting-持久化-RDB"><span class="nav-number">5.1.</span> <span class="nav-text">快照(snapshotting)持久化(RDB)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-append-only-file-持久化"><span class="nav-number">5.2.</span> <span class="nav-text">AOF(append-only file)持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-和-AOF-如何选择"><span class="nav-number">5.3.</span> <span class="nav-text">RDB 和 AOF 如何选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-4-0-对于持久化机制的优化"><span class="nav-number">5.4.</span> <span class="nav-text">Redis 4.0 对于持久化机制的优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Master-Slave"><span class="nav-number">6.</span> <span class="nav-text">Redis Master-Slave</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-replication-的核心机制"><span class="nav-number">6.1.</span> <span class="nav-text">redis replication 的核心机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-主从复制的核心原理"><span class="nav-number">6.2.</span> <span class="nav-text">redis 主从复制的核心原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主从复制的断点续传"><span class="nav-number">6.2.1.</span> <span class="nav-text">主从复制的断点续传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过期-key-处理"><span class="nav-number">6.2.2.</span> <span class="nav-text">过期 key 处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制的完整流程"><span class="nav-number">6.3.</span> <span class="nav-text">复制的完整流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全量复制"><span class="nav-number">6.3.1.</span> <span class="nav-text">全量复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增量复制"><span class="nav-number">6.3.2.</span> <span class="nav-text">增量复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#heartbeat"><span class="nav-number">6.3.3.</span> <span class="nav-text">heartbeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步复制"><span class="nav-number">6.3.4.</span> <span class="nav-text">异步复制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Sentinel"><span class="nav-number">7.</span> <span class="nav-text">Redis Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哨兵介绍"><span class="nav-number">7.1.</span> <span class="nav-text">哨兵介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哨兵的核心知识"><span class="nav-number">7.2.</span> <span class="nav-text">哨兵的核心知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-哨兵主备切换的数据丢失问题"><span class="nav-number">7.3.</span> <span class="nav-text">redis 哨兵主备切换的数据丢失问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步复制导致的数据丢失"><span class="nav-number">7.3.1.</span> <span class="nav-text">异步复制导致的数据丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脑裂导致的数据丢失"><span class="nav-number">7.3.2.</span> <span class="nav-text">脑裂导致的数据丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步复制和脑裂导致的数据丢失解决方案"><span class="nav-number">7.3.3.</span> <span class="nav-text">异步复制和脑裂导致的数据丢失解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sdown和odown"><span class="nav-number">7.3.4.</span> <span class="nav-text">sdown和odown</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-Cluster"><span class="nav-number">8.</span> <span class="nav-text">Redis Cluster</span></a></li></ol></div>
             
 
           </div>

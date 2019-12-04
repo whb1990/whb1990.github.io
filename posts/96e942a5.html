@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="有这么一个学校（Java虚拟机），里面有好多好多人（线程），简单分成学生、老师、以及宿管阿姨。 学校中间还有一个很奇葩的水果超市（临界区），里面有个仓库放着苹果、西瓜、橘子（临界区里的受保护资源）。 来这个超市的人，一方面可以拿走水果吃掉，另一方面也可以送来水果换钱。不过超市还有一个很奇葩的规则，就是学生只能去吃或者送苹果，老师则只能西瓜，宿管阿姨只能橘子。 这个超市的进出也很有规矩，来这个超市的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T03:03:28.311Z">
+<meta property="og:updated_time" content="2019-12-04T02:25:50.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过一个故事白话Java锁">
 <meta name="twitter:description" content="有这么一个学校（Java虚拟机），里面有好多好多人（线程），简单分成学生、老师、以及宿管阿姨。 学校中间还有一个很奇葩的水果超市（临界区），里面有个仓库放着苹果、西瓜、橘子（临界区里的受保护资源）。 来这个超市的人，一方面可以拿走水果吃掉，另一方面也可以送来水果换钱。不过超市还有一个很奇葩的规则，就是学生只能去吃或者送苹果，老师则只能西瓜，宿管阿姨只能橘子。 这个超市的进出也很有规矩，来这个超市的">
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">3.1k字</span>
+            <span class="post-count">3k字</span>
           </span>
 		  
           <span class="post-time">
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.6k</span>
+                <span title="本文字数">3.5k</span>
               
 
               
@@ -705,7 +705,6 @@
 <p>于是，操作台对根本没有苹果的储藏区发出了取苹果的指令，该系统根本没有想到会有这种事情发生，于是机器炸了，小王牺牲（<code>抛出运行时异常，线程终止并释放锁</code>）。</p>
 <p>数年后，之前做操作台的人已经被枪毙了，学校又高薪聘请了一位高人来建造，解决了之前的那个问题（<code>volatile</code>）。</p>
 <p>超市又顺利运转起来，有时超市只有一个人（<code>不同线程进入锁对象相同的临界区会互斥，只有一个线程可以进入</code>），有时超市会有三个人（<code>不同锁对象的临界区不互斥</code>），分别是学生、老师、宿管阿姨，他们仨人互不影响，相安无事。学校的生活再次丰富了起来。</p>
-<p>故事讲完了，虽然不能解释全部并发编程的内容，也不能处处都很恰当地说明细节，但却是一个很有趣的思考过程。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -746,7 +745,7 @@
   <p><span>本文标题:</span><a href="/posts/96e942a5.html">通过一个故事白话Java锁</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2019年11月18日 - 10:11</p>
-  <p><span>最后更新:</span>2019年11月18日 - 03:11</p>
+  <p><span>最后更新:</span>2019年12月04日 - 02:12</p>
   <p><span>原始链接:</span><a href="/posts/96e942a5.html" title="通过一个故事白话Java锁">http://whb1990.github.io/posts/96e942a5.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/96e942a5.html" aria-label="复制成功！"></i></span>
   </p>
@@ -854,8 +853,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/8e96a35e.html" rel="prev" title="Redis知识汇总">
-                Redis知识汇总 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/da315dd.html" rel="prev" title="Redis知识点汇总">
+                Redis知识点汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1425,7 +1424,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:18</span>
+  <span title="站点阅读时长">16:30</span>
   
 </div>
 
