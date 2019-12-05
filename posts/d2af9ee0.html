@@ -162,18 +162,18 @@
 
 
 
-  <meta name="description" content="问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错误。虽">
+  <meta name="description" content="问题 使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20 连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决 经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错">
 <meta name="keywords" content="druid,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里巴巴连接池DruidDataSource的一个bug">
 <meta property="og:url" content="http://whb1990.github.io/posts/d2af9ee0.html">
 <meta property="og:site_name" content="王洪博&#39;s blog">
-<meta property="og:description" content="问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错误。虽">
+<meta property="og:description" content="问题 使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20 连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决 经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-12T10:38:05.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里巴巴连接池DruidDataSource的一个bug">
-<meta name="twitter:description" content="问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错误。虽">
+<meta name="twitter:description" content="问题 使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20 连接数据库超时，但是使用单独的jdbc连接却是可以连接的。 解决 经过反复测试，发现问题所在，原来是连接池参数&amp;lt;property name=&quot;validationQuery&quot; value=&quot;select 1&quot;&amp;gt;配置错">
 
 
 
@@ -665,42 +665,48 @@
       
 
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：<code>caused by wait mills 5000,active 0,maxactive 20</code><br>连接数据库超时，但是使用单独的jdbc连接却是可以连接的。</p>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>经过反复测试，发现问题所在，原来是连接池参数<code>&lt;property name="validationQuery" value="select 1"&gt;</code>配置错误。虽然是配置错误，但是连接池版本是1.0.10，太旧，<br>导致没有把真正的报错提示出来<code>ora-00923 未找到要求的关键字from</code>，而是报这个错：<code>caused by wait mills 5000,active 0,maxactive 20</code>。也就是说，本来是因为配置错误导致的，<br>但是因为阿里巴巴连接池DruidDataSource的bug，把这个错误隐藏起来了，一直没有把真正的错误报出来。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>将Druid版本升级到最新的稳定版本，DruidDataSource配置成如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"SELECT 1 FROM DUAL"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolPreparedStatements"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">1</span> /&gt;</span></span><br></pre></td></tr></tbody></table></figure></div>
-
-<h1 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h1><ol>
-<li>validationQuery   </li>
+        <h1>问题</h1>
+<p>使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：<code>caused by wait mills 5000,active 0,maxactive 20</code>
+连接数据库超时，但是使用单独的jdbc连接却是可以连接的。</p>
+<h1>解决</h1>
+<p>经过反复测试，发现问题所在，原来是连接池参数<code>&lt;property name="validationQuery" value="select 1"&gt;</code>配置错误。虽然是配置错误，但是连接池版本是1.0.10，太旧，
+导致没有把真正的报错提示出来<code>ora-00923 未找到要求的关键字from</code>，而是报这个错：<code>caused by wait mills 5000,active 0,maxactive 20</code>。也就是说，本来是因为配置错误导致的，
+但是因为阿里巴巴连接池DruidDataSource的bug，把这个错误隐藏起来了，一直没有把真正的错误报出来。</p>
+<h1>总结</h1>
+<p>将Druid版本升级到最新的稳定版本，DruidDataSource配置成如下：</p>
+<p></p><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"SELECT 1 FROM DUAL"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolPreparedStatements"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">1</span> /&gt;</span></span><br></pre></td></tr></tbody></table></figure></div><p></p>
+<h1>参数说明</h1>
+<ol>
+<li>validationQuery</li>
 </ol>
 <p>SQL查询,用来验证从连接池取出的连接,在将连接返回给调用者之前.如果指定, 则查询必须是一个SQL SELECT并且必须返回至少一行记录。</p>
 <ol start="2">
-<li>testOnBorrow  </li>
+<li>testOnBorrow</li>
 </ol>
-<p>true–指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个。 </p>
+<p>true--指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个。</p>
 <p>注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串 。</p>
 <ol start="3">
-<li>testOnReturn  </li>
+<li>testOnReturn</li>
 </ol>
-<p>false–指明是否在归还到池中前进行检验。</p>
+<p>false--指明是否在归还到池中前进行检验。</p>
 <p>注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串 。</p>
 <ol start="4">
-<li>testWhileIdle  </li>
+<li>testWhileIdle</li>
 </ol>
-<p>false–指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败, 则连接将被从池中去除。</p>
-<p>注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串 </p>
+<p>false--指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败, 则连接将被从池中去除。</p>
+<p>注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串</p>
 <ol start="5">
-<li>timeBetweenEvictionRunsMillis  </li>
+<li>timeBetweenEvictionRunsMillis</li>
 </ol>
-<p>-1–在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. 如果设置为非正数,则不运行空闲连接回收器线程。</p>
+<p>-1--在空闲连接回收器线程运行期间休眠的时间值,以毫秒为单位. 如果设置为非正数,则不运行空闲连接回收器线程。</p>
 <ol start="6">
-<li>numTestsPerEvictionRun  </li>
+<li>numTestsPerEvictionRun</li>
 </ol>
-<p>3–在每次空闲连接回收器线程(如果有)运行时检查的连接数量 。</p>
+<p>3--在每次空闲连接回收器线程(如果有)运行时检查的连接数量 。</p>
 <ol start="7">
-<li>minEvictableIdleTimeMillis  </li>
+<li>minEvictableIdleTimeMillis</li>
 </ol>
-<p>1000 * 60 * 30–连接在池中保持空闲而不被空闲连接回收器线程(如果有)回收的最小时间值，单位毫秒。</p>
+<p>1000 * 60 * 30--连接在池中保持空闲而不被空闲连接回收器线程(如果有)回收的最小时间值，单位毫秒。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1401,7 +1407,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数说明"><span class="nav-number">4.</span> <span class="nav-text">参数说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">参数说明</span></a></li></ol></div>
             
 
           </div>
@@ -1448,7 +1454,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:35</span>
+  <span title="站点阅读时长">16:48</span>
   
 </div>
 
