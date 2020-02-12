@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+----">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T10:26:05.887Z">
+<meta property="og:updated_time" content="2020-02-10T03:33:26.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中的函数总结">
 <meta name="twitter:description" content="CONCAT()函数CONCAT（）函数用于将多个字符串连接成一个字符串。使用数据表sys_user作为示例，sql如下： SELECT user_id as id,zwxm as name FROM sys_user LIMIT 1; 返回结果如下： 12345+----+--------+| id | name   |+----+--------+|  1 | 张三   |+----+----">
@@ -710,7 +710,7 @@
 <p>以id分组，把name字段的值打印在一行，逗号分隔，以name排倒序 </p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select id,group_concat(name order by name desc) from test group by id; </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">| id   | group_concat(name order by name desc) | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">|1     | 20,20,10                              | </span><br><span class="line">|2     | 20                                    | </span><br><span class="line">|3     | 500,200                               | </span><br><span class="line">+------+---------------------------------------+ </span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>使用group_concat_max_len系统变量，你可以设置允许的最大长度。 程序中进行这项操作的语法如下，其中 val 是一个无符号整数：<br>SET [SESSION | GLOBAL] group_concat_max_len = val;<br>若已经设置了最大长度， 则结果被截至这个最大长度。<br>将环境变量group_concat_max_len 增大。默认是1024.我就设置了session级的环境变量将其变为2048（不够用再加大）</p>
+<p>使用group_concat_max_len系统变量，你可以设置允许的最大长度。 程序中进行这项操作的语法如下，其中 val 是一个无符号整数：<br>SET [SESSION | GLOBAL] group_concat_max_len = val;<br>若已经设置了最大长度， 则结果被截至这个最大长度。<br>将环境变量group_concat_max_len 增大。默认是1024。本地设置了session级的环境变量将其变为2048（不够用再加大）</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -751,7 +751,7 @@
   <p><span>本文标题:</span><a href="/posts/578ec873.html">MySQL中的函数总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2018年03月22日 - 15:03</p>
-  <p><span>最后更新:</span>2019年09月12日 - 10:09</p>
+  <p><span>最后更新:</span>2020年02月10日 - 03:02</p>
   <p><span>原始链接:</span><a href="/posts/578ec873.html" title="MySQL中的函数总结">http://whb1990.github.io/posts/578ec873.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/578ec873.html" aria-label="复制成功！"></i></span>
   </p>
