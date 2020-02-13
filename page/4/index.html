@@ -597,7 +597,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.1k字</span>
+            <span class="post-count">2k字</span>
           </span>
 		  
           <span class="post-time">
@@ -666,9 +666,8 @@
         
           
             <p>
-              简介
-ThreadLocal并非是一个线程的本地实现版本，它并不是一个Thread，而是threadlocalvariable(线程局部变量)。
-线程局部变量(ThreadLocal)的功用就是为每一个使用该变量的线程都提供一个变量值的副本，是Java中一种较为特殊的线程绑定机制，每一个线程都可以独
+              简介ThreadLocal并非是一个线程的本地实现版本，它并不是一个Thread，而是threadlocalvariable(线程局部变量)。
+线程局部变量(ThreadLocal)的功用就是为每一个使用该变量的线程都提供一个变量值的副本，是Java中一种较为特殊的线程绑定机制，每一个线程都可以独立
               ...
             </p>
           <!--noindex-->
@@ -921,8 +920,7 @@ ThreadLocal并非是一个线程的本地实现版本，它并不是一个Thread
         
           
             <p>
-              前言
-Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到
+              前言Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redis的Value可以由String，hash，list，set，zset，Bitmaps，HyperLogLog等多种数据结构和算法组成。整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬
               ...
             </p>
           <!--noindex-->
@@ -1175,26 +1173,20 @@ Redis本质上是一个基于键值对(Key-Value)类型的内存数据库，Redi
         
           
             <p>
-              概述
-Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
-
+              概述Redis中存储数据是通过key-value格式存储数据的，其中value可以定义五种数据类型：
 
 String（字符类型）
 
-
 Hash（散列类型）
-
 
 List（列表类型）
 
-
 Set（集合类型）
-
 
 SortedSet（有序集合类型，简称zset）
 
 
-注意：在redis中的命令语句中
+注意：在redis中的命令语句中，命令是忽略
               ...
             </p>
           <!--noindex-->
@@ -1454,11 +1446,8 @@ SortedSet（有序集合类型，简称zset）
         
           
             <p>
-              问题
-使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20
-连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
-解决
-经过反复测试，发现问题所在，原来是连接池参数&lt;prope
+              问题使用阿里巴巴的数据库连接池Druid，当应用程序连接数据库，老是报错：caused by wait mills 5000,active 0,maxactive 20连接数据库超时，但是使用单独的jdbc连接却是可以连接的。
+解决经过反复测试，发现问题所在，原来是连接池参数&lt;property
               ...
             </p>
           <!--noindex-->
@@ -1649,7 +1638,7 @@ SortedSet（有序集合类型，简称zset）
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">976字</span>
+            <span class="post-count">973字</span>
           </span>
 		  
           <span class="post-time">
@@ -1718,11 +1707,9 @@ SortedSet（有序集合类型，简称zset）
         
           
             <p>
-              概述
-以PDD为例，PDD有数亿的用户，那么对于某个网页，怎么使用Redis来统计一个网站的用户访问数呢？
-使用Hash
-哈希是Redis的一种基础数据结构，Redis底层维护的是一个开散列，会把不同的key映射到哈希表上，如果是遇到关键字冲突，那么就会拉出一个链表出来。
-当一个用户访问的时候，如果
+              概述以PDD为例，PDD有数亿的用户，那么对于某个网页，怎么使用Redis来统计一个网站的用户访问数呢？
+使用Hash哈希是Redis的一种基础数据结构，Redis底层维护的是一个开散列，会把不同的key映射到哈希表上，如果是遇到关键字冲突，那么就会拉出一个链表出来。
+当一个用户访问的时候，如果用户
               ...
             </p>
           <!--noindex-->
@@ -1978,8 +1965,9 @@ SortedSet（有序集合类型，简称zset）
               在集成Mybatis的项目中定义接口并实现映射SQL时，遇到过一个很奇怪的问题，如下：
 定义接口：
 UserCouponBo getUserCouponInfoById(Long userCouponId);
+
 然后对应的sql的xml如下：
-&lt;select id="selectUserCoup
+&lt;select id="selectUserCou
               ...
             </p>
           <!--noindex-->
@@ -2239,12 +2227,10 @@ UserCouponBo getUserCouponInfoById(Long userCouponId);
         
           
             <p>
-              概述
-ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
+              概述ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 — — “读取锁”和“写入锁”，一个用于读取操作，另一个用于写入操作。
 
 “读取锁”用于只读操作，它是“共享锁”，能同时被多个线程获取。
-“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。
-&lt;font
+“写入锁”用于写入操作，它是“独占锁”，写入锁只能被一个线程锁获取。注意：不能同时存在读
               ...
             </p>
           <!--noindex-->
@@ -2497,18 +2483,12 @@ ReadWriteLock，顾名思义，是读写锁。它维护了一对相关的锁 —
         
           
             <p>
-              概述
-Spring中的注解大概可以分为两类：
+              概述Spring中的注解大概可以分为两类：
 
 Spring的bean容器相关的注解，或者说bean工厂相关的注解；
 Springmvc相关的注解。
 
-Spring的bean容器相关的注解有：
-@Required,
-@Autowired,
-@PostConstruct,
-@PreDestory,
-还
+Spring的bean容器相关的注解有：@Required,@Autowired,@PostConstruct,@PreDestory,还有Sprin
               ...
             </p>
           <!--noindex-->
@@ -2768,8 +2748,7 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等
+              概述在Jdk5.0之前，协调对共享对象的访问可以使用的机制只有synchronized和volatile。synchronized关键字实现了内置锁，而volatile关键字保证了多线程的内存可见性。在大多数情况下，这些机制都能很好地完成工作，但却无法实现一些更高级的功能，例如，无法中断一个正在等待
               ...
             </p>
           <!--noindex-->
@@ -3029,10 +3008,8 @@ Spring的bean容器相关的注解有：
         
           
             <p>
-              概述
-LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。
-方法列表
-// 返回提供给最近一次尚未解除阻塞的 park 方法调用的 blocker 对象，如果该调用不受阻塞，则返回 null。static Object getBlocker(Thread t)// 为了线程调度，禁用当
+              概述LockSupport是用来创建锁和其他同步类的基本线程阻塞原语。 
+方法列表// 返回提供给最近一次尚未解除阻塞的 park 方法调用的 blocker 对象，如果该调用不受阻塞，则返回 null。static Object getBlocker(Thread t)// 为了线程调度，禁用当前
               ...
             </p>
           <!--noindex-->
@@ -3636,7 +3613,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:48</span>
+  <span title="站点阅读时长">16:35</span>
   
 </div>
 
