@@ -170,7 +170,7 @@
 <meta property="og:site_name" content="王洪博&#39;s blog">
 <meta property="og:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件,包括隐藏文件。 -l 查看详情,包含文件的确切大小，拥有该文件的人员，有权查看该文件，以及何时进行上次修改。 -d 查看目录属性 -h 显示文件大">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T10:26:58.819Z">
+<meta property="og:updated_time" content="2020-02-13T02:42:10.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - 常用命令">
 <meta name="twitter:description" content="命令的基本格式[root@localhost~] root为用户名（#超级用户  $普通用户）   localhost主机名命令的基本格式： 1命令[选项][参数]  查询目录的内容命令格式： 1ls [选项][文件或目录]  选项：  -a 所有文件,包括隐藏文件。 -l 查看详情,包含文件的确切大小，拥有该文件的人员，有权查看该文件，以及何时进行上次修改。 -d 查看目录属性 -h 显示文件大">
@@ -596,7 +596,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">字数统计:</span>
-            <span class="post-count">2.8k字</span>
+            <span class="post-count">2.7k字</span>
           </span>
 		  
           <span class="post-time">
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.8k</span>
+                <span title="本文字数">7.4k</span>
               
 
               
@@ -978,36 +978,109 @@
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nl -s". " example.txt</span><br></pre></td></tr></tbody></table></figure></div>
 
 <p>结果如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">     1. Lorem ipsum</span><br><span class="line">     2. dolor sit amet,</span><br><span class="line">     3. consetetur</span><br><span class="line">     4. sadipscing elitr,</span><br><span class="line">     5. sed diam nonumy</span><br><span class="line">     6. eirmod tempor</span><br><span class="line">     7. invidunt ut labore</span><br><span class="line">     8. et dolore magna</span><br><span class="line">     9. aliquyam erat, sed</span><br><span class="line">    10. diam voluptua. At</span><br><span class="line">    11. vero eos et</span><br><span class="line">    12. accusam et justo</span><br><span class="line">    13. duo dolores et ea</span><br><span class="line">    14. rebum. Stet clita</span><br><span class="line">    15. kasd gubergren,</span><br><span class="line">    16. no sea takimata</span><br><span class="line">    17. sanctus est Lorem</span><br><span class="line">    18. ipsum dolor sit</span><br><span class="line">    19. amet.</span><br><span class="line">```	</span><br><span class="line">	</span><br><span class="line">12. `egrep`</span><br><span class="line"></span><br><span class="line">打印匹配模式的行 - 扩展表达式（别名为：'grep -E'）</span><br><span class="line"></span><br><span class="line">`example.txt`文件内容如下：</span><br></pre></td></tr></tbody></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 1. Lorem ipsum</span><br><span class="line"> 2. dolor sit amet,</span><br><span class="line"> 3. consetetur</span><br><span class="line"> 4. sadipscing elitr,</span><br><span class="line"> 5. sed diam nonumy</span><br><span class="line"> 6. eirmod tempor</span><br><span class="line"> 7. invidunt ut labore</span><br><span class="line"> 8. et dolore magna</span><br><span class="line"> 9. aliquyam erat, sed</span><br><span class="line">10. diam voluptua. At</span><br><span class="line">11. vero eos et</span><br><span class="line">12. accusam et justo</span><br><span class="line">13. duo dolores et ea</span><br><span class="line">14. rebum. Stet clita</span><br><span class="line">15. kasd gubergren,</span><br><span class="line">16. no sea takimata</span><br><span class="line">17. sanctus est Lorem</span><br><span class="line">18. ipsum dolor sit</span><br><span class="line">19. amet.</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>Lorem ipsum<br>dolor sit amet,<br>consetetur<br>sadipscing elitr,<br>sed diam nonumy<br>eirmod tempor<br>invidunt ut labore<br>et dolore magna<br>aliquyam erat, sed<br>diam voluptua. At<br>vero eos et<br>accusam et justo<br>duo dolores et ea<br>rebum. Stet clita<br>kasd gubergren,<br>no sea takimata<br>sanctus est Lorem<br>ipsum dolor sit<br>amet.</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;在其中显示“Lorem”或“dolor”的行</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>egrep ‘(Lorem|dolor)’ example.txt<br>or<br>grep -E ‘(Lorem|dolor)’ example.txt</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结果如下：</span><br></pre></td></tr></tbody></table></figure></div>
+<ol start="12">
+<li><code>egrep</code></li>
+</ol>
+<p>打印匹配模式的行 <code>-</code> 扩展表达式（别名为：<code>grep -E</code>）</p>
+<p><code>example.txt</code>文件内容如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet, </span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>Lorem ipsum<br>dolor sit amet,<br>et dolore magna<br>duo dolores et ea<br>sanctus est Lorem<br>ipsum dolor sit</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">13. `fgrep`</span><br><span class="line"></span><br><span class="line">打印匹配模式到的行 - FIXED模式匹配（别名为：'grep -F'）</span><br><span class="line"></span><br><span class="line">`example.txt`文件内容如下：</span><br></pre></td></tr></tbody></table></figure></div>
+<blockquote>
+<p>在其中显示“Lorem”或“dolor”的行</p>
+</blockquote>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">egrep '(Lorem|dolor)' example.txt</span><br><span class="line">or</span><br><span class="line">grep -E '(Lorem|dolor)' example.txt</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>Lorem ipsum<br>dolor sit amet,<br>consetetur<br>sadipscing elitr,<br>sed diam nonumy<br>eirmod tempor<br>foo (Lorem|dolor)<br>invidunt ut labore<br>et dolore magna<br>aliquyam erat, sed<br>diam voluptua. At<br>vero eos et<br>accusam et justo<br>duo dolores et ea<br>rebum. Stet clita<br>kasd gubergren,<br>no sea takimata<br>sanctus est Lorem<br>ipsum dolor sit<br>amet.</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;在example.txt中找到具体的字符串'（Lorem | doloar）'</span><br></pre></td></tr></tbody></table></figure></div>
+<p>结果如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">et dolore magna</span><br><span class="line">duo dolores et ea</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>fgrep ‘(Lorem|dolor)’ example.txt<br>or<br>grep -F ‘(Lorem|dolor)’ example.txt</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结果如下：</span><br></pre></td></tr></tbody></table></figure></div>
+<ol start="13">
+<li><code>fgrep</code></li>
+</ol>
+<p>打印匹配模式到的行 <code>-</code> FIXED模式匹配（别名为：<code>grep -F</code>）</p>
+<p><code>example.txt</code>文件内容如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Lorem ipsum</span><br><span class="line">dolor sit amet,</span><br><span class="line">consetetur</span><br><span class="line">sadipscing elitr,</span><br><span class="line">sed diam nonumy</span><br><span class="line">eirmod tempor</span><br><span class="line">foo (Lorem|dolor) </span><br><span class="line">invidunt ut labore</span><br><span class="line">et dolore magna</span><br><span class="line">aliquyam erat, sed</span><br><span class="line">diam voluptua. At</span><br><span class="line">vero eos et</span><br><span class="line">accusam et justo</span><br><span class="line">duo dolores et ea</span><br><span class="line">rebum. Stet clita</span><br><span class="line">kasd gubergren,</span><br><span class="line">no sea takimata</span><br><span class="line">sanctus est Lorem</span><br><span class="line">ipsum dolor sit</span><br><span class="line">amet.</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>foo (Lorem|dolor) </p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#### 压缩与解压缩</span><br><span class="line"></span><br><span class="line">常见压缩格式：.zip 、 .gz 、 .bz2、 .tar.gz 、 .tar.bz2</span><br><span class="line"></span><br><span class="line">1. zip格式</span><br><span class="line"></span><br><span class="line">**压缩文件**</span><br><span class="line"></span><br><span class="line">`zip [压缩文件名][原文件]`</span><br><span class="line"></span><br><span class="line">**压缩目录**</span><br><span class="line"></span><br><span class="line">`zip -r [压缩文件名][原文件]`</span><br><span class="line"></span><br><span class="line">举例：</span><br></pre></td></tr></tbody></table></figure></div>
+<blockquote>
+<p>在example.txt中找到具体的字符串’（Lorem <code>|</code> doloar）’</p>
+</blockquote>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fgrep '(Lorem|dolor)' example.txt</span><br><span class="line">or</span><br><span class="line">grep -F '(Lorem|dolor)' example.txt</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>touch jp/cangls</p>
-<p>touch jp/longls</p>
-<p>zip -r jp.zip jp</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**解压：**</span><br><span class="line"></span><br><span class="line">`unzip [压缩文件名]`</span><br><span class="line"></span><br><span class="line">**压缩为gz格式，原文件不保留**</span><br><span class="line"></span><br><span class="line">`gzip [原文件]`</span><br><span class="line"></span><br><span class="line">2. gz格式</span><br><span class="line"></span><br><span class="line">**压缩.gz格式，原文件保留**</span><br><span class="line"></span><br><span class="line">`gzip -c 原文件 &gt; 压缩文件`</span><br><span class="line"></span><br><span class="line">**压缩目录：**</span><br><span class="line"></span><br><span class="line">`gzip -r 目录`</span><br><span class="line"></span><br><span class="line">**解压：**</span><br><span class="line"></span><br><span class="line">`guzip [文件]`</span><br><span class="line"></span><br><span class="line">`guzip -r [目录]`</span><br><span class="line"></span><br><span class="line">**查看gzip压缩文件，而不需要gunzip它**</span><br></pre></td></tr></tbody></table></figure></div>
+<p>结果如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo (Lorem|dolor)</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>gzcat filename</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. tar</span><br><span class="line"></span><br><span class="line">**打包**</span><br><span class="line"></span><br><span class="line">`tar -cvf 打包文件名 原文件`</span><br><span class="line"></span><br><span class="line">**解压**</span><br><span class="line"></span><br><span class="line">`tar -xvf jp.tar`</span><br><span class="line"></span><br><span class="line">4. tar.gz</span><br><span class="line"></span><br><span class="line">**打包**</span><br><span class="line"></span><br><span class="line">`tar -zcvf 压缩包名.tar.gz 原文件`</span><br><span class="line"></span><br><span class="line">**解压**</span><br><span class="line">`tar -zxvf 压缩包名.tar.gz`</span><br><span class="line"></span><br><span class="line">#### 关机、重启</span><br><span class="line"></span><br><span class="line">`shutdown [选项][时间]`</span><br><span class="line"></span><br><span class="line">**选项：**</span><br><span class="line"></span><br><span class="line">+ -c 取消前一个关机命令</span><br><span class="line"></span><br><span class="line">+ -h 关机</span><br><span class="line"></span><br><span class="line">+ -r 重启</span><br><span class="line"></span><br><span class="line">+ init 6 重启</span><br><span class="line"></span><br><span class="line">+ init 0 关机</span><br><span class="line"></span><br><span class="line">+ logout 退出登陆</span><br><span class="line"></span><br><span class="line">#### 查看用户信息</span><br><span class="line">`w`、`who`、`last`、`lastlog`</span><br><span class="line"></span><br><span class="line">#### 输出重定向</span><br><span class="line"></span><br><span class="line">`命令&gt;文件` 以覆盖的方式，把正确的命令输出到指定文件</span><br><span class="line"></span><br><span class="line">`命令&gt;&gt;文件` 以追加的方式，把正确的命令输出到指定文件、</span><br><span class="line"></span><br><span class="line">`错误命令 2&gt; 文件` 以覆盖的方式把错误的命令覆盖到指定文件</span><br><span class="line"></span><br><span class="line">`错误命令 2&gt;&gt; 文件` 以追击的方式把错误的命令覆盖到指定文件</span><br><span class="line"></span><br><span class="line">`命令&gt;&gt;文件 2&gt;&amp;1` 同时追加正确命令和错误命令到 指定文件</span><br><span class="line"></span><br><span class="line">`命令 &gt;&gt;文件1 2&gt;&gt;文件2` 把正确的命令输出到文件1错误的文件2</span><br><span class="line"></span><br><span class="line">#### 网络相关</span><br><span class="line"></span><br><span class="line">1. ifconfig查看ip</span><br><span class="line"></span><br><span class="line">举个例子：</span><br></pre></td></tr></tbody></table></figure></div>
+<h4 id="压缩与解压缩"><a href="#压缩与解压缩" class="headerlink" title="压缩与解压缩"></a>压缩与解压缩</h4><p>常见压缩格式：.zip 、 .gz 、 .bz2、 .tar.gz 、 .tar.bz2</p>
+<ol>
+<li>zip格式</li>
+</ol>
+<p><strong>压缩文件</strong></p>
+<p><code>zip [压缩文件名][原文件]</code></p>
+<p><strong>压缩目录</strong></p>
+<p><code>zip -r [压缩文件名][原文件]</code></p>
+<p>举例：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch jp/cangls</span><br><span class="line"></span><br><span class="line">touch jp/longls</span><br><span class="line"></span><br><span class="line">zip -r jp.zip jp</span><br></pre></td></tr></tbody></table></figure></div>
 
-<p>ifconfig&gt;&gt; ip.log</p>
-<p>cat ip.log<br>```</p>
+<p><strong>解压：</strong></p>
+<p><code>unzip [压缩文件名]</code></p>
+<p><strong>压缩为gz格式，原文件不保留</strong></p>
+<p><code>gzip [原文件]</code></p>
+<ol start="2">
+<li>gz格式</li>
+</ol>
+<p><strong>压缩.gz格式，原文件保留</strong></p>
+<p><code>gzip -c 原文件 &gt; 压缩文件</code></p>
+<p><strong>压缩目录：</strong></p>
+<p><code>gzip -r 目录</code></p>
+<p><strong>解压：</strong></p>
+<p><code>guzip [文件]</code></p>
+<p><code>guzip -r [目录]</code></p>
+<p><strong>查看gzip压缩文件，而不需要gunzip它</strong></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzcat filename</span><br></pre></td></tr></tbody></table></figure></div>
+
+<ol start="3">
+<li>tar</li>
+</ol>
+<p><strong>打包</strong></p>
+<p><code>tar -cvf 打包文件名 原文件</code></p>
+<p><strong>解压</strong></p>
+<p><code>tar -xvf jp.tar</code></p>
+<ol start="4">
+<li>tar.gz</li>
+</ol>
+<p><strong>打包</strong></p>
+<p><code>tar -zcvf 压缩包名.tar.gz 原文件</code></p>
+<p><strong>解压</strong><br><code>tar -zxvf 压缩包名.tar.gz</code></p>
+<h4 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a>关机、重启</h4><p><code>shutdown [选项][时间]</code></p>
+<p><strong>选项：</strong></p>
+<ul>
+<li><p>-c 取消前一个关机命令</p>
+</li>
+<li><p>-h 关机</p>
+</li>
+<li><p>-r 重启</p>
+</li>
+<li><p>init 6 重启</p>
+</li>
+<li><p>init 0 关机</p>
+</li>
+<li><p>logout 退出登陆</p>
+</li>
+</ul>
+<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><p><code>w</code>、<code>who</code>、<code>last</code>、<code>lastlog</code></p>
+<h4 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h4><p><code>命令&gt;文件</code> 以覆盖的方式，把正确的命令输出到指定文件</p>
+<p><code>命令&gt;&gt;文件</code> 以追加的方式，把正确的命令输出到指定文件、</p>
+<p><code>错误命令 2&gt; 文件</code> 以覆盖的方式把错误的命令覆盖到指定文件</p>
+<p><code>错误命令 2&gt;&gt; 文件</code> 以追击的方式把错误的命令覆盖到指定文件</p>
+<p><code>命令&gt;&gt;文件 2&gt;&amp;1</code> 同时追加正确命令和错误命令到 指定文件</p>
+<p><code>命令 &gt;&gt;文件1 2&gt;&gt;文件2</code> 把正确的命令输出到文件1错误的文件2</p>
+<h4 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h4><ol>
+<li>ifconfig查看ip</li>
+</ol>
+<p>举个例子：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig&gt;&gt; ip.log</span><br><span class="line"></span><br><span class="line">cat ip.log</span><br></pre></td></tr></tbody></table></figure></div>
+
 <ol start="2">
 <li>查看网络状态</li>
 </ol>
@@ -1110,7 +1183,7 @@
   <p><span>本文标题:</span><a href="/posts/cb6839f2.html">Linux - 常用命令</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王洪博 的个人博客">王洪博</a></p>
   <p><span>发布时间:</span>2018年08月21日 - 14:08</p>
-  <p><span>最后更新:</span>2019年09月12日 - 10:09</p>
+  <p><span>最后更新:</span>2020年02月13日 - 02:02</p>
   <p><span>原始链接:</span><a href="/posts/cb6839f2.html" title="Linux - 常用命令">http://whb1990.github.io/posts/cb6839f2.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://whb1990.github.io/posts/cb6839f2.html" aria-label="复制成功！"></i></span>
   </p>
@@ -1768,7 +1841,7 @@ var binft = function (r) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命令的基本格式"><span class="nav-number">1.</span> <span class="nav-text">命令的基本格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询目录的内容"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件处理"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件搜索"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本操作"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">文本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vi编辑器"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">vi编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用操作快捷键"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">常用操作快捷键</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命令的基本格式"><span class="nav-number">1.</span> <span class="nav-text">命令的基本格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询目录的内容"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">查询目录的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件处理"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件搜索"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">文件搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本操作"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">文本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩与解压缩"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">压缩与解压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关机、重启"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">关机、重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">查看用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出重定向"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络相关"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vi编辑器"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">vi编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用操作快捷键"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">常用操作快捷键</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1815,7 +1888,7 @@ var binft = function (r) {
   
     <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
   
-  <span title="站点阅读时长">16:36</span>
+  <span title="站点阅读时长">16:48</span>
   
 </div>
 
